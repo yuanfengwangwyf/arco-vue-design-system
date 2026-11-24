@@ -3,7 +3,9 @@ import { pages } from './catalog';
 import DocPage from './DocPage.js';
 
 export const router = createRouter({
-  history: location.protocol === 'file:' ? createWebHashHistory() : createWebHistory(),
+  history: import.meta.env.MODE === 'offline' || location.protocol === 'file:'
+    ? createWebHashHistory()
+    : createWebHistory(),
   routes: [
     { path: '/', redirect: '/vue/docs/changelog' },
     ...pages.map(page => ({ path: page.route, component: DocPage, props: { page } })),
