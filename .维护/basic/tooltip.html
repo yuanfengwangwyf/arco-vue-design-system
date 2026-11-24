@@ -1,0 +1,273 @@
+
+<!-- demo:tooltip/basic -->
+<h3>基本用法</h3>
+<p>鼠标移入，气泡出现，鼠标移出，气泡消失。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tooltip content="This is tooltip content">
+      <a-button>Mouse over to display tooltip</a-button>
+    </a-tooltip>
+    <a-tooltip
+      content="This is a two-line tooltip content.This is a two-line tooltip content."
+    >
+      <a-button>Mouse over to display tooltip</a-button>
+    </a-tooltip>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tooltip/mini -->
+<h3>迷你尺寸</h3>
+<p>适用于小场景或数字气泡样式。</p>
+<template data-demo-source>
+<template>
+  <a-tooltip content="1234" position="top" mini>
+    <a-button>Mouse over to display tooltip</a-button>
+  </a-tooltip>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tooltip/position -->
+<h3>位置</h3>
+<p>文字气泡支持 12 个不同的方位。分别为：<code>上左</code>、<code>上</code>、<code>上右</code>、<code>下左</code>、<code>下</code>、<code>下右</code>、<code>左上</code>、<code>左</code>、<code>左下</code>、<code>右上</code>、<code>右</code>、<code>右下</code>。</p>
+<template data-demo-source>
+<template>
+  <div :style="{ position: 'relative', width: '440px', height: '280px' }">
+    <a-tooltip content="This is a Tooltip" position="tl">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '70px' }"
+        >TL</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="top">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '180px' }"
+        >TOP</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="tr">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '290px' }"
+        >TR</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="bl">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '70px' }"
+        >BL</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="bottom">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '180px' }"
+        >BOTTOM</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="br">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '290px' }"
+        >BR</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="lt">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '60px', left: '10px' }"
+        >LT</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="left">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '120px', left: '10px' }"
+        >LEFT</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="lb">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '180px', left: '10px' }"
+        >LB</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="rt">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '60px', left: '350px' }"
+        >RT</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="right">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '120px', left: '350px' }"
+        >RIGHT</a-button
+      >
+    </a-tooltip>
+    <a-tooltip content="This is a Tooltip" position="rb">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '180px', left: '350px' }"
+        >RB</a-button
+      >
+    </a-tooltip>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/tooltip/position.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tooltip/color -->
+<h3>自定义背景颜色</h3>
+<p>通过 <code>background-color</code> 属性自定义背景颜色。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tooltip content="This is tooltip content" background-color="var(--color-tone-blue-a100)">
+      <a-button>var(--color-tone-blue-a100)</a-button>
+    </a-tooltip>
+    <a-tooltip content="This is tooltip content" background-color="var(--color-tone-arcoblue-a100)">
+      <a-button>var(--color-tone-arcoblue-a100)</a-button>
+    </a-tooltip>
+    <a-tooltip content="This is tooltip content" background-color="var(--color-tone-purple-a100)">
+      <a-button>var(--color-tone-purple-a100)</a-button>
+    </a-tooltip>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<p><code>&lt;tooltip&gt;</code> 组件继承 <code>&lt;trigger&gt;</code> 组件的全部属性</p>
+<h2 id="api">API</h2>
+<h3 id="tooltip-props"><code>&lt;tooltip&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>文字气泡是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>文字气泡默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>文字气泡是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>content</td>
+<td>文字气泡内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br' | 'left' | 'lt' | 'lb' | 'right' | 'rt' | 'rb'</code></td>
+<td style="text-align:center"><code>'top'</code></td>
+</tr>
+<tr>
+<td>mini</td>
+<td>是否展示为迷你尺寸</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>background-color</td>
+<td>弹出框的背景颜色</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content-class</td>
+<td>弹出框内容的类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content-style</td>
+<td>弹出框内容的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>arrow-class</td>
+<td>弹出框箭头的类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>arrow-style</td>
+<td>弹出框箭头的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tooltip-events"><code>&lt;tooltip&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>文字气泡显示状态改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tooltip-slots"><code>&lt;tooltip&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

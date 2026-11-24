@@ -1,0 +1,78 @@
+<section class="token-page">
+  <p class="doc-description">每种颜色以原第 6 阶为主色，亮暗模式共用 10 档不透明度。</p>
+  <section aria-labelledby="color-palette">
+    <h2 id="color-palette">颜色色板</h2>
+    <div class="token-palettes">
+      <section v-for="[label, name] in colors" :key="name" class="token-palette">
+        <h3>{{ label }} <code>{{ name }}</code></h3>
+        <div class="token-gradient" :aria-label="label + '色阶'">
+          <div v-for="step in colorOpacitySteps" :key="step" :style="{ backgroundColor: 'var(--' + name + '-a' + step + ')' }"
+            :title="'--' + name + '-a' + step"><span>{{ step }}%</span></div>
+        </div>
+      </section>
+    </div>
+    <h2>彩色变量</h2>
+    <div class="token-table-scroll">
+      <table class="token-table">
+        <thead><tr><th scope="col">变量名</th><th scope="col">亮色</th><th scope="col">暗色</th></tr></thead>
+        <tbody>
+          <tr v-for="row in colorRows" :key="row.name">
+            <td><code>--{{ row.name }}</code></td>
+            <td v-for="mode in ['light', 'dark']" :key="mode" :data-demo-theme="mode">
+              <span class="token-sample" :style="{ backgroundColor: 'var(--' + row.name + ')' }"></span>
+              <code>--{{ row[mode] }}</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>中性色透明度</h2>
+    <div class="neutral-palettes">
+      <section v-for="[label, tone] in [['白色', 'white'], ['黑色', 'black']]" :key="tone">
+        <h3>{{ label }}</h3>
+        <div class="neutral-grid">
+          <div v-for="step in opacitySteps" :key="step">
+            <div class="neutral-checker"><span :style="{ backgroundColor: 'var(--neutral-' + tone + '-' + step + ')' }"></span></div>
+            <small>{{ step }}%</small>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+  <section class="token-group">
+    <h2>通用中性色</h2>
+    <div class="token-table-scroll">
+      <table class="token-table">
+        <thead><tr><th scope="col">变量名</th><th scope="col">亮色</th><th scope="col">暗色</th><th scope="col">用途</th></tr></thead>
+        <tbody>
+          <tr v-for="row in neutralRows" :key="row.name">
+            <td><code>--{{ row.name }}</code></td>
+            <td v-for="mode in ['light', 'dark']" :key="mode" :data-demo-theme="mode">
+              <span class="token-sample" :style="{ backgroundColor: 'var(--' + row.name + ')' }"></span>{{ row[mode] }} {{ row.step }}%
+            </td>
+            <td>{{ row.usage }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section v-for="group in tokens" :key="group.nameEN" class="token-group" :aria-labelledby="'token-' + group.nameEN">
+    <h2 :id="'token-' + group.nameEN">{{ group.name }}</h2>
+    <div class="token-table-scroll">
+      <table class="token-table">
+        <thead><tr><th scope="col">变量名</th><th scope="col">亮色</th><th scope="col">暗色</th><th scope="col">描述</th></tr></thead>
+        <tbody>
+          <tr v-for="record in group.tokens" :key="record.name">
+            <td><code>{{ record.cssvar ? '--' : '' }}{{ record.name }}</code></td>
+            <td v-for="mode in ['light', 'dark']" :key="mode" :data-demo-theme="mode">
+              <span v-if="group.type === 'color'" class="token-sample"
+                :style="{ backgroundColor: record.cssvar ? (record.value.startsWith('rgb(var(') ? 'rgb(var(--' + record.name + '))' : 'var(--' + record.name + ')') : mode === 'dark' ? record.darkValue ?? record.value : record.value }"></span>
+              <code>{{ record.cssvar ? 'var(--' + record.name + ')' : mode === 'dark' ? record.darkValue ?? record.value : record.value }}</code>
+            </td>
+            <td>{{ record.desc }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>

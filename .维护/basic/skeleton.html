@@ -1,0 +1,151 @@
+
+<!-- demo:skeleton/basic -->
+<h3>基本用法</h3>
+<p>骨架屏组件提供 <code>&lt;a-skeleton-line&gt;</code> 和 <code>&lt;a-skeleton-shape&gt;</code> 两种组件，用户可根据需要组合使用。</p>
+<template data-demo-source>
+<template>
+  <a-skeleton>
+    <a-space direction="vertical" :style="{ width: '100%' }" size="large">
+      <a-skeleton-line :rows="3" />
+      <a-skeleton-shape />
+    </a-space>
+  </a-skeleton>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:skeleton/type -->
+<h3>图形骨架屏</h3>
+<p>图形骨架屏分为 <code>square</code> - <strong>正方形（默认）</strong>、 <code>circle</code> - <strong>圆形</strong>两种形状，并提供 <code>small</code>、<code>medium</code>、<code>large</code> 三种尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-skeleton>
+    <a-space size="large">
+      <a-skeleton-shape size="small" />
+      <a-skeleton-shape />
+      <a-skeleton-shape size="large" />
+      <a-skeleton-shape shape="circle" size="small" />
+      <a-skeleton-shape shape="circle" />
+      <a-skeleton-shape shape="circle" size="large" />
+    </a-space>
+  </a-skeleton>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:skeleton/animation -->
+<h3>动画</h3>
+<p>通过设置 <code>animation</code> 属性，让骨架屏显示动画效果。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" :style="{ width: '100%' }">
+    <a-space>
+      <span>Animation</span>
+      <a-switch v-model="animation" />
+    </a-space>
+    <a-skeleton :animation="animation">
+      <a-space direction="vertical" :style="{ width: '100%' }" size="large">
+        <a-skeleton-line :rows="3" />
+        <a-skeleton-shape />
+      </a-space>
+    </a-skeleton>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const animation = ref(true);
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="skeleton-props"><code>&lt;skeleton&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loading</td>
+<td>是否展示骨架屏（加载中状态）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>animation</td>
+<td>是否开启骨架屏动画</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="skeleton-line-props"><code>&lt;skeleton-line&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rows</td>
+<td>展示的行数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+</tr>
+<tr>
+<td>widths</td>
+<td>线型骨架的宽度</td>
+<td><code>Array&lt;number | string&gt;</code></td>
+<td style="text-align:center"><code>[]</code></td>
+</tr>
+<tr>
+<td>line-height</td>
+<td>线型骨架的行高</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>20</code></td>
+</tr>
+<tr>
+<td>line-spacing</td>
+<td>线型骨架的行间距</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>15</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="skeleton-shape-props"><code>&lt;skeleton-shape&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shape</td>
+<td>图形骨架的形状</td>
+<td><code>'square' | 'circle'</code></td>
+<td style="text-align:center"><code>'square'</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>图形骨架的大小</td>
+<td><code>'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+</tr>
+</tbody>
+</table>

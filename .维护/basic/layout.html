@@ -1,0 +1,558 @@
+
+<!-- demo:layout/basic -->
+<h3>基本用法</h3>
+<p>典型的页面布局。</p>
+<template data-demo-source>
+<template>
+  <div class="layout-demo">
+    <a-layout style="height: 400px;">
+      <a-layout-header>Header</a-layout-header>
+      <a-layout-content>Content</a-layout-content>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+    <br />
+    <a-layout style="height: 400px;">
+      <a-layout-header>Header</a-layout-header>
+      <a-layout>
+        <a-layout-sider theme="dark">Sider</a-layout-sider>
+        <a-layout-content>Content</a-layout-content>
+      </a-layout>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+    <br />
+    <a-layout style="height: 400px;">
+      <a-layout-header>Header</a-layout-header>
+      <a-layout>
+        <a-layout-content>Content</a-layout-content>
+        <a-layout-sider>Sider</a-layout-sider>
+      </a-layout>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+    <br />
+    <a-layout style="height: 400px;">
+      <a-layout-header>Header</a-layout-header>
+      <a-layout>
+        <a-layout-sider style="width: 64px;">Sider</a-layout-sider>
+        <a-layout-sider style="width: 206px; margin-left: 1px;"
+          >Sider</a-layout-sider
+        >
+        <a-layout-content>Content</a-layout-content>
+      </a-layout>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+  </div>
+</template>
+<style scoped src="/demo/styles/examples/layout/basic.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:layout/custom-icon -->
+<h3>自定义按钮 Icon</h3>
+<p>通过设置 <code>Menu.Sider</code> 的 <code>trigger</code> 属性，实现自定义收起按钮的图标。</p>
+<template data-demo-source>
+<template>
+  <a-layout class="layout-demo">
+    <a-layout-sider collapsible breakpoint="xl">
+      <div class="logo" />
+      <a-menu
+        :default-open-keys="['1']"
+        :default-selected-keys="['0_3']"
+        :style="{ width: '100%' }"
+        @menu-item-click="handleClickMenuItem"
+      >
+        <a-menu-item key="0_1" disabled>
+          <IconHome></IconHome>
+          Menu 1
+        </a-menu-item>
+        <a-menu-item key="0_2">
+          <IconCalendar></IconCalendar>
+          Menu 2
+        </a-menu-item>
+        <a-menu-item key="0_3">
+          <IconCalendar></IconCalendar>
+          Menu 3
+        </a-menu-item>
+        <a-sub-menu key="1">
+          <template #title>
+            <IconCalendar></IconCalendar> Navigation 1
+          </template>
+          <a-menu-item key="1_1">Menu 1</a-menu-item>
+          <a-menu-item key="1_2">Menu 2</a-menu-item>
+          <a-sub-menu key="2" title="Navigation 2">
+            <a-menu-item key="2_1">Menu 1</a-menu-item>
+            <a-menu-item key="2_2">Menu 2</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu key="3" title="Navigation 3">
+            <a-menu-item key="3_1">Menu 1</a-menu-item>
+            <a-menu-item key="3_2">Menu 2</a-menu-item>
+            <a-menu-item key="3_3">Menu 3</a-menu-item>
+          </a-sub-menu>
+        </a-sub-menu>
+        <a-sub-menu key="4">
+          <template #title>
+            <IconCalendar></IconCalendar> Navigation 4
+          </template>
+          <a-menu-item key="4_1">Menu 1</a-menu-item>
+          <a-menu-item key="4_2">Menu 2</a-menu-item>
+          <a-menu-item key="4_3">Menu 3</a-menu-item>
+        </a-sub-menu>
+      </a-menu>
+      <!-- trigger -->
+      <template #trigger="{ collapsed }">
+        <IconCaretRight v-if="collapsed"></IconCaretRight>
+        <IconCaretLeft v-else></IconCaretLeft>
+      </template>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header style="padding-left: 20px;"> Header </a-layout-header>
+      <a-layout style="padding: 0 24px;">
+        <a-breadcrumb :style="{ margin: '16px 0' }">
+          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item>List</a-breadcrumb-item>
+          <a-breadcrumb-item>App</a-breadcrumb-item>
+        </a-breadcrumb>
+        <a-layout-content>Content</a-layout-content>
+        <a-layout-footer>Footer</a-layout-footer>
+      </a-layout>
+    </a-layout>
+  </a-layout>
+</template>
+<script setup>
+import { Message } from "@arco-design/web-vue";
+import {
+  IconCaretRight,
+  IconCaretLeft,
+  IconHome,
+  IconCalendar
+} from "@arco-design/web-vue/es/icon";
+const handleClickMenuItem = (key) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+};
+</script>
+<style scoped src="/demo/styles/examples/layout/custom-icon.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:layout/collapsed -->
+<h3>自定义收起按钮</h3>
+<p>设置<code>Menu.Sider</code> 的<code>hide-trigger</code>属性为<code>true</code>后，<code>Sider</code> 内置的缩起按钮不会显示。此时可自定义收起按钮。</p>
+<template data-demo-source>
+<template>
+  <a-layout class="layout-demo">
+    <a-layout-sider hide-trigger collapsible :collapsed="collapsed">
+      <div class="logo" />
+      <a-menu
+        :defaultOpenKeys="['1']"
+        :defaultSelectedKeys="['0_3']"
+        :style="{ width: '100%' }"
+        @menuItemClick="handleClickMenuItem"
+      >
+        <a-menu-item key="0_1" disabled>
+          <IconHome />
+          Menu 1
+        </a-menu-item>
+        <a-menu-item key="0_2">
+          <IconCalendar />
+          Menu 2
+        </a-menu-item>
+        <a-menu-item key="0_3">
+          <IconCalendar />
+          Menu 3
+        </a-menu-item>
+        <a-sub-menu key="1">
+          <template #title>
+            <span><IconCalendar />Navigation 1</span>
+          </template>
+          <a-menu-item key="1_1">Menu 1</a-menu-item>
+          <a-menu-item key="1_2">Menu 2</a-menu-item>
+          <a-sub-menu key="2" title="Navigation 2">
+            <a-menu-item key="2_1">Menu 1</a-menu-item>
+            <a-menu-item key="2_2">Menu 2</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu key="3" title="Navigation 3">
+            <a-menu-item key="3_1">Menu 1</a-menu-item>
+            <a-menu-item key="3_2">Menu 2</a-menu-item>
+            <a-menu-item key="3_3">Menu 3</a-menu-item>
+          </a-sub-menu>
+        </a-sub-menu>
+        <a-sub-menu key="4">
+          <template #title>
+            <span><IconCalendar />Navigation 4</span>
+          </template>
+          <a-menu-item key="4_1">Menu 1</a-menu-item>
+          <a-menu-item key="4_2">Menu 2</a-menu-item>
+          <a-menu-item key="4_3">Menu 3</a-menu-item>
+        </a-sub-menu>
+      </a-menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header style="padding-left: 20px;">
+        <a-button shape="round" @click="handleCollapse">
+          <IconCaretRight v-if="collapsed" />
+          <IconCaretLeft v-else />
+        </a-button>
+      </a-layout-header>
+      <a-layout style="padding: 0 24px;">
+        <a-breadcrumb :style="{ margin: '16px 0' }">
+          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item>List</a-breadcrumb-item>
+          <a-breadcrumb-item>App</a-breadcrumb-item>
+        </a-breadcrumb>
+        <a-layout-content>Content</a-layout-content>
+        <a-layout-footer>Footer</a-layout-footer>
+      </a-layout>
+    </a-layout>
+  </a-layout>
+</template>
+<script setup>
+import { defineComponent, ref } from "vue";
+import { Message } from "@arco-design/web-vue";
+import {
+  IconCaretRight,
+  IconCaretLeft,
+  IconHome,
+  IconCalendar
+} from "@arco-design/web-vue/es/icon";
+const collapsed = ref(false);
+const handleCollapse = () => {
+  collapsed.value = !collapsed.value;
+};
+const handleClickMenuItem = (key) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+};
+</script>
+<style scoped src="/demo/styles/examples/layout/collapsed.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:layout/breakpoint -->
+<h3>响应式侧边栏</h3>
+<p>左侧 Slider 可以结合 Menu 设置为展开/收起状态, 设置<code>breakpoint</code>可触发响应式收缩。</p>
+<template data-demo-source>
+<template>
+  <a-layout class="layout-demo">
+    <a-layout-sider
+      theme="dark"
+      breakpoint="lg"
+      :width="220"
+      collapsible
+      :collapsed="collapsed"
+      @collapse="handleCollapse"
+    >
+      <div class="logo" />
+      <a-menu
+        :defaultOpenKeys="['1']"
+        :defaultSelectedKeys="['0_2']"
+        @menuItemClick="handleClickMenuItem"
+      >
+        <a-menu-item key="0_1" disabled>
+          <IconHome />
+          Menu 1
+        </a-menu-item>
+        <a-menu-item key="0_2">
+          <IconCalendar />
+          Menu 2
+        </a-menu-item>
+        <a-sub-menu key="1">
+          <template #title>
+            <span><IconCalendar />Navigation 1</span>
+          </template>
+          <a-menu-item key="1_1">Menu 1</a-menu-item>
+          <a-menu-item key="1_2">Menu 2</a-menu-item>
+          <a-sub-menu key="2" title="Navigation 2">
+            <a-menu-item key="2_1">Menu 1</a-menu-item>
+            <a-menu-item key="2_2">Menu 2</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu key="3" title="Navigation 3">
+            <a-menu-item key="3_1">Menu 1</a-menu-item>
+            <a-menu-item key="3_2">Menu 2</a-menu-item>
+            <a-menu-item key="3_3">Menu 3</a-menu-item>
+          </a-sub-menu>
+        </a-sub-menu>
+        <a-sub-menu key="4">
+          <template #title>
+            <span><IconCalendar />Navigation 4</span>
+          </template>
+          <a-menu-item key="4_1">Menu 1</a-menu-item>
+          <a-menu-item key="4_2">Menu 2</a-menu-item>
+          <a-menu-item key="4_3">Menu 3</a-menu-item>
+        </a-sub-menu>
+      </a-menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header>
+        <a-menu :openKeys="['1']" :selectedKeys="['0_2']" mode="horizontal">
+          <a-menu-item key="0_1" disabled>
+            <IconHome />
+            Menu 1
+          </a-menu-item>
+          <a-menu-item key="0_2">
+            <IconCalendar />
+            Menu 2
+          </a-menu-item>
+          <a-sub-menu key="1">
+            <template #title>
+              <span><IconCalendar />Navigation 1</span>
+            </template>
+            <a-menu-item key="1_1">Menu 1</a-menu-item>
+            <a-menu-item key="1_2">Menu 2</a-menu-item>
+            <a-sub-menu key="2" title="Navigation 2">
+              <a-menu-item key="2_1">Menu 1</a-menu-item>
+              <a-menu-item key="2_2">Menu 2</a-menu-item>
+            </a-sub-menu>
+            <a-sub-menu key="3" title="Navigation 3">
+              <a-menu-item key="3_1">Menu 1</a-menu-item>
+              <a-menu-item key="3_2">Menu 2</a-menu-item>
+              <a-menu-item key="3_3">Menu 3</a-menu-item>
+            </a-sub-menu>
+          </a-sub-menu>
+          <a-sub-menu key="4">
+            <template #title>
+              <span><IconCalendar />Navigation 4</span>
+            </template>
+            <a-menu-item key="4_1">Menu 1</a-menu-item>
+            <a-menu-item key="4_2">Menu 2</a-menu-item>
+            <a-menu-item key="4_3">Menu 3</a-menu-item>
+          </a-sub-menu>
+        </a-menu>
+      </a-layout-header>
+      <a-layout style="padding: 0 24px">
+        <a-breadcrumb :style="{ margin: '16px 0' }">
+          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item>List</a-breadcrumb-item>
+          <a-breadcrumb-item>App</a-breadcrumb-item>
+        </a-breadcrumb>
+        <a-layout-content>Content</a-layout-content>
+        <a-layout-footer>Footer</a-layout-footer>
+      </a-layout>
+    </a-layout>
+  </a-layout>
+</template>
+<script setup>
+import { defineComponent, ref } from "vue";
+import { Message } from "@arco-design/web-vue";
+import { IconHome, IconCalendar } from "@arco-design/web-vue/es/icon";
+const collapsed = ref(false);
+const handleCollapse = (val, type) => {
+  const content = type === "responsive" ? "\u89E6\u53D1\u54CD\u5E94\u5F0F\u6536\u7F29" : "\u70B9\u51FB\u89E6\u53D1\u6536\u7F29";
+  Message.info({
+    content,
+    duration: 2e3
+  });
+  collapsed.value = val;
+};
+const handleClickMenuItem = (key) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+};
+</script>
+<style scoped src="/demo/styles/examples/layout/breakpoint.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:layout/resize -->
+<h3>可伸缩侧边栏</h3>
+<p>可以用鼠标进行拖拽放大缩小的侧边栏，需要用到的参数：<code>resizeDirections</code>。</p>
+<template data-demo-source>
+<template>
+  <div class="layout-demo">
+    <a-layout>
+      <a-layout-header>Header</a-layout-header>
+      <a-layout>
+        <a-layout-sider :resize-directions="['right']"> Sider </a-layout-sider>
+        <a-layout-content>Content</a-layout-content>
+      </a-layout>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+  </div>
+</template>
+<style scoped src="/demo/styles/examples/layout/resize.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="layout-props"><code>&lt;layout&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>has-sider</td>
+<td>表示子元素里有 Sider，一般不用指定。可用于服务端渲染时避免样式闪动</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-header-slots"><code>&lt;layout-header&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-content-slots"><code>&lt;layout-content&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-footer-slots"><code>&lt;layout-footer&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-sider-props"><code>&lt;layout-sider&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>theme</td>
+<td>主题颜色</td>
+<td><code>'dark' | 'light'</code></td>
+<td style="text-align:center"><code>'light'</code></td>
+</tr>
+<tr>
+<td>collapsed</td>
+<td>当前收起状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-collapsed</td>
+<td>默认的收起状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>collapsible</td>
+<td>是否可收起</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td>宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>200</code></td>
+</tr>
+<tr>
+<td>collapsed-width</td>
+<td>收缩宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>48</code></td>
+</tr>
+<tr>
+<td>reverse-arrow</td>
+<td>翻转折叠提示箭头的方向，当 Sider 在右边时可以使用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>breakpoint</td>
+<td>触发响应式布局的断点, 详见<a href="/vue/component/grid">响应式栅格</a></td>
+<td><code>'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>resize-directions</td>
+<td>可以用 ResizeBox 替换原生的 <code>aside</code> 标签，这个参数即 ResizeBox的 <code>directions</code> 参数。详情请看 <a href="/vue/component/resize-box">ResizeBox</a>。</td>
+<td><code>Array&lt;'left' | 'right' | 'top' | 'bottom'&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>hide-trigger</td>
+<td>隐藏底部折叠触发器</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-sider-events"><code>&lt;layout-sider&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>collapse</td>
+<td>展开-收起时的事件，有点击 trigger 以及响应式反馈两种方式可以触发</td>
+<td>collapsed: <code>boolean</code><br>type: <code>'clickTrigger'|'responsive'</code></td>
+</tr>
+<tr>
+<td>breakpoint</td>
+<td>触发响应式布局断点时的事件</td>
+<td>collapsed: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-sider-slots"><code>&lt;layout-sider&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trigger</td>
+<td style="text-align:center">自定义底部折叠触发器</td>
+<td>collapsed: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>

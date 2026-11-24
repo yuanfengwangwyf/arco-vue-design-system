@@ -1,0 +1,423 @@
+
+<!-- demo:breadcrumb/basic -->
+<h3>基本用法</h3>
+<p>面包屑的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-breadcrumb>
+    <a-breadcrumb-item>Home</a-breadcrumb-item>
+    <a-breadcrumb-item>Channel</a-breadcrumb-item>
+    <a-breadcrumb-item>News</a-breadcrumb-item>
+  </a-breadcrumb>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:breadcrumb/separator -->
+<h3>自定义分隔符</h3>
+<p>通过 <code>separator</code> 属性或插槽自定义分隔符。面包屑子项也可通过 <code>separator</code> 属性或插槽自定义分隔符，且优先级高于父项。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-breadcrumb>
+      <template #separator>
+        <icon-right />
+      </template>
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb separator="~">
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb>
+      <template #separator>
+        <icon-right />
+      </template>
+      <a-breadcrumb-item separator="->">Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:breadcrumb/size -->
+<h3>自定义尺寸</h3>
+<p>通过指定样式来自定义面包屑的尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-breadcrumb>
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb :style="{ fontSize: `12px` }">
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:breadcrumb/icon -->
+<h3>自定义图标</h3>
+<p>可以在内容中使用自定义图标。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-breadcrumb>
+      <a-breadcrumb-item>
+        <icon-home />
+      </a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb>
+      <a-breadcrumb-item>
+        <icon-home />
+      </a-breadcrumb-item>
+      <a-breadcrumb-item>
+        <icon-at />
+        Channel
+      </a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:breadcrumb/routes -->
+<h3>参数化配置</h3>
+<p>通过 <code>routes</code> 来传递面包屑数据。若是要自定义面包屑的话，建议使用 <code>&lt;a-breadcrumb-item /&gt;</code> 组件。默认使用 <code>a</code> 标签的 <code>href</code> 属性绑定路径，可通过 <code>item</code> 插槽自定义渲染。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-breadcrumb :routes="routes" />
+    <a-breadcrumb :routes="routes">
+      <template #item-render="{ route, paths }">
+        <a-link :href="paths.join('/')">
+          {{ route.label }}
+        </a-link>
+      </template>
+    </a-breadcrumb>
+  </a-space>
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  routes: [
+    {
+      path: "/",
+      label: "Home"
+    },
+    {
+      path: "/channel",
+      label: "Channel"
+    },
+    {
+      path: "/news",
+      label: "News"
+    }
+  ]
+});
+const { routes } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:breadcrumb/dropdown -->
+<h3>带有下拉菜单</h3>
+<p>通过 <code>droplist</code> 或者 <code>routes</code> 来指定下拉菜单。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-breadcrumb :routes="routes" />
+    <a-breadcrumb>
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item :droplist="droplist"> Channel </a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb>
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>
+        <template #droplist>
+          <a-doption>Option 1</a-doption>
+          <a-dsubmenu value="option-1">
+            <template #default>Option 2</template>
+            <template #content>
+              <a-doption>Option 2-1</a-doption>
+              <a-doption>Option 2-2</a-doption>
+              <a-doption>Option 2-3</a-doption>
+            </template>
+            <template #footer>
+              <div style="padding: 6px; text-align: center;">
+                <a-button>Click</a-button>
+              </div>
+            </template>
+          </a-dsubmenu>
+          <a-doption>Option 3</a-doption>
+        </template>
+        Channel
+      </a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+    </a-breadcrumb>
+  </a-space>
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  routes: [
+    {
+      path: "/",
+      label: "Home"
+    },
+    {
+      path: "/channel",
+      label: "Channel",
+      children: [
+        {
+          path: "/users",
+          label: "Users"
+        },
+        {
+          path: "/permission",
+          label: "Permission"
+        }
+      ]
+    },
+    {
+      path: "/news",
+      label: "News"
+    }
+  ],
+  droplist: [
+    {
+      path: "/goods",
+      label: "Goods"
+    },
+    {
+      path: "/wallet",
+      label: "Wallet"
+    }
+  ]
+});
+const { routes, droplist } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:breadcrumb/ellipsis -->
+<h3>显示省略</h3>
+<p>通过 <code>max-count</code> 来指定面包屑的最多渲染数量，超出的部分将显示为省略号。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-breadcrumb :max-count="3">
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Sub Home</a-breadcrumb-item>
+      <a-breadcrumb-item>All Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+      <a-breadcrumb-item>Post</a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb :max-count="3">
+      <template #more-icon>
+        <a-tooltip content="more routes a/b/c">
+          <icon-more />
+        </a-tooltip>
+      </template>
+      <a-breadcrumb-item>Home</a-breadcrumb-item>
+      <a-breadcrumb-item>Sub Home</a-breadcrumb-item>
+      <a-breadcrumb-item>All Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>Channel</a-breadcrumb-item>
+      <a-breadcrumb-item>News</a-breadcrumb-item>
+      <a-breadcrumb-item>Post</a-breadcrumb-item>
+    </a-breadcrumb>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="breadcrumb-props"><code>&lt;breadcrumb&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max-count</td>
+<td>最多展示的面包屑数量（0表示不限制）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>routes</td>
+<td>设置路径</td>
+<td><code>BreadcrumbRoute[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>separator</td>
+<td>分隔符文字</td>
+<td><code>string|number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>custom-url</td>
+<td>自定义链接地址</td>
+<td><code>(paths: string[]) =&gt; string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="breadcrumb-slots"><code>&lt;breadcrumb&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>more-icon</td>
+<td style="text-align:center">自定义更多图标</td>
+<td>-</td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>item-render</td>
+<td style="text-align:center">routes 设置时生效，自定义渲染面包屑</td>
+<td>route: <code>BreadcrumbRoute</code><br>routes: <code>BreadcrumbRoute[]</code><br>paths: <code>string[]</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>separator</td>
+<td style="text-align:center">自定义分隔符</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="breadcrumb-item-props"><code>&lt;breadcrumb-item&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>separator</td>
+<td>分隔符文字</td>
+<td><code>string|number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>droplist</td>
+<td>下拉菜单内容</td>
+<td><code>BreadcrumbRoute['children']</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>dropdown-props</td>
+<td>下拉菜单属性</td>
+<td><code>DropDownProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="breadcrumb-item-slots"><code>&lt;breadcrumb-item&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>droplist</td>
+<td style="text-align:center">自定义下拉菜单</td>
+<td>-</td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>separator</td>
+<td style="text-align:center">自定义分隔符</td>
+<td>-</td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="breadcrumbroute">BreadcrumbRoute</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>面包屑名称</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>path</td>
+<td>跳转路径 (<code>a</code>标签的<code>href</code>)</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>children</td>
+<td>下拉菜单展示项</td>
+<td><code>{    label: string;    path: string;  }[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips">Tips</h2>
+<p>同名的自定义插槽优先级是高于属性的</p>

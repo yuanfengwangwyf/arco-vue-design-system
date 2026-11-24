@@ -1,0 +1,278 @@
+
+<!-- demo:slider/basic -->
+<h3>基本用法</h3>
+<p>滑动输入条的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-slider :default-value="50" :style="{ width: '200px' }" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/disabled -->
+<h3>禁用状态</h3>
+<p>禁用滑动输入条。</p>
+<template data-demo-source>
+<template>
+  <a-slider :default-value="50" :style="{ width: '200px' }" disabled />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/step -->
+<h3>设置步长</h3>
+<p>通过 <code>step</code> 设置步长，默认步长为 1。建议设置能够被 <code>max-min</code> 整除的值，否则会出现可选最大值小于 <code>max</code> 的情况。当设置 <code>show-ticks</code> 时，显示步长刻度线。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-form :model="data" layout="inline">
+      <a-form-item label="Step" field="step">
+        <a-input-number :style="{ width: '100px' }" v-model="data.step" />
+      </a-form-item>
+      <a-form-item label="Show steps" field="showTicks">
+        <a-switch v-model="data.showTicks" />
+      </a-form-item>
+    </a-form>
+    <a-slider
+      :default-value="20"
+      :style="{ width: '300px' }"
+      :step="data.step"
+      :show-ticks="data.showTicks"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const data = reactive({
+  step: 5,
+  showTicks: true
+});
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/marks -->
+<h3>添加文本标签</h3>
+<p>通过设置 <code>marks</code> 可以添加文本标签。</p>
+<template data-demo-source>
+<template>
+  <a-slider
+    :default-value="5"
+    :style="{ width: '300px' }"
+    :max="15"
+    :marks="marks"
+  />
+</template>
+
+<script setup>
+const marks = {
+  0: "0km",
+  5: "5km",
+  10: "10km",
+  15: "15km"
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/range -->
+<h3>范围选择</h3>
+<p>通过设置 <code>range</code> 可开启范围选择，此时 <code>modelValue</code> 为数组。</p>
+<template data-demo-source>
+<template>
+  <a-slider v-model="value" :style="{ width: '300px' }" range />
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref([5, 10]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/input -->
+<h3>显示输入框</h3>
+<p>当设置 <code>show-input</code> 时，将显示输入框。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-slider :default-value="10" :style="{ width: '300px' }" show-input />
+    <a-slider
+      :default-value="[10, 20]"
+      :style="{ width: '380px' }"
+      range
+      show-input
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/vertical -->
+<h3>竖直滑动条</h3>
+<p>设置 <code>direction=&quot;vertical&quot;</code> ，将会显示竖直的滑动条。</p>
+<template data-demo-source>
+<template>
+  <a-space align="start">
+    <a-slider :default-value="50" direction="vertical" />
+
+    <a-slider
+      direction="vertical"
+      :default-value="5"
+      :style="{ width: '300px' }"
+      :max="15"
+      :marks="{
+        5: '5km',
+        10: '10km',
+      }"
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:slider/tooltip -->
+<h3>自定义提示</h3>
+<p>通过设置 <code>format-tooltip</code> 可以自定义提示文字。</p>
+<template data-demo-source>
+<template>
+  <a-slider
+    :min="0"
+    :max="50"
+    :style="{ width: '200px' }"
+    :format-tooltip="formatter"
+  />
+</template>
+
+<script setup>
+const formatter = (value) => {
+  return `${Math.round(value / 50 * 100)}%`;
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="slider-props"><code>&lt;slider&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>number | [number, number]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>number | [number, number]</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>step</td>
+<td>滑动的步长</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>min</td>
+<td>滑动范围的最小值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>marks</td>
+<td>设置显示的标签</td>
+<td><code>Record&lt;number, string&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max</td>
+<td>滑动范围的最大值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>100</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>滑动输入条的方向</td>
+<td><code>Direction</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-ticks</td>
+<td>是否显示刻度线</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-input</td>
+<td>是否显示输入框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>range</td>
+<td>是否开启范围选择</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-tooltip</td>
+<td>是否显示tooltip</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.42.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slider-events"><code>&lt;slider&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值改变时触发</td>
+<td>value: <code>number | [number, number]</code></td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,55 @@
+<h2 id="受控与非受控">受控与非受控</h2>
+<p>Arco Design Vue 组件库中使用了 <code>受控</code> 的概念，正如其名，组件的显示状态将始终与传入值相同。我们推荐通过受控模式来使用输入组件。</p>
+<p>这时可以通过 <code>双向绑定（v-model）</code> 或者 <code>change</code> 事件来修改 <code>model-value</code> 的值，来保证组件内部与外部的值相同。</p>
+<p>在受控模式中，如果希望控制显示的值，可以使用 <code>change</code> 事件进行处理。</p>
+<p>如果我们不希望控制组件的值，可以使用非受控模式，此时组件的值将维护在组件内部，可以通过 <code>default-value</code> 来设置初始值。非受控模式下可以通过 <code>change</code> 事件来获取组件的值。</p>
+<p>特别注意：
+<code>default-*</code> 类属性用来设置非受控模式下的初始值，不会影响后续的状态。此值与受控值同时使用时，受控值优先生效。</p>
+<h2 id="下拉菜单的滚动跟随">下拉菜单的滚动跟随</h2>
+<p>下拉菜单默认会跟随 window 滚动条的变化更新位置，如果将包含下拉菜单的组件放置在一个可滚动的容器中，会出现容器滚动时下拉菜单没有更新位置的问题，此时可以通过组件内部的 trigger 配置，将 <code>updateAtScroll</code>
+设置为 <code>true</code> 开启滚动更新的支持。</p>
+<p>如果项目内此场景较多，可以通过 <a href="/vue/component/config-provider">ConfigProvider</a> 组件全局开启此属性。</p>
+<h2 id="虚拟列表的使用">虚拟列表的使用</h2>
+<p>支持设置虚拟列表的组件 <a href="/vue/component/list">List</a> 、<a href="/vue/component/select">Select</a>、<a href="/vue/component/table">Table</a>、<a href="/vue/component/tree">Tree</a> 设置 <code>virtual-list-props</code> 开启虚拟列表功能。</p>
+<p>虚拟列表元素的渲染分为 <strong>元素高度固定</strong>，<strong>元素高度动态</strong> 两种情况。</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td>可视区域高度</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fixedSize</td>
+<td>列表内元素是否为固定大小（高度）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+<tr>
+<td>estimatedSize</td>
+<td>预估大小（高度）[当 <code>fixedSize</code> 为 <code>true</code> 时，此值无效]，如果它更接近平均大小，则滚动条长度看起来将更准确。建议分配自己计算的平均值。默认动态高度将使用首个 Section 的平均值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>视口边界外提前挂载的元素数量。（<code>Section = buffer * 3</code>）默认值为 <code>10</code>（也就是 Section 默认为 30）, 建议根据列表视口的高度做调整，此值太大会影响性能。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>10</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+</tbody>
+</table>

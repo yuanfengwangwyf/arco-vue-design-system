@@ -1,0 +1,13 @@
+.action {
+  display: inline-block;
+  padding: 0 4px;
+  color: var(--color-text-1);
+  line-height: 24px;
+  background: var(--color-tone-neutral-black-0);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.action:hover {
+  background: var(--color-fill-3);
+}

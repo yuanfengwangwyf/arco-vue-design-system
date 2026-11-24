@@ -1,0 +1,16 @@
+
+body {
+  --border-radius-none: 0;
+}
+body {
+  --border-radius-small: 2px;
+}
+body {
+  --border-radius-medium: 4px;
+}
+body {
+  --border-radius-large: 8px;
+}
+body {
+  --border-radius-circle: 50%;
+}

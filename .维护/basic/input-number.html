@@ -1,0 +1,483 @@
+
+<!-- demo:input-number/basic -->
+<h3>基本用法</h3>
+<p>通过鼠标或者键盘输入范围内的标准数值。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-number
+      v-model="value"
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      class="input-demo"
+      :min="10"
+      :max="100"
+    />
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      class="input-demo"
+      :min="10"
+      :max="100"
+    />
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      :default-value="500"
+      class="input-demo"
+      disabled
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  value: 15
+});
+const { value } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/mode -->
+<h3>按钮模式</h3>
+<p>指定 <code>mode</code> 为 <code>button</code> 来使用带按钮的数字输入框。</p>
+<template data-demo-source>
+<template>
+  <a-input-number
+    :style="{ width: '320px' }"
+    placeholder="Please Enter"
+    :default-value="500"
+    mode="button"
+    class="input-demo"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/size -->
+<h3>四种尺寸</h3>
+<p>设置 <code>size</code> 可以使用四种尺寸（<code>mini</code>, <code>small</code>, <code>medium</code>, <code>large</code>）的数字输入框。高度分别对应<code>24px</code>、<code>28px</code>、<code>32px</code>、<code>36px</code>。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      size="large"
+      class="input-demo"
+    />
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      mode="button"
+      size="large"
+      class="input-demo"
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/precision -->
+<h3>精度和步长</h3>
+<p>通过 <code>precision</code> 来设置数字精度。当 <code>precision</code> 小于 <code>step</code> 的小数位时，精度取 <code>step</code> 的小数个数。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      :default-value="3.6"
+      :step="1.2"
+      :precision="2"
+      class="input-demo"
+    />
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      :default-value="1.22"
+      :step="1.22"
+      :precision="1"
+      class="input-demo"
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/prefix -->
+<h3>前缀与后缀</h3>
+<p>通过指定 <code>prefix</code> 和 <code>suffix</code> 插槽来在输入框内添加前缀和后缀。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
+      <template #prefix>
+        <icon-user />
+      </template>
+    </a-input-number>
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+      hide-button
+    >
+      <template #suffix>
+        <icon-info-circle />
+      </template>
+    </a-input-number>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/step-icon -->
+<h3>自定义图标</h3>
+<p>通过指定 <code>plus</code> 和 <code>minus</code> 插槽来修改数值增减操作的图标。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
+      <template #plus>
+        <icon-plus />
+      </template>
+      <template #minus>
+        <icon-minus />
+      </template>
+    </a-input-number>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/format -->
+<h3>格式化展示值</h3>
+<p>通过 <code>formatter</code> 和 <code>parser</code> 配合使用可以定义输入框展示值。</p>
+<template data-demo-source>
+<template>
+  <a-input-number
+    :style="{ width: '320px' }"
+    placeholder="Please Enter"
+    class="input-demo"
+    :default-value="12000"
+    :min="0"
+    :formatter="formatter"
+    :parser="parser"
+  />
+</template>
+
+<script setup>
+const formatter = (value) => {
+  const values = value.split(".");
+  values[0] = values[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return values.join(".");
+};
+const parser = (value) => {
+  return value.replace(/,/g, "");
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-number/model -->
+<h3>v-model 的触发事件</h3>
+<p>数字输入框默认在 blur 或者按下 Enter 时会修改绑定的值，通过设置属性 model-event=&quot;input&quot; 让组件在输入时修改绑定的值。
+注意：在此模式下，输入时的值会超出设置的 min/max，组件会在失焦时修正值的大小。</p>
+<template data-demo-source>
+<template>
+  <a-input-number
+    v-model="value"
+    :style="{ width: '320px' }"
+    placeholder="Please Enter"
+    class="input-demo"
+    :min="10"
+    :max="100"
+    model-event="input"
+  />
+  <div>value: {{ value }}</div>
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  value: 15
+});
+const { value } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="input-number-props"><code>&lt;input-number&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控模式）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>模式（<code>embed</code>：按钮内嵌模式，<code>button</code>：左右按钮模式）</td>
+<td><code>'embed' | 'button'</code></td>
+<td style="text-align:center"><code>'embed'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>precision</td>
+<td>数字精度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>step</td>
+<td>数字变化步长</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max</td>
+<td>最大值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>Infinity</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-Infinity</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>formatter</td>
+<td>定义输入框展示值</td>
+<td><code>func</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>parser</td>
+<td>从 <code>formatter</code> 转换为数字，和 <code>formatter</code> 搭配使用</td>
+<td><code>func</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>输入框提示文字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-button</td>
+<td>是否隐藏按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>输入框大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空输入框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>model-event</td>
+<td>触发 <code>v-model</code> 的事件</td>
+<td><code>'change' | 'input'</code></td>
+<td style="text-align:center"><code>'change'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>read-only</td>
+<td>只读</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.33.1</td>
+</tr>
+<tr>
+<td>input-attrs</td>
+<td>内部 input 元素的属性</td>
+<td><code>object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.52.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-number-events"><code>&lt;input-number&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值发生改变时触发</td>
+<td>value: <code>number | undefined</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>输入框获取焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>blur</td>
+<td>输入框失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>用户点击清除按钮时触发</td>
+<td>ev: <code>Event</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>input</td>
+<td>输入时触发</td>
+<td>value: <code>number | undefined</code><br>inputValue: <code>string</code><br>ev: <code>Event</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+<tr>
+<td>keydown</td>
+<td>按下键盘时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+<td style="text-align:left">2.56.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-number-methods"><code>&lt;input-number&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使输入框获取焦点</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使输入框失去焦点</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-number-slots"><code>&lt;input-number&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minus</td>
+<td style="text-align:center">数值减少图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>plus</td>
+<td style="text-align:center">数值增加图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>append</td>
+<td style="text-align:center">后置标签</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td style="text-align:center">前置标签</td>
+<td>-</td>
+</tr>
+<tr>
+<td>suffix</td>
+<td style="text-align:center">后缀</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">前缀</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

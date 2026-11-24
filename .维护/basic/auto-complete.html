@@ -1,0 +1,281 @@
+
+<!-- demo:auto-complete/basic -->
+<h3>基本用法</h3>
+<p>自动补全的基础用法</p>
+<template data-demo-source>
+<template>
+  <a-auto-complete
+    :data="data"
+    @search="handleSearch"
+    :style="{ width: '360px' }"
+    placeholder="please enter something"
+  />
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  data: []
+});
+const { data } = toRefs(state);
+const handleSearch = (value) => {
+  if (value) {
+    data.value = [...Array(5)].map((_, index) => `${value}-${index}`);
+    console.log(data.value);
+  } else {
+    data.value = [];
+  }
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:auto-complete/strict -->
+<h3>区分大小写</h3>
+<p>使用 <code>strict</code> 属性来指明在匹配时严格区分大小写。</p>
+<template data-demo-source>
+<template>
+  <a-auto-complete
+    :data="data"
+    :style="{ width: '360px' }"
+    placeholder="please enter something"
+    strict
+  />
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  data: ["Beijing", "Shanghai", "Chengdu", "WuHan"]
+});
+const { data } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:auto-complete/footer -->
+<h3>弹出框的页脚</h3>
+<p>自定义弹出框的页脚</p>
+<template data-demo-source>
+<template>
+  <a-auto-complete
+    :data="data"
+    @search="handleSearch"
+    :style="{ width: '360px' }"
+    placeholder="please enter something"
+  >
+    <template #footer>
+      <div style="padding: 6px 0; text-align: center;">
+        <a-button>Click Me</a-button>
+      </div>
+    </template>
+  </a-auto-complete>
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  data: []
+});
+const { data } = toRefs(state);
+const handleSearch = (value) => {
+  if (value) {
+    data.value = [...Array(5)].map((_, index) => `${value}-${index}`);
+    console.log(data.value);
+  } else {
+    data.value = [];
+  }
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="auto-complete-props"><code>&lt;auto-complete&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控模式）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>data</td>
+<td>用于自动提示的数据</td>
+<td><code>(string | number | SelectOptionData | SelectOptionGroup)[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement | null | undefined</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>strict</td>
+<td>是否为严格校验模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filter-option</td>
+<td>自定义选项过滤方法</td>
+<td><code>FilterOption</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger-props</td>
+<td>trigger 组件属性</td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.14.0</td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空输入框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>virtual-list-props</td>
+<td>传递虚拟列表属性，传入此参数以开启虚拟滚动 <a href="#VirtualListProps">VirtualListProps</a></td>
+<td><code>VirtualListProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.50.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-complete-events"><code>&lt;auto-complete&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>绑定值发生改变时触发</td>
+<td>value: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>search</td>
+<td>用户搜索时触发</td>
+<td>value: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>select</td>
+<td>选择选项时触发</td>
+<td>value: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>用户点击清除按钮时触发</td>
+<td>ev: <code>Event</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>dropdown-scroll</td>
+<td>下拉菜单发生滚动时触发</td>
+<td>ev: <code>Event</code></td>
+<td style="text-align:left">2.52.0</td>
+</tr>
+<tr>
+<td>dropdown-reach-bottom</td>
+<td>下拉菜单滚动到底部时触发</td>
+<td>ev: <code>Event</code></td>
+<td style="text-align:left">2.52.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-complete-methods"><code>&lt;auto-complete&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使输入框获取焦点</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.40.0</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使输入框失去焦点</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.40.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-complete-slots"><code>&lt;auto-complete&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>option</td>
+<td style="text-align:center">选项内容</td>
+<td>data: <code>OptionInfo</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">弹出框的页脚</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,480 @@
+
+<!-- demo:button/basic -->
+<h3>基本用法</h3>
+<p>按钮分为 <code>primary</code> - <strong>主要按钮</strong>、<code>secondary</code> - <strong>次要按钮（默认）</strong>、<code>dashed</code> - <strong>虚线按钮</strong>、<code>outline</code> - <strong>线形按钮</strong>、<code>text</code> - <strong>文本按钮</strong>五种类型。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary">Primary</a-button>
+    <a-button>Secondary</a-button>
+    <a-button type="dashed">Dashed</a-button>
+    <a-button type="outline">Outline</a-button>
+    <a-button type="text">Text</a-button>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/icon -->
+<h3>图标按钮</h3>
+<p>按钮可以嵌入图标。在只设置图标时，按钮的宽高相等。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary">
+      <template #icon>
+        <icon-plus />
+      </template>
+    </a-button>
+    <a-button type="primary">
+      <template #icon>
+        <icon-delete />
+      </template>
+      <!-- Use the default slot to avoid extra spaces -->
+      <template #default>Delete</template>
+    </a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { IconPlus, IconDelete } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/shape -->
+<h3>按钮形状</h3>
+<p>按钮分为 <code>square</code> - <strong>长方形（默认）</strong>、<code>circle</code> - <strong>圆形</strong>、<code>round</code> - <strong>全圆角</strong>三种形状。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary">Square</a-button>
+    <a-button type="primary" shape="round">Round</a-button>
+    <a-button type="primary">
+      <template #icon>
+        <icon-plus />
+      </template>
+    </a-button>
+    <a-button type="primary" shape="circle">
+      <icon-plus />
+    </a-button>
+  </a-space>
+</template>
+<script setup>
+import { IconPlus } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/size -->
+<h3>按钮尺寸</h3>
+<p>按钮分为 <code>mini</code>、<code>small</code>、<code>medium</code>、<code>large</code> 四种尺寸。高度分别为：<code>24px</code>、<code>28px</code>、<code>32px</code>、<code>36px</code>。推荐（默认）尺寸为 <code>medium</code>。可在不同场景及不同业务需求选择适合尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary" size="mini">Mini</a-button>
+    <a-button type="primary" size="small">Small</a-button>
+    <a-button type="primary">Medium</a-button>
+    <a-button type="primary" size="large">Large</a-button>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/status -->
+<h3>按钮状态</h3>
+<p>按钮的状态分为 <code>normal</code> - <strong>正常（默认）</strong>、<code>success</code> - <strong>成功</strong>、<code>warning</code> - <strong>警告</strong>、<code>danger</code> - <strong>危险</strong>四种，可以与按钮类型同时使用。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-space>
+      <a-button type="primary" status="success">Primary</a-button>
+      <a-button status="success">Default</a-button>
+      <a-button type="dashed" status="success">Dashed</a-button>
+      <a-button type="outline" status="success">Outline</a-button>
+      <a-button type="text" status="success">Text</a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" status="warning">Primary</a-button>
+      <a-button status="warning">Default</a-button>
+      <a-button type="dashed" status="warning">Dashed</a-button>
+      <a-button type="outline" status="warning">Outline</a-button>
+      <a-button type="text" status="warning">Text</a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" status="danger">Primary</a-button>
+      <a-button status="danger">Default</a-button>
+      <a-button type="dashed" status="danger">Dashed</a-button>
+      <a-button type="outline" status="danger">Outline</a-button>
+      <a-button type="text" status="danger">Text</a-button>
+    </a-space>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/disabled -->
+<h3>禁用状态</h3>
+<p>按钮的禁用状态。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-space>
+      <a-button type="primary" disabled>Primary</a-button>
+      <a-button disabled>Default</a-button>
+      <a-button type="dashed" disabled>Dashed</a-button>
+      <a-button type="outline" disabled>Outline</a-button>
+      <a-button type="text" disabled>Text</a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" status="success" disabled>Primary</a-button>
+      <a-button status="success" disabled>Default</a-button>
+      <a-button type="dashed" status="success" disabled>Dashed</a-button>
+      <a-button type="outline" status="success" disabled>Outline</a-button>
+      <a-button type="text" status="success" disabled>Text</a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" status="warning" disabled>Primary</a-button>
+      <a-button status="warning" disabled>Default</a-button>
+      <a-button type="dashed" status="warning" disabled>Dashed</a-button>
+      <a-button type="outline" status="warning" disabled>Outline</a-button>
+      <a-button type="text" status="warning" disabled>Text</a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" status="danger" disabled>Primary</a-button>
+      <a-button status="danger" disabled>Default</a-button>
+      <a-button type="dashed" status="danger" disabled>Dashed</a-button>
+      <a-button type="outline" status="danger" disabled>Outline</a-button>
+      <a-button type="text" status="danger" disabled>Text</a-button>
+    </a-space>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/loading -->
+<h3>加载中状态</h3>
+<p>通过设置 <code>loading</code> 可以让按钮处于加载中状态。处于加载中状态的按钮不会触发点击事件。
+通过设置 <code>loading-fixed-width</code> 可以在加载中时保持按钮宽度不变。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <div :style="gridStyle">
+      <a-button type="primary" loading>Loading</a-button>
+      <a-button loading>Loading</a-button>
+      <a-button type="dashed" loading>Loading</a-button>
+      <a-button type="primary" shape="circle" loading />
+      <a-button shape="circle" loading />
+      <a-button type="dashed" shape="circle" loading />
+    </div>
+    <a-button
+      type="primary"
+      :loading="loading1"
+      style="margin: 24px"
+      @click="handleClick1"
+    >
+      Click Me
+    </a-button>
+    <a-button
+      type="primary"
+      :loading="loading2"
+      style="margin: 24px"
+      @click="handleClick2"
+    >
+      <template #icon>
+        <icon-plus />
+      </template>
+      Click Me
+    </a-button>
+    <a-divider style="width: 440px; min-width: 440px">
+      loading fixed width
+    </a-divider>
+    <a-button
+      type="primary"
+      loading-fixed-width
+      :loading="loading3"
+      style="margin: 24px"
+      @click="handleClick3"
+    >
+      Search
+    </a-button>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { IconPlus } from "@arco-design/web-vue/es/icon";
+const triggerLoading = (stateRef) => {
+  if (stateRef.value) {
+    return;
+  }
+  stateRef.value = true;
+  setTimeout(() => {
+    stateRef.value = false;
+  }, 4e3);
+};
+const loading1 = ref(false);
+const loading2 = ref(false);
+const loading3 = ref(false);
+const gridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 100px)",
+  rowGap: "24px",
+  columnGap: "24px",
+  marginLeft: "24px"
+};
+const handleClick1 = () => {
+  triggerLoading(loading1);
+};
+const handleClick2 = () => {
+  triggerLoading(loading2);
+};
+const handleClick3 = () => {
+  triggerLoading(loading3);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/long -->
+<h3>长按钮</h3>
+<p>通过设置 <code>long</code> 属性，使按钮的宽度跟随容器的宽度。</p>
+<template data-demo-source>
+<template>
+  <a-space class="wrapper" direction="vertical">
+    <a-button type="primary" long>Primary</a-button>
+    <a-button long>Default</a-button>
+    <a-button type="dashed" long>Dashed</a-button>
+    <a-button type="outline" long>Outline</a-button>
+    <a-button type="text" long>Text</a-button>
+  </a-space>
+</template>
+
+<style scoped src="/demo/styles/examples/button/long.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:button/group -->
+<h3>组合按钮</h3>
+<p>通过 <code>&lt;a-button-group&gt;</code> 组件使按钮以组合方式出现。可用在同级多项操作中。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-button-group>
+      <a-button>Publish</a-button>
+      <a-button>
+        <template #icon>
+          <icon-down />
+        </template>
+      </a-button>
+    </a-button-group>
+    <a-button-group>
+      <a-button>Publish</a-button>
+      <a-button>
+        <template #icon>
+          <icon-more />
+        </template>
+      </a-button>
+    </a-button-group>
+    <a-button-group>
+      <a-button type="primary">
+        <icon-left />
+        Prev
+      </a-button>
+      <a-button type="primary">
+        Next
+        <icon-right />
+      </a-button>
+    </a-button-group>
+    <a-space size="large">
+      <a-button-group type="primary">
+        <a-button> copy </a-button>
+        <a-button> cut </a-button>
+        <a-button> find </a-button>
+      </a-button-group>
+      <a-button-group type="primary" status="warning">
+        <a-button>
+          <template #icon><icon-heart-fill /></template>
+        </a-button>
+        <a-button>
+          <template #icon><icon-star-fill /></template>
+        </a-button>
+        <a-button>
+          <template #icon><icon-thumb-up-fill /></template>
+        </a-button>
+      </a-button-group>
+      <a-button-group size="small" disabled>
+        <a-button> prev </a-button>
+        <a-button> next </a-button>
+      </a-button-group>
+    </a-space>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="button-props"><code>&lt;button&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。</td>
+<td><code>ButtonTypes</code></td>
+<td style="text-align:center"><code>'secondary'</code></td>
+</tr>
+<tr>
+<td>shape</td>
+<td>按钮的形状</td>
+<td><code>BorderShape</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>按钮的状态</td>
+<td><code>'normal' | 'warning' | 'success' | 'danger'</code></td>
+<td style="text-align:center"><code>'normal'</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>按钮的尺寸</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+</tr>
+<tr>
+<td>long</td>
+<td>按钮的宽度是否随容器自适应。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>按钮是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>loading-fixed-width</td>
+<td>当 loading 的时候，不改变按钮的宽度。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>按钮是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>html-type</td>
+<td>设置 <code>button</code> 的原生 <code>type</code> 属性，可选值参考 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type" title="_blank">HTML标准</a></td>
+<td><code>HTMLButtonElement['type']</code></td>
+<td style="text-align:center"><code>'button'</code></td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>设置 <code>button</code> 的原生 <code>autofocus</code> 属性，可选值参考 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type" title="_blank">HTML标准</a></td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>href</td>
+<td>设置跳转链接。设置此属性时，按钮渲染为a标签。</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="button-events"><code>&lt;button&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>点击按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="button-slots"><code>&lt;button&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="button-group-props"><code>&lt;button-group&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。</td>
+<td><code>ButtonTypes</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>按钮的状态</td>
+<td><code>'normal' | 'warning' | 'success' | 'danger'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>shape</td>
+<td>按钮的形状</td>
+<td><code>BorderShape</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>按钮的尺寸</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>全部子按钮是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>

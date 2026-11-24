@@ -1,0 +1,221 @@
+
+<!-- demo:rate/basic -->
+<h3>基本用法</h3>
+<p>评分组件基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-rate />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/half -->
+<h3>半选</h3>
+<p>指定 <code>allow-half</code> 来开启半选。</p>
+<template data-demo-source>
+<template>
+  <a-rate :default-value="2.5" allow-half />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/color -->
+<h3>自定义颜色</h3>
+<p>通过 color 可以自定义颜色。另外可以通过对象形式自定义不同分值时的颜色。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-rate color="red" />
+    <a-rate :color="color" />
+  </a-space>
+</template>
+
+<script setup>
+const color = {
+  2: "red",
+  4: "green",
+  5: "blue"
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/readonly -->
+<h3>只读模式</h3>
+<p>通过设置 <code>readonly</code> 属性让评分组件为只读状态。</p>
+<template data-demo-source>
+<template>
+  <a-rate :default-value="4" readonly />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/clear -->
+<h3>支持清除</h3>
+<p>通过设置 <code>allow-clear</code> 来允许清除评分。</p>
+<template data-demo-source>
+<template>
+  <a-rate :default-value="3" allow-clear />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/character -->
+<h3>自定义评分字符</h3>
+<p>可以将星星替换为其他字符，比如表情、字母，数字，字体图标甚至中文。</p>
+<template data-demo-source>
+<template>
+  <a-rate :default-value="2">
+    <template #character="{ index }">
+      <icon-check v-if="index < 3" />
+      <icon-close v-else />
+    </template>
+  </a-rate>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/count -->
+<h3>任意长度的评分</h3>
+<p>通过指定 <code>count</code> 来指定任意长度的评分组件。</p>
+<template data-demo-source>
+<template>
+  <a-rate :count="10" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:rate/grading -->
+<h3>笑脸分级</h3>
+<p>通过 <code>grading</code> 使用笑脸分级。</p>
+<template data-demo-source>
+<template>
+  <a-rate grading />
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="rate-props"><code>&lt;rate&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>评分的总数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>5</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-half</td>
+<td>是否允许半选</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清除</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>grading</td>
+<td>是否开启笑脸分级</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>是否为只读状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>color</td>
+<td>颜色</td>
+<td><code>string | Record&lt;string, string&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rate-events"><code>&lt;rate&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值改变时触发</td>
+<td>value: <code>number</code></td>
+</tr>
+<tr>
+<td>hover-change</td>
+<td>鼠标移动到数值上时触发</td>
+<td>value: <code>number</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rate-slots"><code>&lt;rate&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>character</td>
+<td style="text-align:center">符号</td>
+<td>index: <code>number</code></td>
+</tr>
+</tbody>
+</table>

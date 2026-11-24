@@ -1,0 +1,807 @@
+
+<!-- demo:drawer/basic -->
+<h3>基本用法</h3>
+<p>点击触发按钮抽屉从右侧滑出，点击遮罩区关闭。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleClick">Open Drawer</a-button>
+  <a-drawer
+    :width="340"
+    :visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.
+    </div>
+  </a-drawer>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:drawer/position -->
+<h3>抽屉位置</h3>
+<p>自定义位置，点击触发按钮抽屉从相应的位置滑出。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group v-model="position">
+    <a-radio value="top">Top</a-radio>
+    <a-radio value="right">Right</a-radio>
+    <a-radio value="bottom">Bottom</a-radio>
+    <a-radio value="left">Left</a-radio>
+  </a-radio-group>
+  <div :style="{ marginTop: '20px' }">
+    <a-button type="primary" @click="handleClick">Open Drawer</a-button>
+  </div>
+  <a-drawer
+    :width="340"
+    :height="340"
+    :visible="visible"
+    :placement="position"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-drawer>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const position = ref("right");
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:drawer/custom -->
+<h3>自定义节点</h3>
+<p>通过插槽自定义内容，或者设置相应属性来控制显示或隐藏。</p>
+<template data-demo-source>
+<template>
+  <a-checkbox-group
+    v-model="custom"
+    :options="['hide header', 'hide footer', 'hide cancel']"
+  />
+  <div :style="{ marginTop: '20px' }">
+    <a-button type="primary" @click="handleClick">Open Drawer</a-button>
+  </div>
+  <a-drawer
+    :width="340"
+    :header="!custom.includes('hide header')"
+    :footer="!custom.includes('hide footer')"
+    :hide-cancel="custom.includes('hide cancel')"
+    :visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    unmountOnClose
+  >
+    <template #header>
+      <span>Header and title</span>
+    </template>
+    <div>
+      You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.
+    </div>
+  </a-drawer>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const custom = ref([]);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:drawer/nested -->
+<h3>嵌套抽屉</h3>
+<p>在抽屉内打开新的抽屉。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleClick">Open Drawer</a-button>
+  <a-drawer
+    :visible="visible"
+    :width="500"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div :style="{ marginBottom: '20px' }"
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+    <a-button type="primary" @click="handleNestedClick"
+      >Open Nested Drawer</a-button
+    >
+  </a-drawer>
+  <a-drawer
+    :visible="nestedVisible"
+    @ok="handleNestedOk"
+    @cancel="handleNestedCancel"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-drawer>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const nestedVisible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+const handleNestedClick = () => {
+  nestedVisible.value = true;
+};
+const handleNestedOk = () => {
+  nestedVisible.value = false;
+};
+const handleNestedCancel = () => {
+  nestedVisible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:drawer/popup-container -->
+<h3>挂载位置</h3>
+<p>通过 <code>popup-container</code> 可以设置弹出层节点的挂载位置</p>
+<template data-demo-source>
+<template>
+  <div>
+    <div
+      id="parentNode"
+      style="width: 100%; height: 300px; background-color: var(--color-fill-2); position: relative; overflow: hidden; line-height: 300px; text-align: center;"
+    >
+      <a-button type="primary" @click="handleClick">Open Drawer</a-button>
+    </div>
+  </div>
+  <a-drawer
+    popup-container="#parentNode"
+    :visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-drawer>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:drawer/function -->
+<h3>函数调用</h3>
+<p>通过函数的方式使用抽屉。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleClick">Open Drawer</a-button>
+</template>
+
+<script setup>
+import { Drawer } from "@arco-design/web-vue";
+const handleClick = () => {
+  Drawer.open({
+    title: "Info Title",
+    content: "This is an info message",
+    width: 340
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="drawer-props"><code>&lt;drawer&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visible <strong>(v-model)</strong></td>
+<td>抽屉是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-visible</td>
+<td>抽屉默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placement</td>
+<td>抽屉放置的位置</td>
+<td><code>'top' | 'right' | 'bottom' | 'left'</code></td>
+<td style="text-align:center"><code>'right'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mask</td>
+<td>是否显示遮罩层</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mask-closable</td>
+<td>点击遮罩层是否可以关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否展示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ok-text</td>
+<td>确认按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancel-text</td>
+<td>取消按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ok-loading</td>
+<td>确认按钮是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ok-button-props</td>
+<td>确认按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>cancel-button-props</td>
+<td>取消按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>unmount-on-close</td>
+<td>关闭时是否卸载节点</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>width</td>
+<td>抽屉的宽度（仅在placement为right,left时可用）</td>
+<td><code>number|string</code></td>
+<td style="text-align:center"><code>250</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>height</td>
+<td>抽屉的高度（仅在placement为top,bottom时可用）</td>
+<td><code>number|string</code></td>
+<td style="text-align:center"><code>250</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>'body'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>drawer-style</td>
+<td>抽屉的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>body-class</td>
+<td>抽屉内容部分的类名</td>
+<td><code>string | any[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.57.0</td>
+</tr>
+<tr>
+<td>body-style</td>
+<td>抽屉内容部分的样式</td>
+<td><code>StyleValue</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.57.0</td>
+</tr>
+<tr>
+<td>on-before-ok</td>
+<td>触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。</td>
+<td><code>(  done: (closed: boolean) =&gt; void) =&gt; void | boolean | Promise&lt;void | boolean&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>on-before-cancel</td>
+<td>触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。</td>
+<td><code>() =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>esc-to-close</td>
+<td>是否支持 ESC 键关闭抽屉</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.15.0</td>
+</tr>
+<tr>
+<td>render-to-body</td>
+<td>抽屉是否挂载在 <code>body</code> 元素下</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>header</td>
+<td>是否展示头部内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.33.0</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>是否展示底部内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>hide-cancel</td>
+<td>是否隐藏取消按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.19.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="drawer-events"><code>&lt;drawer&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>点击确定按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>点击取消、关闭按钮时触发</td>
+<td>ev: <code>MouseEvent | KeyboardEvent</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>open</td>
+<td>抽屉打开后（动画结束）触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>close</td>
+<td>抽屉关闭后（动画结束）触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>before-open</td>
+<td>对话框打开前触发</td>
+<td>-</td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>before-close</td>
+<td>对话框关闭前触发</td>
+<td>-</td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="drawer-slots"><code>&lt;drawer&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td style="text-align:center">页眉</td>
+<td>-</td>
+<td style="text-align:left">2.33.0</td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">页脚</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="drawer-全局方法"><code>&lt;drawer&gt;</code> 全局方法</h3>
+<p>Drawer 提供的全局方法，可以通过以下三种方法使用：</p>
+<ol>
+<li>通过 <code>this.$drawer</code> 调用</li>
+<li>在 Composition API 中，通过 <code>getCurrentInstance().appContext.config.globalProperties.$drawer</code> 调用</li>
+<li>导入 Drawer，通过 Drawer 本身调用</li>
+</ol>
+<p>当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext</p>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import { Drawer } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Drawer._context = app._context;
+</code></pre>
+<h3 id="drawerconfig">DrawerConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>placement</td>
+<td>抽屉放置的位置</td>
+<td><code>'top' | 'right' | 'bottom' | 'left'</code></td>
+<td style="text-align:center"><code>'right'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mask</td>
+<td>是否显示遮罩层</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>maskClosable</td>
+<td>点击遮罩层是否可以关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否展示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>okText</td>
+<td>确认按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancelText</td>
+<td>取消按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>okLoading</td>
+<td>确认按钮是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>okButtonProps</td>
+<td>确认按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>cancelButtonProps</td>
+<td>取消按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>width</td>
+<td>抽屉的宽度（仅在placement为right,left时可用）</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>250</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>height</td>
+<td>抽屉的高度（仅在placement为top,bottom时可用）</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>250</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popupContainer</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>'body'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>drawerStyle</td>
+<td>抽屉的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onOk</td>
+<td>点击确定按钮时触发</td>
+<td><code>(e?: Event) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onCancel</td>
+<td>点击取消、关闭按钮时触发</td>
+<td><code>(e?: Event) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onBeforeOk</td>
+<td>触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。</td>
+<td><code>(    done: (closed: boolean) =&gt; void  ) =&gt; void | boolean | Promise&lt;void | boolean&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onBeforeCancel</td>
+<td>触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。</td>
+<td><code>() =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onOpen</td>
+<td>抽屉打开后（动画结束）触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>抽屉关闭后（动画结束）触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onBeforeOpen</td>
+<td>抽屉打开前触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>onBeforeClose</td>
+<td>抽屉关闭前触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>escToClose</td>
+<td>是否支持 ESC 键关闭抽屉</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.15.0</td>
+</tr>
+<tr>
+<td>header</td>
+<td>是否展示头部内容</td>
+<td><code>boolean | RenderContent</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.33.0</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>是否展示底部内容</td>
+<td><code>boolean | RenderContent</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>hideCancel</td>
+<td>是否隐藏取消按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.19.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="drawerreturn">DrawerReturn</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>关闭抽屉</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新抽屉</td>
+<td><code>(config: DrawerUpdateConfig) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.43.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="drawermethod">DrawerMethod</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td>打开抽屉</td>
+<td><code>(config: DrawerConfig, appContext?: AppContext) =&gt; DrawerReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

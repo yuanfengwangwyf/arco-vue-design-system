@@ -1,0 +1,142 @@
+
+<!-- demo:overflow-list/basic -->
+<h3>基本使用</h3>
+<p>折叠列表的基本使用方法。</p>
+<template data-demo-source>
+<template>
+  <a-form auto-label-width>
+    <a-form-item label="Tag Number">
+      <a-input-number
+        v-model="number"
+        :min="0"
+        :max="20"
+        style="width: 200px"
+      />
+    </a-form-item>
+    <a-form-item label="List Width">
+      <a-slider v-model="width" :min="0" :max="800" />
+    </a-form-item>
+  </a-form>
+  <div :style="{ width: `${width}px`, marginTop: '20px' }">
+    <a-overflow-list>
+      <div>DIV Element</div>
+      <a-tag v-for="item of tags" :key="item">Tag{{ item }}</a-tag>
+    </a-overflow-list>
+  </div>
+</template>
+
+<script setup>
+import { computed, ref } from "vue";
+const width = ref(500);
+const number = ref(10);
+const tags = computed(
+  () => Array.from({ length: number.value }, (_, idx) => idx + 1)
+);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:overflow-list/from -->
+<h3>折叠方向</h3>
+<p>通过 <code>from</code> 属性可以设置折叠的方向。</p>
+<template data-demo-source>
+<template>
+  <a-form auto-label-width>
+    <a-form-item label="Tag Number">
+      <a-input-number
+        v-model="number"
+        :min="0"
+        :max="20"
+        style="width: 200px"
+      />
+    </a-form-item>
+    <a-form-item label="List Width">
+      <a-slider v-model="width" :min="0" :max="800" />
+    </a-form-item>
+  </a-form>
+  <div :style="{ width: `${width}px`, marginTop: '20px' }">
+    <a-overflow-list from="start">
+      <div>DIV Element</div>
+      <a-tag v-for="item of tags" :key="item">Tag{{ item }}</a-tag>
+    </a-overflow-list>
+  </div>
+</template>
+
+<script setup>
+import { computed, ref } from "vue";
+const width = ref(500);
+const number = ref(10);
+const tags = computed(
+  () => Array.from({ length: number.value }, (_, idx) => idx + 1)
+);
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="overflow-list-props"><code>&lt;overflow-list&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>min</td>
+<td>最少展示的元素个数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+</tr>
+<tr>
+<td>margin</td>
+<td>项目间隔</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>8</code></td>
+</tr>
+<tr>
+<td>from</td>
+<td>折叠方向</td>
+<td><code>'start' | 'end'</code></td>
+<td style="text-align:center"><code>'end'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="overflow-list-events"><code>&lt;overflow-list&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>溢出数量改变时触发</td>
+<td>value: <code>number</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="overflow-list-slots"><code>&lt;overflow-list&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>overflow</td>
+<td style="text-align:center">折叠元素</td>
+<td>number: <code>number</code></td>
+</tr>
+</tbody>
+</table>

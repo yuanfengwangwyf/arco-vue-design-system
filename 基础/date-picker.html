@@ -1,0 +1,1856 @@
+
+<!-- demo:date-picker/basic -->
+<h3>基本用法</h3>
+<p>日期输入器的基础使用。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker style="width: 200px;" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/month -->
+<h3>月份选择器</h3>
+<p>月份输入器的基础使用。</p>
+<template data-demo-source>
+<template>
+  <a-month-picker style="width: 200px;" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/year -->
+<h3>年份选择器</h3>
+<p>年份输入器的基础使用。</p>
+<template data-demo-source>
+<template>
+  <a-year-picker style="width: 200px;" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/quarter -->
+<h3>季度选择器</h3>
+<p>季度选择器的使用。</p>
+<template data-demo-source>
+<template>
+  <a-quarter-picker style="width: 200px;" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/week -->
+<h3>周选择器</h3>
+<p>周选择器提供了一种选择星期的简单方法。也可以指定一周的起始日。</p>
+<template data-demo-source>
+<template>
+  <a-week-picker style="width: 200px; margin: 0 24px 24px 0;" />
+  <a-week-picker
+    style="width: 200px; margin: 0 24px 24px 0;"
+    :day-start-of-week="1"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/showtime -->
+<h3>带时间的日期选择</h3>
+<p>使用 <code>showTime</code> 可以使用带时间的日期选择。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker
+    style="width: 220px; margin: 0 24px 24px 0;"
+    show-time
+    :time-picker-props="{ defaultValue: '09:09:06' }"
+    format="YYYY-MM-DD HH:mm:ss"
+    @change="handleChange"
+    @select="handleSelect"
+    @ok="handleOk"
+  />
+  <a-date-picker
+    style="width: 220px; margin: 0 24px 24px 0;"
+    show-time
+    format="YYYY-MM-DD hh:mm"
+    @change="handleChange"
+    @select="handleSelect"
+    @ok="handleOk"
+  />
+  <a-range-picker
+    style="width: 360px; margin: 0 24px 24px 0;"
+    show-time
+    :time-picker-props="{ defaultValue: ['00:00:00', '09:09:06'] }"
+    format="YYYY-MM-DD HH:mm"
+    @change="handleChange"
+    @select="handleSelect"
+    @ok="handleOk"
+  />
+</template>
+<script setup>
+function handleSelect(dateString, date) {
+  console.log("handleSelect", dateString, date);
+}
+function handleChange(dateString, date) {
+  console.log("handleChange: ", dateString, date);
+}
+function handleOk(dateString, date) {
+  console.log("handleOk: ", dateString, date);
+}
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/range -->
+<h3>范围选择器</h3>
+<p>范围输入器的基础使用。</p>
+<template data-demo-source>
+<template>
+  <a-range-picker
+    @change="handleChange"
+    @select="handleSelect"
+    style="width: 254px; marginBottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    mode="week"
+    @change="handleChange"
+    @select="handleSelect"
+    style="width: 254px; marginBottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    mode="month"
+    @change="handleChange"
+    @select="handleSelect"
+    style="width: 254px; marginBottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    mode="year"
+    @change="handleChange"
+    @select="handleSelect"
+    style="width: 254px; marginBottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    mode="quarter"
+    @change="handleChange"
+    @select="handleSelect"
+    style="width: 254px; marginBottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    showTime
+    :time-picker-props="{
+      defaultValue: ['00:00:00', '00:00:00'],
+    }"
+    @change="handleChange"
+    @select="handleSelect"
+    style=" width: 380px; "
+  />
+</template>
+<script setup>
+import { RangePicker } from "@arco-design/web-vue";
+const handleChange = (value, date, dateString) => {
+  console.log("handleChange", value, date, dateString);
+};
+const handleSelect = (value, date, dateString) => {
+  console.log("handleSelect", value, date, dateString);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/default-value -->
+<h3>默认值</h3>
+<p>日期输入器有默认值的情况。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker
+    defaultValue="2019-06-03"
+    :style="style"
+  />
+  <a-date-picker
+    defaultValue="2019-06-03"
+    :format="(value) => `custom format: ${dayjs(value).format('YYYY-MM-DD')}`"
+    :style="{ ...style, width: '240px' }"
+  />
+  <a-date-picker
+    showTime
+    defaultValue="2019-06-03 08:00:00"
+    :style="style"
+  />
+  <a-year-picker
+    defaultValue="2019"
+    :style="style"
+  />
+  <a-month-picker
+    defaultValue="2019-06"
+    :style="style"
+  />
+  <a-week-picker
+    :defaultValue="dayjs('2019-08-02')"
+    :style="style"
+  />
+  <a-range-picker
+    showTime
+    :defaultValue="['2019-08-08 00:00:00', '2019-08-18 00:00:00']"
+    :style="{ ...style, width: '360px' }"
+  />
+  <a-range-picker
+    mode="month"
+    style="width: 300px; marginBottom: 24px;"
+    :defaultValue="['2019-08', '2020-06']"
+  />
+</template>
+<script setup>
+import dayjs from "dayjs";
+const style = {
+  width: "300px",
+  marginBottom: "24px"
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/disabled-date -->
+<h3>不可选取的时间</h3>
+<p>使用 <code>disabledDate</code> 可以禁用某些日期。使用 <code>disabledTime</code> 可以禁用时间，需要配合 <code>showTime</code> 使用。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-date-picker
+      style="width: 200px; margin-right: 24px; margin-bottom: 24px;"
+      :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
+    />
+    <a-range-picker
+      style="width: 360px; margin-right: 24px; margin-bottom: 24px;"
+      :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
+    />
+    <a-date-picker
+      style="width: 200px; margin-right: 24px; margin-bottom: 24px;"
+      show-time
+      :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
+      :disabledTime="getDisabledTime"
+    />
+    <a-range-picker
+      style="width: 360px; margin-bottom: 24px;"
+      show-time
+      :timePickerProps="{ hideDisabledOptions: true }"
+      :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
+      :disabledTime="getDisabledRangeTime"
+    />
+  </div>
+</template>
+<script setup>
+import dayjs from "dayjs";
+function range(start, end) {
+  const result = [];
+  for (let i = start; i < end; i++) {
+    result.push(i);
+  }
+  return result;
+}
+function getDisabledTime(date) {
+  return {
+    disabledHours: () => range(6, 24),
+    disabledMinutes: () => range(30, 60),
+    disabledSeconds: () => range(30, 60)
+  };
+}
+function getDisabledRangeTime(date, type) {
+  return {
+    disabledHours: () => type === "start" ? range(0, 6) : range(6, 24),
+    disabledMinutes: () => type === "end" ? range(0, 30) : [31, 60],
+    disabledSeconds: () => range(30, 60)
+  };
+}
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/shortcuts -->
+<h3>预设时间快捷选择</h3>
+<p>使用 <code>shortcuts</code> 可以预设时间快捷选择。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker
+    style="width: 300px; margin-bottom: 24px; margin-right: 24px;"
+    :shortcuts="[
+      {
+        label: '2 hours later',
+        value: () => dayjs().add(2, 'hour'),
+      },
+      {
+        label: 'a week later',
+        value: () => dayjs().add(1, 'week'),
+      },
+      {
+        label: 'a month later',
+        value: () => dayjs().add(1, 'month'),
+      },
+    ]"
+    show-time
+  />
+  <a-month-picker
+    style="width: 300px; margin-bottom: 24px; margin-right: 24px;"
+    :shortcuts="[
+      {
+        label: 'last month',
+        value: () => dayjs().subtract(1, 'month'),
+      },
+      {
+        label: 'six months later',
+        value: () => dayjs().add(6, 'month'),
+      },
+      {
+        label: 'two years later',
+        value: () => dayjs().add(2, 'year'),
+      },
+    ]"
+  />
+  <a-range-picker
+    style="width: 400px; margin-bottom: 24px; margin-right: 24px;"
+    :shortcuts="[
+      {
+        label: 'next 7 days',
+        value: () => [dayjs(), dayjs().add(1, 'week')],
+      },
+      {
+        label: 'next 30 days',
+        value: () => [dayjs(), dayjs().add(1, 'month')],
+      },
+      {
+        label: 'next 365 days',
+        value: () => [dayjs(), dayjs().add(1, 'year')],
+      },
+    ]"
+  />
+  <a-range-picker
+    mode="month"
+    style="width: 300px; margin-bottom: 24px;"
+    :shortcuts="[
+      {
+        label: 'next 6 months',
+        value: () => [dayjs(), dayjs().add(6, 'month')],
+      },
+      {
+        label: 'next 12 months',
+        value: () => [dayjs(), dayjs().add(1, 'year')],
+      },
+      {
+        label: 'next 10 years',
+        value: () => [dayjs(), dayjs().add(10, 'year')],
+      },
+    ]"
+  />
+</template>
+<script setup>
+import dayjs from "dayjs";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/shortcuts-position -->
+<h3>定制预设范围位置</h3>
+<p>使用 <code>shortcutsPosition</code> 可以将预设时间快捷选择放到左边、右边或者底部。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker
+    style="width: 254px; margin-bottom: 20px; margin-right: 24px;"
+    shortcuts-position="left"
+    :shortcuts="shortcuts"
+  />
+  <a-range-picker
+    style="width: 300px; margin-bottom: 20px;"
+    shortcuts-position="left"
+    :shortcuts="rangeShortcuts"
+  />
+  <br />
+  <a-date-picker
+    style="width: 254px; margin-right: 24px;"
+    shortcuts-position="right"
+    :shortcuts="shortcuts"
+  />
+  <a-range-picker
+    style="width: 300px;"
+    shortcuts-position="right"
+    :shortcuts="rangeShortcuts"
+  />
+</template>
+<script setup>
+import dayjs from "dayjs";
+const shortcuts = [
+  {
+    label: "yesterday",
+    value: () => dayjs().subtract(1, "day")
+  },
+  {
+    label: "today",
+    value: () => dayjs()
+  },
+  {
+    label: "a week later",
+    value: () => dayjs().add(1, "week")
+  },
+  {
+    label: "a month later",
+    value: () => dayjs().add(1, "month")
+  },
+  {
+    label: "2 months later",
+    value: () => dayjs().add(2, "month")
+  }
+];
+const rangeShortcuts = [
+  {
+    label: "next 2 days",
+    value: () => [dayjs(), dayjs().add(2, "day")]
+  },
+  {
+    label: "next 7 days",
+    value: () => [dayjs(), dayjs().add(1, "week")]
+  },
+  {
+    label: "next 30 days",
+    value: () => [dayjs(), dayjs().add(1, "month")]
+  },
+  {
+    label: "next 6 months",
+    value: () => [dayjs(), dayjs().add(6, "month")]
+  },
+  {
+    label: "next 12 months",
+    value: () => [dayjs(), dayjs().add(1, "year")]
+  },
+  {
+    label: "next 10 years",
+    value: () => [dayjs(), dayjs().add(10, "year")]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/disabled-date-advance -->
+<h3>动态控制选取范围</h3>
+<p>根据选择的值来控制选取的范围，使用 <code>onSelect</code> 配合 <code>disabledDate</code> 来实现。</p>
+<template data-demo-source>
+<template>
+  <a-range-picker
+    style="width: 300px;"
+    @select="handleSelect"
+    @popupVisibleChange="handlePopupVisibleChange"
+    :disabledDate="disabledDate"
+  />
+</template>
+<script setup>
+import { ref } from "vue";
+const dates = ref([]);
+const handleSelect = (_str, value) => {
+  dates.value = value;
+};
+const handlePopupVisibleChange = (visible) => {
+  if (!visible) {
+    dates.value = [];
+  }
+};
+const disabledDate = (current) => {
+  const range = dates.value;
+  if (range.length) {
+    const tooLate = range[0] && Math.abs((+current - +range[0]) / (24 * 60 * 60 * 1e3)) > 7;
+    const tooEarly = range[1] && Math.abs((+current - +range[1]) / (24 * 60 * 60 * 1e3)) > 7;
+    return tooEarly || tooLate;
+  }
+  return false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/hide-not-in-view-dates -->
+<h3>隐藏灰色日期</h3>
+<p>通过 <code>hide-not-in-view-dates</code> 隐藏面板里不在当前月份的灰色日期。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-space>
+      <a-date-picker style="width: 260px" />
+      <a-date-picker style="width: 260px" hide-not-in-view-dates />
+    </a-space>
+    <a-space>
+      <a-range-picker style="width: 360px" />
+      <a-range-picker style="width: 360px" hide-not-in-view-dates />
+    </a-space>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/clear-range-on-reselect -->
+<h3>重新选择范围时清空</h3>
+<p><code>clear-range-on-reselect</code> 开启后，重新点选范围会先清空上一段范围，再从新的起点开始选择。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <div>默认行为（保留已有范围）</div>
+    <a-range-picker style="width: 360px" />
+
+    <div>开启 clear-range-on-reselect</div>
+    <a-range-picker style="width: 360px" clear-range-on-reselect />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/utc-offset -->
+<h3>UTC 时间</h3>
+<p>通过 <code>utc-offset</code> 设置时区偏移。</p>
+<p><strong>注意：使用 UTC 或时区时间时，建议传入 timestamp 或 Date 对象。字符串无法唯一表示时间，容易产生歧义。</strong></p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-space>
+      <a-select
+        v-model="utcOffset"
+        :options="utcOptions"
+        style="width: 180px"
+      />
+      <a-date-picker
+        show-time
+        style="width: 260px"
+        :utc-offset="utcOffset"
+        v-model="value"
+      />
+      <a-range-picker
+        show-time
+        style="width: 360px"
+        :utc-offset="utcOffset"
+        v-model="rangeValue"
+      />
+    </a-space>
+    <pre>{{ output }}</pre>
+  </a-space>
+</template>
+
+<script setup>
+import { computed, ref } from "vue";
+const utcOptions = Array.from({ length: 25 }, (_, i) => {
+  const offset = i - 12;
+  return {
+    label: `UTC ${offset > 0 ? `+${offset}` : offset}`,
+    value: offset
+  };
+});
+const utcOffset = ref(0);
+const value = ref(/* @__PURE__ */ new Date("2022-02-22 08:00:00"));
+const rangeValue = ref([
+  /* @__PURE__ */ new Date("2022-02-22 08:00:00"),
+  /* @__PURE__ */ new Date("2022-02-22 10:00:00")
+]);
+const output = computed(
+  () => JSON.stringify(
+    {
+      utcOffset: utcOffset.value,
+      value: value.value,
+      rangeValue: rangeValue.value
+    },
+    null,
+    2
+  )
+);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/timezone -->
+<h3>设置时区</h3>
+<p>通过 <code>timezone</code> 设置时区；若同时设置 <code>utc-offset</code>，以 <code>utc-offset</code> 为准。</p>
+<p><strong>注意：使用 UTC 或时区时间时，建议传入 timestamp 或 Date 对象。字符串无法唯一表示时间，容易产生歧义。</strong></p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-space>
+      <a-select
+        v-model="timezone"
+        :options="zoneOptions"
+        style="width: 220px"
+      />
+      <a-date-picker
+        show-time
+        style="width: 260px"
+        :timezone="timezone"
+        v-model="value"
+      />
+      <a-range-picker
+        show-time
+        style="width: 360px"
+        :timezone="timezone"
+        v-model="rangeValue"
+      />
+    </a-space>
+    <pre>{{ output }}</pre>
+  </a-space>
+</template>
+
+<script setup>
+import { computed, ref } from "vue";
+const zoneOptions = [
+  "America/Los_Angeles",
+  "Europe/London",
+  "Africa/Cairo",
+  "Asia/Shanghai"
+].map((zone) => ({ label: zone, value: zone }));
+const timezone = ref("Asia/Shanghai");
+const value = ref(/* @__PURE__ */ new Date("2022-02-22 08:00:00"));
+const rangeValue = ref([
+  /* @__PURE__ */ new Date("2022-02-22 08:00:00"),
+  /* @__PURE__ */ new Date("2022-02-22 10:00:00")
+]);
+const output = computed(
+  () => JSON.stringify(
+    {
+      timezone: timezone.value,
+      value: value.value,
+      rangeValue: rangeValue.value
+    },
+    null,
+    2
+  )
+);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/size -->
+<h3>尺寸</h3>
+<p>设置 <code>size</code> 可以使用四种尺寸（<code>mini</code> <code>small</code> <code>medium</code> <code>large</code>）的输入框。高度分别对应 24px、28px、32px、36px。</p>
+<template data-demo-source>
+<template>
+  <div style="margin-bottom: 20px;">
+    <a-radio-group v-model="size" type="button">
+      <a-radio value="mini">mini</a-radio>
+      <a-radio value="small">small</a-radio>
+      <a-radio value="medium">medium</a-radio>
+      <a-radio value="large">large</a-radio>
+    </a-radio-group>
+  </div>
+  <a-date-picker :size="size" style="width: 254px;" />
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  size: "small"
+});
+const { size } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/extra -->
+<h3>额外的页脚</h3>
+<p>在浮层中加入额外的页脚，以满足某些定制信息的需求。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker style="width: 200px; margin-bottom: 20px">
+    <template #extra>Extra footer</template>
+  </a-date-picker>
+  <br />
+  <a-range-picker showTime style="width: 360px;">
+    <template #extra>Extra footer</template>
+  </a-range-picker>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/disabled -->
+<h3>禁用</h3>
+<p>禁用状态。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker
+    defaultValue="2020-08-08"
+    disabled
+    style="width: 200px; margin-bottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    :defaultValue="['2020-08-08', '2020-08-18']"
+    disabled
+    style="width: 300px; margin-bottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    :defaultValue="['2020-08-08']"
+    :disabled="[true, false]"
+    :disabledDate="(current) => dayjs(current).isBefore(dayjs('2020-08-08'))"
+    style="width: 300px; margin-bottom: 20px;"
+  />
+  <br />
+  <a-range-picker
+    showTime
+    :defaultValue="['2020-08-08 02:02:02']"
+    :disabled="[true, false]"
+    style="width: 380px;"
+  />
+</template>
+<script setup>
+import dayjs from "dayjs";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/date-render -->
+<h3>定制日期单元格</h3>
+<p>利用具名插槽 <code>cell</code> 可以定制日期单元格。</p>
+<template data-demo-source>
+<template>
+  <a-date-picker>
+    <template #cell="{ date }">
+      <div class="arco-picker-date">
+        <div class="arco-picker-date-value" :style="getCellStyle(date)">
+          {{ date.getDate() }}
+        </div>
+      </div>
+    </template>
+  </a-date-picker>
+</template>
+<script setup>
+const highlightDates = [6, 14, 22];
+const highlightStyle = {
+  border: "1px solid var(--color-tone-arcoblue-a100)"
+};
+const getCellStyle = (date) => {
+  return highlightDates.includes(date.getDate()) ? highlightStyle : {};
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/panel-render -->
+<h3>自定义面板渲染</h3>
+<p>通过 <code>panel-render</code> 自定义面板外层结构。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-date-picker style="width: 280px" :panel-render="panelRender" />
+    <a-range-picker style="width: 360px" :panel-render="panelRender" />
+  </a-space>
+</template>
+
+<script setup>
+import { h } from "vue";
+const panelRender = (panelNode) => h("div", { class: "picker-panel-render-wrapper" }, [
+  panelNode,
+  h(
+    "div",
+    {
+      style: "padding: 8px 12px; border-top: 1px solid var(--color-neutral-3); color: var(--color-text-2);"
+    },
+    "Custom panel footer"
+  )
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/control -->
+<h3>双向绑定</h3>
+<p>通过 <code>v-model</code> 实现值的双向绑定</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-date-picker v-model="value" style="width: 200px;" />
+    <a-range-picker v-model="rangeValue" style="width: 300px;" />
+  </a-space>
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  value: Date.now(),
+  rangeValue: [Date.now(), Date.now()]
+});
+const { value, rangeValue } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/trigger-element -->
+<h3>自定义触发元素</h3>
+<p>自定义触发元素。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-date-picker style="width: 268px;" v-model="value">
+      <a-button>{{ value || '请选择日期' }}</a-button>
+    </a-date-picker>
+    <a-range-picker style="width: 268px;" v-model="rangeValue">
+      <a-button>{{
+        (rangeValue && rangeValue.join(' - ')) || '请选择日期范围'
+      }}</a-button>
+    </a-range-picker>
+  </a-space>
+</template>
+<script setup>
+import { ref } from "vue";
+const value = ref();
+const rangeValue = ref();
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:date-picker/panel-only -->
+<h3>只使用面板</h3>
+<p>只用选择面板，不显示输入框。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-date-picker
+      default-value="2019-06-03"
+      v-model:pickerValue="pickerValue"
+      hide-trigger
+      style="width: 268px;"
+    />
+    <a-range-picker
+      :default-value="['2019-08-01', '2020-06-01']"
+      v-model:pickerValue="rangePickerValue"
+      hide-trigger
+      style="width: 560px; margin-top: 20px;"
+    />
+  </div>
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  pickerValue: null,
+  rangePickerValue: null
+});
+const { pickerValue, rangePickerValue } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="common-props"><code>Common</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>国际化配置，用于覆盖locale中的 <code>datePicker</code> 字段</td>
+<td><code>Record&lt;string, any&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-trigger</td>
+<td>没有触发元素，只显示选择面板</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清除</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>是否为只读</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>日期选择器的尺寸</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>shortcuts</td>
+<td>预设时间范围快捷选择</td>
+<td><code>ShortcutType[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>shortcuts-position</td>
+<td>预设范围在面板上的位置，默认放在下方，侧边一般用于大量预设时间的场景</td>
+<td><code>'left' | 'bottom' | 'right'</code></td>
+<td style="text-align:center"><code>'bottom'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出的框的位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br'</code></td>
+<td style="text-align:center"><code>'bl'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-visible</td>
+<td>控制弹出框的打开或者关闭状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>默认弹出框是打开或者关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger-props</td>
+<td>可以传入 <code>Trigger</code> 组件的参数</td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>unmount-on-close</td>
+<td>是否在隐藏的时候销毁DOM结构</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-not-in-view-dates</td>
+<td>面板隐藏不在当前时间范围的灰色日期</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>提示文案</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>input-props</td>
+<td>原生输入框属性</td>
+<td><code>Record&lt;string, any&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-date</td>
+<td>不可选取的日期</td>
+<td><code>(current?: Date) =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-time</td>
+<td>不可选取的时间</td>
+<td><code>(current: Date) =&gt; DisabledTimeProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>picker-value <strong>(v-model)</strong></td>
+<td>面板显示的日期</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-picker-value</td>
+<td>面板默认显示的日期</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>value-format</td>
+<td>值的格式，对 <code>value</code> <code>defaultValue</code> <code>pickerValue</code> <code>defaultPickerValue</code> 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a>）。如果没有指定，将格式化为字符串，格式同 <code>format</code>。</td>
+<td><code>'timestamp' | 'Date' | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>utc-offset</td>
+<td>设置时区偏移，如果需要 utc 时间则设置为 0。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>设置时区，如果设置了 <code>utcOffset</code>，则以 <code>utcOffset</code> 为准。</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>preview-shortcut</td>
+<td>是否要预览快捷选择的结果</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.28.0</td>
+</tr>
+<tr>
+<td>show-confirm-btn</td>
+<td>是否显示确认按钮，<code>showTime = true</code> 的时候始终显示。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>disabled-input</td>
+<td>是否禁止键盘输入日期</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>abbreviation</td>
+<td>是否启用缩写</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.45.0</td>
+</tr>
+<tr>
+<td>panel-render</td>
+<td>自定义渲染面板</td>
+<td><code>(panelNode: any) =&gt; any</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-events"><code>Common</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>组件值发生改变</td>
+<td>value: <code>Date | string | number | undefined</code><br>date: <code>Date | undefined</code><br>dateString: <code>string | undefined</code></td>
+</tr>
+<tr>
+<td>select</td>
+<td>选中日期发生改变但组件值未改变</td>
+<td>value: <code>Date | string | number</code><br>date: <code>Date</code><br>dateString: <code>string</code></td>
+</tr>
+<tr>
+<td>popup-visible-change</td>
+<td>打开或关闭弹出框</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>ok</td>
+<td>点击确认按钮</td>
+<td>value: <code>Date | string | number</code><br>date: <code>Date</code><br>dateString: <code>string</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮</td>
+<td>-</td>
+</tr>
+<tr>
+<td>select-shortcut</td>
+<td>点击快捷选项</td>
+<td>shortcut: <code>ShortcutType</code></td>
+</tr>
+<tr>
+<td>picker-value-change</td>
+<td>面板日期改变</td>
+<td>value: <code>Date | string | number</code><br>date: <code>Date</code><br>dateString: <code>string</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-slots"><code>Common</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">输入框前缀</td>
+<td>-</td>
+<td style="text-align:left">2.41.0</td>
+</tr>
+<tr>
+<td>suffix-icon</td>
+<td style="text-align:center">输入框后缀图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon-next-double</td>
+<td style="text-align:center">双箭头往后翻页图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon-prev-double</td>
+<td style="text-align:center">双箭头往前翻页图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon-next</td>
+<td style="text-align:center">单箭头往后翻页图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon-prev</td>
+<td style="text-align:center">单箭头往前翻页图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell</td>
+<td style="text-align:center">自定义日期单元格的内容</td>
+<td>date: <code>Date</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>extra</td>
+<td style="text-align:center">额外的页脚</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="date-picker-props"><code>&lt;date-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string | ((current: Date) =&gt; string)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>day-start-of-week</td>
+<td>每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。</td>
+<td><code>0 | 1 | 2 | 3 | 4 | 5 | 6</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left">2-6 from 2.21.0</td>
+</tr>
+<tr>
+<td>show-time</td>
+<td>是否增加时间选择</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>time-picker-props</td>
+<td>时间显示的参数，参考 <a href="/vue/component/time-picker">TimePickerProps</a></td>
+<td><code>Partial&lt;TimePickerProps&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-date</td>
+<td>不可选取的日期</td>
+<td><code>(current?: Date) =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-time</td>
+<td>不可选取的时间</td>
+<td><code>(current: Date) =&gt; DisabledTimeProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-now-btn</td>
+<td>是否显示 <code>showTime</code> 时，选择当前时间的按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="month-picker-props"><code>&lt;month-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'YYYY-MM'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="year-picker-props"><code>&lt;year-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'YYYY'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="quarter-picker-props"><code>&lt;quarter-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'YYYY-[Q]Q'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>value-format</td>
+<td>值的格式，对 <code>value</code> <code>defaultValue</code> <code>pickerValue</code> <code>defaultPickerValue</code> 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a>）。</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'YYYY-MM'</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="week-picker-props"><code>&lt;week-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>Date | string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'gggg-wo'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>value-format</td>
+<td>值的格式，对 <code>value</code> <code>defaultValue</code> <code>pickerValue</code> <code>defaultPickerValue</code> 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a>）。</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'YYYY-MM-DD'</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>day-start-of-week</td>
+<td>每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。</td>
+<td><code>0 | 1 | 2 | 3 | 4 | 5 | 6</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left">2-6 from 2.21.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="range-picker-props"><code>&lt;range-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>范围选择器的类型</td>
+<td><code>'date' | 'year' | 'quarter' | 'month' | 'week'</code></td>
+<td style="text-align:center"><code>'date'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>(Date | string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>(Date | string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>picker-value</td>
+<td>默认面板显示的日期</td>
+<td><code>(Date | string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-picker-value</td>
+<td>面板显示的日期</td>
+<td><code>(Date | string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean | boolean[]</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>day-start-of-week</td>
+<td>每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。</td>
+<td><code>0 | 1 | 2 | 3 | 4 | 5 | 6</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left">2-6 from 2.21.0</td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>value-format</td>
+<td>值的格式，对 <code>value</code> <code>defaultValue</code> <code>pickerValue</code> <code>defaultPickerValue</code> 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a>）。如果没有指定，将格式化为字符串，格式同 <code>format</code>。</td>
+<td><code>'timestamp' | 'Date' | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>show-time</td>
+<td>是否增加时间选择</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>time-picker-props</td>
+<td>时间显示的参数，参考 <a href="/vue/component/time-picker">TimePickerProps</a></td>
+<td><code>Partial&lt;TimePickerProps&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>input-props</td>
+<td>原生输入框属性</td>
+<td><code>Record&lt;string, any&gt;[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>提示文案</td>
+<td><code>string[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-date</td>
+<td>不可选的日期</td>
+<td><code>(current: Date, type: 'start' | 'end') =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-time</td>
+<td>不可选取的时间</td>
+<td><code>(current: Date, type: 'start' | 'end') =&gt; DisabledTimeProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>separator</td>
+<td>范围选择器输入框内的分割符号</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>exchange-time</td>
+<td>时间是否会交换，默认情况下时间会影响和参与开始和结束值的排序，如果要固定时间顺序，可将其关闭。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>fixed-time</td>
+<td>是否固定时间</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>clear-range-on-reselect</td>
+<td>当重新选择范围的时候，会清空之前的范围重新进行选择</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-not-in-view-dates</td>
+<td>面板隐藏不在当前时间范围的灰色日期</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>utc-offset</td>
+<td>设置时区偏移，如果需要 utc 时间则设置为 0。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>设置时区，如果设置了 <code>utcOffset</code>，则以 <code>utcOffset</code> 为准。</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled-input</td>
+<td>是否禁止键盘输入日期</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>abbreviation</td>
+<td>是否启用缩写</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>panel-render</td>
+<td>自定义渲染面板</td>
+<td><code>(panelNode: any) =&gt; any</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="range-picker-events"><code>&lt;range-picker&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>组件值发生改变</td>
+<td>value: <code>(Date | string | number | undefined)[] | undefined</code><br>date: <code>(Date | undefined)[] | undefined</code><br>dateString: <code>(string | undefined)[] | undefined</code></td>
+</tr>
+<tr>
+<td>select</td>
+<td>选中日期发生改变但组件值未改变</td>
+<td>value: <code>(Date | string | number | undefined)[]</code><br>date: <code>(Date | undefined)[]</code><br>dateString: <code>(string | undefined)[]</code></td>
+</tr>
+<tr>
+<td>popup-visible-change</td>
+<td>打开或关闭弹出框</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>ok</td>
+<td>点击确认按钮</td>
+<td>value: <code>Date | string | number[]</code><br>date: <code>Date[]</code><br>dateString: <code>string[]</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮</td>
+<td>-</td>
+</tr>
+<tr>
+<td>select-shortcut</td>
+<td>点击快捷选项</td>
+<td>shortcut: <code>ShortcutType</code></td>
+</tr>
+<tr>
+<td>picker-value-change</td>
+<td>面板日期改变</td>
+<td>value: <code>Date | string | number[]</code><br>date: <code>Date[]</code><br>dateString: <code>string[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="shortcuttype">ShortcutType</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>选项的内容</td>
+<td><code>string | number | (() =&gt; VNode)</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>value</td>
+<td>选项值</td>
+<td><code>(Date | string | number)    | (Date | string | number)[]    | (() =&gt; (Date | string | number) | (Date | string | number)[])</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>format</td>
+<td>解析值所使用的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串解析格式">字符串解析格式</h3>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>输出</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>YY</code></td>
+<td>21</td>
+<td style="text-align:right">两位数的年份</td>
+</tr>
+<tr>
+<td><code>YYYY</code></td>
+<td>2021</td>
+<td style="text-align:right">四位数年份</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>1-12</td>
+<td style="text-align:right">月份，从 1 开始</td>
+</tr>
+<tr>
+<td><code>MM</code></td>
+<td>01-12</td>
+<td style="text-align:right">月份，两位数</td>
+</tr>
+<tr>
+<td><code>MMM</code></td>
+<td>Jan-Dec</td>
+<td style="text-align:right">缩写的月份名称</td>
+</tr>
+<tr>
+<td><code>MMMM</code></td>
+<td>January-December</td>
+<td style="text-align:right">完整的月份名称</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>1-31</td>
+<td style="text-align:right">月份里的一天</td>
+</tr>
+<tr>
+<td><code>DD</code></td>
+<td>01-31</td>
+<td style="text-align:right">月份里的一天，两位数</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>0-6</td>
+<td style="text-align:right">一周中的一天，星期天是 0</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>Su-Sa</td>
+<td style="text-align:right">最简写的一周中一天的名称</td>
+</tr>
+<tr>
+<td><code>ddd</code></td>
+<td>Sun-Sat</td>
+<td style="text-align:right">简写的一周中一天的名称</td>
+</tr>
+<tr>
+<td><code>dddd</code></td>
+<td>Sunday-Saturday</td>
+<td style="text-align:right">一周中一天的名称</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td>0-23</td>
+<td style="text-align:right">小时</td>
+</tr>
+<tr>
+<td><code>HH</code></td>
+<td>00-23</td>
+<td style="text-align:right">小时，两位数</td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>1-12</td>
+<td style="text-align:right">小时, 12 小时制</td>
+</tr>
+<tr>
+<td><code>hh</code></td>
+<td>01-12</td>
+<td style="text-align:right">小时, 12 小时制, 两位数</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>0-59</td>
+<td style="text-align:right">分钟</td>
+</tr>
+<tr>
+<td><code>mm</code></td>
+<td>00-59</td>
+<td style="text-align:right">分钟，两位数</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>0-59</td>
+<td style="text-align:right">秒</td>
+</tr>
+<tr>
+<td><code>ss</code></td>
+<td>00-59</td>
+<td style="text-align:right">秒，两位数</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>0-9</td>
+<td style="text-align:right">数百毫秒，一位数</td>
+</tr>
+<tr>
+<td><code>SS</code></td>
+<td>00-99</td>
+<td style="text-align:right">几十毫秒，两位数</td>
+</tr>
+<tr>
+<td><code>SSS</code></td>
+<td>000-999</td>
+<td style="text-align:right">毫秒，三位数字</td>
+</tr>
+<tr>
+<td><code>Z</code></td>
+<td>-5:00</td>
+<td style="text-align:right">UTC 的偏移量</td>
+</tr>
+<tr>
+<td><code>ZZ</code></td>
+<td>-0500</td>
+<td style="text-align:right">UTC 的偏移量，数字前面加上 0</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>AM PM</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>am pm</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td><code>Do</code></td>
+<td>1st... 3st</td>
+<td style="text-align:right">带序号的月份中的某天</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>1410715640.579</td>
+<td style="text-align:right">Unix 时间戳</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>1410715640579</td>
+<td style="text-align:right">Unix 毫秒时间戳</td>
+</tr>
+</tbody>
+</table>
+<h2 id="faq">FAQ</h2>
+<h3 id="关于-locale-字段">关于 <code>locale</code> 字段</h3>
+<p>可以使用组件库提供的语言包配置 <code>locale</code> 字段。</p>

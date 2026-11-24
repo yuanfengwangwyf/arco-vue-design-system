@@ -1,0 +1,356 @@
+
+<!-- demo:input-tag/basic -->
+<h3>基本用法</h3>
+<p>标签输入框的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-input-tag
+    :default-value="['test']"
+    :style="{ width: '320px' }"
+    placeholder="Please Enter"
+    allow-clear
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-tag/status -->
+<h3>输入框状态</h3>
+<p>输入框有禁用、只读和错误三种状态。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-tag
+      :default-value="['test']"
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      disabled
+    />
+    <a-input-tag
+      :default-value="['test']"
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      readonly
+    />
+    <a-input-tag
+      :default-value="['test']"
+      :style="{ width: '320px' }"
+      placeholder="Please Enter"
+      error
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-tag/max -->
+<h3>最多展示标签数量</h3>
+<p>设置最多展示标签数量。</p>
+<template data-demo-source>
+<template>
+  <a-input-tag
+    :default-value="['one', 'two', 'three', 'four']"
+    :style="{ width: '380px' }"
+    placeholder="Please Enter"
+    :max-tag-count="3"
+    allow-clear
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input-tag/size -->
+<h3>输入框尺寸</h3>
+<p>输入框分为 <code>mini</code>、<code>small</code>、<code>medium</code>、<code>large</code> 四种尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group type="button" v-model="size">
+      <a-radio value="mini">mini</a-radio>
+      <a-radio value="small">small</a-radio>
+      <a-radio value="medium">medium</a-radio>
+      <a-radio value="large">large</a-radio>
+    </a-radio-group>
+    <a-input-tag
+      :default-value="['one']"
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      :size="size"
+      allow-clear
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const size = ref("medium");
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="input-tag-props"><code>&lt;input-tag&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>(string | number | TagData)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>(string | number | TagData)[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>input-value <strong>(v-model)</strong></td>
+<td>输入框的值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-input-value</td>
+<td>输入框的默认值（非受控状态）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>占位符</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>是否为只读模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>输入框的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-tag-count</td>
+<td>最多展示的标签个数，<code>0</code> 表示不限制</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>retain-input-value</td>
+<td>是否保留输入框的内容</td>
+<td><code>boolean | { create?: boolean; blur?: boolean }</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>format-tag</td>
+<td>格式化标签内容</td>
+<td><code>(data: TagData) =&gt; string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>unique-value</td>
+<td>是否仅创建唯一的值</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.15.0</td>
+</tr>
+<tr>
+<td>field-names</td>
+<td>自定义 <code>TagData</code> 中的字段</td>
+<td><code>InputTagFieldNames</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>tag-nowrap</td>
+<td>标签内容不换行</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.56.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-tag-events"><code>&lt;input-tag&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值发生改变时触发</td>
+<td>value: <code>(string | number | TagData)[]</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>input-value-change</td>
+<td>输入值发生改变时触发</td>
+<td>inputValue: <code>string</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>press-enter</td>
+<td>按下回车键时触发</td>
+<td>inputValue: <code>string</code><br>ev: <code>KeyboardEvent</code></td>
+</tr>
+<tr>
+<td>remove</td>
+<td>点击标签的删除按钮时触发</td>
+<td>removed: <code>string | number</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>输入框获取焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+<tr>
+<td>blur</td>
+<td>输入框失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-tag-methods"><code>&lt;input-tag&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使输入框获取焦点</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使输入框失去焦点</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-tag-slots"><code>&lt;input-tag&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tag</td>
+<td style="text-align:center">输入框标签的显示内容</td>
+<td>data: <code>TagData</code></td>
+</tr>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">前缀元素</td>
+<td>-</td>
+</tr>
+<tr>
+<td>suffix</td>
+<td style="text-align:center">后缀元素</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tagdata">TagData</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>标签值</td>
+<td><code>string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>标签内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否可关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>tagProps</td>
+<td>标签属性</td>
+<td><code>TagProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,314 @@
+
+<!-- demo:comment/basic -->
+<h3>基本用法</h3>
+<p>一个基本的评论组件，带有作者、头像、时间和操作。</p>
+<template data-demo-source>
+<template>
+  <a-comment
+    author="Socrates"
+    content="Comment body content."
+    datetime="1 hour"
+  >
+    <template #actions>
+      <span class="action" key="heart" @click="handleLikeChange">
+        <span v-if="like">
+          <IconHeartFill :style="{ color: 'var(--color-tone-red-a100)' }" />
+        </span>
+        <span v-else>
+          <IconHeart />
+        </span>
+        {{ 83 + (like ? 1 : 0) }}
+      </span>
+      <span class="action" key="star" @click="handleStarChange">
+        <span v-if="star">
+          <IconStarFill style="{ color: 'var(--color-tone-gold-a100)' }" />
+        </span>
+        <span v-else>
+          <IconStar />
+        </span>
+        {{ 3 + (star ? 1 : 0) }}
+      </span>
+      <span class="action" key="reply"> <IconMessage /> Reply </span>
+    </template>
+    <template #avatar>
+      <a-avatar>
+        <img
+          alt="avatar"
+          src="/images/86a75427e4ec35f8.webp"
+        />
+      </a-avatar>
+    </template>
+  </a-comment>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import {
+  IconHeart,
+  IconMessage,
+  IconStar,
+  IconStarFill,
+  IconHeartFill
+} from "@arco-design/web-vue/es/icon";
+const like = ref(false);
+const star = ref(false);
+const handleLikeChange = () => {
+  like.value = !like.value;
+};
+const handleStarChange = () => {
+  star.value = !star.value;
+};
+</script>
+<style scoped src="/demo/styles/examples/comment/basic.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:comment/align -->
+<h3>对齐</h3>
+<p>通过 <code>align</code> 属性可以设置 <code>datetime</code> 和 <code>actions</code> 的对齐方式.</p>
+<template data-demo-source>
+<template>
+  <a-comment author="Balzac" datetime="1 hour" align="right">
+    <template #actions>
+      <span class="action" key="heart" @click="handleLikeChange">
+        <span v-if="like">
+          <IconHeartFill :style="{ color: 'var(--color-tone-red-a100)' }" />
+        </span>
+        <span v-else>
+          <IconHeart />
+        </span>
+        {{ 83 + (like ? 1 : 0) }}
+      </span>
+      <span class="action" key="star" @click="handleStarChange">
+        <span v-if="star">
+          <IconStarFill style="{ color: 'var(--color-tone-gold-a100)' }" />
+        </span>
+        <span v-else>
+          <IconStar />
+        </span>
+        {{ 3 + (star ? 1 : 0) }}
+      </span>
+      <span class="action" key="reply"> <IconMessage /> Reply </span>
+    </template>
+    <template #avatar>
+      <a-avatar>
+        <img
+          alt="avatar"
+          src="/images/86a75427e4ec35f8.webp"
+        />
+      </a-avatar>
+    </template>
+    <template #content>
+      <div>
+        A design is a plan or specification for the construction of an object or
+        system or for the implementation of an activity or process, or the
+        result of that plan or specification in the form of a prototype, product
+        or process.
+      </div>
+    </template>
+  </a-comment>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import {
+  IconHeart,
+  IconMessage,
+  IconStar,
+  IconStarFill,
+  IconHeartFill
+} from "@arco-design/web-vue/es/icon";
+const like = ref(false);
+const star = ref(false);
+const handleLikeChange = () => {
+  like.value = !like.value;
+};
+const handleStarChange = () => {
+  star.value = !star.value;
+};
+</script>
+
+<style scoped src="/demo/styles/examples/comment/align.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:comment/nest -->
+<h3>嵌套评论</h3>
+<p>评论可以嵌套使用</p>
+<template data-demo-source>
+<template>
+  <a-comment
+    author="Socrates"
+    avatar="/images/86a75427e4ec35f8.webp"
+    content="Comment body content."
+    datetime="1 hour"
+  >
+    <template #actions>
+      <span class="action"> <IconMessage /> Reply </span>
+    </template>
+    <a-comment
+      author="Balzac"
+      avatar="/images/10fe5db23e5bc2e0.webp"
+      content="Comment body content."
+      datetime="1 hour"
+    >
+      <template #actions>
+        <span class="action"> <IconMessage /> Reply </span>
+      </template>
+      <a-comment
+        author="Austen"
+        avatar="/images/2317365c5ac684b9.webp"
+        content="Reply content"
+        datetime="1 hour"
+      >
+        <template #actions>
+          <span class="action"> <IconMessage /> Reply </span>
+        </template>
+      </a-comment>
+      <a-comment
+        author="Plato"
+        avatar="/images/86a75427e4ec35f8.webp"
+        content="Reply content"
+        datetime="1 hour"
+      >
+        <template #actions>
+          <span class="action"> <IconMessage /> Reply </span>
+        </template>
+      </a-comment>
+    </a-comment>
+  </a-comment>
+</template>
+
+<script setup>
+import { IconHeart, IconMessage, IconStar } from "@arco-design/web-vue/es/icon";
+</script>
+
+<style scoped src="/demo/styles/examples/comment/nest.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:comment/editor -->
+<h3>回复框</h3>
+<p>评论框配合回复框使用</p>
+<template data-demo-source>
+<template>
+  <a-comment
+    align="right"
+    author="Balzac"
+    avatar="/images/86a75427e4ec35f8.webp"
+    content="A design is a plan or specification for the construction of an object
+          or system or for the implementation of an activity or process, or the
+          result of that plan or specification in the form of a prototype,
+          product or process."
+    datetime="1 hour"
+  >
+    <template #actions>
+      <span class="action"> <IconMessage /> Reply </span>
+    </template>
+    <a-comment
+      align="right"
+      avatar="/images/86a75427e4ec35f8.webp"
+    >
+      <template #actions>
+        <a-button key="0" type="secondary"> Cancel </a-button>
+        <a-button key="1" type="primary"> Reply </a-button>
+      </template>
+      <template #content>
+        <a-input placeholder="Here is you content." />
+      </template>
+    </a-comment>
+  </a-comment>
+</template>
+
+<script setup>
+import { IconMessage } from "@arco-design/web-vue/es/icon";
+</script>
+
+<style scoped src="/demo/styles/examples/comment/editor.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="comment-props"><code>&lt;comment&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>author</td>
+<td>作者名</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content</td>
+<td>评论内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>时间描述</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>align</td>
+<td>靠左/靠右 展示 datetime 和 actions</td>
+<td><code>'left' | 'right' | { datetime?: &quot;left&quot; | &quot;right&quot;; actions?: &quot;left&quot; | &quot;right&quot; }</code></td>
+<td style="text-align:center"><code>'left'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comment-slots"><code>&lt;comment&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avatar</td>
+<td style="text-align:center">头像</td>
+<td>-</td>
+</tr>
+<tr>
+<td>author</td>
+<td style="text-align:center">作者</td>
+<td>-</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td style="text-align:center">时间描述</td>
+<td>-</td>
+</tr>
+<tr>
+<td>content</td>
+<td style="text-align:center">评论内容</td>
+<td>-</td>
+</tr>
+<tr>
+<td>actions</td>
+<td style="text-align:center">操作列表</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

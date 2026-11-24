@@ -1,0 +1,34 @@
+<a class="skip-link" href="#main-content">跳至正文</a>
+  <header class="site-header">
+    <button class="mobile-menu" type="button" aria-controls="doc-sidebar" :aria-expanded="open" @click="open = !open">目录</button>
+    <RouterLink class="brand" to="/vue/docs/changelog"><span class="brand-mark" aria-hidden="true">A</span><span>Arco Vue</span></RouterLink>
+    <span class="site-version">v{{ version }}</span>
+    <nav class="header-links" aria-label="文档入口">
+      <RouterLink to="/vue/docs/token">设计变量</RouterLink>
+      <RouterLink to="/vue/component/overview">组件</RouterLink>
+    </nav>
+    <button class="theme-toggle" type="button" :aria-pressed="dark" @click="dark = !dark">{{ dark ? '浅色' : '深色' }}</button>
+    <a class="source-link" href="https://github.com/arco-design/arco-design-vue">GitHub ↗</a>
+  </header>
+  <div class="site-layout">
+    <aside id="doc-sidebar" class="sidebar" :class="{ 'is-open': open }" @keydown.esc="open = false">
+      <div class="sidebar-search"><input v-model="query" type="search" aria-label="筛选文档" placeholder="筛选文档…"></div>
+      <nav aria-label="文档目录">
+        <section v-for="section in menu" :key="section.label" class="nav-group">
+          <h2>{{ section.label }}</h2>
+          <div v-for="group in section.groups" :key="group.label ?? section.label" class="nav-subgroup">
+            <h3 v-if="group.label">{{ group.label }}</h3>
+            <ul>
+              <li v-for="item in group.entries" :key="item.id">
+                <RouterLink :to="item.route" exact-active-class="is-active">{{ item.title }}</RouterLink>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <p v-if="!menu.length" class="nav-empty">没有匹配文档</p>
+      </nav>
+    </aside>
+    <RouterView v-slot="{ Component, route: current }">
+      <component :is="Component" :key="current.path" />
+    </RouterView>
+  </div>

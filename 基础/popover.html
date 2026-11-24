@@ -1,0 +1,309 @@
+
+<!-- demo:popover/basic -->
+<h3>基本用法</h3>
+<p>鼠标移入或点击，弹出气泡，可对浮层上元素进行操作，承载复杂内容和操作。</p>
+<template data-demo-source>
+<template>
+  <a-popover title="Title">
+    <a-button>Hover</a-button>
+    <template #content>
+      <p>Here is the text content</p>
+      <p>Here is the text content</p>
+    </template>
+  </a-popover>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:popover/trigger -->
+<h3>触发方式</h3>
+<p>通过设置 <code>trigger</code>，可以指定不同的触发方式。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-popover title="Title">
+      <a-button>Hover Me</a-button>
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover title="Title" trigger="click">
+      <a-button>Click Me</a-button>
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:popover/position -->
+<h3>弹出位置</h3>
+<p><code>Popover</code>支持 12 个不同的方位。分别为：<code>上左</code> <code>上</code> <code>上右</code> <code>下左</code> <code>下</code> <code>下右</code> <code>左上</code> <code>左</code> <code>左下</code> <code>右上</code> <code>右</code> <code>右下</code>。</p>
+<template data-demo-source>
+<template>
+  <div :style="{ position: 'relative', width: '440px', height: '280px' }">
+    <a-popover position="tl">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '70px' }"
+        >TL</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="top">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '180px' }"
+        >TOP</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="tr">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '290px' }"
+        >TR</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="bl">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '70px' }"
+        >BL</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="bottom">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '180px' }"
+        >BOTTOM</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="br">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '290px' }"
+        >BR</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="lt">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '60px', left: '10px' }"
+        >LT</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="left">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '120px', left: '10px' }"
+        >LEFT</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="lb">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '180px', left: '10px' }"
+        >LB</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="rt">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '60px', left: '350px' }"
+        >RT</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="right">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '120px', left: '350px' }"
+        >RIGHT</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+    <a-popover position="rb">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '180px', left: '350px' }"
+        >RB</a-button
+      >
+      <template #content>
+        <p>Here is the text content</p>
+        <p>Here is the text content</p>
+      </template>
+    </a-popover>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/popover/position.css"></style>
+</template>
+<!-- /demo -->
+
+<p><code>&lt;popover&gt;</code> 组件继承 <code>&lt;trigger&gt;</code> 组件的全部属性</p>
+<h2 id="api">API</h2>
+<h3 id="popover-props"><code>&lt;popover&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>文字气泡是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>文字气泡默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发方式</td>
+<td><code>'hover' | 'click' | 'focus' | 'contextMenu'</code></td>
+<td style="text-align:center"><code>'hover'</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br' | 'left' | 'lt' | 'lb' | 'right' | 'rt' | 'rb'</code></td>
+<td style="text-align:center"><code>'top'</code></td>
+</tr>
+<tr>
+<td>content-class</td>
+<td>弹出框内容的类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content-style</td>
+<td>弹出框内容的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>arrow-class</td>
+<td>弹出框箭头的类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>arrow-style</td>
+<td>弹出框箭头的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="popover-events"><code>&lt;popover&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>文字气泡显示状态改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="popover-slots"><code>&lt;popover&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+</tr>
+<tr>
+<td>content</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

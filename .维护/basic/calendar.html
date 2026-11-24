@@ -1,0 +1,292 @@
+
+<!-- demo:calendar/basic -->
+<h3>基本用法</h3>
+<p>展示和选择日历</p>
+<template data-demo-source>
+<template>
+  <a-calendar v-model="value" />
+  select: {{ displayValue }}
+</template>
+
+<script setup>
+import { computed, ref } from "vue";
+const value = ref(/* @__PURE__ */ new Date("2023-01-01"));
+const displayValue = computed(() => value.value.toISOString());
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:calendar/select-header -->
+<h3>下拉选择的头部</h3>
+<p>除了默认头部切换外，也支持下拉选择头部，更快速定位。</p>
+<template data-demo-source>
+<template>
+  <div style="width: 100%; overflow: auto">
+    <a-calendar :default-value="defaultValue" header-type="select" />
+  </div>
+</template>
+
+<script setup>
+const defaultValue = /* @__PURE__ */ new Date("2020-04-01");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:calendar/panel -->
+<h3>卡片日历</h3>
+<p>设置 <code>panel</code>，可以使用卡片日历。</p>
+<template data-demo-source>
+<template>
+  <a-space align="start">
+    <a-calendar
+      panel
+      :default-value="new Date('2020-04-01')"
+      panel-today-btn
+      style="margin-right: 50px"
+    />
+    <a-calendar panel :default-value="new Date('2020-03-01')" mode="year" />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:calendar/date-content -->
+<h3>日历内容定制</h3>
+<p>通过 <code>date-inner-content</code> 可以将自定义元素追加到日历单元格中，用于展示待办等信息。</p>
+<template data-demo-source>
+<template>
+  <div style="width: 100%; overflow: auto">
+    <a-calendar
+      :default-value="new Date('2020-03-04')"
+      :date-inner-content="dateInnerContent"
+    />
+  </div>
+</template>
+
+<script setup>
+import { h, resolveComponent } from "vue";
+const badgeStyle = {
+  width: "100%",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis"
+};
+function renderItems(items) {
+  const Badge = resolveComponent("a-badge");
+  return h(
+    "div",
+    { style: { padding: "0 10px" } },
+    items.flatMap((item) => [
+      h(Badge, { style: badgeStyle, status: item.status, text: item.text }),
+      h("br")
+    ])
+  );
+}
+const dateInnerContent = (currentDate) => {
+  const date = currentDate.format("YYYY-MM-DD");
+  if (date === "2020-03-07") {
+    return renderItems([
+      { status: "processing", text: "Cooking" },
+      { status: "success", text: "Reading" },
+      { status: "warning", text: "Sleeping" }
+    ]);
+  }
+  if (date === "2020-03-17") {
+    return renderItems([
+      { status: "processing", text: "Coding" },
+      { status: "processing", text: "Running" },
+      { status: "success", text: "Eating" },
+      { status: "warning", text: "Play games" },
+      { status: "danger", text: "Sleeping" }
+    ]);
+  }
+  return null;
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="calendar-props"><code>&lt;calendar&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>date</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>date</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-page-show-date</td>
+<td>默认展示的面板日期</td>
+<td><code>date</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>page-show-date</td>
+<td>展示的面板日期（受控）</td>
+<td><code>date</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>模式</td>
+<td><code>'day' | 'week' | 'month' | 'year'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-mode</td>
+<td>默认模式</td>
+<td><code>'day' | 'week' | 'month' | 'year'</code></td>
+<td style="text-align:center"><code>'month'</code></td>
+</tr>
+<tr>
+<td>modes</td>
+<td>显示的模式</td>
+<td><code>('day' | 'week' | 'month' | 'year')[]</code></td>
+<td style="text-align:center"><code>['month', 'year']</code></td>
+</tr>
+<tr>
+<td>panel-operations</td>
+<td>卡片模式下配置操作按钮</td>
+<td><code>Array&lt;'left' | 'double-left' | 'right' | 'double-right'&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>header-type</td>
+<td>头部类型</td>
+<td><code>'button' | 'select'</code></td>
+<td style="text-align:center"><code>'button'</code></td>
+</tr>
+<tr>
+<td>allow-select</td>
+<td>是否允许选中和切换日期</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>panel</td>
+<td>是否放在容器中进行展示</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>panel-width</td>
+<td>卡片模式的宽度</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>265</code></td>
+</tr>
+<tr>
+<td>panel-today-btn</td>
+<td>是否显示跳转到今天的按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>day-start-of-week</td>
+<td>每周的第一天开始于周几，0 - 周日，1 - 周一</td>
+<td><code>'0' | '1'</code></td>
+<td style="text-align:center"><code>0</code></td>
+</tr>
+<tr>
+<td>is-week</td>
+<td>周选择</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>disabled-date</td>
+<td>不可选取的时间</td>
+<td><code>(current: Dayjs) =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>date-render</td>
+<td>定制日期显示，会完全覆盖日期单元格</td>
+<td><code>(currentDate: Dayjs) =&gt; any</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>date-inner-content</td>
+<td>定制日期单元格，内容会被添加到单元格内</td>
+<td><code>(currentDate: Dayjs) =&gt; any</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>month-render</td>
+<td>定制月份显示，会完全覆盖月份单元格</td>
+<td><code>(currentDate: Dayjs) =&gt; any</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>header-render</td>
+<td>自定义头部渲染</td>
+<td><code>(props: {  value?: Dayjs;  pageShowDate?: Dayjs;  mode?: string;  onChange: (date: Dayjs) =&gt; void;  onChangePageDate: (date: Dayjs) =&gt; void;  onChangeMode: (mode: 'day' | 'week' | 'month' | 'year') =&gt; void;}) =&gt; any</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="calendar-events"><code>&lt;calendar&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>选择的日期改变时触发</td>
+<td>date: <code>Date</code></td>
+</tr>
+<tr>
+<td>panel-change</td>
+<td>日期面板改变时触发</td>
+<td>date: <code>Date</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="calendar-slots"><code>&lt;calendar&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td style="text-align:center">自定义头部内容</td>
+<td>year: <code>number</code><br>month: <code>number</code></td>
+<td style="text-align:left">2.53.0</td>
+</tr>
+<tr>
+<td>default</td>
+<td style="text-align:center">自定义单元格内容</td>
+<td>year: <code>number</code><br>month: <code>number</code><br>date: <code>number</code></td>
+<td style="text-align:left">2.53.0</td>
+</tr>
+</tbody>
+</table>

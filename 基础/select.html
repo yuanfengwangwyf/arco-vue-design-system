@@ -1,0 +1,1479 @@
+
+<!-- demo:select/basic -->
+<h3>基本用法</h3>
+<p>选择器的基本用法。
+通过 <code>trigger-props</code> 属性自定义下拉框的属性，比如可以让下拉框自动适应最小宽度。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-select :style="{ width: '320px' }" placeholder="Please select ...">
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+    <a-select :style="{ width: '320px' }" placeholder="Please select ...">
+      <a-option :value="true">是</a-option>
+      <a-option :value="false">否</a-option>
+    </a-select>
+    <a-select
+      defaultValue="Beijing"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      disabled
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+    <a-select
+      v-model="value"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+    >
+      <a-option v-for="item of data" :value="item" :label="item.label" />
+    </a-select>
+    <div>Select Value: {{ value }}</div>
+    <a-select
+      :style="{ width: '160px' }"
+      placeholder="Select"
+      :trigger-props="{ autoFitPopupMinWidth: true }"
+    >
+      <a-option>Beijing-Beijing-Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref();
+const data = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    other: "extra"
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    other: "extra"
+  },
+  {
+    value: "guangzhou",
+    label: "Guangzhou",
+    other: "extra"
+  },
+  {
+    value: "chengdu",
+    label: "Chengdu",
+    other: "extra"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/clear -->
+<h3>允许清除</h3>
+<p>通过设置 <code>allow-clear</code> ，显示清除按钮。</p>
+<template data-demo-source>
+<template>
+  <a-select
+    :style="{ width: '320px' }"
+    v-model="value"
+    placeholder="Please select ..."
+    allow-clear
+  >
+    <a-option>Beijing</a-option>
+    <a-option>Shanghai</a-option>
+    <a-option>Guangzhou</a-option>
+    <a-option disabled>Disabled</a-option>
+  </a-select>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref("Shanghai");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/multiple -->
+<h3>多选选择器</h3>
+<p>通过设置 <code>multiple</code> ，可以让选择器支持多选。此外通过 <code>max-tag-count</code> 可以设置最多显示的标签个数。</p>
+<template data-demo-source>
+<template>
+  <div style="margin-bottom: 10px">
+    <a-switch v-model="scrollbar" />
+    Virtual Scrollbar
+  </div>
+  <a-space direction="vertical" size="large">
+    <a-select
+      :default-value="['Beijing', 'Shanghai']"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      multiple
+      :scrollbar="scrollbar"
+    >
+      <a-option>Beijing</a-option>
+      <a-option :tag-props="{ color: 'red' }">Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+    <a-select
+      :default-value="['Beijing', 'Shanghai', 'Guangzhou']"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      multiple
+      :max-tag-count="2"
+      allow-clear
+      :scrollbar="scrollbar"
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+    <a-select
+      :default-value="['Beijing', 'Shanghai']"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      multiple
+      :limit="2"
+      :scrollbar="scrollbar"
+    >
+      <a-option>Beijing</a-option>
+      <a-option :tag-props="{ color: 'red' }">Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const scrollbar = ref(true);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/size -->
+<h3>选择框大小</h3>
+<p>选择框分为 <code>mini</code>、<code>small</code>、<code>medium</code>、<code>large</code> 四种尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group type="button" v-model="size">
+      <a-radio value="mini">Mini</a-radio>
+      <a-radio value="small">Small</a-radio>
+      <a-radio value="medium">Medium</a-radio>
+      <a-radio value="large">Large</a-radio>
+    </a-radio-group>
+    <a-select
+      default-value="Beijing"
+      :style="{ width: '320px' }"
+      :size="size"
+      placeholder="Please select ..."
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+    <a-select
+      :default-value="['Beijing', 'Shanghai']"
+      :style="{ width: '320px' }"
+      :size="size"
+      placeholder="Please select ..."
+      multiple
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const size = ref("medium");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/loading -->
+<h3>加载中</h3>
+<p>选择框和下拉菜单显示加载中状态。</p>
+<template data-demo-source>
+<template>
+  <a-select :style="{ width: '320px' }" placeholder="Please select ..." loading>
+    <a-option>Beijing</a-option>
+    <a-option>Shanghai</a-option>
+    <a-option>Guangzhou</a-option>
+    <a-option disabled>Disabled</a-option>
+  </a-select>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/header -->
+<h3>下拉菜单的页头</h3>
+<p>自定义下拉菜单的页头</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-select
+      :default-value="'Beijing'"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      multiple
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+      <template #header>
+        <div style="padding: 6px 12px;">
+          <a-checkbox value="1">全选</a-checkbox>
+        </div>
+      </template>
+    </a-select>
+
+    <a-select
+      :default-value="'Beijing'"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      multiple
+      show-header-on-empty
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+      <template #header>
+        <div style="padding: 6px 12px;">
+          <a-checkbox value="1">全选</a-checkbox>
+        </div>
+      </template>
+    </a-select>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/footer -->
+<h3>下拉菜单的页脚</h3>
+<p>自定义下拉菜单的页脚</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-select
+      :default-value="'Beijing'"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      allow-search
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+      <template #footer>
+        <div style="padding: 6px 0; text-align: center;">
+          <a-button>Click Me</a-button>
+        </div>
+      </template>
+    </a-select>
+    <a-select
+      :default-value="'Beijing'"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      allow-search
+      show-footer-on-empty
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+      <template #footer>
+        <div style="padding: 6px 0; text-align: center;">
+          <a-button>Click Me</a-button>
+        </div>
+      </template>
+    </a-select>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/border -->
+<h3>无边框模式</h3>
+<p>设置 <code>bordered=&quot;false&quot;</code> 开启无边框模式，常用于沉浸式使用。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-select
+      :style="{ width: '100%' }"
+      placeholder="Please select ..."
+      :bordered="false"
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+    <a-select
+      :default-value="['Beijing', 'Shanghai']"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      multiple
+      :bordered="false"
+    >
+      <a-option>Beijing</a-option>
+      <a-option :tag-props="{ color: 'red' }">Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/create -->
+<h3>允许创建</h3>
+<p>通过设置 <code>allow-create</code> ，让选择器可以创建选项中不存在的条目。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-select
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      allow-create
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+    <a-select
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      multiple
+      allow-create
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/search -->
+<h3>允许搜索</h3>
+<p>通过设置 <code>allow-search</code> ，可以让选择器支持对选项的搜索，配合 <code>filter-option</code> 可以自定义搜索。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-select
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      allow-search
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+    <a-select
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      :allow-search="{ retainInputValue: true }"
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+    <a-select
+      :options="options"
+      :style="{ width: '320px' }"
+      :loading="loading"
+      placeholder="Please select ..."
+      multiple
+      @search="handleSearch"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const options = ref(["Option1", "Option2", "Option3"]);
+const loading = ref(false);
+const handleSearch = (value) => {
+  if (value) {
+    loading.value = true;
+    window.setTimeout(() => {
+      options.value = [
+        `${value}-Option1`,
+        `${value}-Option2`,
+        `${value}-Option3`
+      ];
+      loading.value = false;
+    }, 2e3);
+  } else {
+    options.value = [];
+  }
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/scroll -->
+<h3>下拉菜单滚动</h3>
+<p>可以通过 <code>dropdown-scroll</code> 监听下拉菜单的滚动事件。或者通过 <code>dropdown-reach-bottom</code> 监听下拉菜单滚动到底部的事件。</p>
+<template data-demo-source>
+<template>
+  <a-select
+    :style="{ width: '320px' }"
+    default-value="Beijing"
+    placeholder="Please select ..."
+    @dropdown-scroll="handleScroll"
+    @dropdown-reach-bottom="handleReachBottom"
+  >
+    <a-option>Beijing</a-option>
+    <a-option>Shanghai</a-option>
+    <a-option>Guangzhou</a-option>
+    <a-option disabled>Disabled</a-option>
+    <a-option>Shenzhen</a-option>
+    <a-option>Chengdu</a-option>
+    <a-option>Wuhan</a-option>
+  </a-select>
+</template>
+
+<script setup>
+const handleScroll = (ev) => {
+  console.log("scroll", ev);
+};
+const handleReachBottom = (ev) => {
+  console.log("reach the bottom", ev);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/fallback -->
+<h3>回退选项</h3>
+<p>使用 <code>fallback-option</code> 自定义选项中不存在的值，默认会在输入框中展示不存在的选项值。可能用于选项还没有获取完，或者远程搜索时选项改变了。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-select
+      defaultValue="Shanxi"
+      placeholder="Please select ..."
+      :style="{ width: '320px' }"
+      :fallback-option="fallback"
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+    <a-select
+      defaultValue="Shanxi"
+      placeholder="Please select ..."
+      :style="{ width: '320px' }"
+      :fallback-option="fallback"
+      :show-extra-options="false"
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+    </a-select>
+    <a-select
+      placeholder="Please select ..."
+      multiple
+      :default-value="['Shanxi', 'Nanjing', 'Hangzhou']"
+      :style="{ width: '320px' }"
+      :fallback-option="fallback"
+    >
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
+  </a-space>
+</template>
+
+<script setup>
+const fallback = (value) => {
+  return {
+    value,
+    label: `++${value}++`
+  };
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/remote -->
+<h3>远程搜索</h3>
+<p>使用 <code>search</code> 事件进行远程搜索，并改变选项。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <div>Show selections after search options</div>
+    <a-select
+      :style="{ width: '320px' }"
+      :loading="loading"
+      placeholder="Please select ..."
+      multiple
+      @search="handleSearch"
+      :filter-option="false"
+    >
+      <a-option v-for="item of options" :value="item">{{ item }}</a-option>
+    </a-select>
+    <div>Hide selections after search options</div>
+    <a-select
+      :options="options"
+      :style="{ width: '320px' }"
+      :loading="loading"
+      placeholder="Please select ..."
+      multiple
+      @search="handleSearch"
+      :filter-option="false"
+      :show-extra-options="false"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const options = ref(["Option1", "Option2", "Option3"]);
+const loading = ref(false);
+const handleSearch = (value) => {
+  if (value) {
+    loading.value = true;
+    window.setTimeout(() => {
+      options.value = [
+        `${value}-Option1`,
+        `${value}-Option2`,
+        `${value}-Option3`
+      ];
+      loading.value = false;
+    }, 2e3);
+  } else {
+    options.value = [];
+  }
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/group -->
+<h3>分组</h3>
+<p>使用 <code>optgroup</code> 组件添加分组选项。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-select :style="{ width: '320px' }" placeholder="Please select ...">
+      <a-optgroup label="Group-1">
+        <a-option>Beijing</a-option>
+        <a-option>Shanghai</a-option>
+      </a-optgroup>
+      <a-optgroup label="Group-2">
+        <a-option>Guangzhou</a-option>
+        <a-option disabled>Disabled</a-option>
+        <a-option>Shenzhen</a-option>
+      </a-optgroup>
+      <a-optgroup label="Group-3">
+        <a-option>Chengdu</a-option>
+        <a-option>Wuhan</a-option>
+      </a-optgroup>
+    </a-select>
+    <a-select
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      multiple
+    >
+      <a-optgroup label="Group-1">
+        <a-option>Beijing</a-option>
+        <a-option>Shanghai</a-option>
+      </a-optgroup>
+      <a-optgroup label="Group-2">
+        <a-option>Guangzhou</a-option>
+        <a-option disabled>Disabled</a-option>
+        <a-option>Shenzhen</a-option>
+      </a-optgroup>
+      <a-optgroup label="Group-3">
+        <a-option>Chengdu</a-option>
+        <a-option>Wuhan</a-option>
+      </a-optgroup>
+    </a-select>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/label -->
+<h3>自定义选择框展示内容</h3>
+<p>通过 <code>#label</code> 插槽可以自定义选择框展示内容。</p>
+<template data-demo-source>
+<template>
+  <a-select
+    default-value="Beijing"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+  >
+    <template #label="{ data }">
+      <span><icon-plus />{{ data?.label }}</span>
+    </template>
+    <a-option>Beijing</a-option>
+    <a-option>Shanghai</a-option>
+    <a-option>Guangzhou</a-option>
+    <a-option disabled>Disabled</a-option>
+  </a-select>
+</template>
+
+<script setup>
+import { IconPlus } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/linkage -->
+<h3>联动选择框</h3>
+<p>展示联动选择框的实现方法。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-select :style="{ width: '200px' }" v-model="province">
+      <a-option v-for="value of Object.keys(data)">{{ value }}</a-option>
+    </a-select>
+    <a-select
+      :style="{ width: '200px' }"
+      :options="data[province] || []"
+      v-model="city"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref, watch } from "vue";
+const province = ref("Sichuan");
+const city = ref("Chengdu");
+const data = {
+  Beijing: ["Haidian", "Chaoyang", "Changping"],
+  Sichuan: ["Chengdu", "Mianyang", "Aba"],
+  Guangdong: ["Guangzhou", "Shenzhen", "Shantou"]
+};
+watch(province, () => {
+  city.value = "";
+});
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/field-names -->
+<h3>自定义字段名</h3>
+<p>可以通过 <code>field-names</code> 属性自定义 <code>options</code> 中数据的格式。</p>
+<template data-demo-source>
+<template>
+  <a-select
+    v-model="value"
+    :options="options"
+    :field-names="fieldNames"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+  />
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const value = ref("bj");
+const fieldNames = { value: "city", label: "text" };
+const options = reactive([
+  {
+    city: "bj",
+    text: "Beijing"
+  },
+  {
+    city: "sh",
+    text: "Shanghai"
+  },
+  {
+    city: "gz",
+    text: "Guangzhou"
+  },
+  {
+    city: "cd",
+    text: "Chengdu"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:select/virtual-list -->
+<h3>虚拟列表</h3>
+<p>虚拟列表的使用方法。</p>
+<template data-demo-source>
+<template>
+  <a-select
+    :style="{ width: '320px' }"
+    :options="options"
+    placeholder="Please select ..."
+    :virtual-list-props="{ height: 200 }"
+  />
+</template>
+
+<script setup>
+const options = Array(1e3).fill(null).map((_, index) => `Option ${index}`);
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="select-props"><code>&lt;select&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multiple</td>
+<td>是否开启多选模式（多选模式默认开启搜索）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string| number| boolean| Record&lt;string, any&gt;| (string | number | boolean | Record&lt;string, any&gt;)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控模式）</td>
+<td><code>string| number| boolean| Record&lt;string, unknown&gt;| (string | number | boolean | Record&lt;string, unknown&gt;)[]</code></td>
+<td style="text-align:center"><code>'' | []</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>input-value <strong>(v-model)</strong></td>
+<td>输入框的值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-input-value</td>
+<td>输入框的默认值（非受控模式）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>选择框的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>占位符</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-search</td>
+<td>是否允许搜索</td>
+<td><code>boolean | { retainInputValue?: boolean }</code></td>
+<td style="text-align:center"><code>false (single) | true (multiple)</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-create</td>
+<td>是否允许创建</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-tag-count</td>
+<td>多选模式下，最多显示的标签数量。0 表示不限制</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>bordered</td>
+<td>是否显示输入框的边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-active-first-option</td>
+<td>是否在无值时默认选择第一个选项</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>是否显示下拉菜单</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>弹出框默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>unmount-on-close</td>
+<td>是否在下拉菜单关闭时销毁元素</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filter-option</td>
+<td>是否过滤选项</td>
+<td><code>boolean | ((inputValue: string, option: SelectOptionData) =&gt; boolean)</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>options</td>
+<td>选项数据</td>
+<td><code>(string | number | boolean | SelectOptionData | SelectOptionGroup)[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>virtual-list-props</td>
+<td>传递虚拟列表属性，传入此参数以开启虚拟滚动 <a href="#VirtualListProps">VirtualListProps</a></td>
+<td><code>VirtualListProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger-props</td>
+<td>下拉菜单的触发器属性</td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>format-label</td>
+<td>格式化显示内容</td>
+<td><code>(data: SelectOptionData) =&gt; string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fallback-option</td>
+<td>自定义值中不存在的选项</td>
+<td><code>boolean| ((    value: string | number | boolean | Record&lt;string, unknown&gt;  ) =&gt; SelectOptionData)</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>show-extra-options</td>
+<td>是否在下拉菜单中显示额外选项</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>value-key</td>
+<td>用于确定选项键值的属性名</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'value'</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>search-delay</td>
+<td>触发搜索事件的延迟时间</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>500</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>多选时最多的选择个数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>field-names</td>
+<td>自定义 <code>SelectOptionData</code> 中的字段</td>
+<td><code>SelectFieldNames</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>scrollbar</td>
+<td>是否开启虚拟滚动条</td>
+<td><code>boolean | ScrollbarProps</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.38.0</td>
+</tr>
+<tr>
+<td>show-header-on-empty</td>
+<td>空状态时是否显示header</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-footer-on-empty</td>
+<td>空状态时是否显示footer</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>tag-nowrap</td>
+<td>标签内容不换行</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.56.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="select-events"><code>&lt;select&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值发生改变时触发</td>
+<td>value: <code>string | number | boolean | Record&lt;string, any&gt; | (string | number | boolean | Record&lt;string, any&gt;)[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>input-value-change</td>
+<td>输入框的值发生改变时触发</td>
+<td>inputValue: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-visible-change</td>
+<td>下拉框的显示状态改变时触发</td>
+<td>visible: <code>boolean</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮时触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>remove</td>
+<td>点击标签的删除按钮时触发</td>
+<td>removed: <code>string | number | boolean | Record&lt;string, any&gt; | undefined</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>search</td>
+<td>用户搜索时触发</td>
+<td>inputValue: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>dropdown-scroll</td>
+<td>下拉菜单发生滚动时触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>dropdown-reach-bottom</td>
+<td>下拉菜单滚动到底部时触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>exceed-limit</td>
+<td>多选超出限制时触发</td>
+<td>value: <code>string | number | boolean | Record&lt;string, any&gt; | undefined</code><br>ev: <code>Event</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="select-slots"><code>&lt;select&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trigger</td>
+<td style="text-align:center">自定义触发元素</td>
+<td>-</td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">前缀元素</td>
+<td>-</td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>search-icon</td>
+<td style="text-align:center">选择框的搜索图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>loading-icon</td>
+<td style="text-align:center">选择框的加载中图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>arrow-icon</td>
+<td style="text-align:center">选择框的箭头图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">下拉框的页脚</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>header</td>
+<td style="text-align:center">下拉框的页头</td>
+<td>-</td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>label</td>
+<td style="text-align:center">选择框的显示内容</td>
+<td>data: <code>SelectOptionData</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>option</td>
+<td style="text-align:center">选项内容</td>
+<td>data: <code>SelectOptionData</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>empty</td>
+<td style="text-align:center">选项为空时的显示内容</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="option-props"><code>&lt;option&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>选项值（如不填，会从内容中获取）</td>
+<td><code>string|number|boolean|object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>label</td>
+<td>选项标签（如不填，会从内容中获取）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>tag-props</td>
+<td>展示的标签属性</td>
+<td><code>TagProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.8.0</td>
+</tr>
+<tr>
+<td>extra</td>
+<td>额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据</td>
+<td><code>object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>index</td>
+<td>用于手动指定选项的 index</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.20.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optgroup-props"><code>&lt;optgroup&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>选项组的标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="optgroup-slots"><code>&lt;optgroup&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td style="text-align:center">选项组的标题</td>
+<td>-</td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type">Type</h3>
+<pre><code class="language-ts">/**
+ * @zh 选项
+ * @en Option
+ */
+type Option = string | number | SelectOptionData | SelectOptionGroup;
+
+/**
+ * @zh 筛选
+ * @en Filter
+ */
+type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =&gt; boolean);
+</code></pre>
+<h3 id="selectoptiondata">SelectOptionData</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>选项值</td>
+<td><code>string | number | boolean | Record&lt;string, unknown&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>选项内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>tagProps</td>
+<td>选项对应的多选标签的属性</td>
+<td><code>any</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>render</td>
+<td>自定义渲染</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="selectoptiongroup">SelectOptionGroup</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isGroup</td>
+<td>是否为选项组</td>
+<td><code>true</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>选项组标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>options</td>
+<td>选项组中的选项</td>
+<td><code>SelectOption[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="virtuallistprops">VirtualListProps</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td>可视区域高度</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>isStaticItemHeight</td>
+<td>（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 <code>fixedSize</code></td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fixedSize</td>
+<td>元素高度是否是固定的。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+<tr>
+<td>estimatedSize</td>
+<td>元素高度不固定时的预估高度。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>视口边界外提前挂载的元素数量。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>10</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="faq">FAQ</h2>
+<h3 id="使用-object-格式作为选项的值">使用 <code>Object</code> 格式作为选项的值</h3>
+<p>当使用 <code>Object</code> 格式作为选项的值时，需要通过 <code>value-key</code> 属性为选择器指定获取唯一标识的字段名，默认值为 <code>value</code>.
+此外 <code>value</code> 的对象值需要在 <code>setup</code> 中定义好，不能够在模版中创建对象，这样会导致 <code>Option</code> 组件的重复渲染。</p>
+<p>例如当我需要指定 <code>key</code> 为唯一标识时：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;a-select v-model=&quot;value&quot; :style=&quot;{width:'320px'}&quot; placeholder=&quot;Please select ...&quot; value-key=&quot;key&quot;&gt;
+    &lt;a-option v-for=&quot;item of data&quot; :value=&quot;item&quot; :label=&quot;item.label&quot; /&gt;
+  &lt;/a-select&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref();
+    const data = [{
+      value: 'beijing',
+      label: 'Beijing',
+      key: 'extra1'
+    }, {
+      value: 'shanghai',
+      label: 'Shanghai',
+      key: 'extra2'
+    }, {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      key: 'extra3'
+    }, {
+      value: 'chengdu',
+      label: 'Chengdu',
+      key: 'extra4'
+    }]
+
+    return {
+      value,
+      data
+    }
+  },
+}
+&lt;/script&gt;
+</code></pre>
+<h3 id="滚动容器中的下拉菜单分离问题">滚动容器中的下拉菜单分离问题</h3>
+<p><code>Select</code> 组件默认没有开启容器滚动的事件监听功能，如果遇到在滚动容器中下拉菜单分离的问题，可以手动开启内部 <code>Trigger</code> 组件的 <code>updateAtScroll</code> 功能。
+如果是在全局环境中存在此种情况，可以使用 <code>ConfigProvider</code> 组件默认开启此属性。</p>
+<pre><code class="language-vue">&lt;a-select :trigger-props=&quot;{updateAtScroll:true}&quot;&gt;&lt;/a-select&gt;
+</code></pre>

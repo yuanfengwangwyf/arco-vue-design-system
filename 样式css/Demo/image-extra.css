@@ -1,0 +1,26 @@
+.actions {
+  display: flex;
+  align-items: center;
+}
+.action {
+  padding: 5px 4px;
+  font-size: 14px;
+  margin-left: 12px;
+  border-radius: 2px;
+  line-height: 1;
+  cursor: pointer;
+}
+.action:first-child {
+  margin-left: 0;
+}
+
+.action:hover {
+  background: var(--color-tone-neutral-black-50);
+}
+.actions-outer {
+  .action {
+    &:hover {
+      color: var(--color-tone-neutral-white-100);
+    }
+  }
+}

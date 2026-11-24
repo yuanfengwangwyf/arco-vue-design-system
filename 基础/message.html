@@ -1,0 +1,338 @@
+
+<!-- demo:message/basic -->
+<h3>基本用法</h3>
+<p>全局提示的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Info Message</a-button>
+</template>
+
+<script setup>
+import { Message } from "@arco-design/web-vue";
+const handleClick = () => {
+  Message.info("This is an info message");
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:message/type -->
+<h3>消息类型</h3>
+<p>全局提示有 6 种不同的类型，分别为：<code>info</code>, <code>success</code>, <code>warning</code>, <code>error</code>, <code>loading</code>。2.41.0 版本增加 <code>normal</code> 类型，此类型下默认没有图标。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-space>
+      <a-button @click="handleShowInfoMessage">Info Message</a-button>
+      <a-button @click="handleShowSuccessMessage" status="success"
+        >Success Message
+      </a-button>
+      <a-button @click="handleShowWarningMessage" status="warning"
+        >Warning Message
+      </a-button>
+      <a-button @click="handleShowErrorMessage" status="danger"
+        >Error Message</a-button
+      >
+    </a-space>
+  </div>
+  <div style="margin-top: 20px">
+    <a-space>
+      <a-button @click="handleShowNormalMessage">Normal Message</a-button>
+      <a-button @click="handleShowNormalMessageWithIcon"
+        >Normal Message With Icon
+      </a-button>
+      <a-button @click="handleShowLoadingMessage" status="primary"
+        >Loading Message
+      </a-button>
+    </a-space>
+  </div>
+</template>
+
+<script setup>
+import { h } from "vue";
+import { Message } from "@arco-design/web-vue";
+import { IconExclamationCircleFill } from "@arco-design/web-vue/es/icon";
+const renderIcon = () => h(IconExclamationCircleFill);
+const handleShowInfoMessage = () => Message.info("This is an info message!");
+const handleShowSuccessMessage = () => Message.success("This is a success message!");
+const handleShowWarningMessage = () => Message.warning("This is a warning message!");
+const handleShowErrorMessage = () => Message.error("This is an error message!");
+const handleShowNormalMessage = () => Message.normal("This is a normal message!");
+const handleShowNormalMessageWithIcon = () => Message.normal({
+  content: "This is a normal message!",
+  icon: renderIcon
+});
+const handleShowLoadingMessage = () => Message.loading("This is a loading message!");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:message/icon -->
+<h3>自定义图标</h3>
+<p>设置 <code>icon</code> 来自定义图标。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Info Message</a-button>
+</template>
+
+<script setup>
+import { h } from "vue";
+import { Message } from "@arco-design/web-vue";
+import { IconFaceSmileFill } from "@arco-design/web-vue/es/icon";
+const handleClick = () => {
+  Message.info({
+    content: "This is an info message!",
+    icon: () => h(IconFaceSmileFill)
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:message/position -->
+<h3>全局提示的位置</h3>
+<p>全局提示有 2 种不同的弹出位置，分别为顶部和底部。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button @click="handleShowTopMessage">Top Message</a-button>
+    <a-button @click="handleShowBottomMessage">Bottom Message</a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { Message } from "@arco-design/web-vue";
+const handleShowTopMessage = () => {
+  Message.info({ content: "This is an info message!" });
+};
+const handleShowBottomMessage = () => {
+  Message.info({
+    content: "This is an info message!",
+    position: "bottom"
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:message/closeable -->
+<h3>可关闭</h3>
+<p>设置 <code>closable</code> 来显示关闭按钮。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Closeable Message</a-button>
+</template>
+
+<script setup>
+import { Message } from "@arco-design/web-vue";
+const handleClick = () => {
+  Message.info({
+    content: "This is an info message!",
+    closable: true
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:message/update -->
+<h3>更新内容</h3>
+<p>更新消息内容，通过设置 <code>duration</code> 属性可以重置定时器。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Update Info Message</a-button>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { Message } from "@arco-design/web-vue";
+const index = ref(0);
+const handleClick = () => {
+  Message.info({
+    id: "myInfo",
+    content: `This is an info message ${index.value++}`,
+    duration: 2e3
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h3 id="message-全局方法"><code>Message</code> 全局方法</h3>
+<p>Message提供的全局方法，可以通过以下三种方法使用：</p>
+<ol>
+<li>通过this.$message调用</li>
+<li>在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$message调用</li>
+<li>导入Message，通过Message本身调用</li>
+</ol>
+<p>当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext</p>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import { Message } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Message._context = app._context;
+</code></pre>
+<h3 id="messagemethod">MessageMethod</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info</td>
+<td>显示信息提示</td>
+<td><code>(    config: string | MessageConfig,    appContext?: AppContext  ) =&gt; MessageReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>success</td>
+<td>显示成功提示</td>
+<td><code>(    config: string | MessageConfig,    appContext?: AppContext  ) =&gt; MessageReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>warning</td>
+<td>显示警告提示</td>
+<td><code>(    config: string | MessageConfig,    appContext?: AppContext  ) =&gt; MessageReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>显示错误提示</td>
+<td><code>(    config: string | MessageConfig,    appContext?: AppContext  ) =&gt; MessageReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>显示加载中提示</td>
+<td><code>(    config: string | MessageConfig,    appContext?: AppContext  ) =&gt; MessageReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>normal</td>
+<td>显示提示</td>
+<td><code>(    config: string | MessageConfig,    appContext?: AppContext  ) =&gt; MessageReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.41.0</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清空全部提示</td>
+<td><code>(position?: MessagePosition) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="messageconfig">MessageConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>id</td>
+<td>唯一id</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon</td>
+<td>消息的图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>position</td>
+<td>消息的位置</td>
+<td><code>'top'|'bottom'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>showIcon</td>
+<td>是否显示图标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否显示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>消息显示的持续时间</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>关闭时的回调函数</td>
+<td><code>(id: number | string) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>resetOnHover</td>
+<td>设置鼠标移入后不会自动关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.39.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="messagereturn">MessageReturn</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>关闭当前消息</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

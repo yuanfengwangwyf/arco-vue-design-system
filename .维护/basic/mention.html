@@ -1,0 +1,222 @@
+
+<!-- demo:mention/basic -->
+<h3>基本使用</h3>
+<p>用于在输入中提及某人或某事，常用于发布、聊天或评论功能。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-mention
+      v-model="value"
+      :data="['Bytedance', 'Bytedesign', 'Bytenumner']"
+      placeholder="enter something"
+    />
+    <a-mention
+      v-model="text"
+      :data="['Bytedance', 'Bytedesign', 'Bytenumner']"
+      type="textarea"
+      placeholder="enter something"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref("");
+const text = ref("");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:mention/prefix -->
+<h3>自定义触发字符</h3>
+<p>指定 <code>prefix</code> 来自定义触发字符。默认为 <code>@</code>，可以自定义为任意字符。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-mention
+      :data="['Bytedance', 'Bytedesign', 'Bytenumner']"
+      placeholder="input @"
+    />
+    <a-mention
+      :data="['Bytedance', 'Bytedesign', 'Bytenumner']"
+      prefix="#"
+      placeholder="input #"
+    />
+    <a-mention
+      :data="['Bytedance', 'Bytedesign', 'Bytenumner']"
+      prefix="$"
+      placeholder="input $"
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="mention-props"><code>&lt;mention&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>data</td>
+<td>用于自动补全的数据</td>
+<td><code>(string | number | SelectOptionData | SelectOptionGroup)[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>触发自动补全的关键字</td>
+<td><code>string | string[]</code></td>
+<td style="text-align:center"><code>'@'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>split</td>
+<td>选中项的前后分隔符</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>' '</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>type</td>
+<td>输入框或文本域</td>
+<td><code>'input' | 'textarea'</code></td>
+<td style="text-align:center"><code>'input'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空输入框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mention-events"><code>&lt;mention&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值发生改变时触发</td>
+<td>value: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>search</td>
+<td>动态搜索时触发，2.47.0 版本增加 prefix 参数</td>
+<td>value: <code>string</code><br>prefix: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>select</td>
+<td>选择下拉选项时触发</td>
+<td>value: <code>string | number | Record&lt;string, any&gt; | undefined</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>用户点击清除按钮时触发</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>focus</td>
+<td>文本框获取焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+<td style="text-align:left">2.42.0</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>文本框失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+<td style="text-align:left">2.42.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mention-methods"><code>&lt;mention&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使输入框获取焦点</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使输入框失去焦点</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mention-slots"><code>&lt;mention&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>option</td>
+<td style="text-align:center">选项内容</td>
+<td>data: <code>OptionInfo</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,40 @@
+<div class="doc-grid" :class="{ 'overview-layout': page.id === 'overview' }">
+    <main id="main-content" class="doc-main" tabindex="-1" @click="navigate">
+      <div class="breadcrumbs">{{ page.component ? '组件' : '文档' }} <span aria-hidden="true">/</span> {{ page.group }}</div>
+      <h1>{{ page.title }}</h1>
+      <p v-if="page.description" class="doc-description">{{ page.description }}</p>
+      <p v-if="page.id === 'changelog'" class="doc-description">Arco Design Vue 的版本记录与变更详情。</p>
+      <div v-if="page.id === 'overview'" class="component-overview">
+        <section v-for="[group, items] in componentGroups" :key="group">
+          <h2>{{ group }}</h2>
+          <div class="component-directory">
+            <RouterLink v-for="item in items" :key="item.id" :to="item.route" class="component-card">
+              <span class="component-card-art">
+                <span v-if="item.image" class="component-card-illustration" aria-hidden="true"
+                  v-html="illustrationMarkup[item.image + (dark ? '-dark' : '')] || illustrationMarkup[item.image]"></span>
+                <span v-else aria-hidden="true">{{ item.title }}</span>
+              </span>
+              <span class="component-card-title">{{ item.title }}</span>
+            </RouterLink>
+          </div>
+        </section>
+      </div>
+      <TokenPage v-if="page.id === 'token'" />
+      <section v-if="page.component === 'icon'">
+        <input v-model="filter" type="search" aria-label="搜索图标" placeholder="搜索图标">
+        <div class="icon-directory"><div v-for="[name, component] in visibleIcons" :key="name"><component :is="component" /><span>{{ name }}</span></div></div>
+      </section>
+      <p v-if="!loaded" role="status">正在加载文档…</p>
+      <div v-else class="doc-body" :class="{ 'release-notes': page.id === 'changelog' }">
+        <template v-for="(section, index) in sections" :key="index">
+          <DemoExample v-if="section.demo" :id="section.demo" :title="section.title" :description="section.description" />
+          <div v-else class="markdown" v-html="section.html"></div>
+        </template>
+      </div>
+      <footer class="doc-footer">Arco Design Vue {{ version }} · MIT</footer>
+    </main>
+    <aside v-if="headings.length" class="outline" aria-label="本页目录">
+      <div>本页目录</div>
+      <RouterLink v-for="heading in headings" :key="heading.id" :to="{ hash: '#' + heading.id }">{{ heading.label }}</RouterLink>
+    </aside>
+  </div>

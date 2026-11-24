@@ -1,0 +1,228 @@
+
+<!-- demo:resize-box/basic -->
+<h3>基本用法</h3>
+<p><code>ResizeBox</code> 伸缩框组件的基础使用。通过设置 <code>directions</code>，可以指定四条边中的哪几条边可以进行伸缩。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-resize-box
+      :directions="['right', 'bottom']"
+      :style="{
+        width: '500px',
+        minWidth: '100px',
+        maxWidth: '100%',
+        height: '200px',
+        textAlign: 'center',
+      }"
+    >
+      <a-typography-paragraph
+        >We are building the future of content discovery and
+        creation.</a-typography-paragraph
+      >
+      <a-divider />
+      <a-typography-paragraph>
+        ByteDance's content platforms enable people to enjoy content powered by
+        AI technology. We inform, entertain, and inspire people across language,
+        culture and geography.
+      </a-typography-paragraph>
+      <a-divider>ByteDance</a-divider>
+      <a-typography-paragraph
+        >Yiming Zhang is the founder and CEO of
+        ByteDance.</a-typography-paragraph
+      >
+    </a-resize-box>
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:resize-box/controlled -->
+<h3>受控的高宽</h3>
+<p><code>ResizeBox</code> 的 <code>width</code> 和 <code>height</code> 都支持 <code>v-model</code>。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-resize-box
+      :directions="['right', 'bottom']"
+      :style="{ minWidth: '100px', maxWidth: '100%', textAlign: 'center' }"
+      v-model:width="width"
+      v-model:height="height"
+    >
+      <a-typography-paragraph
+        >We are building the future of content discovery and
+        creation.</a-typography-paragraph
+      >
+      <a-divider />
+      <a-typography-paragraph>
+        ByteDance's content platforms enable people to enjoy content powered by
+        AI technology. We inform, entertain, and inspire people across language,
+        culture and geography.
+      </a-typography-paragraph>
+      <a-divider>ByteDance</a-divider>
+      <a-typography-paragraph
+        >Yiming Zhang is the founder and CEO of
+        ByteDance.</a-typography-paragraph
+      >
+    </a-resize-box>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const width = ref(500);
+const height = ref(200);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:resize-box/layout -->
+<h3>在布局中使用</h3>
+<p><a href="https://arco.design/react/components/ResizeBox">Layout</a> 组件中集成了 <code>ResizeBox</code> 组件，可以在 Layout 中使用可伸缩的侧边栏。</p>
+<template data-demo-source>
+<template>
+  <div class="layout-demo">
+    <a-layout>
+      <a-layout-header>Header</a-layout-header>
+      <a-layout>
+        <a-layout-sider :resize-directions="['right']"> Sider </a-layout-sider>
+        <a-layout-content>Content</a-layout-content>
+      </a-layout>
+      <a-layout-footer>Footer</a-layout-footer>
+    </a-layout>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/resize-box/layout.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:resize-box/custom-triggers -->
+<h3>定制伸缩杆内容</h3>
+<p>可通过插槽 <code>resize-trigger</code> 定制各个方向的伸缩杆的内容。</p>
+<template data-demo-source>
+<template>
+  <a-resize-box
+    :directions="['right', 'bottom']"
+    style="width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;"
+  >
+    <template #resize-trigger="{ direction }">
+      <div
+        :class="[
+          `resizebox-demo`,
+          `resizebox-demo-${direction === 'right' ? 'vertical' : 'horizontal'}`,
+        ]"
+      >
+        <div class="resizebox-demo-line" />
+      </div>
+    </template>
+    <a-typography-paragraph
+      >We are building the future of content discovery and
+      creation.</a-typography-paragraph
+    >
+    <a-divider />
+    <a-typography-paragraph>
+      ByteDance's content platforms enable people to enjoy content powered by AI
+      technology. We inform, entertain, and inspire people across language,
+      culture and geography.
+    </a-typography-paragraph>
+    <a-divider>ByteDance</a-divider>
+    <a-typography-paragraph
+      >Yiming Zhang is the founder and CEO of ByteDance.</a-typography-paragraph
+    >
+  </a-resize-box>
+</template>
+
+<style scoped src="/demo/styles/examples/resize-box/custom-triggers.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="resize-box-props"><code>&lt;resize-box&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width <strong>(v-model)</strong></td>
+<td>宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>height <strong>(v-model)</strong></td>
+<td>高度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>component</td>
+<td>伸缩框的 html 标签</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'div'</code></td>
+</tr>
+<tr>
+<td>directions</td>
+<td>可以进行伸缩的边，有上、下、左、右可以使用</td>
+<td><code>('left' | 'right' | 'top' | 'bottom')[]</code></td>
+<td style="text-align:center"><code>['right']</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="resize-box-events"><code>&lt;resize-box&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>moving-start</td>
+<td>拖拽开始时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>moving</td>
+<td>拖拽时触发</td>
+<td>size: <code>{ width: number; height: number; }</code><br>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>moving-end</td>
+<td>拖拽结束时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="resize-box-slots"><code>&lt;resize-box&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resize-trigger</td>
+<td style="text-align:center">伸缩杆的内容</td>
+<td>direction: <code>'left' | 'right' | 'top' | 'bottom'</code></td>
+</tr>
+<tr>
+<td>resize-trigger-icon</td>
+<td style="text-align:center">伸缩杆的图标</td>
+<td>direction: <code>'left' | 'right' | 'top' | 'bottom'</code></td>
+</tr>
+</tbody>
+</table>

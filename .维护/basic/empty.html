@@ -1,0 +1,84 @@
+
+<!-- demo:empty/basic -->
+<h3>基本用法</h3>
+<p>空状态组件的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-empty />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:empty/custom -->
+<h3>自定义图片和文案</h3>
+<p>通过 <code>image</code> 插槽自定义图标、图片，或通过内容修改文案。</p>
+<template data-demo-source>
+<template>
+  <a-empty>
+    <template #image>
+      <icon-exclamation-circle-fill />
+    </template>
+    No data, please reload!
+  </a-empty>
+</template>
+
+<script setup>
+import { IconExclamationCircleFill } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="empty-props"><code>&lt;empty&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td>描述内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>img-src</td>
+<td>自定义图片的地址</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>in-config-provider</td>
+<td>是否在 ConfigProvider 中使用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.47.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="empty-slots"><code>&lt;empty&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td style="text-align:center">图片/图标</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

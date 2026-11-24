@@ -1,0 +1,366 @@
+
+<!-- demo:carousel/basic -->
+<h3>基本用法</h3>
+<p>基本用法</p>
+<template data-demo-source>
+<template>
+  <a-carousel
+    :style="{
+      width: '600px',
+      height: '240px',
+    }"
+    :default-current="2"
+    @change="handleChange"
+  >
+    <a-carousel-item v-for="image in images">
+      <img
+        :src="image"
+        :style="{
+          width: '100%',
+        }"
+      />
+    </a-carousel-item>
+  </a-carousel>
+</template>
+
+<script setup>
+const images = [
+  "/images/50c19c7e3caf9fff.webp",
+  "/images/83bfbb6675770ee7.webp",
+  "/images/def91c3d4d70d932.webp"
+];
+const handleChange = (value) => {
+  console.log(value);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:carousel/auto -->
+<h3>自动切换</h3>
+<p>可以通过 <code>autoPlay</code> 设置是否自动切换。
+可设置 <code>moveSpeed</code>, <code>timingFunc</code> 实现不同切换幻灯片效果。</p>
+<template data-demo-source>
+<template>
+  <a-carousel
+    :style="{
+      width: '600px',
+      height: '240px',
+    }"
+    :auto-play="true"
+    indicator-type="dot"
+    show-arrow="hover"
+  >
+    <a-carousel-item v-for="image in images">
+      <img
+        :src="image"
+        :style="{
+          width: '100%',
+        }"
+      />
+    </a-carousel-item>
+  </a-carousel>
+</template>
+
+<script setup>
+const images = [
+  "/images/50c19c7e3caf9fff.webp",
+  "/images/83bfbb6675770ee7.webp",
+  "/images/def91c3d4d70d932.webp"
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:carousel/indicator -->
+<h3>指示器</h3>
+<p>可以指定指示器类型：<code>dot</code> | <code>line</code> | <code>slider</code> 和位置 <code>left</code> | <code>right</code> | <code>top</code> | <code>bottom</code> | <code>outer</code>。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group
+      type="button"
+      @change="handleUpdateType"
+      style="{ marginBottom: '10px' }"
+      :modelValue="indicatorType"
+    >
+      <a-radio value="dot">dot</a-radio>
+      <a-radio value="line">line</a-radio>
+      <a-radio value="slider">slider</a-radio>
+    </a-radio-group>
+    <a-radio-group
+      type="button"
+      @change="handleUpdatePosition"
+      :style="{ marginBottom: '20px' }"
+      :modelValue="indicatorPosition"
+    >
+      <a-radio value="left">left</a-radio>
+      <a-radio value="right">right</a-radio>
+      <a-radio value="top">top</a-radio>
+      <a-radio value="bottom">bottom</a-radio>
+      <a-radio value="outer">outer</a-radio>
+    </a-radio-group>
+    <a-carousel
+      :indicator-type="indicatorType"
+      :indicator-position="indicatorPosition"
+      show-arrow="never"
+      :style="{
+        width: '600px',
+        height: '240px',
+      }"
+    >
+      <a-carousel-item v-for="image in images">
+        <img
+          :src="image"
+          :style="{
+            width: '100%',
+          }"
+        />
+      </a-carousel-item>
+    </a-carousel>
+  </a-space>
+</template>
+
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  images: [
+    "/images/50c19c7e3caf9fff.webp",
+    "/images/83bfbb6675770ee7.webp",
+    "/images/def91c3d4d70d932.webp"
+  ],
+  indicatorType: "dot",
+  indicatorPosition: "bottom"
+});
+const { images, indicatorType, indicatorPosition } = toRefs(state);
+const handleUpdateType = (type) => {
+  indicatorType.value = type;
+};
+const handleUpdatePosition = (position) => {
+  indicatorPosition.value = position;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:carousel/direction -->
+<h3>切换方向</h3>
+<p>默认情况下，<code>direction</code> 为 <code>horizontal</code>。通过设置 <code>direction</code> 为 <code>vertical</code> 来使用垂直方向切换。</p>
+<template data-demo-source>
+<template>
+  <a-carousel
+    :style="{
+      width: '600px',
+      height: '240px',
+    }"
+    show-arrow="never"
+    direction="vertical"
+    indicator-position="right"
+  >
+    <a-carousel-item v-for="image in images">
+      <img
+        :src="image"
+        :style="{
+          width: '100%',
+        }"
+      />
+    </a-carousel-item>
+  </a-carousel>
+</template>
+
+<script setup>
+const images = [
+  "/images/50c19c7e3caf9fff.webp",
+  "/images/83bfbb6675770ee7.webp",
+  "/images/def91c3d4d70d932.webp"
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:carousel/card -->
+<h3>卡片化</h3>
+<p>当页面宽度方向空间空余，但高度方向空间多余时，可指定 <code>animation</code> 为 <code>card</code> 使用卡片化风格。</p>
+<template data-demo-source>
+<template>
+  <a-carousel
+    :autoPlay="true"
+    animation-name="card"
+    show-arrow="never"
+    indicator-position="outer"
+    :style="{
+      width: '100%',
+      height: '240px',
+    }"
+  >
+    <a-carousel-item v-for="image in images" :style="{ width: '60%' }">
+      <img
+        :src="image"
+        :style="{
+          width: '100%',
+        }"
+      />
+    </a-carousel-item>
+  </a-carousel>
+</template>
+
+<script setup>
+const images = [
+  "/images/50c19c7e3caf9fff.webp",
+  "/images/83bfbb6675770ee7.webp",
+  "/images/def91c3d4d70d932.webp",
+  "/images/a12b6c5dc80634e9.webp"
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:carousel/fade -->
+<h3>渐隐切换</h3>
+<p>指定 <code>animation</code> 为 <code>fade</code> 使用渐隐切换效果。</p>
+<template data-demo-source>
+<template>
+  <a-carousel
+    :style="{
+      width: '600px',
+      height: '240px',
+    }"
+    :auto-play="true"
+    animation-name="fade"
+    show-arrow="never"
+  >
+    <a-carousel-item v-for="image in images">
+      <img
+        :src="image"
+        :style="{
+          width: '100%',
+        }"
+      />
+    </a-carousel-item>
+  </a-carousel>
+</template>
+
+<script setup>
+const images = [
+  "/images/50c19c7e3caf9fff.webp",
+  "/images/83bfbb6675770ee7.webp",
+  "/images/def91c3d4d70d932.webp"
+];
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="carousel-props"><code>&lt;carousel&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>current <strong>(v-model)</strong></td>
+<td>当前展示索引</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-current</td>
+<td>当前展示索引</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+</tr>
+<tr>
+<td>auto-play</td>
+<td>是否自动循环展示，或者传入 <code>{ interval: 自动切换的时间间隔(默认: 3000), hoverToPause: 鼠标悬浮时是否暂停自动切换(默认: true) }</code> 进行高级配置</td>
+<td><code>boolean | CarouselAutoPlayConfig</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>move-speed</td>
+<td>幻灯片移动速率(ms)</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>500</code></td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>切换动画</td>
+<td><code>'slide' | 'fade' | 'card'</code></td>
+<td style="text-align:center"><code>'slide'</code></td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>幻灯片切换触发方式, click/hover 指示器</td>
+<td><code>'click' | 'hover'</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>幻灯片移动方向</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+</tr>
+<tr>
+<td>show-arrow</td>
+<td>切换箭头显示时机</td>
+<td><code>'always' | 'hover' | 'never'</code></td>
+<td style="text-align:center"><code>'always'</code></td>
+</tr>
+<tr>
+<td>arrow-class</td>
+<td>切换箭头样式</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+</tr>
+<tr>
+<td>indicator-type</td>
+<td>指示器类型，可为小方块和小圆点或不显示</td>
+<td><code>'line' | 'dot' | 'slider' | 'never'</code></td>
+<td style="text-align:center"><code>'dot'</code></td>
+</tr>
+<tr>
+<td>indicator-position</td>
+<td>指示器位置</td>
+<td><code>'bottom' | 'top' | 'left' | 'right' | 'outer'</code></td>
+<td style="text-align:center"><code>'bottom'</code></td>
+</tr>
+<tr>
+<td>indicator-class</td>
+<td>指示器的样式</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+</tr>
+<tr>
+<td>transition-timing-function</td>
+<td>过渡速度曲线, 默认匀速 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-timing-function">transition-timing-function</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'cubic-bezier(0.34, 0.69, 0.1, 1)'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="carousel-events"><code>&lt;carousel&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>幻灯片发生切换时的回调函数</td>
+<td>index: <code>number</code><br>prevIndex: <code>number</code><br>isManual: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>

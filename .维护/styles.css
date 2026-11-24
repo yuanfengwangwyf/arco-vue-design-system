@@ -1,0 +1,4 @@
+@import "./public/fonts/inter.css";
+@import "./src/styles/globals.css";
+@import "./demo/styles/demo-shell.css";
+@import "./demo/styles/demo-content.css";

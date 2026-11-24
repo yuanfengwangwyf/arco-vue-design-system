@@ -1,0 +1,483 @@
+
+<!-- demo:card/basic -->
+<h3>基本用法</h3>
+<p>常规的内容容器，可承载文字、列表、图片、段落，常用于模块划分和内容概览。</p>
+<template data-demo-source>
+<template>
+  <div :style="{ display: 'flex' }">
+    <a-card :style="{ width: '360px' }" title="Arco Card">
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      ByteDance's core product, Toutiao ("Headlines"), is a content platform in
+      China and around the world. Toutiao started out as a news recommendation
+      engine and gradually evolved into a platform delivering content in various
+      formats.
+    </a-card>
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/hoverable -->
+<h3>鼠标悬浮样式</h3>
+<p>指定 <code>hoverable</code> 来为卡片添加鼠标悬浮样式，同时你可以通过样式覆盖来自定义悬浮样式。</p>
+<template data-demo-source>
+<template>
+  <div :style="{ display: 'flex' }">
+    <a-card :style="{ width: '360px' }" title="Arco Card" hoverable>
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      Card content <br />
+      Card content
+    </a-card>
+    <a-card class="card-demo" title="Custom hover style" hoverable>
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      Card content <br />
+      Card content
+    </a-card>
+  </div>
+</template>
+<style scoped src="/demo/styles/examples/card/hoverable.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/bordered -->
+<h3>无边框卡片</h3>
+<p>设置 <code>bordered</code> 为 <code>false</code> 来使用无边框卡片。</p>
+<template data-demo-source>
+<template>
+  <div
+    :style="{
+      display: 'flex',
+      width: '100%',
+      boxSizing: 'border-box',
+      padding: '40px',
+      backgroundColor: 'var(--color-fill-2)',
+    }"
+  >
+    <a-card :style="{ width: '360px' }" title="Arco Card" :bordered="false">
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      Card content
+      <br />
+      Card content
+    </a-card>
+    <a-card
+      :style="{ width: '360px', marginLeft: '24px' }"
+      title="Hover me"
+      hoverable
+      :bordered="false"
+    >
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      Card content
+      <br />
+      Card content
+    </a-card>
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/content -->
+<h3>简洁卡片</h3>
+<p>卡片可以只有内容区域。</p>
+<template data-demo-source>
+<template>
+  <a-card hoverable :style="{ width: '360px', marginBottom: '20px' }">
+    <div
+      :style="{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }"
+    >
+      <span
+        :style="{ display: 'flex', alignItems: 'center', color: 'var(--neutral-level-90)' }"
+      >
+        <a-avatar
+          :style="{ marginRight: '8px', backgroundColor: 'var(--color-tone-arcoblue-a100)' }"
+          :size="28"
+        >
+          A
+        </a-avatar>
+        <a-typography-text>Username</a-typography-text>
+      </span>
+      <a-link>More</a-link>
+    </div>
+  </a-card>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/meta -->
+<h3>更灵活的内容展示</h3>
+<p>使用 <code>Card.Meta</code> 支持更加灵活的内容（封面、头像、 标题、描述信息）</p>
+<template data-demo-source>
+<template>
+  <a-card hoverable :style="{ width: '360px' }">
+    <template #cover>
+      <div
+        :style="{
+          height: '204px',
+          overflow: 'hidden',
+        }"
+      >
+        <img
+          :style="{ width: '100%', transform: 'translateY(-20px)' }"
+          alt="dessert"
+          src="/images/c33814d05b3442c4.webp"
+        />
+      </div>
+    </template>
+    <a-card-meta title="Card Title">
+      <template #description>
+        Card content <br />
+        Card content
+      </template>
+    </a-card-meta>
+  </a-card>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/row -->
+<h3>栅格卡片</h3>
+<p>在系统概览页面常常和栅格进行配合。</p>
+<template data-demo-source>
+<template>
+  <div
+    :style="{
+      boxSizing: 'border-box',
+      width: '100%',
+      padding: '40px',
+      backgroundColor: 'var(--color-fill-2)',
+    }"
+  >
+    <a-row :gutter="20" :style="{ marginBottom: '20px' }">
+      <a-col :span="8">
+        <a-card title="Arco Card" :bordered="false" :style="{ width: '100%' }">
+          <template #extra>
+            <a-link>More</a-link>
+          </template>
+          Card content
+        </a-card>
+      </a-col>
+      <a-col :span="8">
+        <a-card title="Arco Card" :bordered="false" :style="{ width: '100%' }">
+          <template #extra>
+            <a-link>More</a-link>
+          </template>
+          Card content
+        </a-card>
+      </a-col>
+      <a-col :span="8">
+        <a-card title="Arco Card" :bordered="false" :style="{ width: '100%' }">
+          <template #extra>
+            <a-link>More</a-link>
+          </template>
+          Card content
+        </a-card>
+      </a-col>
+    </a-row>
+    <a-row :gutter="20">
+      <a-col :span="16">
+        <a-card title="Arco Card" :bordered="false" :style="{ width: '100%' }">
+          <template #extra>
+            <a-link>More</a-link>
+          </template>
+          Card content
+        </a-card>
+      </a-col>
+      <a-col :span="8">
+        <a-card title="Arco Card" :bordered="false" :style="{ width: '100%' }">
+          <template #extra>
+            <a-link>More</a-link>
+          </template>
+          Card content
+        </a-card>
+      </a-col>
+    </a-row>
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/grid -->
+<h3>网络型内嵌卡片</h3>
+<p>通过 <code>Card.Grid</code> 来使用卡片内容区隔模式。</p>
+<template data-demo-source>
+<template>
+  <a-card :bordered="false" :style="{ width: '100%' }">
+    <a-card-grid
+      v-for="(_, index) in new Array(7)"
+      :key="index"
+      :hoverable="index % 2 === 0"
+      :style="{ width: '25%' }"
+    >
+      <a-card class="card-demo" title="Arco Card" :bordered="false">
+        <template #extra>
+          <a-link>More</a-link>
+        </template>
+        <p :style="{ margin: 0 }">
+          {{ index % 2 === 0 ? 'Card allow to hover' : 'Card content' }}
+        </p>
+      </a-card>
+    </a-card-grid>
+  </a-card>
+</template>
+<style scoped src="/demo/styles/examples/card/grid.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/inner -->
+<h3>内部卡片</h3>
+<p>卡片中可以嵌套其他卡片组件。</p>
+<template data-demo-source>
+<template>
+  <a-card title="Arco Card">
+    <a-card :style="{ marginBottom: '20px' }" title="Inner Card Title">
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      Inner Card Content
+    </a-card>
+    <a-card title="Inner Card Title">
+      <template #extra>
+        <a-link>More</a-link>
+      </template>
+      Inner Card Content
+    </a-card>
+  </a-card>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:card/actions -->
+<h3>支持更多内容配置</h3>
+<p><code>actions</code> slot 可以用于展示底部按钮组。</p>
+<template data-demo-source>
+<template>
+  <a-card :style="{ width: '360px' }">
+    <template #actions>
+      <span class="icon-hover"> <IconThumbUp /> </span>
+      <span class="icon-hover"> <IconShareInternal /> </span>
+      <span class="icon-hover"> <IconMore /> </span>
+    </template>
+    <template #cover>
+      <div
+        :style="{
+          height: '204px',
+          overflow: 'hidden',
+        }"
+      >
+        <img
+          :style="{ width: '100%', transform: 'translateY(-20px)' }"
+          alt="dessert"
+          src="/images/c33814d05b3442c4.webp"
+        />
+      </div>
+    </template>
+    <a-card-meta title="Card Title" description="This is the description">
+      <template #avatar>
+        <div
+          :style="{ display: 'flex', alignItems: 'center', color: 'var(--neutral-level-90)' }"
+        >
+          <a-avatar :size="24" :style="{ marginRight: '8px' }"> A </a-avatar>
+          <a-typography-text>Username</a-typography-text>
+        </div>
+      </template>
+    </a-card-meta>
+  </a-card>
+</template>
+
+<script setup>
+import {
+  IconThumbUp,
+  IconShareInternal,
+  IconMore
+} from "@arco-design/web-vue/es/icon";
+</script>
+<style scoped src="/demo/styles/examples/card/actions.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="card-props"><code>&lt;card&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bordered</td>
+<td>是否有边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否为加载中</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>hoverable</td>
+<td>是否可悬浮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>卡片尺寸</td>
+<td><code>'medium' | 'small'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+</tr>
+<tr>
+<td>header-style</td>
+<td>自定义标题区域样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>() =&gt; ({})</code></td>
+</tr>
+<tr>
+<td>body-style</td>
+<td>内容区域自定义样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>() =&gt; ({})</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>卡片标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>extra</td>
+<td>卡片右上角的操作区域</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="card-slots"><code>&lt;card&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>actions</td>
+<td style="text-align:center">卡片底部的操作组</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cover</td>
+<td style="text-align:center">卡片封面</td>
+<td>-</td>
+</tr>
+<tr>
+<td>extra</td>
+<td style="text-align:center">卡片右上角的操作区域</td>
+<td>-</td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">卡片标题</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="card-meta-props"><code>&lt;card-meta&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>描述</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="card-meta-slots"><code>&lt;card-meta&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td style="text-align:center">描述</td>
+<td>-</td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td style="text-align:center">头像</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="card-grid-props"><code>&lt;card-grid&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hoverable</td>
+<td>是否可以悬浮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>

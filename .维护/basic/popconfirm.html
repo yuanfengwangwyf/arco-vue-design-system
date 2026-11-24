@@ -1,0 +1,318 @@
+
+<!-- demo:popconfirm/basic -->
+<h3>基本用法</h3>
+<p>气泡确认框的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-popconfirm content="Are you sure you want to delete?">
+    <a-button>Click To Delete</a-button>
+  </a-popconfirm>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:popconfirm/custom -->
+<h3>自定义按钮</h3>
+<p>自定义按钮的文字或图标。</p>
+<template data-demo-source>
+<template>
+  <a-popconfirm
+    content="Do you want to discard the draft?"
+    okText="Discard"
+    cancelText="No"
+  >
+    <a-button>Discard</a-button>
+  </a-popconfirm>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:popconfirm/position -->
+<h3>弹出位置</h3>
+<p><code>popconfirm</code> 支持 12 个不同的方位。分别为：<code>上左</code> <code>上</code> <code>上右</code> <code>下左</code> <code>下</code> <code>下右</code> <code>左上</code> <code>左</code> <code>左下</code> <code>右上</code> <code>右</code> <code>右下</code>。</p>
+<template data-demo-source>
+<template>
+  <div :style="{ position: 'relative', width: '440px', height: '280px' }">
+    <a-popconfirm content="This is a Popconfirm" position="tl">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '70px' }"
+        >TL</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="top">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '180px' }"
+        >TOP</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="tr">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '0', left: '290px' }"
+        >TR</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="bl">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '70px' }"
+        >BL</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="bottom">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '180px' }"
+        >BOTTOM</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="br">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '240px', left: '290px' }"
+        >BR</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="lt">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '60px', left: '10px' }"
+        >LT</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="left">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '120px', left: '10px' }"
+        >LEFT</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="lb">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '180px', left: '10px' }"
+        >LB</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="rt">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '60px', left: '350px' }"
+        >RT</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="right">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '120px', left: '350px' }"
+        >RIGHT</a-button
+      >
+    </a-popconfirm>
+    <a-popconfirm content="This is a Popconfirm" position="rb">
+      <a-button
+        class="button"
+        :style="{ position: 'absolute', top: '180px', left: '350px' }"
+        >RB</a-button
+      >
+    </a-popconfirm>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/popconfirm/position.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:popconfirm/type -->
+<h3>确认框类型</h3>
+<p>通过 <code>type</code> 属性可以设置确认框类型。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-popconfirm content="Are you sure you want to delete?" type="info">
+      <a-button>Click To Delete</a-button>
+    </a-popconfirm>
+    <a-popconfirm content="Are you sure you want to delete?" type="success">
+      <a-button>Click To Delete</a-button>
+    </a-popconfirm>
+    <a-popconfirm content="Are you sure you want to delete?" type="warning">
+      <a-button>Click To Delete</a-button>
+    </a-popconfirm>
+    <a-popconfirm content="Are you sure you want to delete?" type="error">
+      <a-button>Click To Delete</a-button>
+    </a-popconfirm>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<p><code>&lt;popconfirm&gt;</code> 组件继承 <code>&lt;trigger&gt;</code> 组件的全部属性</p>
+<h2 id="api">API</h2>
+<h3 id="popconfirm-props"><code>&lt;popconfirm&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br' | 'left' | 'lt' | 'lb' | 'right' | 'rt' | 'rb'</code></td>
+<td style="text-align:center"><code>'top'</code></td>
+</tr>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>气泡确认框是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>气泡确认框默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>气泡确认框的类型</td>
+<td><code>'info' | 'success' | 'warning' | 'error'</code></td>
+<td style="text-align:center"><code>'info'</code></td>
+</tr>
+<tr>
+<td>ok-text</td>
+<td>确认按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>cancel-text</td>
+<td>取消按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>ok-loading</td>
+<td>确认按钮是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>ok-button-props</td>
+<td>确认按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>cancel-button-props</td>
+<td>取消按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content-class</td>
+<td>弹出框内容的类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>content-style</td>
+<td>弹出框内容的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>arrow-class</td>
+<td>弹出框箭头的类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>arrow-style</td>
+<td>弹出框箭头的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载点</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>on-before-ok</td>
+<td>触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。</td>
+<td><code>(  done: (closed: boolean) =&gt; void) =&gt; void | boolean | Promise&lt;void | boolean&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>on-before-cancel</td>
+<td>触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。</td>
+<td><code>() =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="popconfirm-events"><code>&lt;popconfirm&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>气泡确认框的显隐状态改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>ok</td>
+<td>点击确认按钮时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>点击取消按钮时触发</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="popconfirm-slots"><code>&lt;popconfirm&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>content</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

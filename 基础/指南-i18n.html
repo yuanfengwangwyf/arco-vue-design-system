@@ -1,0 +1,103 @@
+<p>通过 <a href="/vue/component/config-provider">ConfigProvider</a> 组件实现国际化。</p>
+<h2 id="基本用法">基本用法</h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;a-config-provider :locale=&quot;enUS&quot;&gt;
+    &lt;a-pagination :total=&quot;50&quot; show-total show-jumper show-page-size /&gt;
+  &lt;/a-config-provider&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import enUS from '@arco-design/web-vue/es/locale/lang/en-us';
+
+export default {
+  data() {
+    return {
+      enUS,
+    };
+  },
+};
+&lt;/script&gt;
+</code></pre>
+<h2 id="支持的地区语言">支持的地区语言</h2>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>地区编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简体中文</td>
+<td>zh-CN</td>
+</tr>
+<tr>
+<td>英文</td>
+<td>en-US</td>
+</tr>
+<tr>
+<td>日文</td>
+<td>ja-JP</td>
+</tr>
+<tr>
+<td>繁体中文（中国台湾）</td>
+<td>zh-TW</td>
+</tr>
+<tr>
+<td>葡萄牙语</td>
+<td>pt-PT</td>
+</tr>
+<tr>
+<td>西班牙语</td>
+<td>es-ES</td>
+</tr>
+<tr>
+<td>印度尼西亚语</td>
+<td>id-ID</td>
+</tr>
+<tr>
+<td>法语（法国）</td>
+<td>fr-FR</td>
+</tr>
+<tr>
+<td>德语（德国）</td>
+<td>de-DE</td>
+</tr>
+<tr>
+<td>韩语</td>
+<td>ko-KR</td>
+</tr>
+<tr>
+<td>意大利语(意大利)</td>
+<td>it-IT</td>
+</tr>
+<tr>
+<td>马来语(马来西亚)</td>
+<td>ms-MY</td>
+</tr>
+<tr>
+<td>泰语</td>
+<td>th-TH</td>
+</tr>
+<tr>
+<td>越南语</td>
+<td>vi-VN</td>
+</tr>
+<tr>
+<td>高棉语（柬埔寨）</td>
+<td>km-KH</td>
+</tr>
+<tr>
+<td>阿拉伯语（埃及）</td>
+<td>ar-EG</td>
+</tr>
+<tr>
+<td>俄语（俄罗斯）</td>
+<td>ru-RU</td>
+</tr>
+<tr>
+<td>荷兰语（荷兰）</td>
+<td>nl-NL</td>
+</tr>
+</tbody>
+</table>

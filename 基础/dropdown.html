@@ -1,0 +1,742 @@
+
+<!-- demo:dropdown/basic -->
+<h3>基本用法</h3>
+<p>下拉菜单的基本用法。下拉菜单开启后会为触发元素添加 <code>arco-dropdown-open</code> 类名。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-dropdown @select="handleSelect">
+      <a-button>Click Me</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption disabled>Option 2</a-doption>
+        <a-doption :value="{ value: 'Option3' }">Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown @select="handleSelect" disabled>
+      <a-button disabled>Click Me</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption disabled>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown @select="handleSelect" :popup-max-height="false">
+      <a-button>No Max Height <icon-down /></a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption disabled>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+        <a-doption>Option 4</a-doption>
+        <a-doption>Option 5</a-doption>
+        <a-doption>Option 6</a-doption>
+        <a-doption>Option 7</a-doption>
+        <a-doption>Option 8</a-doption>
+        <a-doption>Option 9</a-doption>
+      </template>
+    </a-dropdown>
+  </a-space>
+</template>
+
+<script setup>
+const handleSelect = (v) => {
+  console.log(v);
+};
+</script>
+
+<style src="/demo/styles/examples/dropdown/basic.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/position -->
+<h3>弹出方向</h3>
+<p>通过 <code>position</code> 支持指定 6 种弹出方位，分别是：top: 向上, tl: 左上, tr: 右上, bottom: 下方(默认), bl: 左下, br: 右下。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-dropdown position="bl">
+      <a-button>Bottom Left</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown position="bottom">
+      <a-button>Bottom</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown position="br">
+      <a-button>Bottom Right</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown position="tl">
+      <a-button>Top Left</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown position="top">
+      <a-button>Top</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown position="tr">
+      <a-button>Top Right</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/trigger -->
+<h3>触发方式</h3>
+<p>通过 <code>trigger</code> 指定触发方式。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-dropdown>
+      <a-button>Click Me</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+    <a-dropdown trigger="hover">
+      <a-button>Hover Me</a-button>
+      <template #content>
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </template>
+    </a-dropdown>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/button -->
+<h3>按钮下拉框</h3>
+<p>可以使用 <code>&lt;dropdown-button&gt;</code> 组件用来展示右边是额外相关功能菜单的按钮。
+<code>2.16.0</code> 版本添加支持。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-dropdown-button>
+      Publish
+      <template #content>
+        <a-doption>Save now</a-doption>
+        <a-doption>Save and Publish</a-doption>
+      </template>
+    </a-dropdown-button>
+    <a-dropdown-button disabled>
+      Disabled
+      <template #content>
+        <a-doption>Save now</a-doption>
+        <a-doption>Save and Publish</a-doption>
+      </template>
+    </a-dropdown-button>
+    <a-dropdown-button>
+      Publish
+      <template #icon>
+        <icon-down />
+      </template>
+      <template #content>
+        <a-doption>Save now</a-doption>
+        <a-doption>Save and Publish</a-doption>
+      </template>
+    </a-dropdown-button>
+  </a-space>
+</template>
+
+<style src="/demo/styles/examples/dropdown/button.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/group -->
+<h3>分组选项</h3>
+<p>通过 <code>&lt;dgroup&gt;</code> 组件使用分组选项。</p>
+<template data-demo-source>
+<template>
+  <a-dropdown>
+    <a-button>Click Me</a-button>
+    <template #content>
+      <a-dgroup title="Group 1">
+        <a-doption>Option 1</a-doption>
+        <a-doption>Option 2</a-doption>
+        <a-doption>Option 3</a-doption>
+      </a-dgroup>
+      <a-dgroup title="Group 2">
+        <a-doption>Option 4</a-doption>
+        <a-doption>Option 5</a-doption>
+        <a-doption>Option 6</a-doption>
+      </a-dgroup>
+    </template>
+  </a-dropdown>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/submenu -->
+<h3>多级菜单</h3>
+<p>带有多级菜单的下拉框。</p>
+<template data-demo-source>
+<template>
+  <a-dropdown>
+    <a-button>Click Me</a-button>
+    <template #content>
+      <a-doption>Option 1</a-doption>
+      <a-dsubmenu value="option-1">
+        <template #default>Option 2</template>
+        <template #content>
+          <a-doption>Option 2-1</a-doption>
+          <a-dsubmenu value="option-2-2" trigger="hover">
+            <template #default>Option 2-2</template>
+            <template #content>
+              <a-doption>Option 2-1</a-doption>
+              <a-doption>Option 2-2</a-doption>
+              <a-doption>Option 2-3</a-doption>
+            </template>
+            <template #footer>
+              <div style="padding: 6px; text-align: center;">
+                <a-button>Click</a-button>
+              </div>
+            </template>
+          </a-dsubmenu>
+          <a-doption>Option 2-3</a-doption>
+        </template>
+      </a-dsubmenu>
+      <a-doption>Option 3</a-doption>
+    </template>
+  </a-dropdown>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/context-menu -->
+<h3>右键菜单</h3>
+<p>移入区域后，可点击鼠标右键触发。</p>
+<template data-demo-source>
+<template>
+  <a-dropdown trigger="contextMenu" alignPoint :style="{ display: 'block' }">
+    <div
+      :style="{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '300px',
+        backgroundColor: 'var(--color-fill-2)',
+      }"
+    >
+      <div>Click Me</div>
+    </div>
+    <template #content>
+      <a-doption>Option 1</a-doption>
+      <a-doption>Option 2</a-doption>
+      <a-doption>Option 3</a-doption>
+    </template>
+  </a-dropdown>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:dropdown/icon -->
+<h3>带图标的选项</h3>
+<p>通过 <code>icon</code> 插槽在选项前添加图标。</p>
+<template data-demo-source>
+<template>
+  <a-dropdown>
+    <a-button>Click Me</a-button>
+    <template #content>
+      <a-doption>
+        <template #icon>
+          <icon-location />
+        </template>
+        <template #default>Option 1</template>
+      </a-doption>
+      <a-doption>
+        <template #icon>
+          <icon-location />
+        </template>
+        <template #default>Option 2</template>
+      </a-doption>
+      <a-doption>
+        <template #icon>
+          <icon-location />
+        </template>
+        <template #default>Option 3</template>
+      </a-doption>
+    </template>
+  </a-dropdown>
+</template>
+</template>
+<!-- /demo -->
+
+<p><code>&lt;dropdown&gt;</code> 组件继承 <code>&lt;trigger&gt;</code> 组件的全部属性</p>
+<h2 id="api">API</h2>
+<h3 id="dropdown-props"><code>&lt;dropdown&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>弹出框是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>弹出框默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发方式</td>
+<td><code>'hover' | 'click' | 'focus' | 'contextMenu'</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br'</code></td>
+<td style="text-align:center"><code>'bottom'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-max-height</td>
+<td>弹出框最大高度</td>
+<td><code>boolean|number</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>hide-on-select</td>
+<td>是否在用户选择后隐藏弹出框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropdown-events"><code>&lt;dropdown&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>下拉框显示状态发生改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>select</td>
+<td>用户选择时触发</td>
+<td>value: <code>string | number | Record&lt;string, any&gt; | undefined </code><br>ev: <code>Event</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropdown-slots"><code>&lt;dropdown&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">页脚</td>
+<td>-</td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doption-props"><code>&lt;doption&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>选项值</td>
+<td><code>string|number|object</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="doption-events"><code>&lt;doption&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>点击按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="doption-slots"><code>&lt;doption&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dgroup-props"><code>&lt;dgroup&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>分组标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dgroup-slots"><code>&lt;dgroup&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td style="text-align:center">分组标题</td>
+<td>-</td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dsubmenu-props"><code>&lt;dsubmenu&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>选项值（2.16.0 版本后暂无用处）</td>
+<td><code>string|number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发方式</td>
+<td><code>'hover' | 'click'</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'rt' | 'lt'</code></td>
+<td style="text-align:center"><code>'rt'</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>弹出框是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>弹出框默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>option-props</td>
+<td>自定义选项属性</td>
+<td><code>object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dsubmenu-events"><code>&lt;dsubmenu&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>下拉框显示状态发生改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dsubmenu-slots"><code>&lt;dsubmenu&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>content</td>
+<td style="text-align:center">子菜单内容</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">页脚</td>
+<td>-</td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropdown-button-props"><code>&lt;dropdown-button&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>弹出框是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>弹出框默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发方式</td>
+<td><code>'hover' | 'click' | 'focus' | 'contextMenu'</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br'</code></td>
+<td style="text-align:center"><code>'br'</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>按钮类型</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>按钮大小</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>button-props</td>
+<td>按钮属性</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>hide-on-select</td>
+<td>是否在用户选择后隐藏弹出框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropdown-button-events"><code>&lt;dropdown-button&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>下拉框显示状态发生改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>click</td>
+<td>点击按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>select</td>
+<td>用户选择时触发</td>
+<td>value: <code>string | number | Record&lt;string, any&gt; | undefined</code><br>ev: <code>Event</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dropdown-button-slots"><code>&lt;dropdown-button&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">按钮图标</td>
+<td>popupVisible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>content</td>
+<td style="text-align:center">内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

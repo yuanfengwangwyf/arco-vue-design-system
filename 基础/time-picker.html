@@ -1,0 +1,616 @@
+
+<!-- demo:time-picker/basic -->
+<h3>基本用法</h3>
+<p>时间输入器的基础用法。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker style="width: 194px;" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/rangepicker -->
+<h3>范围选择器</h3>
+<p>时间输入器的范围选择器。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker
+    type="time-range"
+    @select="(valueString, value) => print('onSelect:', valueString, value)"
+    @change="(valueString, value) => print('onChange:', valueString, value)"
+    style="width: 252px;"
+  />
+</template>
+<script setup>
+const print = (...arg) => {
+  console.log(...arg);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/control -->
+<h3>双向绑定</h3>
+<p>支持 <code>v-model</code> 进行数据的双向绑定。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker style="width: 194px" v-model="value" />
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  value: null
+});
+const { value } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/default-value -->
+<h3>默认值</h3>
+<p>只有默认值的情况，可通过 <code>defaultValue</code> 传递。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker
+    defaultValue="18:24:23"
+    style="width: 194px; marginRight: 24px; marginBottom: 24px"
+  />
+  <a-time-picker
+    type="time-range"
+    :defaultValue="['09:24:53', '18:44:33']"
+    style="width: 252px; marginBottom: 24px"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/size -->
+<h3>尺寸</h3>
+<p>有四种尺寸可供选择。</p>
+<template data-demo-source>
+<template>
+  <div style="marginBottom: 20px">
+    <a-radio-group v-model="size" type="button">
+      <a-radio value="mini">mini</a-radio>
+      <a-radio value="small">small</a-radio>
+      <a-radio value="medium">medium</a-radio>
+      <a-radio value="large">large</a-radio>
+    </a-radio-group>
+  </div>
+  <a-time-picker style="width: 194px;" :size="size" />
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  size: "small"
+});
+const { size } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/disabled -->
+<h3>禁用</h3>
+<p>禁用状态。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker disabled style="margin: 0 24px 24px 0;" />
+  <a-time-picker
+    type="time-range"
+    disabled
+    style="width: 252px; margin: 0 24px 24px 0;"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/disabled-time -->
+<h3>禁用部分时间选项</h3>
+<p>通过设置 <code>disabledHours</code> <code>disabledMinutes</code> <code>disabledSeconds</code>，可以禁用 时 / 分 / 秒的部分选项。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker
+    style="width: 194px; margin: 0 24px 24px 0;"
+    :disabledHours="() => [1, 2, 4, 14]"
+    :disabledMinutes="() => [1, 2, 3, 4, 14, 15, 16, 20, 50]"
+    :disabledSeconds="() => [1, 2, 3, 4, 5, 6, 7, 10, 14, 60]"
+  />
+  <a-time-picker
+    type="time-range"
+    style="width: 252px; margin: 0 24px 24px 0;"
+    :disabledHours="() => [1, 2, 4, 14]"
+    :disabledMinutes="() => [1, 2, 3, 4, 14, 15, 16, 20, 50]"
+    :disabledSeconds="() => [1, 2, 3, 4, 5, 6, 7, 10, 14, 60]"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/disable-confirm -->
+<h3>跳过确认</h3>
+<p>跳过确认步骤，直接点击选择时间。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker disableConfirm style="width: 194px; margin: 0 24px 24px 0;" />
+  <a-time-picker
+    type="time-range"
+    disableConfirm
+    style="width: 252px; margin: 0 24px 24px 0;"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/format -->
+<h3>定制格式</h3>
+<p>通过设置 <code>format</code>，可以定制需要显示的时、分、秒。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker
+    format="HH:mm"
+    :defaultValue="defaultValue"
+    style="width: 130px;"
+  />
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  defaultValue: "09:24"
+});
+const { defaultValue } = toRefs(state);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/step -->
+<h3>定制步长</h3>
+<p>通过设置 <code>step</code>，可以定制需要显示的时、分、秒的步长。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker
+    defaultValue="10:25:30"
+    :step="{
+      hour: 2,
+      minute: 5,
+      second: 10,
+    }"
+    style="width: 194px;"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/extra -->
+<h3>附加内容</h3>
+<p>选择框底部显示自定义的内容。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker style="width: 194px;">
+    <template #extra> Extra Footer </template>
+  </a-time-picker>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:time-picker/use-12-hours -->
+<h3>十二小时制</h3>
+<p>通过设置 <code>use12Hours</code>，可以定制需要显示的时、分、秒。</p>
+<template data-demo-source>
+<template>
+  <a-time-picker
+    use12Hours
+    defaultValue="12:20:20 AM"
+    format="hh:mm:ss A"
+    style="width: 194px; margin: 0 24px 24px 0;"
+  />
+  <a-time-picker
+    use12Hours
+    defaultValue="09:20:20 pm"
+    format="hh:mm:ss a"
+    style="width: 194px; margin: 0 24px 24px 0;"
+  />
+  <a-time-picker
+    use12Hours
+    defaultValue="2:20 AM"
+    format="h:mm A"
+    style="width: 194px; margin: 0 24px 24px 0;"
+  />
+  <a-time-picker
+    type="time-range"
+    use12Hours
+    :defaultValue="['12:20:20 AM', '08:30:30 PM']"
+    format="hh:mm:ss A"
+    style="width: 300px; margin: 0 24px 24px 0;"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="time-picker-props"><code>&lt;time-picker&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>选择器类型</td>
+<td><code>'time' | 'time-range'</code></td>
+<td style="text-align:center"><code>'time'</code></td>
+</tr>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string | number | Date | Array&lt;string | number | Date&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值</td>
+<td><code>string | number | Date | Array&lt;string | number | Date&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清除</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>是否为只读模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>format</td>
+<td>展示日期的格式，参考<a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90%E6%A0%BC%E5%BC%8F">字符串解析格式</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'HH:mm:ss'</code></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>提示文案</td>
+<td><code>string | string[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>输入框尺寸</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>use12-hours</td>
+<td>12 小时制</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>step</td>
+<td>设置 时 / 分 / 秒 的选择间隔</td>
+<td><code>{  hour?: number;  minute?: number;  second?: number;}</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled-hours</td>
+<td>禁用的部分小时选项</td>
+<td><code>() =&gt; number[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled-minutes</td>
+<td>禁用的部分分钟选项</td>
+<td><code>(selectedHour?: number) =&gt; number[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled-seconds</td>
+<td>禁用的部分秒数选项</td>
+<td><code>(selectedHour?: number, selectedMinute?: number) =&gt; number[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>hide-disabled-options</td>
+<td>隐藏禁止选择的选项</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>disable-confirm</td>
+<td>禁用确认步骤，开启后直接点选时间不需要点击确认按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出的位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br'</code></td>
+<td style="text-align:center"><code>'bl'</code></td>
+</tr>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>控制弹出框打开或者关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>弹出框默认打开或者关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>trigger-props</td>
+<td>可以传入 <code>Trigger</code> 组件的参数</td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>unmount-on-close</td>
+<td>是否在关闭后销毁 dom 结构</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="time-picker-events"><code>&lt;time-picker&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>组件值发生改变</td>
+<td>timeString: <code>string | Array&lt;string | undefined&gt; | undefined</code><br>time: <code>date | Array&lt;date | undefined&gt; | undefined</code></td>
+</tr>
+<tr>
+<td>select</td>
+<td>选择时间但未触发组件值变化</td>
+<td>timeString: <code>string | Array&lt;string | undefined&gt;</code><br>time: <code>Date | Array&lt;Date | undefined&gt;</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮</td>
+<td>-</td>
+</tr>
+<tr>
+<td>popup-visible-change</td>
+<td>弹出框展开和收起</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="time-picker-slots"><code>&lt;time-picker&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">输入框前缀</td>
+<td>-</td>
+<td style="text-align:left">2.41.0</td>
+</tr>
+<tr>
+<td>suffix-icon</td>
+<td style="text-align:center">输入框后缀图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>extra</td>
+<td style="text-align:center">额外的页脚</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串解析格式">字符串解析格式</h3>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>输出</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>YY</code></td>
+<td>21</td>
+<td style="text-align:right">两位数的年份</td>
+</tr>
+<tr>
+<td><code>YYYY</code></td>
+<td>2021</td>
+<td style="text-align:right">四位数年份</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>1-12</td>
+<td style="text-align:right">月份，从 1 开始</td>
+</tr>
+<tr>
+<td><code>MM</code></td>
+<td>01-12</td>
+<td style="text-align:right">月份，两位数</td>
+</tr>
+<tr>
+<td><code>MMM</code></td>
+<td>Jan-Dec</td>
+<td style="text-align:right">缩写的月份名称</td>
+</tr>
+<tr>
+<td><code>MMMM</code></td>
+<td>January-December</td>
+<td style="text-align:right">完整的月份名称</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>1-31</td>
+<td style="text-align:right">月份里的一天</td>
+</tr>
+<tr>
+<td><code>DD</code></td>
+<td>01-31</td>
+<td style="text-align:right">月份里的一天，两位数</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>0-6</td>
+<td style="text-align:right">一周中的一天，星期天是 0</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>Su-Sa</td>
+<td style="text-align:right">最简写的一周中一天的名称</td>
+</tr>
+<tr>
+<td><code>ddd</code></td>
+<td>Sun-Sat</td>
+<td style="text-align:right">简写的一周中一天的名称</td>
+</tr>
+<tr>
+<td><code>dddd</code></td>
+<td>Sunday-Saturday</td>
+<td style="text-align:right">一周中一天的名称</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td>0-23</td>
+<td style="text-align:right">小时</td>
+</tr>
+<tr>
+<td><code>HH</code></td>
+<td>00-23</td>
+<td style="text-align:right">小时，两位数</td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>1-12</td>
+<td style="text-align:right">小时, 12 小时制</td>
+</tr>
+<tr>
+<td><code>hh</code></td>
+<td>01-12</td>
+<td style="text-align:right">小时, 12 小时制, 两位数</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>0-59</td>
+<td style="text-align:right">分钟</td>
+</tr>
+<tr>
+<td><code>mm</code></td>
+<td>00-59</td>
+<td style="text-align:right">分钟，两位数</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>0-59</td>
+<td style="text-align:right">秒</td>
+</tr>
+<tr>
+<td><code>ss</code></td>
+<td>00-59</td>
+<td style="text-align:right">秒，两位数</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>0-9</td>
+<td style="text-align:right">数百毫秒，一位数</td>
+</tr>
+<tr>
+<td><code>SS</code></td>
+<td>00-99</td>
+<td style="text-align:right">几十毫秒，两位数</td>
+</tr>
+<tr>
+<td><code>SSS</code></td>
+<td>000-999</td>
+<td style="text-align:right">毫秒，三位数字</td>
+</tr>
+<tr>
+<td><code>Z</code></td>
+<td>-5:00</td>
+<td style="text-align:right">UTC 的偏移量</td>
+</tr>
+<tr>
+<td><code>ZZ</code></td>
+<td>-0500</td>
+<td style="text-align:right">UTC 的偏移量，数字前面加上 0</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>AM PM</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>am pm</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td><code>Do</code></td>
+<td>1st... 3st</td>
+<td style="text-align:right">带序号的月份中的某天</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>1410715640.579</td>
+<td style="text-align:right">Unix 时间戳</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>1410715640579</td>
+<td style="text-align:right">Unix 毫秒时间戳</td>
+</tr>
+</tbody>
+</table>

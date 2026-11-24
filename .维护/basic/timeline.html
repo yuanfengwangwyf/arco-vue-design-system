@@ -1,0 +1,635 @@
+
+<!-- demo:timeline/basic -->
+<h3>基本用法</h3>
+<p>基本使用</p>
+<template data-demo-source>
+<template>
+  <div :style="{ marginBottom: '40px' }">
+    <a-typography-text :style="{ verticalAlign: 'middle', marginRight: '8px' }">
+      Reverse
+    </a-typography-text>
+    <a-radio-group
+      @change="handleChange"
+      style="{ marginBottom: '30px' }"
+      :modelValue="isReverse"
+    >
+      <a-radio :value="false">No Reverse</a-radio>
+      <a-radio :value="true">Reverse</a-radio>
+    </a-radio-group>
+  </div>
+  <a-timeline :reverse="isReverse">
+    <a-timeline-item label="2017-03-10">The first milestone</a-timeline-item>
+    <a-timeline-item label="2018-05-12">The second milestone</a-timeline-item>
+    <a-timeline-item label="2020-09-30">The third milestone</a-timeline-item>
+  </a-timeline>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const isReverse = ref(false);
+const handleChange = (bool) => {
+  isReverse.value = bool;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/icon -->
+<h3>自定义节点内容</h3>
+<p>自定义节点内容</p>
+<template data-demo-source>
+<template>
+  <a-timeline>
+    <a-timeline-item label="2017-03-10" dotColor="var(--color-tone-green-a100)">
+      The first milestone
+    </a-timeline-item>
+    <a-timeline-item label="2018-05-22">The second milestone</a-timeline-item>
+    <a-timeline-item label="2020-06-22" dotColor="var(--color-tone-red-a100)">
+      The third milestone
+      <IconExclamationCircleFill
+        :style="{ color: 'F53F3F', fontSize: '12px', marginLeft: '4px' }"
+      />
+    </a-timeline-item>
+    <a-timeline-item label="2020-09-30" dotColor="var(--neutral-level-25)">
+      The fourth milestone
+    </a-timeline-item>
+  </a-timeline>
+</template>
+
+<script setup>
+import { IconExclamationCircleFill } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/dot -->
+<h3>自定义节点</h3>
+<p>可以通过属性 <code>dotColor</code>, <code>dotType</code> 设置节点的颜色以及节点类型。同时可通过 <code>dot</code> 直接传入 DOM 自定义节点样式。优先级高于 <code>dotColor</code> 和 <code>dotType</code></p>
+<template data-demo-source>
+<template>
+  <div :style="{ display: 'flex' }">
+    <a-timeline :style="{ marginRight: '40px' }">
+      <a-timeline-item label="2020-04-12" dotColor="var(--color-tone-green-a100)">
+        The first milestone
+      </a-timeline-item>
+      <a-timeline-item label="2020-05-17">
+        The second milestone
+      </a-timeline-item>
+      <a-timeline-item label="2020-06-22">
+        <template #dot>
+          <IconClockCircle :style="{ fontSize: '12px', color: 'var(--color-tone-red-a100)' }" />
+        </template>
+        The third milestone
+      </a-timeline-item>
+      <a-timeline-item label="2020-06-22" dotColor="var(--color-fill-4)">
+        The third milestone
+      </a-timeline-item>
+    </a-timeline>
+
+    <a-timeline :style="{ marginRight: '40px' }">
+      <a-timeline-item label="2020-04-12">
+        <template #dot>
+          <IconCheck
+            :style="{
+              fontSize: '12px',
+              padding: '2px',
+              boxSizing: 'border-box',
+              borderRadius: '50%',
+              backgroundColor: 'var(--color-primary-light-1)',
+            }"
+          />
+        </template>
+        The first milestone
+      </a-timeline-item>
+      <a-timeline-item label="2020-05-17">
+        <template #dot>
+          <IconCheck
+            :style="{
+              fontSize: '12px',
+              padding: '2px',
+              boxSizing: 'border-box',
+              borderRadius: '50%',
+              backgroundColor: 'var(--color-primary-light-1)',
+            }"
+          />
+        </template>
+      </a-timeline-item>
+      <a-timeline-item label="2020-06-22">The third milestone</a-timeline-item>
+      <a-timeline-item label="2020-06-22" dotColor="var(--color-fill-4)">
+        The third milestone
+      </a-timeline-item>
+    </a-timeline>
+
+    <a-timeline>
+      <a-timeline-item label="2020-04-12">The first milestone</a-timeline-item>
+      <a-timeline-item label="2020-05-17" dotColor="var(--color-fill-4)">
+        The second milestone
+      </a-timeline-item>
+      <a-timeline-item label="2020-06-22" dotColor="var(--color-fill-4)">
+        The third milestone
+      </a-timeline-item>
+    </a-timeline>
+  </div>
+</template>
+
+<script setup>
+import { IconCheck } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/type -->
+<h3>自定义轴线样式</h3>
+<p>自定义轴线的示例。</p>
+<template data-demo-source>
+<template>
+  <a-timeline>
+    <a-timeline-item label="2017-03-10" lineType="dashed">
+      The first milestone
+      <br />
+      <a-typography-text
+        type="secondary"
+        :style="{ fontSize: '12px', marginTop: '4px' }"
+      >
+        This is a descriptive message
+      </a-typography-text>
+    </a-timeline-item>
+    <a-timeline-item label="2018-05-12" lineType="dashed">
+      The second milestone
+      <br />
+      <a-typography-text
+        type="secondary"
+        :style="{ fontSize: '12px', marginTop: '4px' }"
+      >
+        This is a descriptive message
+      </a-typography-text>
+    </a-timeline-item>
+    <a-timeline-item label="2020-09-30" lineType="dashed">
+      The third milestone
+      <br />
+      <a-typography-text
+        type="secondary"
+        :style="{ fontSize: '12px', marginTop: '4px' }"
+      >
+        This is a descriptive message
+      </a-typography-text>
+    </a-timeline-item>
+  </a-timeline>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/pending -->
+<h3>幽灵节点</h3>
+<p>当任务状态正在发生，还在记录过程中，可用幽灵节点来表示当前的时间节点，通过<code>slot#pending-dot</code>定制其轴点。</p>
+<template data-demo-source>
+<template>
+  <a-row align="center" :style="{ marginBottom: '24px' }">
+    <a-checkbox
+      :checked="!!pendingProps.direction"
+      @change="(v) => onChange({ direction: v ? 'horizontal' : '' })"
+    >
+      horizontal &nbsp; &nbsp;
+    </a-checkbox>
+    <a-checkbox
+      :checked="!!pendingProps.reverse"
+      @change="(v) => onChange({ reverse: v })"
+    >
+      reverse &nbsp; &nbsp;
+    </a-checkbox>
+    <a-checkbox
+      :checked="!!pendingProps.pending"
+      @change="
+        (v) => onChange({ pending: v ? 'This is a pending dot' : false })
+      "
+    >
+      pending &nbsp; &nbsp;
+    </a-checkbox>
+
+    <a-checkbox
+      :checked="!!pendingProps.hasPendingDot"
+      @change="(v) => onChange({ hasPendingDot: v })"
+    >
+      custom pendingDot
+    </a-checkbox>
+  </a-row>
+  <a-timeline v-bind="pendingProps">
+    <template v-if="pendingProps.hasPendingDot" #dot>
+      <IconFire :style="{ color: 'var(--color-tone-red-a100)' }" />
+    </template>
+    <a-timeline-item label="2017-03-10" dotColor="var(--color-tone-green-a100)">
+      The first milestone
+    </a-timeline-item>
+    <a-timeline-item label="2018-05-12" dotColor="var(--color-tone-red-a100)">
+      The second milestone
+    </a-timeline-item>
+    <a-timeline-item label="2020-09-30">The third milestone</a-timeline-item>
+  </a-timeline>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { IconFire } from "@arco-design/web-vue/es/icon";
+const pendingProps = ref({});
+const onChange = (newProps) => {
+  pendingProps.value = {
+    ...pendingProps.value,
+    ...newProps
+  };
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/mode -->
+<h3>时间轴展示类型</h3>
+<p>设置 <code>mode=alternate</code>时将会交替展示内容。同时可以通过设置 <code>TimelineItem</code> 的 <code>positon</code>属性控制时间轴节点的位置.</p>
+<template data-demo-source>
+<template>
+  <a-row justify="space-between">
+    <a-timeline mode="alternate" :style="{ flex: 1 }">
+      <a-timeline-item label="2017-03-10">The first milestone</a-timeline-item>
+      <a-timeline-item label="2018-05-12">The second milestone</a-timeline-item>
+      <a-timeline-item label="2020-09-30" position="bottom">
+        The third milestone
+      </a-timeline-item>
+    </a-timeline>
+    <a-timeline mode="right" :style="{ flex: 1 }">
+      <a-timeline-item label="2017-03-10">The first milestone</a-timeline-item>
+      <a-timeline-item label="2018-05-12">The second milestone</a-timeline-item>
+      <a-timeline-item label="2020-09-30" position="bottom">
+        The third milestone
+      </a-timeline-item>
+    </a-timeline>
+  </a-row>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/vertical -->
+<h3>纵向时间轴</h3>
+<p>竖直方向的时间轴。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-row align="center" :style="{ marginBottom: '24px' }">
+      <a-typography-text>mode: &nbsp; &nbsp;</a-typography-text>
+      <a-radio-group @change="handleChange" :modelValue="mode">
+        <a-radio value="left">left</a-radio>
+        <a-radio value="right">right</a-radio>
+        <a-radio value="alternate">alternate</a-radio>
+      </a-radio-group>
+    </a-row>
+    <a-timeline :mode="mode" labelPosition="relative">
+      <a-timeline-item label="2012-08">
+        <a-row :style="{ display: 'inline-flex', alignItems: 'center' }">
+          <img
+            width="40"
+            :style="{ marginRight: '16px', marginBottom: '12px' }"
+            src="/images/28722bf121110142.png"
+          />
+          <div :style="{ marginBottom: '12px' }">
+            Toutiao
+            <div :style="{ fontSize: '12px', color: 'var(--neutral-level-60)' }">
+              Founded in 2012
+            </div>
+          </div>
+        </a-row>
+      </a-timeline-item>
+      <a-timeline-item label="2017-05">
+        <a-row :style="{ display: 'inline-flex', alignItems: 'center' }">
+          <img
+            width="40"
+            :style="{ marginRight: '16px', marginBottom: '12px' }"
+            src="/images/aec2690643efd302.png"
+          />
+          <div :style="{ marginBottom: '12px' }">
+            Xigua Video
+            <div :style="{ fontSize: '12px', color: 'var(--neutral-level-60)' }">
+              Founded in 2017
+            </div>
+          </div>
+        </a-row>
+      </a-timeline-item>
+      <a-timeline-item label="2018-07">
+        <a-row :style="{ display: 'inline-flex', alignItems: 'center' }">
+          <img
+            width="40"
+            :style="{ marginRight: '16px', marginBottom: '12px' }"
+            src="/images/aec2690643efd302.png"
+          />
+          <div :style="{ marginBottom: '12px' }">
+            Pipidance
+            <div :style="{ fontSize: '12px', color: 'var(--neutral-level-60)' }">
+              Founded in 2018
+            </div>
+          </div>
+        </a-row>
+      </a-timeline-item>
+    </a-timeline>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const mode = ref("left");
+const handleChange = (_mode) => {
+  mode.value = _mode;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/direction -->
+<h3>横向时间轴</h3>
+<p>可以通过 <code>direction</code> 设置展示横向时间轴</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-row align="center" :style="{ marginBottom: '24px' }">
+      <a-typography-text>mode: &nbsp; &nbsp;</a-typography-text>
+      <a-radio-group @change="handleChange" :modelValue="mode">
+        <a-radio value="top">top</a-radio>
+        <a-radio value="bottom">bottom</a-radio>
+        <a-radio value="alternate">alternate</a-radio>
+      </a-radio-group>
+    </a-row>
+    <a-timeline direction="horizontal" pending :mode="mode">
+      <a-timeline-item label="2012-08">
+        <a-row :style="{ display: 'inline-flex', alignItems: 'center' }">
+          <img
+            width="40"
+            :style="{ marginRight: '16px', marginBottom: '12px' }"
+            src="/images/28722bf121110142.png"
+          />
+          <div :style="{ marginBottom: '12px' }">
+            Toutiao
+            <div :style="{ fontSize: '12px', color: 'var(--neutral-level-60)' }">
+              Founded in 2012
+            </div>
+          </div>
+        </a-row>
+      </a-timeline-item>
+      <a-timeline-item label="2017-05">
+        <a-row :style="{ display: 'inline-flex', alignItems: 'center' }">
+          <img
+            width="40"
+            :style="{ marginRight: '16px', marginBottom: '12px' }"
+            src="/images/aec2690643efd302.png"
+          />
+          <div :style="{ marginBottom: '12px' }">
+            Xigua Video
+            <div :style="{ fontSize: '12px', color: 'var(--neutral-level-60)' }">
+              Founded in 2017
+            </div>
+          </div>
+        </a-row>
+      </a-timeline-item>
+      <a-timeline-item label="2018-07">
+        <a-row :style="{ display: 'inline-flex', alignItems: 'center' }">
+          <img
+            width="40"
+            :style="{ marginRight: '16px', marginBottom: '12px' }"
+            src="/images/aec2690643efd302.png"
+          />
+          <div :style="{ marginBottom: '12px' }">
+            Pipidance
+            <div :style="{ fontSize: '12px', color: 'var(--neutral-level-60)' }">
+              Founded in 2018
+            </div>
+          </div>
+        </a-row>
+      </a-timeline-item>
+    </a-timeline>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const mode = ref("top");
+const handleChange = (_mode) => {
+  mode.value = _mode;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/label -->
+<h3>标签文本位置</h3>
+<p>通过 <code>labelPosition</code> 可以设置标签文本的位置。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-row align="center">
+      <a-typography-text>labelPosition: &nbsp; &nbsp;</a-typography-text>
+      <a-radio-group @change="handleLabelPositionChange" :modelValue="pos">
+        <a-radio value="same">same</a-radio>
+        <a-radio value="relative">relative</a-radio>
+      </a-radio-group>
+    </a-row>
+    <a-row align="center" :style="{ margin: '20px 0px 24px' }">
+      <a-typography-text>mode: &nbsp; &nbsp;</a-typography-text>
+      <a-radio-group @change="handleModeChange" :modelValue="mode">
+        <a-radio value="left">left</a-radio>
+        <a-radio value="right">right</a-radio>
+        <a-radio value="alternate">alternate</a-radio>
+      </a-radio-group>
+    </a-row>
+    <a-timeline :mode="mode" :labelPosition="pos">
+      <a-timeline-item label="2017-03-10" dotColor="var(--color-tone-green-a100)">
+        The first milestone
+      </a-timeline-item>
+      <a-timeline-item
+        label="2018-05-12"
+        dotColor="var(--color-tone-red-a100)"
+        labelPosition="same"
+      >
+        The second milestone
+      </a-timeline-item>
+      <a-timeline-item label="2020-09-30" position="bottom">
+        The third milestone
+      </a-timeline-item>
+    </a-timeline>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const mode = ref("left");
+const pos = ref("same");
+const handleLabelPositionChange = (_pos) => {
+  pos.value = _pos;
+};
+const handleModeChange = (_mode) => {
+  mode.value = _mode;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:timeline/custom -->
+<h3>自定义标签</h3>
+<p>可以通过 <code>label</code> 插槽自定义标签</p>
+<template data-demo-source>
+<template>
+  <a-timeline>
+    <a-timeline-item>
+      Code Review
+      <template #label>
+        <a-tag>
+          <template #icon>
+            <icon-check-circle-fill />
+          </template>
+          Passed
+        </a-tag>
+      </template>
+    </a-timeline-item>
+  </a-timeline>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="timeline-props"><code>&lt;timeline&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reverse</td>
+<td>是否倒序</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>时间轴方向</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'vertical'</code></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>时间轴的展示类型：时间轴在左侧，时间轴在右侧, 交替出现。</td>
+<td><code>'left' | 'right' | 'top' | 'bottom' | 'alternate'</code></td>
+<td style="text-align:center"><code>'left'</code></td>
+</tr>
+<tr>
+<td>pending</td>
+<td>是否展示幽灵节点，设置为 true 时候只展示幽灵节点。传入ReactNode时，会作为节点内容展示。</td>
+<td><code>boolean|string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>label-position</td>
+<td>设置标签文本的位置</td>
+<td><code>'relative' | 'same'</code></td>
+<td style="text-align:center"><code>'same'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="timeline-slots"><code>&lt;timeline&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dot</td>
+<td style="text-align:center">幽灵节点</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="timeline-item-props"><code>&lt;timeline-item&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dot-color</td>
+<td>节点颜色</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>dot-type</td>
+<td>节点类型：空心圆/实心圆</td>
+<td><code>'hollow' | 'solid'</code></td>
+<td style="text-align:center"><code>'solid'</code></td>
+</tr>
+<tr>
+<td>line-type</td>
+<td>时间轴类型：实线/虚线/点状线</td>
+<td><code>'solid' | 'dashed' | 'dotted'</code></td>
+<td style="text-align:center"><code>'solid'</code></td>
+</tr>
+<tr>
+<td>line-color</td>
+<td>时间轴颜色</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>标签文本</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td>Item 位置</td>
+<td><code>PositionType</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="timeline-item-slots"><code>&lt;timeline-item&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dot</td>
+<td style="text-align:center">自定义节点</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>label</td>
+<td style="text-align:center">自定义标签</td>
+<td>-</td>
+<td style="text-align:left">2.50.0</td>
+</tr>
+</tbody>
+</table>

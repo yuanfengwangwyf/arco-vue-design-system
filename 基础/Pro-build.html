@@ -1,0 +1,26 @@
+<h2 id="打包构建">打包构建</h2>
+<p>当代码书写完成后，执行以下命令即可打包代码</p>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>该命令调用的是 vite 提供的打包命令，打包完成后，会在根目录生成 <code>dist</code> 文件夹，这里面就是可以用于部署的代码。</p>
+<p>PS: 打包体积缩减提示！！！</p>
+<p>因为在Pro项目中，展示的table组件需要 vue compile 功能，所以引入了带有编译器的版本。</p>
+<p>如果不需要vue 模板编译功能，删除对应的业务代码后，配置指定的vue版本，构建打包以缩小打包体积。</p>
+<p>如果需要 vue 模板编译 能力，可在 vite.config.prod.ts 文件 中进行配置（如下）。</p>
+<pre><code class="language-ts">// config/vite.config.build.ts
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+ mode: 'production',
+ ...
+ resolve: {
+   alias: [
+     {
+       find: 'vue',
+       replacement: 'vue/dist/vue.esm-bundler.js', // 需要编译tmp
+     },
+   ],
+ },
+});
+</code></pre>
+<p>更多具体配置详见<a href="https://vitejs.dev/">vite</a><a href="https://vitejs.dev/">官网</a>。</p>

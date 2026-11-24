@@ -1,0 +1,262 @@
+
+<!-- demo:result/basic -->
+<h3>基本用法</h3>
+<p>展示结果状态。</p>
+<template data-demo-source>
+<template>
+  <a-result title="This is title content" subtitle="This is subtitle content">
+    <template #extra>
+      <a-space>
+        <a-button type="secondary">Again</a-button>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/success -->
+<h3>成功状态</h3>
+<p>展示成功状态。</p>
+<template data-demo-source>
+<template>
+  <a-result status="success" title="This is title content">
+    <template #subtitle> This is subtitle content </template>
+    <template #extra>
+      <a-space>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/warning -->
+<h3>警告状态</h3>
+<p>展示警告状态。</p>
+<template data-demo-source>
+<template>
+  <a-result status="warning" title="This is title content">
+    <template #subtitle> This is subtitle content </template>
+
+    <template #extra>
+      <a-space>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/error -->
+<h3>错误状态</h3>
+<p>展示错误状态。</p>
+<template data-demo-source>
+<template>
+  <a-result status="error" title="This is title content">
+    <template #subtitle> This is subtitle content </template>
+
+    <template #extra>
+      <a-space>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/403 -->
+<h3>HTTP状态码 403</h3>
+<p>没有当前页面的访问权限。</p>
+<template data-demo-source>
+<template>
+  <a-result
+    status="403"
+    subtitle="Access to this resource on the server is denied."
+  >
+    <template #extra>
+      <a-space>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/404 -->
+<h3>HTTP状态码 404</h3>
+<p>页面未找到</p>
+<template data-demo-source>
+<template>
+  <a-result status="404" subtitle="Whoops, that page is gone.">
+    <template #extra>
+      <a-space>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/500 -->
+<h3>HTTP状态码 500</h3>
+<p>通常表示服务器错误</p>
+<template data-demo-source>
+<template>
+  <a-result status="500" subtitle="This page isn’t working.">
+    <template #extra>
+      <a-space>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/custom -->
+<h3>自定义状态</h3>
+<p>自定义状态。需要传入指定的图标</p>
+<template data-demo-source>
+<template>
+  <a-result
+    :status="null"
+    title="This is title content"
+    subtitle="This is subtitle content"
+  >
+    <template #icon>
+      <IconFaceSmileFill />
+    </template>
+    <template #extra>
+      <a-space>
+        <a-button type="secondary">Again</a-button>
+        <a-button type="primary">Back</a-button>
+      </a-space>
+    </template>
+  </a-result>
+</template>
+<script setup>
+import { IconFaceSmileFill } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:result/all -->
+<h3>完整功能</h3>
+<p>完整功能</p>
+<template data-demo-source>
+<template>
+  <a-result status="error" title="No internet ">
+    <template #icon>
+      <IconFaceFrownFill />
+    </template>
+    <template #subtitle> DNS_PROBE_FINISHED_NO_INTERNET </template>
+
+    <template #extra>
+      <a-button type="primary">Refresh</a-button>
+    </template>
+    <a-typography style="background: var(--color-fill-2); padding: 24px;">
+      <a-typography-paragraph>Try:</a-typography-paragraph>
+      <ul>
+        <li> Checking the network cables, modem, and router </li>
+        <li> Reconnecting to Wi-Fi </li>
+      </ul>
+    </a-typography>
+  </a-result>
+</template>
+
+<script setup>
+import { IconFaceFrownFill } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="result-props"><code>&lt;result&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>结果页显示的状态</td>
+<td><code>'info' | 'success' | 'warning' | 'error' | '403' | '404' | '500' | null</code></td>
+<td style="text-align:center"><code>'info'</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>子标题内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="result-slots"><code>&lt;result&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td style="text-align:center">副标题</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>extra</td>
+<td style="text-align:center">操作区</td>
+<td>-</td>
+<td style="text-align:left">2.8.0</td>
+</tr>
+<tr>
+<td>default</td>
+<td style="text-align:center">默认插槽</td>
+<td>-</td>
+<td style="text-align:left">2.8.0</td>
+</tr>
+</tbody>
+</table>

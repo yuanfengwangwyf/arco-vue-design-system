@@ -1,0 +1,205 @@
+
+<!-- demo:link/basic -->
+<h3>基本用法</h3>
+<p>链接的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-link href="link">Link</a-link>
+    <a-link href="link" disabled>Link</a-link>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:link/status -->
+<h3>链接的状态</h3>
+<p>链接的状态分为 <code>normal</code> - <strong>正常（默认）</strong>、<code>success</code> - <strong>成功</strong>、<code>warning</code> - <strong>警告</strong>、<code>danger</code> - <strong>危险</strong>四种。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical">
+    <a-space>
+      <a-link href="link">Normal Link</a-link>
+      <a-link href="link" disabled>Normal Link</a-link>
+    </a-space>
+    <a-space>
+      <a-link href="link" status="success">Success Link</a-link>
+      <a-link href="link" status="success" disabled>Success Link</a-link>
+    </a-space>
+    <a-space>
+      <a-link href="link" status="warning">Warning Link</a-link>
+      <a-link href="link" status="warning" disabled>Warning Link</a-link>
+    </a-space>
+    <a-space>
+      <a-link href="link" status="danger">Danger Link</a-link>
+      <a-link href="link" status="danger" disabled>Danger Link</a-link>
+    </a-space>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:link/hoverable -->
+<h3>悬浮状态底色</h3>
+<p>可以通过 hoverable 属性设置是否在悬浮状态时隐藏底色。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-link href="link" :hoverable="false">Link</a-link>
+    <a-link href="link" status="danger" :hoverable="false">Link</a-link>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:link/icon -->
+<h3>图标</h3>
+<p>通过 <code>icon</code> 设置带图标的链接，设置为 <code>true</code> 时候显示默认图标。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-space>
+      <a-link href="link" icon>Link</a-link>
+      <a-link href="link" disabled icon>Link</a-link>
+    </a-space>
+  </div>
+  <div>
+    <a-space>
+      <a-link href="link">
+        <template #icon>
+          <icon-edit />
+        </template>
+        Link
+      </a-link>
+      <a-link href="link" disabled>
+        <template #icon>
+          <icon-edit />
+        </template>
+        Link
+      </a-link>
+    </a-space>
+  </div>
+</template>
+
+<script setup>
+import { IconEdit } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:link/loading -->
+<h3>加载中状态</h3>
+<p>通过设置 <code>loading</code> 可以让链接处于加载中状态。处于加载中状态的链接不会触发点击事件。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-link loading>Link</a-link>
+    <a-link :loading="loading1" @click="handleClick1">Link</a-link>
+    <a-link :loading="loading2" @click="handleClick2">
+      <template #icon>
+        <icon-edit />
+      </template>
+      Link
+    </a-link>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { IconEdit } from "@arco-design/web-vue/es/icon";
+const loading1 = ref(false);
+const loading2 = ref(false);
+const handleClick1 = () => {
+  loading1.value = true;
+  setTimeout(() => {
+    loading1.value = false;
+  }, 3e3);
+};
+const handleClick2 = () => {
+  loading2.value = true;
+  setTimeout(() => {
+    loading2.value = false;
+  }, 3e3);
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="link-props"><code>&lt;link&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>href</td>
+<td>链接地址</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>status</td>
+<td>链接的状态</td>
+<td><code>'normal' | 'warning' | 'success' | 'danger'</code></td>
+<td style="text-align:center"><code>'normal'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hoverable</td>
+<td>鼠标悬浮时存在底色</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>图标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>链接是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.37.0</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>链接是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="link-events"><code>&lt;link&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>点击时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+</tbody>
+</table>

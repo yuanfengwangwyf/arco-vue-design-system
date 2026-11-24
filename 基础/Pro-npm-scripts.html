@@ -1,0 +1,29 @@
+<h2 id="配置文件">配置文件</h2>
+<pre><code>├── README.md
+├── config
+│   ├── plugin  # vite插件
+│   ├── vite.config.base.ts  # 基础环境配置
+│   ├── vite.config.dev.ts  # 开发环境配置
+│   ├── vite.config.prod.ts  # 生产环境配置
+└── package.json
+</code></pre>
+<h2 id="本地开发">本地开发</h2>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>调用的命令如下</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vite --config ./config/vite.config.dev.ts&quot;,
+  }
+}
+</code></pre>
+<h2 id="构建生产">构建生产</h2>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>调用的命令如下，可以根据实际需要，查阅<a href="https://vitejs.dev/">vite</a><a href="https://vitejs.dev/">官网</a>，进行输出配置。</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;vue-tsc --noEmit &amp;&amp; vite build --config ./config/vite.config.prod.ts&quot;,
+  }
+}
+</code></pre>

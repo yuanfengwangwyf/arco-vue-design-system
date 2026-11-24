@@ -1,0 +1,6 @@
+html { scroll-padding-top: 84px; }
+body { font-family: Inter, "Microsoft YaHei", system-ui, sans-serif; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--docs-accent); outline-offset: 3px; }
+

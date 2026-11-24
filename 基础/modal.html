@@ -1,0 +1,1091 @@
+
+<!-- demo:modal/basic -->
+<h3>基本用法</h3>
+<p>对话框的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Modal</a-button>
+  <a-modal v-model:visible="visible" @ok="handleOk" @cancel="handleCancel">
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-modal>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/async -->
+<h3>异步关闭</h3>
+<p>可以通过 on-before-ok 更简洁的实现异步关闭功能</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Modal</a-button>
+  <a-modal
+    v-model:visible="visible"
+    @cancel="handleCancel"
+    :on-before-ok="handleBeforeOk"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.
+    </div>
+  </a-modal>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleBeforeOk = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3e3));
+  return true;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/function -->
+<h3>函数调用</h3>
+<p>通过函数的方式使用对话框。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Modal</a-button>
+</template>
+
+<script setup>
+import { h } from "vue";
+import { Modal, Button } from "@arco-design/web-vue";
+const ModalContent = {
+  setup: () => {
+    const onClick = () => {
+      Modal.info({
+        title: "Info Title",
+        content: "This is an nest info message"
+      });
+    };
+    return () => h("div", { class: "info-modal-content" }, [
+      h("span", { style: "margin-bottom: 10px;" }, "This is an info message"),
+      h(Button, { size: "mini", onClick }, "Open Nest Modal")
+    ]);
+  }
+};
+const handleClick = () => {
+  Modal.info({
+    title: "Info Title",
+    content: () => h(ModalContent)
+  });
+};
+</script>
+
+<style src="/demo/styles/examples/modal/function.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/notice -->
+<h3>消息提示</h3>
+<p>有<strong>info</strong>, <strong>success</strong>, <strong>warning</strong>, <strong>error</strong>四种类型的消息提示，仅提供一个确认按钮用于关闭消息提示对话框。
+消息默认会默认开启 <code>simple</code> 和 <code>hideCancel</code>，如果想要取消可以再次设置。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button @click="handleClickInfo">Info</a-button>
+    <a-button @click="handleClickSuccess" status="success">Success</a-button>
+    <a-button @click="handleClickWarning" status="warning">Warning</a-button>
+    <a-button @click="handleClickError" status="danger">Error</a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { Modal } from "@arco-design/web-vue";
+const handleClickInfo = () => {
+  Modal.info({
+    title: "Info Notification",
+    content: "This is an info description which directly indicates a neutral informative change or action."
+  });
+};
+const handleClickSuccess = () => {
+  Modal.success({
+    title: "Success Notification",
+    content: "This is a success notification"
+  });
+};
+const handleClickWarning = () => {
+  Modal.warning({
+    title: "Warning Notification",
+    content: "This is a warning description which directly indicates a warning that might need attention."
+  });
+};
+const handleClickError = () => {
+  Modal.error({
+    title: "Error Notification",
+    content: "This is an error description which directly indicates a dangerous or potentially negative action."
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/width -->
+<h3>对话框的宽度</h3>
+<p>设置 <code>width=&quot;auto&quot;</code> 可以让对话框自适应宽度</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Modal</a-button>
+  <a-modal
+    width="auto"
+    v-model:visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-modal>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/custom -->
+<h3>定制按钮文字</h3>
+<p>设置 <code>okText</code> 与 <code>cancelText</code> 可以自定义按钮文字。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Modal</a-button>
+  <a-modal
+    :visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    okText="Confirm"
+    cancelText="Exit"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-modal>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/form -->
+<h3>弹出层表单</h3>
+<p>在对话框中使用表单</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Form Modal</a-button>
+  <a-modal
+    v-model:visible="visible"
+    title="Modal Form"
+    @cancel="handleCancel"
+    @before-ok="handleBeforeOk"
+  >
+    <a-form :model="form">
+      <a-form-item field="name" label="Name">
+        <a-input v-model="form.name" />
+      </a-form-item>
+      <a-form-item field="post" label="Post">
+        <a-select v-model="form.post">
+          <a-option value="post1">Post1</a-option>
+          <a-option value="post2">Post2</a-option>
+          <a-option value="post3">Post3</a-option>
+          <a-option value="post4">Post4</a-option>
+        </a-select>
+      </a-form-item>
+    </a-form>
+  </a-modal>
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const visible = ref(false);
+const form = reactive({
+  name: "",
+  post: ""
+});
+const handleClick = () => {
+  visible.value = true;
+};
+const handleBeforeOk = (done) => {
+  console.log(form);
+  window.setTimeout(() => {
+    done();
+  }, 3e3);
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/draggable -->
+<h3>可拖动</h3>
+<p>开启 <code>draggable</code> 属性，允许用户拖动对话框。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Draggable Modal</a-button>
+  <a-modal
+    v-model:visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    draggable
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-modal>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:modal/fullscreen -->
+<h3>全屏</h3>
+<p>开启 <code>fullscreen</code> 属性，可以让对话框占满整个容器。</p>
+<template data-demo-source>
+<template>
+  <a-button @click="handleClick">Open Modal</a-button>
+  <a-modal
+    v-model:visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    fullscreen
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.</div
+    >
+  </a-modal>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="modal-props"><code>&lt;modal&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visible <strong>(v-model)</strong></td>
+<td>对话框是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-visible</td>
+<td>对话框默认是否可见（非受控状态）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>width</td>
+<td>对话框的宽度，不设置的情况下会使用样式中的宽度值</td>
+<td><code>number|string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>top</td>
+<td>对话框的距离顶部的高度，居中显示开启的情况下不生效</td>
+<td><code>number|string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>mask</td>
+<td>是否显示遮罩层</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title-align</td>
+<td>标题的水平对齐方向</td>
+<td><code>'start' | 'center'</code></td>
+<td style="text-align:center"><code>'center'</code></td>
+<td style="text-align:left">2.17.0</td>
+</tr>
+<tr>
+<td>align-center</td>
+<td>对话框是否居中显示</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>unmount-on-close</td>
+<td>关闭时是否卸载节点</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mask-closable</td>
+<td>是否点击遮罩层可以关闭对话框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-cancel</td>
+<td>是否隐藏取消按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>simple</td>
+<td>是否开启简单模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>(props: any) =&gt; {  return props.notice;}</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否显示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ok-text</td>
+<td>确认按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancel-text</td>
+<td>取消按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ok-loading</td>
+<td>确认按钮是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ok-button-props</td>
+<td>确认按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancel-button-props</td>
+<td>取消按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer</td>
+<td>是否展示页脚部分</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>render-to-body</td>
+<td>对话框是否挂载在 <code>body</code> 元素下</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>'body'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mask-style</td>
+<td>蒙层的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>modal-class</td>
+<td>对话框的类名</td>
+<td><code>string | any[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>modal-style</td>
+<td>对话框的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>on-before-ok</td>
+<td>触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。</td>
+<td><code>(  done: (closed: boolean) =&gt; void) =&gt; void | boolean | Promise&lt;void | boolean&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>on-before-cancel</td>
+<td>触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。</td>
+<td><code>() =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>esc-to-close</td>
+<td>是否支持 ESC 键关闭对话框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.15.0</td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>是否支持拖动</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.19.0</td>
+</tr>
+<tr>
+<td>fullscreen</td>
+<td>是否开启全屏</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.19.0</td>
+</tr>
+<tr>
+<td>mask-animation-name</td>
+<td>遮罩层动画名字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+<tr>
+<td>modal-animation-name</td>
+<td>对话框动画名字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+<tr>
+<td>body-class</td>
+<td>对话框内容部分的类名</td>
+<td><code>string | any[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>body-style</td>
+<td>对话框内容部分的样式</td>
+<td><code>StyleValue</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>hide-title</td>
+<td>是否隐藏标题</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.50.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modal-events"><code>&lt;modal&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ok</td>
+<td>点击确定按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>点击取消、关闭按钮时触发</td>
+<td>ev: <code>MouseEvent | KeyboardEvent</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>open</td>
+<td>对话框打开后（动画结束）触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>close</td>
+<td>对话框关闭后（动画结束）触发</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>before-open</td>
+<td>对话框打开前触发</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>before-close</td>
+<td>对话框关闭前触发</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modal-slots"><code>&lt;modal&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">页脚</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modal-全局方法"><code>&lt;modal&gt;</code> 全局方法</h3>
+<p>Modal提供的全局方法，可以通过以下三种方法使用：</p>
+<ol>
+<li>通过this.$modal调用</li>
+<li>在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$modal调用</li>
+<li>导入Modal，通过Modal本身调用</li>
+</ol>
+<p>当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext</p>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import { Modal } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Modal._context = app._context;
+</code></pre>
+<h3 id="modal.config">Modal.config</h3>
+<p>设置通过全局方法打开对话框时的默认配置。</p>
+<pre><code class="language-ts">Modal.config({
+  simple: false,
+});
+</code></pre>
+<h3 id="modal.destroyall">Modal.destroyAll</h3>
+<p>关闭所有通过全局方法打开的对话框。</p>
+<pre><code class="language-ts">Modal.destroyAll();
+</code></pre>
+<h3 id="modalconfig">ModalConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer</td>
+<td>页脚</td>
+<td><code>boolean | RenderContent</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否显示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>okText</td>
+<td>确认按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancelText</td>
+<td>取消按钮的内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>okButtonProps</td>
+<td>确认按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cancelButtonProps</td>
+<td>取消按钮的Props</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>okLoading</td>
+<td>确认按钮是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hideCancel</td>
+<td>是否隐藏取消按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mask</td>
+<td>是否显示遮罩层</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>simple</td>
+<td>是否开启简单模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>maskClosable</td>
+<td>是否点击遮罩层可以关闭对话框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>maskStyle</td>
+<td>蒙层的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>alignCenter</td>
+<td>对话框是否居中显示</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>escToClose</td>
+<td>是否支持 ESC 键关闭对话框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.15.0</td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>是否支持拖动</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.19.0</td>
+</tr>
+<tr>
+<td>fullscreen</td>
+<td>是否开启全屏</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.19.0</td>
+</tr>
+<tr>
+<td>onOk</td>
+<td>点击确定按钮的回调函数</td>
+<td><code>(e?: Event) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onCancel</td>
+<td>点击取消按钮的回调函数</td>
+<td><code>(e?: Event) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onBeforeOk</td>
+<td>触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。</td>
+<td><code>(    done: (closed: boolean) =&gt; void  ) =&gt; void | boolean | Promise&lt;void | boolean&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>onBeforeCancel</td>
+<td>触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。</td>
+<td><code>() =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>onOpen</td>
+<td>对话框打开后（动画结束）触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>对话框关闭后（动画结束）触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onBeforeOpen</td>
+<td>对话框打开前触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>onBeforeClose</td>
+<td>对话框关闭前触发</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>width</td>
+<td>对话框的宽度，不设置的情况下会使用样式中的宽度值</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>top</td>
+<td>对话框的距离顶部的高度，居中显示开启的情况下不生效</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>titleAlign</td>
+<td>标题的水平对齐方向</td>
+<td><code>'start' | 'center'</code></td>
+<td style="text-align:center"><code>'center'</code></td>
+<td style="text-align:left">2.17.0</td>
+</tr>
+<tr>
+<td>renderToBody</td>
+<td>对话框是否挂载在 <code>body</code> 元素下</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popupContainer</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>'body'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>modalClass</td>
+<td>对话框的类名</td>
+<td><code>string | any[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>modalStyle</td>
+<td>对话框的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>maskAnimationName</td>
+<td>遮罩层动画名字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+<tr>
+<td>modalAnimationName</td>
+<td>对话框动画名字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+<tr>
+<td>hideTitle</td>
+<td>是否隐藏标题</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.50.0</td>
+</tr>
+<tr>
+<td>bodyClass</td>
+<td>对话框内容部分的类名</td>
+<td><code>string | any[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>bodyStyle</td>
+<td>对话框内容部分的样式</td>
+<td><code>StyleValue</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="modalreturn">ModalReturn</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>关闭对话框</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新对话框</td>
+<td><code>(config: ModalUpdateConfig) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.43.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modalglobalconfig">ModalGlobalConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>simple</td>
+<td>通过全局方法打开时，是否默认开启简单模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="modalmethod">ModalMethod</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td>打开对话框</td>
+<td><code>(config: ModalConfig, appContext?: AppContext) =&gt; ModalReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>打开对话框（简单模式）</td>
+<td><code>(config: ModalConfig, appContext?: AppContext) =&gt; ModalReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>info</td>
+<td>打开信息对话框</td>
+<td><code>(config: ModalConfig, appContext?: AppContext) =&gt; ModalReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>success</td>
+<td>打开成功对话框</td>
+<td><code>(config: ModalConfig, appContext?: AppContext) =&gt; ModalReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>warning</td>
+<td>打开警告对话框</td>
+<td><code>(config: ModalConfig, appContext?: AppContext) =&gt; ModalReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>打开错误对话框</td>
+<td><code>(config: ModalConfig, appContext?: AppContext) =&gt; ModalReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>config</td>
+<td>配置全局方法默认参数</td>
+<td><code>(config: ModalGlobalConfig) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>destroyAll</td>
+<td>关闭所有通过全局方法打开的对话框</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

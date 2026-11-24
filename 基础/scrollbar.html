@@ -1,0 +1,118 @@
+
+<!-- demo:scrollbar/basic -->
+<h3>基本用法</h3>
+<p>滚动条组件基本用法。scrollbar 的默认插槽需要唯一的子元素。</p>
+<template data-demo-source>
+<template>
+  <a-scrollbar style="height:200px;overflow: auto;">
+    <div
+      style="height: 2000px;width: 2000px; background-color: var(--color-primary-light-4);"
+      >Content</div
+    >
+  </a-scrollbar>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:scrollbar/type -->
+<h3>滚动条类型</h3>
+<p>设置 <code>type</code> 属性改变滚动条类型，<code>track</code> 类型会显示滚动条轨道。</p>
+<template data-demo-source>
+<template>
+  <a-scrollbar type="track" style="height:200px;overflow: auto;">
+    <div
+      style="height: 2000px;width: 2000px; background-color: var(--color-primary-light-4);"
+      >Content</div
+    >
+  </a-scrollbar>
+</template>
+
+<script setup>
+</script>
+</template>
+<!-- /demo -->
+
+<h3 id="scrollbar-props"><code>&lt;scrollbar&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>类型</td>
+<td><code>'track' | 'embed'</code></td>
+<td style="text-align:center"><code>'embed'</code></td>
+</tr>
+<tr>
+<td>outer-class</td>
+<td>外层的类名</td>
+<td><code>string|object|array</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>outer-style</td>
+<td>外层的样式</td>
+<td><code>StyleValue</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="scrollbar-events"><code>&lt;scrollbar&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scroll</td>
+<td>滚动时触发</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scrollbar-methods"><code>&lt;scrollbar&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scrollTo</td>
+<td>滚动</td>
+<td>options: <code>number | {left?: number;top?: number}</code><br>y: <code>number</code></td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>scrollTop</td>
+<td>纵向滚动</td>
+<td>top: <code>number</code></td>
+<td>-</td>
+<td style="text-align:left">2.40.0</td>
+</tr>
+<tr>
+<td>scrollLeft</td>
+<td>横向滚动</td>
+<td>left: <code>number</code></td>
+<td>-</td>
+<td style="text-align:left">2.40.0</td>
+</tr>
+</tbody>
+</table>

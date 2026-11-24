@@ -1,0 +1,28 @@
+<h2 id="语言包">语言包</h2>
+<p>国际化首先是语言包的提供，Pro 里面将语言包定义在 <code>src/locale</code> 中，然后导入 <code>main</code> 中生效。</p>
+<pre><code>├── locale
+│ ├── en-US.ts
+│ └── zh-CN.ts
+├── hooks
+│ ├── locale.ts
+└── main.ts
+</code></pre>
+<p>同时在hooks目录中提供获取当前语言以及切换当前语言的hook。</p>
+<pre><code class="language-ts">import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+export default function useLocale() {
+   const i18 = useI18n();
+   const currentLocale = computed(() =&gt; {
+       return i18.locale.value;
+   });
+   const changeLocale = (value: string) =&gt; {
+       i18.locale.value = value;
+       localStorage.setItem('arco-locale', value);
+   };
+   return {
+       currentLocale,
+       changeLocale,
+   };
+}
+</code></pre>

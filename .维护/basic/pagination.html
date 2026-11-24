@@ -1,0 +1,344 @@
+
+<!-- demo:pagination/basic -->
+<h3>基本用法</h3>
+<p>分页的基本用法，<code>total</code> 属性为必填项。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="50" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/ellipsis -->
+<h3>更多页码</h3>
+<p>当页码较大时，会使用更多页码的分页样式。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="200" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/page-size -->
+<h3>每页条数</h3>
+<p>通过设置 <code>show-page-size</code>， 展示每页条数选择器。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="200" show-page-size />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/jumper -->
+<h3>页码跳转</h3>
+<p>通过设置 <code>show-jumper</code>，显示页码跳转输入框。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="50" show-jumper />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/size -->
+<h3>分页尺寸</h3>
+<p>分页分为 <code>mini</code>、<code>small</code>、<code>medium</code>、<code>large</code> 四种尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group type="button" v-model="size">
+      <a-radio value="mini">Mini</a-radio>
+      <a-radio value="small">Small</a-radio>
+      <a-radio value="medium">Medium</a-radio>
+      <a-radio value="large">Large</a-radio>
+    </a-radio-group>
+    <a-pagination
+      :total="50"
+      :size="size"
+      show-total
+      show-jumper
+      show-page-size
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const size = ref("medium");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/simple -->
+<h3>简洁模式</h3>
+<p>通过设置 <code>simple</code> 属性开启简洁模式。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="200" simple />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/total -->
+<h3>展示总数</h3>
+<p>通过设置 <code>show-total</code> 属性显示数据总数。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="200" show-total />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/all -->
+<h3>全部展示</h3>
+<p>展示全部配置项。</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="50" show-total show-jumper show-page-size />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:pagination/custom -->
+<h3>自定义分页按钮</h3>
+<p>可以通过插槽自定义分页按钮内容</p>
+<template data-demo-source>
+<template>
+  <a-pagination :total="200">
+    <template #page-item="{ page }"> - {{ page }} - </template>
+    <template #page-item-step="{ type }">
+      <icon-send
+        :style="
+          type === 'previous' ? { transform: `rotate(180deg)` } : undefined
+        "
+      />
+    </template>
+    <template #page-item-ellipsis>
+      <icon-sun-fill />
+    </template>
+  </a-pagination>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="pagination-props"><code>&lt;pagination&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total <strong>(必填)</strong></td>
+<td>数据总数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>current <strong>(v-model)</strong></td>
+<td>当前的页数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-current</td>
+<td>默认的页数（非受控状态）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-size <strong>(v-model)</strong></td>
+<td>每页展示的数据条数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-page-size</td>
+<td>默认每页展示的数据条数（非受控状态）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>10</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-on-single-page</td>
+<td>单页时是否隐藏分页</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>simple</td>
+<td>是否为简单模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-total</td>
+<td>是否显示数据总数</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-more</td>
+<td>是否显示更多按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-jumper</td>
+<td>是否显示跳转</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-page-size</td>
+<td>是否显示数据条数选择器</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-size-options</td>
+<td>数据条数选择器的选项列表</td>
+<td><code>number[]</code></td>
+<td style="text-align:center"><code>[10, 20, 30, 40, 50]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-size-props</td>
+<td>数据条数选择器的Props</td>
+<td><code>SelectProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>分页选择器的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-item-style</td>
+<td>分页按钮的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>active-page-item-style</td>
+<td>当前分页按钮的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>base-size</td>
+<td>计算显示省略的基础个数。显示省略的个数为 <code>baseSize + 2 * bufferSize</code></td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>6</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>buffer-size</td>
+<td>显示省略号时，当前页码左右显示的页码个数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>2</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-adjust</td>
+<td>是否在改变数据条数时调整页码</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.34.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pagination-events"><code>&lt;pagination&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>页码改变时触发</td>
+<td>current: <code>number</code></td>
+</tr>
+<tr>
+<td>page-size-change</td>
+<td>数据条数改变时触发</td>
+<td>pageSize: <code>number</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pagination-slots"><code>&lt;pagination&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td style="text-align:center">总数</td>
+<td>total: <code>number</code></td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>page-item-ellipsis</td>
+<td style="text-align:center">分页按钮（省略）</td>
+<td>-</td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>page-item-step</td>
+<td style="text-align:center">分页按钮（步）</td>
+<td>type: <code>'previous'|'next'</code>The type of page item step</td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+<tr>
+<td>page-item</td>
+<td style="text-align:center">分页按钮</td>
+<td>page: <code>number</code>The page number of the paging button</td>
+<td style="text-align:left">2.9.0</td>
+</tr>
+</tbody>
+</table>

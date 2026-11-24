@@ -1,0 +1,4038 @@
+{
+  "version": "2.59.0",
+  "commit": "d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3",
+  "pages": [
+    {
+      "id": "start",
+      "title": "快速上手",
+      "group": "开发指南",
+      "order": 0,
+      "route": "/vue/docs/start",
+      "content": "page/start.html",
+      "description": "跟随以下的步骤，快速上手组件库的使用。",
+      "demos": []
+    },
+    {
+      "id": "dark",
+      "title": "暗黑模式",
+      "group": "开发指南",
+      "order": 1,
+      "route": "/vue/docs/dark",
+      "content": "page/dark.html",
+      "description": "组件库内置暗色的主题，你可以轻易的切换到暗色。",
+      "demos": []
+    },
+    {
+      "id": "theme",
+      "title": "定制主题",
+      "group": "开发指南",
+      "order": 2,
+      "route": "/vue/docs/theme",
+      "content": "page/theme.html",
+      "description": "ArcoVue提供了一套蓝色主题（ArcoBlue），用户可以根据自己的需求定制新主题，以满足业务和品牌上的多样化需求。",
+      "demos": []
+    },
+    {
+      "id": "token",
+      "title": "设计变量",
+      "group": "开发指南",
+      "order": 3,
+      "route": "/vue/docs/token",
+      "content": "page/token.html",
+      "description": "",
+      "demos": []
+    },
+    {
+      "id": "i18n",
+      "title": "国际化",
+      "group": "开发指南",
+      "order": 4,
+      "route": "/vue/docs/i18n",
+      "content": "page/i18n.html",
+      "description": "所有组件文案默认使用的是中文，通过设置可以使用其它语言。",
+      "demos": []
+    },
+    {
+      "id": "faq",
+      "title": "常见问题",
+      "group": "开发指南",
+      "order": 5,
+      "route": "/vue/docs/faq",
+      "content": "page/faq.html",
+      "description": "组件库使用中的常见问题解答",
+      "demos": []
+    },
+    {
+      "id": "changelog",
+      "title": "更新日志",
+      "group": "开发指南",
+      "order": 6,
+      "route": "/vue/docs/changelog",
+      "content": "page/changelog.html",
+      "description": "",
+      "demos": []
+    },
+    {
+      "id": "overview",
+      "title": "组件总览",
+      "group": "通用",
+      "order": 7,
+      "route": "/vue/component/overview",
+      "content": "page/overview.html",
+      "description": "",
+      "demos": []
+    },
+    {
+      "id": "component/button",
+      "title": "按钮 Button",
+      "group": "通用",
+      "order": 8,
+      "route": "/vue/component/button",
+      "content": "basic/button.html",
+      "description": "按钮是一种命令组件，可发起一个即时操作。",
+      "demos": [
+        "button/basic",
+        "button/icon",
+        "button/shape",
+        "button/size",
+        "button/status",
+        "button/disabled",
+        "button/loading",
+        "button/long",
+        "button/group"
+      ],
+      "component": "button",
+      "entry": "basic-components/button.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/button"
+    },
+    {
+      "id": "component/icon",
+      "title": "图标 Icon",
+      "group": "通用",
+      "order": 9,
+      "route": "/vue/component/icon",
+      "content": "basic/icon.html",
+      "description": "",
+      "demos": [],
+      "component": "icon",
+      "entry": "basic-components/icon.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/icon"
+    },
+    {
+      "id": "component/link",
+      "title": "链接 Link",
+      "group": "通用",
+      "order": 10,
+      "route": "/vue/component/link",
+      "content": "basic/link.html",
+      "description": "链接的基本样式。",
+      "demos": [
+        "link/basic",
+        "link/status",
+        "link/hoverable",
+        "link/icon",
+        "link/loading"
+      ],
+      "component": "link",
+      "entry": "basic-components/link.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/link"
+    },
+    {
+      "id": "component/typography",
+      "title": "排版 Typography",
+      "group": "通用",
+      "order": 11,
+      "route": "/vue/component/typography",
+      "content": "basic/typography.html",
+      "description": "用于展示标题、段落、文本内容。",
+      "demos": [
+        "typography/basic",
+        "typography/title",
+        "typography/text",
+        "typography/paragraph",
+        "typography/operations",
+        "typography/ellipsis"
+      ],
+      "component": "typography",
+      "entry": "basic-components/typography.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/typography"
+    },
+    {
+      "id": "component/divider",
+      "title": "分割线 Divider",
+      "group": "布局",
+      "order": 12,
+      "route": "/vue/component/divider",
+      "content": "basic/divider.html",
+      "description": "划分内容区域，对模块做分隔。",
+      "demos": [
+        "divider/basic",
+        "divider/with-text",
+        "divider/vertical"
+      ],
+      "component": "divider",
+      "entry": "basic-components/divider.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/divider"
+    },
+    {
+      "id": "component/grid",
+      "title": "栅格 Grid",
+      "group": "布局",
+      "order": 13,
+      "route": "/vue/component/grid",
+      "content": "basic/grid.html",
+      "description": "栅格可以有效的保证页面的一致性、逻辑性、加强团队协作和统一。",
+      "demos": [
+        "grid/basic",
+        "grid/offset",
+        "grid/gutter",
+        "grid/flex-justify",
+        "grid/flex-align",
+        "grid/order",
+        "grid/adaptation",
+        "grid/adaptation-object",
+        "grid/flex",
+        "grid/grid",
+        "grid/grid-responsive"
+      ],
+      "component": "grid",
+      "entry": "basic-components/grid.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/grid"
+    },
+    {
+      "id": "component/layout",
+      "title": "布局 Layout",
+      "group": "布局",
+      "order": 14,
+      "route": "/vue/component/layout",
+      "content": "basic/layout.html",
+      "description": "页面的基础布局框架，常与组件嵌套使用，构建页面整体布局。",
+      "demos": [
+        "layout/basic",
+        "layout/custom-icon",
+        "layout/collapsed",
+        "layout/breakpoint",
+        "layout/resize"
+      ],
+      "component": "layout",
+      "entry": "basic-components/layout.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/layout"
+    },
+    {
+      "id": "component/space",
+      "title": "间距 Space",
+      "group": "布局",
+      "order": 15,
+      "route": "/vue/component/space",
+      "content": "basic/space.html",
+      "description": "设置组件之间的间距",
+      "demos": [
+        "space/basic",
+        "space/vertical",
+        "space/size",
+        "space/align",
+        "space/wrap",
+        "space/split"
+      ],
+      "component": "space",
+      "entry": "basic-components/space.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/space"
+    },
+    {
+      "id": "component/avatar",
+      "title": "头像 Avatar",
+      "group": "数据展示",
+      "order": 16,
+      "route": "/vue/component/avatar",
+      "content": "basic/avatar.html",
+      "description": "用作头像显示，可以为图片、图标或字符形式展示。",
+      "demos": [
+        "avatar/basic",
+        "avatar/size",
+        "avatar/group",
+        "avatar/icon",
+        "avatar/fit",
+        "avatar/image-url"
+      ],
+      "component": "avatar",
+      "entry": "basic-components/avatar.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/avatar"
+    },
+    {
+      "id": "component/badge",
+      "title": "徽标数 Badge",
+      "group": "数据展示",
+      "order": 17,
+      "route": "/vue/component/badge",
+      "content": "basic/badge.html",
+      "description": "一般出现在图标或文字的右上角。提供及时、重要的信息提示。",
+      "demos": [
+        "badge/basic",
+        "badge/alone",
+        "badge/dot",
+        "badge/text",
+        "badge/max",
+        "badge/status",
+        "badge/color"
+      ],
+      "component": "badge",
+      "entry": "basic-components/badge.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/badge"
+    },
+    {
+      "id": "component/calendar",
+      "title": "日历 Calendar",
+      "group": "数据展示",
+      "order": 18,
+      "route": "/vue/component/calendar",
+      "content": "basic/calendar.html",
+      "description": "日历组件。",
+      "demos": [
+        "calendar/basic",
+        "calendar/select-header",
+        "calendar/panel",
+        "calendar/date-content"
+      ],
+      "component": "calendar",
+      "entry": "basic-components/calendar.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/calendar"
+    },
+    {
+      "id": "component/card",
+      "title": "卡片 Card",
+      "group": "数据展示",
+      "order": 19,
+      "route": "/vue/component/card",
+      "content": "basic/card.html",
+      "description": "将信息分类后分标题、详情等区域聚合展现，一般作为简洁介绍或者信息的大盘和入口。",
+      "demos": [
+        "card/basic",
+        "card/hoverable",
+        "card/bordered",
+        "card/content",
+        "card/meta",
+        "card/row",
+        "card/grid",
+        "card/inner",
+        "card/actions"
+      ],
+      "component": "card",
+      "entry": "basic-components/card.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/card"
+    },
+    {
+      "id": "component/carousel",
+      "title": "图片轮播 Carousel",
+      "group": "数据展示",
+      "order": 20,
+      "route": "/vue/component/carousel",
+      "content": "basic/carousel.html",
+      "description": "用于展示多张图片、视频或内嵌框架等内容的循环播放，支持系统自动播放或用户手动切换。",
+      "demos": [
+        "carousel/basic",
+        "carousel/auto",
+        "carousel/indicator",
+        "carousel/direction",
+        "carousel/card",
+        "carousel/fade"
+      ],
+      "component": "carousel",
+      "entry": "basic-components/carousel.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/carousel"
+    },
+    {
+      "id": "component/collapse",
+      "title": "折叠面板 Collapse",
+      "group": "数据展示",
+      "order": 21,
+      "route": "/vue/component/collapse",
+      "content": "basic/collapse.html",
+      "description": "可以折叠 / 展开的内容区域。",
+      "demos": [
+        "collapse/basic",
+        "collapse/accordion",
+        "collapse/nested",
+        "collapse/border-less",
+        "collapse/extra",
+        "collapse/expand-icon",
+        "collapse/custom",
+        "collapse/icon-position",
+        "collapse/destroy"
+      ],
+      "component": "collapse",
+      "entry": "basic-components/collapse.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/collapse"
+    },
+    {
+      "id": "component/comment",
+      "title": "评论 Comment",
+      "group": "数据展示",
+      "order": 22,
+      "route": "/vue/component/comment",
+      "content": "basic/comment.html",
+      "description": "展示评论信息",
+      "demos": [
+        "comment/basic",
+        "comment/align",
+        "comment/nest",
+        "comment/editor"
+      ],
+      "component": "comment",
+      "entry": "basic-components/comment.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/comment"
+    },
+    {
+      "id": "component/descriptions",
+      "title": "描述列表 Descriptions",
+      "group": "数据展示",
+      "order": 23,
+      "route": "/vue/component/descriptions",
+      "content": "basic/descriptions.html",
+      "description": "一般用于详情页的信息展示。",
+      "demos": [
+        "descriptions/basic",
+        "descriptions/single",
+        "descriptions/align",
+        "descriptions/bordered",
+        "descriptions/layout",
+        "descriptions/example"
+      ],
+      "component": "descriptions",
+      "entry": "basic-components/descriptions.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/descriptions"
+    },
+    {
+      "id": "component/empty",
+      "title": "空状态 Empty",
+      "group": "数据展示",
+      "order": 24,
+      "route": "/vue/component/empty",
+      "content": "basic/empty.html",
+      "description": "指当前场景没有对应的数据内容，呈现出的一种状态。",
+      "demos": [
+        "empty/basic",
+        "empty/custom"
+      ],
+      "component": "empty",
+      "entry": "basic-components/empty.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/empty"
+    },
+    {
+      "id": "component/image",
+      "title": "图片 Image",
+      "group": "数据展示",
+      "order": 25,
+      "route": "/vue/component/image",
+      "content": "basic/image.html",
+      "description": "展示和预览图片。",
+      "demos": [
+        "image/basic",
+        "image/caption",
+        "image/extra",
+        "image/error",
+        "image/loader",
+        "image/progressive-loader",
+        "image/custom-preview-actions",
+        "image/preview-group",
+        "image/component-preview",
+        "image/component-preview-group",
+        "image/preview-popup-container"
+      ],
+      "component": "image",
+      "entry": "basic-components/image.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/image"
+    },
+    {
+      "id": "component/list",
+      "title": "列表 List",
+      "group": "数据展示",
+      "order": 26,
+      "route": "/vue/component/list",
+      "content": "basic/list.html",
+      "description": "最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。",
+      "demos": [
+        "list/basic",
+        "list/size",
+        "list/meta",
+        "list/actions",
+        "list/actions-layout",
+        "list/grid",
+        "list/responsive-grid",
+        "list/scroll",
+        "list/virtual-list"
+      ],
+      "component": "list",
+      "entry": "basic-components/list.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/list"
+    },
+    {
+      "id": "component/popover",
+      "title": "气泡卡片 Popover",
+      "group": "数据展示",
+      "order": 27,
+      "route": "/vue/component/popover",
+      "content": "basic/popover.html",
+      "description": "鼠标悬停、聚焦或点击在某个组件时，弹出的气泡式的卡片浮层。可以对卡片上的元素进行操作。",
+      "demos": [
+        "popover/basic",
+        "popover/trigger",
+        "popover/position"
+      ],
+      "component": "popover",
+      "entry": "basic-components/popover.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/popover"
+    },
+    {
+      "id": "component/statistic",
+      "title": "数值显示 Statistic",
+      "group": "数据展示",
+      "order": 28,
+      "route": "/vue/component/statistic",
+      "content": "basic/statistic.html",
+      "description": "突出展示某个或某组数字、带描述的统计类数据。",
+      "demos": [
+        "statistic/basic",
+        "statistic/prefix",
+        "statistic/animation",
+        "statistic/countdown"
+      ],
+      "component": "statistic",
+      "entry": "basic-components/statistic.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/statistic"
+    },
+    {
+      "id": "component/table",
+      "title": "表格 Table",
+      "group": "数据展示",
+      "order": 29,
+      "route": "/vue/component/table",
+      "content": "basic/table.html",
+      "description": "用于数据收集展示、分析整理、操作处理。",
+      "demos": [
+        "table/basic",
+        "table/row-selection",
+        "table/radio",
+        "table/expand",
+        "table/ellipsis",
+        "table/subtree",
+        "table/lazy-load",
+        "table/props",
+        "table/sort",
+        "table/filter",
+        "table/scroll",
+        "table/fixed",
+        "table/span",
+        "table/sticky",
+        "table/summary",
+        "table/resize",
+        "table/drag-row",
+        "table/drag-handle",
+        "table/group",
+        "table/fixed-group",
+        "table/editable",
+        "table/custom",
+        "table/custom-dom",
+        "table/virtual-list"
+      ],
+      "component": "table",
+      "entry": "basic-components/table.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/table"
+    },
+    {
+      "id": "component/tabs",
+      "title": "标签页 Tabs",
+      "group": "数据展示",
+      "order": 30,
+      "route": "/vue/component/tabs",
+      "content": "basic/tabs.html",
+      "description": "将内容组织同一视图中，一次可查看一个视图内容，查看其他内容可切换选项卡查看。",
+      "demos": [
+        "tabs/basic",
+        "tabs/icon",
+        "tabs/position",
+        "tabs/type",
+        "tabs/lazy",
+        "tabs/extra",
+        "tabs/editable",
+        "tabs/trigger",
+        "tabs/scroll"
+      ],
+      "component": "tabs",
+      "entry": "basic-components/tabs.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/tabs"
+    },
+    {
+      "id": "component/tag",
+      "title": "标签 Tag",
+      "group": "数据展示",
+      "order": 31,
+      "route": "/vue/component/tag",
+      "content": "basic/tag.html",
+      "description": "用于信息的选择、筛选、分类。用户通过标签进行信息反馈和交互操作。",
+      "demos": [
+        "tag/basic",
+        "tag/closeable",
+        "tag/dynamically",
+        "tag/checkable",
+        "tag/color",
+        "tag/size",
+        "tag/loading",
+        "tag/icon",
+        "tag/bordered"
+      ],
+      "component": "tag",
+      "entry": "basic-components/tag.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/tag"
+    },
+    {
+      "id": "component/timeline",
+      "title": "时间轴 Timeline",
+      "group": "数据展示",
+      "order": 32,
+      "route": "/vue/component/timeline",
+      "content": "basic/timeline.html",
+      "description": "按照时间顺序或倒序规则的展示信息内容。",
+      "demos": [
+        "timeline/basic",
+        "timeline/icon",
+        "timeline/dot",
+        "timeline/type",
+        "timeline/pending",
+        "timeline/mode",
+        "timeline/vertical",
+        "timeline/direction",
+        "timeline/label",
+        "timeline/custom"
+      ],
+      "component": "timeline",
+      "entry": "basic-components/timeline.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/timeline"
+    },
+    {
+      "id": "component/tooltip",
+      "title": "文字气泡 Tooltip",
+      "group": "数据展示",
+      "order": 33,
+      "route": "/vue/component/tooltip",
+      "content": "basic/tooltip.html",
+      "description": "鼠标悬停、聚焦或点击在某个组件时，弹出的文字提示。",
+      "demos": [
+        "tooltip/basic",
+        "tooltip/mini",
+        "tooltip/position",
+        "tooltip/color"
+      ],
+      "component": "tooltip",
+      "entry": "basic-components/tooltip.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/tooltip"
+    },
+    {
+      "id": "component/tree",
+      "title": "树 Tree",
+      "group": "数据展示",
+      "order": 34,
+      "route": "/vue/component/tree",
+      "content": "basic/tree.html",
+      "description": "对于文件夹、分类目录、组织架构等层级较多的内容，树可以清楚显示他们的层级关系，并具有展开、收起、选择等交互功能。",
+      "demos": [
+        "tree/basic",
+        "tree/block-node",
+        "tree/multiple",
+        "tree/checkable",
+        "tree/control",
+        "tree/load-more",
+        "tree/draggable",
+        "tree/checked-strategy",
+        "tree/show-line",
+        "tree/size",
+        "tree/node-icon",
+        "tree/render-extra",
+        "tree/icons",
+        "tree/virtual",
+        "tree/search",
+        "tree/field-names"
+      ],
+      "component": "tree",
+      "entry": "basic-components/tree.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/tree"
+    },
+    {
+      "id": "component/auto-complete",
+      "title": "自动补全 AutoComplete",
+      "group": "数据录入",
+      "order": 35,
+      "route": "/vue/component/auto-complete",
+      "content": "basic/auto-complete.html",
+      "description": "输入框的自动补全功能。",
+      "demos": [
+        "auto-complete/basic",
+        "auto-complete/strict",
+        "auto-complete/footer"
+      ],
+      "component": "auto-complete",
+      "entry": "basic-components/auto-complete.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/auto-complete"
+    },
+    {
+      "id": "component/cascader",
+      "title": "级联选择 Cascader",
+      "group": "数据录入",
+      "order": 36,
+      "route": "/vue/component/cascader",
+      "content": "basic/cascader.html",
+      "description": "指在选择器选项数量较多时，采用多级分类的方式将选项进行分隔。",
+      "demos": [
+        "cascader/basic",
+        "cascader/clear",
+        "cascader/disabled",
+        "cascader/format",
+        "cascader/multiple",
+        "cascader/check-strictly",
+        "cascader/loading",
+        "cascader/lazy-load",
+        "cascader/search",
+        "cascader/path",
+        "cascader/fallback",
+        "cascader/field-names",
+        "cascader/expand",
+        "cascader/panel",
+        "cascader/virtual"
+      ],
+      "component": "cascader",
+      "entry": "basic-components/cascader.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/cascader"
+    },
+    {
+      "id": "component/checkbox",
+      "title": "复选框 Checkbox",
+      "group": "数据录入",
+      "order": 37,
+      "route": "/vue/component/checkbox",
+      "content": "basic/checkbox.html",
+      "description": "在一组数据中，用户可通过复选框选择一个或多个数据。",
+      "demos": [
+        "checkbox/basic",
+        "checkbox/control",
+        "checkbox/disabled",
+        "checkbox/group",
+        "checkbox/options",
+        "checkbox/limit",
+        "checkbox/all",
+        "checkbox/layout",
+        "checkbox/custom"
+      ],
+      "component": "checkbox",
+      "entry": "basic-components/checkbox.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/checkbox"
+    },
+    {
+      "id": "component/color-picker",
+      "title": "颜色选择器 ColorPicker",
+      "group": "数据录入",
+      "order": 38,
+      "route": "/vue/component/color-picker",
+      "content": "basic/color-picker.html",
+      "description": "用于选择和展示颜色",
+      "demos": [
+        "color-picker/basic",
+        "color-picker/size",
+        "color-picker/disabled",
+        "color-picker/format",
+        "color-picker/colors",
+        "color-picker/trigger",
+        "color-picker/trigger-element",
+        "color-picker/only-panel"
+      ],
+      "component": "color-picker",
+      "entry": "basic-components/color-picker.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/color-picker"
+    },
+    {
+      "id": "component/date-picker",
+      "title": "日期选择器 DatePicker",
+      "group": "数据录入",
+      "order": 39,
+      "route": "/vue/component/date-picker",
+      "content": "basic/date-picker.html",
+      "description": "选择日期。支持年、月、周、日类型，支持范围选择等。",
+      "demos": [
+        "date-picker/basic",
+        "date-picker/month",
+        "date-picker/year",
+        "date-picker/quarter",
+        "date-picker/week",
+        "date-picker/showtime",
+        "date-picker/range",
+        "date-picker/default-value",
+        "date-picker/disabled-date",
+        "date-picker/shortcuts",
+        "date-picker/shortcuts-position",
+        "date-picker/disabled-date-advance",
+        "date-picker/hide-not-in-view-dates",
+        "date-picker/clear-range-on-reselect",
+        "date-picker/utc-offset",
+        "date-picker/timezone",
+        "date-picker/size",
+        "date-picker/extra",
+        "date-picker/disabled",
+        "date-picker/date-render",
+        "date-picker/panel-render",
+        "date-picker/control",
+        "date-picker/trigger-element",
+        "date-picker/panel-only"
+      ],
+      "component": "date-picker",
+      "entry": "basic-components/date-picker.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/date-picker"
+    },
+    {
+      "id": "component/form",
+      "title": "表单 Form",
+      "group": "数据录入",
+      "order": 40,
+      "route": "/vue/component/form",
+      "content": "basic/form.html",
+      "description": "具有数据收集、校验和提交功能的表单，包含复选框、单选框、输入框、下拉选择框等元素。",
+      "demos": [
+        "form/basic",
+        "form/layout",
+        "form/extra",
+        "form/nest",
+        "form/grid",
+        "form/auto-width",
+        "form/validation",
+        "form/validation2",
+        "form/status",
+        "form/dynamic",
+        "form/disabled",
+        "form/async",
+        "form/custom",
+        "form/scroll"
+      ],
+      "component": "form",
+      "entry": "basic-components/form.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/form"
+    },
+    {
+      "id": "component/input",
+      "title": "输入框 Input",
+      "group": "数据录入",
+      "order": 41,
+      "route": "/vue/component/input",
+      "content": "basic/input.html",
+      "description": "基本表单组件，并在原生控件基础上进行了功能扩展，可以组合使用。",
+      "demos": [
+        "input/basic",
+        "input/status",
+        "input/size",
+        "input/prefix",
+        "input/prepend",
+        "input/word-limit",
+        "input/group",
+        "input/search",
+        "input/search-button",
+        "input/search-loading",
+        "input/password"
+      ],
+      "component": "input",
+      "entry": "basic-components/input.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/input"
+    },
+    {
+      "id": "component/input-number",
+      "title": "数字输入框 InputNumber",
+      "group": "数据录入",
+      "order": 42,
+      "route": "/vue/component/input-number",
+      "content": "basic/input-number.html",
+      "description": "仅允许输入数字格式的输入框。",
+      "demos": [
+        "input-number/basic",
+        "input-number/mode",
+        "input-number/size",
+        "input-number/precision",
+        "input-number/prefix",
+        "input-number/step-icon",
+        "input-number/format",
+        "input-number/model"
+      ],
+      "component": "input-number",
+      "entry": "basic-components/input-number.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/input-number"
+    },
+    {
+      "id": "component/verification-code",
+      "title": "验证码输入 VerificationCode",
+      "group": "数据录入",
+      "order": 43,
+      "route": "/vue/component/verification-code",
+      "content": "basic/verification-code.html",
+      "description": "验证码输入组件",
+      "demos": [
+        "verification-code/basic",
+        "verification-code/status",
+        "verification-code/masked",
+        "verification-code/separator",
+        "verification-code/form",
+        "verification-code/formatter"
+      ],
+      "component": "verification-code",
+      "entry": "basic-components/verification-code.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/verification-code"
+    },
+    {
+      "id": "component/input-tag",
+      "title": "标签输入框 InputTag",
+      "group": "数据录入",
+      "order": 44,
+      "route": "/vue/component/input-tag",
+      "content": "basic/input-tag.html",
+      "description": "用来输入标签。",
+      "demos": [
+        "input-tag/basic",
+        "input-tag/status",
+        "input-tag/max",
+        "input-tag/size"
+      ],
+      "component": "input-tag",
+      "entry": "basic-components/input-tag.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/input-tag"
+    },
+    {
+      "id": "component/mention",
+      "title": "提及 Mention",
+      "group": "数据录入",
+      "order": 45,
+      "route": "/vue/component/mention",
+      "content": "basic/mention.html",
+      "description": "用于在输入中提及某人或某事，常用于发布、聊天或评论功能。",
+      "demos": [
+        "mention/basic",
+        "mention/prefix"
+      ],
+      "component": "mention",
+      "entry": "basic-components/mention.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/mention"
+    },
+    {
+      "id": "component/radio",
+      "title": "单选框 Radio",
+      "group": "数据录入",
+      "order": 46,
+      "route": "/vue/component/radio",
+      "content": "basic/radio.html",
+      "description": "在一组相关且互斥数据中，用户仅能选择一个选项。",
+      "demos": [
+        "radio/basic",
+        "radio/control",
+        "radio/group",
+        "radio/options",
+        "radio/direction",
+        "radio/button",
+        "radio/size",
+        "radio/layout",
+        "radio/custom"
+      ],
+      "component": "radio",
+      "entry": "basic-components/radio.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/radio"
+    },
+    {
+      "id": "component/rate",
+      "title": "评分 Rate",
+      "group": "数据录入",
+      "order": 47,
+      "route": "/vue/component/rate",
+      "content": "basic/rate.html",
+      "description": "用于评分或打星的组件。",
+      "demos": [
+        "rate/basic",
+        "rate/half",
+        "rate/color",
+        "rate/readonly",
+        "rate/clear",
+        "rate/character",
+        "rate/count",
+        "rate/grading"
+      ],
+      "component": "rate",
+      "entry": "basic-components/rate.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/rate"
+    },
+    {
+      "id": "component/select",
+      "title": "选择器 Select",
+      "group": "数据录入",
+      "order": 48,
+      "route": "/vue/component/select",
+      "content": "basic/select.html",
+      "description": "当用户需要从一组同类数据中选择一个或多个时，可以使用下拉选择器，点击后选择对应项。",
+      "demos": [
+        "select/basic",
+        "select/clear",
+        "select/multiple",
+        "select/size",
+        "select/loading",
+        "select/header",
+        "select/footer",
+        "select/border",
+        "select/create",
+        "select/search",
+        "select/scroll",
+        "select/fallback",
+        "select/remote",
+        "select/group",
+        "select/label",
+        "select/linkage",
+        "select/field-names",
+        "select/virtual-list"
+      ],
+      "component": "select",
+      "entry": "basic-components/select.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/select"
+    },
+    {
+      "id": "component/slider",
+      "title": "滑动输入条 Slider",
+      "group": "数据录入",
+      "order": 49,
+      "route": "/vue/component/slider",
+      "content": "basic/slider.html",
+      "description": "滑动型输入器，展示当前值和可选范围。",
+      "demos": [
+        "slider/basic",
+        "slider/disabled",
+        "slider/step",
+        "slider/marks",
+        "slider/range",
+        "slider/input",
+        "slider/vertical",
+        "slider/tooltip"
+      ],
+      "component": "slider",
+      "entry": "basic-components/slider.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/slider"
+    },
+    {
+      "id": "component/switch",
+      "title": "开关 Switch",
+      "group": "数据录入",
+      "order": 50,
+      "route": "/vue/component/switch",
+      "content": "basic/switch.html",
+      "description": "互斥性的操作控件，用户可打开或关闭某个功能。",
+      "demos": [
+        "switch/basic",
+        "switch/type",
+        "switch/size",
+        "switch/disabled",
+        "switch/color",
+        "switch/value",
+        "switch/change-intercept",
+        "switch/loading",
+        "switch/text",
+        "switch/icon"
+      ],
+      "component": "switch",
+      "entry": "basic-components/switch.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/switch"
+    },
+    {
+      "id": "component/textarea",
+      "title": "文本域 Textarea",
+      "group": "数据录入",
+      "order": 51,
+      "route": "/vue/component/textarea",
+      "content": "basic/textarea.html",
+      "description": "多行纯文本编辑控件，适用于评论或反馈表单中的一段意见。",
+      "demos": [
+        "textarea/basic",
+        "textarea/status",
+        "textarea/word-limit",
+        "textarea/auto-size"
+      ],
+      "component": "textarea",
+      "entry": "basic-components/textarea.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/textarea"
+    },
+    {
+      "id": "component/time-picker",
+      "title": "时间选择器 TimePicker",
+      "group": "数据录入",
+      "order": 52,
+      "route": "/vue/component/time-picker",
+      "content": "basic/time-picker.html",
+      "description": "在弹出面板上选择时间，以便捷完成时间输入的控件。",
+      "demos": [
+        "time-picker/basic",
+        "time-picker/rangepicker",
+        "time-picker/control",
+        "time-picker/default-value",
+        "time-picker/size",
+        "time-picker/disabled",
+        "time-picker/disabled-time",
+        "time-picker/disable-confirm",
+        "time-picker/format",
+        "time-picker/step",
+        "time-picker/extra",
+        "time-picker/use-12-hours"
+      ],
+      "component": "time-picker",
+      "entry": "basic-components/time-picker.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/time-picker"
+    },
+    {
+      "id": "component/transfer",
+      "title": "数据穿梭框 Transfer",
+      "group": "数据录入",
+      "order": 53,
+      "route": "/vue/component/transfer",
+      "content": "basic/transfer.html",
+      "description": "两栏布局的多选组件，将元素从一栏即时移到另一栏。",
+      "demos": [
+        "transfer/basic",
+        "transfer/search",
+        "transfer/one-way",
+        "transfer/custom",
+        "transfer/simple",
+        "transfer/tree",
+        "transfer/custom-header"
+      ],
+      "component": "transfer",
+      "entry": "basic-components/transfer.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/transfer"
+    },
+    {
+      "id": "component/tree-select",
+      "title": "树选择 TreeSelect",
+      "group": "数据录入",
+      "order": 54,
+      "route": "/vue/component/tree-select",
+      "content": "basic/tree-select.html",
+      "description": "可以对树形结构数据进行选择。",
+      "demos": [
+        "tree-select/basic",
+        "tree-select/label-in-value",
+        "tree-select/control",
+        "tree-select/load-more",
+        "tree-select/search",
+        "tree-select/search-remote",
+        "tree-select/size",
+        "tree-select/dropdown-slots",
+        "tree-select/trigger-element",
+        "tree-select/multiple",
+        "tree-select/checkable",
+        "tree-select/checked-strategy",
+        "tree-select/popup-visible",
+        "tree-select/field-names",
+        "tree-select/virtual",
+        "tree-select/fallback"
+      ],
+      "component": "tree-select",
+      "entry": "basic-components/tree-select.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/tree-select"
+    },
+    {
+      "id": "component/upload",
+      "title": "上传 Upload",
+      "group": "数据录入",
+      "order": 55,
+      "route": "/vue/component/upload",
+      "content": "basic/upload.html",
+      "description": "用户可传输文件或提交相应的内容。",
+      "demos": [
+        "upload/basic",
+        "upload/avatar",
+        "upload/upload-list",
+        "upload/picture-card",
+        "upload/draggable",
+        "upload/picture-list",
+        "upload/submit",
+        "upload/before-upload",
+        "upload/before-remove",
+        "upload/limit",
+        "upload/custom-button",
+        "upload/custom-icon",
+        "upload/request",
+        "upload/directory"
+      ],
+      "component": "upload",
+      "entry": "basic-components/upload.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/upload"
+    },
+    {
+      "id": "component/alert",
+      "title": "警告提示 Alert",
+      "group": "反馈",
+      "order": 56,
+      "route": "/vue/component/alert",
+      "content": "basic/alert.html",
+      "description": "向用户显示警告的信息时，通过警告提示，展现需要关注的信息。",
+      "demos": [
+        "alert/basic",
+        "alert/type",
+        "alert/title",
+        "alert/closable",
+        "alert/close-element",
+        "alert/icon",
+        "alert/action",
+        "alert/banner"
+      ],
+      "component": "alert",
+      "entry": "basic-components/alert.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/alert"
+    },
+    {
+      "id": "component/drawer",
+      "title": "抽屉 Drawer",
+      "group": "反馈",
+      "order": 57,
+      "route": "/vue/component/drawer",
+      "content": "basic/drawer.html",
+      "description": "触发命令后，从屏幕一侧滑出的抽屉式的面板。",
+      "demos": [
+        "drawer/basic",
+        "drawer/position",
+        "drawer/custom",
+        "drawer/nested",
+        "drawer/popup-container",
+        "drawer/function"
+      ],
+      "component": "drawer",
+      "entry": "basic-components/drawer.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/drawer"
+    },
+    {
+      "id": "component/message",
+      "title": "全局提示 Message",
+      "group": "反馈",
+      "order": 58,
+      "route": "/vue/component/message",
+      "content": "basic/message.html",
+      "description": "由用户的操作触发的轻量级全局反馈。",
+      "demos": [
+        "message/basic",
+        "message/type",
+        "message/icon",
+        "message/position",
+        "message/closeable",
+        "message/update"
+      ],
+      "component": "message",
+      "entry": "basic-components/message.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/message"
+    },
+    {
+      "id": "component/modal",
+      "title": "Modal 对话框",
+      "group": "反馈",
+      "order": 59,
+      "route": "/vue/component/modal",
+      "content": "basic/modal.html",
+      "description": "在当前页面打开一个浮层，承载相关操作。",
+      "demos": [
+        "modal/basic",
+        "modal/async",
+        "modal/function",
+        "modal/notice",
+        "modal/width",
+        "modal/custom",
+        "modal/form",
+        "modal/draggable",
+        "modal/fullscreen"
+      ],
+      "component": "modal",
+      "entry": "basic-components/modal.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/modal"
+    },
+    {
+      "id": "component/notification",
+      "title": "通知提醒框 Notification",
+      "group": "反馈",
+      "order": 60,
+      "route": "/vue/component/notification",
+      "content": "basic/notification.html",
+      "description": "全局展示通知提醒，将信息及时有效的传达给用户。",
+      "demos": [
+        "notification/basic",
+        "notification/type",
+        "notification/position",
+        "notification/update_notification",
+        "notification/update_duration",
+        "notification/btn",
+        "notification/custom-close",
+        "notification/style"
+      ],
+      "component": "notification",
+      "entry": "basic-components/notification.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/notification"
+    },
+    {
+      "id": "component/popconfirm",
+      "title": "气泡确认框 Popconfirm",
+      "group": "反馈",
+      "order": 61,
+      "route": "/vue/component/popconfirm",
+      "content": "basic/popconfirm.html",
+      "description": "点击元素，弹出气泡式的确认框。",
+      "demos": [
+        "popconfirm/basic",
+        "popconfirm/custom",
+        "popconfirm/position",
+        "popconfirm/type"
+      ],
+      "component": "popconfirm",
+      "entry": "basic-components/popconfirm.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/popconfirm"
+    },
+    {
+      "id": "component/progress",
+      "title": "进度条 Progress",
+      "group": "反馈",
+      "order": 62,
+      "route": "/vue/component/progress",
+      "content": "basic/progress.html",
+      "description": "给予用户当前系统执行中任务运行状态的反馈，多用于运行一段时间的场景，有效减轻用户在等待中产生的焦虑感。",
+      "demos": [
+        "progress/basic",
+        "progress/status",
+        "progress/circle",
+        "progress/mini",
+        "progress/size",
+        "progress/linear",
+        "progress/steps",
+        "progress/trackColor"
+      ],
+      "component": "progress",
+      "entry": "basic-components/progress.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/progress"
+    },
+    {
+      "id": "component/result",
+      "title": "结果页 Result",
+      "group": "反馈",
+      "order": 63,
+      "route": "/vue/component/result",
+      "content": "basic/result.html",
+      "description": "用于反馈一系列操作任务的处理结果，当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。",
+      "demos": [
+        "result/basic",
+        "result/success",
+        "result/warning",
+        "result/error",
+        "result/403",
+        "result/404",
+        "result/500",
+        "result/custom",
+        "result/all"
+      ],
+      "component": "result",
+      "entry": "basic-components/result.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/result"
+    },
+    {
+      "id": "component/spin",
+      "title": "加载中 Spin",
+      "group": "反馈",
+      "order": 64,
+      "route": "/vue/component/spin",
+      "content": "basic/spin.html",
+      "description": "用于页面和区块的加载中状态 - 页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。",
+      "demos": [
+        "spin/basic",
+        "spin/size",
+        "spin/dot",
+        "spin/container",
+        "spin/tip",
+        "spin/icon"
+      ],
+      "component": "spin",
+      "entry": "basic-components/spin.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/spin"
+    },
+    {
+      "id": "component/skeleton",
+      "title": "骨架屏 Skeleton",
+      "group": "反馈",
+      "order": 65,
+      "route": "/vue/component/skeleton",
+      "content": "basic/skeleton.html",
+      "description": "将加载中的数据用灰色占位。",
+      "demos": [
+        "skeleton/basic",
+        "skeleton/type",
+        "skeleton/animation"
+      ],
+      "component": "skeleton",
+      "entry": "basic-components/skeleton.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/skeleton"
+    },
+    {
+      "id": "component/breadcrumb",
+      "title": "面包屑 Breadcrumb",
+      "group": "导航",
+      "order": 66,
+      "route": "/vue/component/breadcrumb",
+      "content": "basic/breadcrumb.html",
+      "description": "面包屑是辅助导航模式，用于识别页面在层次结构内的位置，并根据需要向上返回。",
+      "demos": [
+        "breadcrumb/basic",
+        "breadcrumb/separator",
+        "breadcrumb/size",
+        "breadcrumb/icon",
+        "breadcrumb/routes",
+        "breadcrumb/dropdown",
+        "breadcrumb/ellipsis"
+      ],
+      "component": "breadcrumb",
+      "entry": "basic-components/breadcrumb.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/breadcrumb"
+    },
+    {
+      "id": "component/dropdown",
+      "title": "下拉菜单 Dropdown",
+      "group": "导航",
+      "order": 67,
+      "route": "/vue/component/dropdown",
+      "content": "basic/dropdown.html",
+      "description": "页面上的命令过多时，可将备选命令收纳到向下展开的浮层容器中。",
+      "demos": [
+        "dropdown/basic",
+        "dropdown/position",
+        "dropdown/trigger",
+        "dropdown/button",
+        "dropdown/group",
+        "dropdown/submenu",
+        "dropdown/context-menu",
+        "dropdown/icon"
+      ],
+      "component": "dropdown",
+      "entry": "basic-components/dropdown.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/dropdown"
+    },
+    {
+      "id": "component/menu",
+      "title": "菜单 Menu",
+      "group": "导航",
+      "order": 68,
+      "route": "/vue/component/menu",
+      "content": "basic/menu.html",
+      "description": "收纳、排列并展示一系列选项的列表。",
+      "demos": [
+        "menu/horizontal",
+        "menu/dark-horizontal",
+        "menu/collapse-control",
+        "menu/breakpoint",
+        "menu/sub-menu",
+        "menu/size",
+        "menu/pop",
+        "menu/pop-button"
+      ],
+      "component": "menu",
+      "entry": "basic-components/menu.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/menu"
+    },
+    {
+      "id": "component/page-header",
+      "title": "页头 PageHeader",
+      "group": "导航",
+      "order": 69,
+      "route": "/vue/component/page-header",
+      "content": "basic/page-header.html",
+      "description": "页头位于页容器顶部，起到了内容概览和引导页级操作的作用。包括面包屑、标题等内容。",
+      "demos": [
+        "page-header/basic",
+        "page-header/breadcrumb",
+        "page-header/transparent",
+        "page-header/content"
+      ],
+      "component": "page-header",
+      "entry": "basic-components/page-header.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/page-header"
+    },
+    {
+      "id": "component/pagination",
+      "title": "分页 Pagination",
+      "group": "导航",
+      "order": 70,
+      "route": "/vue/component/pagination",
+      "content": "basic/pagination.html",
+      "description": "采用分页控制单页内的信息数量，也可进行页面跳转。",
+      "demos": [
+        "pagination/basic",
+        "pagination/ellipsis",
+        "pagination/page-size",
+        "pagination/jumper",
+        "pagination/size",
+        "pagination/simple",
+        "pagination/total",
+        "pagination/all",
+        "pagination/custom"
+      ],
+      "component": "pagination",
+      "entry": "basic-components/pagination.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/pagination"
+    },
+    {
+      "id": "component/steps",
+      "title": "步骤条 Steps",
+      "group": "导航",
+      "order": 71,
+      "route": "/vue/component/steps",
+      "content": "basic/steps.html",
+      "description": "明示任务流程和当前完成程度，引导用户按照步骤完成任务。",
+      "demos": [
+        "steps/basic",
+        "steps/description",
+        "steps/label-placement",
+        "steps/error",
+        "steps/icon",
+        "steps/line-less",
+        "steps/vertical",
+        "steps/arrow",
+        "steps/dot",
+        "steps/navigation",
+        "steps/changeable"
+      ],
+      "component": "steps",
+      "entry": "basic-components/steps.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/steps"
+    },
+    {
+      "id": "component/affix",
+      "title": "固钉 Affix",
+      "group": "其他",
+      "order": 72,
+      "route": "/vue/component/affix",
+      "content": "basic/affix.html",
+      "description": "将页面元素钉在可视范围。当内容区域比较长，需要滚动页面时，固钉可以将内容固定在屏幕上。常用于侧边菜单和按钮组合。",
+      "demos": [
+        "affix/basic",
+        "affix/top",
+        "affix/bottom",
+        "affix/fix-change",
+        "affix/container"
+      ],
+      "component": "affix",
+      "entry": "basic-components/affix.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/affix"
+    },
+    {
+      "id": "component/anchor",
+      "title": "锚点 Anchor",
+      "group": "其他",
+      "order": 73,
+      "route": "/vue/component/anchor",
+      "content": "basic/anchor.html",
+      "description": "通过锚点可以快速找到信息内容在当前页面的位置。",
+      "demos": [
+        "anchor/basic",
+        "anchor/static",
+        "anchor/line-less",
+        "anchor/horizontal",
+        "anchor/affix",
+        "anchor/boundary",
+        "anchor/hash"
+      ],
+      "component": "anchor",
+      "entry": "basic-components/anchor.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/anchor"
+    },
+    {
+      "id": "component/back-top",
+      "title": "返回顶部 BackTop",
+      "group": "其他",
+      "order": 74,
+      "route": "/vue/component/back-top",
+      "content": "basic/back-top.html",
+      "description": "可一键返回顶部的按钮。",
+      "demos": [
+        "back-top/basic",
+        "back-top/custom"
+      ],
+      "component": "back-top",
+      "entry": "basic-components/back-top.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/back-top"
+    },
+    {
+      "id": "component/config-provider",
+      "title": "全局配置 ConfigProvider",
+      "group": "其他",
+      "order": 75,
+      "route": "/vue/component/config-provider",
+      "content": "basic/config-provider.html",
+      "description": "在应用的最外层进行配置，一次设置，全局生效。一般用于设置国际化语言等功能。",
+      "demos": [
+        "config-provider/basic",
+        "config-provider/empty",
+        "config-provider/rtl"
+      ],
+      "component": "config-provider",
+      "entry": "basic-components/config-provider.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/config-provider"
+    },
+    {
+      "id": "component/resize-box",
+      "title": "伸缩框 ResizeBox",
+      "group": "其他",
+      "order": 76,
+      "route": "/vue/component/resize-box",
+      "content": "basic/resize-box.html",
+      "description": "伸缩框组件。",
+      "demos": [
+        "resize-box/basic",
+        "resize-box/controlled",
+        "resize-box/layout",
+        "resize-box/custom-triggers"
+      ],
+      "component": "resize-box",
+      "entry": "basic-components/resize-box.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/resize-box"
+    },
+    {
+      "id": "component/trigger",
+      "title": "触发器 Trigger",
+      "group": "其他",
+      "order": 77,
+      "route": "/vue/component/trigger",
+      "content": "basic/trigger.html",
+      "description": "用于对元素添加 hover, click, focus 等事件，并且弹出下拉框。",
+      "demos": [
+        "trigger/basic",
+        "trigger/nest",
+        "trigger/triggers",
+        "trigger/align-point",
+        "trigger/scroll",
+        "trigger/arrow",
+        "trigger/translate"
+      ],
+      "component": "trigger",
+      "entry": "basic-components/trigger.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/trigger"
+    },
+    {
+      "id": "component/split",
+      "title": "面板分割 Split",
+      "group": "其他",
+      "order": 78,
+      "route": "/vue/component/split",
+      "content": "basic/split.html",
+      "description": "将面板分割成两部分。",
+      "demos": [
+        "split/basic",
+        "split/nested"
+      ],
+      "component": "split",
+      "entry": "basic-components/split.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/split"
+    },
+    {
+      "id": "component/overflow",
+      "title": "折叠列表 OverflowList",
+      "group": "其他",
+      "order": 79,
+      "route": "/vue/component/overflow",
+      "content": "basic/overflow.html",
+      "description": "",
+      "demos": [
+        "overflow-list/basic",
+        "overflow-list/from"
+      ],
+      "component": "overflow-list",
+      "entry": "basic-components/overflow-list.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/overflow-list"
+    },
+    {
+      "id": "component/scrollbar",
+      "title": "滚动条 Scrollbar",
+      "group": "其他",
+      "order": 80,
+      "route": "/vue/component/scrollbar",
+      "content": "basic/scrollbar.html",
+      "description": "用于替换浏览器默认滚动条样式。",
+      "demos": [
+        "scrollbar/basic",
+        "scrollbar/type"
+      ],
+      "component": "scrollbar",
+      "entry": "basic-components/scrollbar.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/scrollbar"
+    },
+    {
+      "id": "component/watermark",
+      "title": "水印 Watermark",
+      "group": "其他",
+      "order": 81,
+      "route": "/vue/component/watermark",
+      "content": "basic/watermark.html",
+      "description": "用于给页面的指定区域加上水印。",
+      "demos": [
+        "watermark/basic",
+        "watermark/multiline",
+        "watermark/image",
+        "watermark/custom"
+      ],
+      "component": "watermark",
+      "entry": "basic-components/watermark.js",
+      "source": "https://github.com/arco-design/arco-design-vue/tree/d9f1b3747988f1d510c31380e6b2bc1a5f6bdca3/packages/web-vue/components/watermark"
+    },
+    {
+      "id": "pro/start",
+      "title": "快速开始",
+      "group": "Arco Pro 指南",
+      "order": 82,
+      "route": "/vue/docs/pro/start",
+      "content": "page/pro/start.html",
+      "description": "请跟随以下步骤创建 Arco Design Pro",
+      "demos": []
+    },
+    {
+      "id": "pro/npm-scripts",
+      "title": "npm 命令",
+      "group": "Arco Pro 指南",
+      "order": 83,
+      "route": "/vue/docs/pro/npm-scripts",
+      "content": "page/pro/npm-scripts.html",
+      "description": "package.json script 预置方便实用的命令",
+      "demos": []
+    },
+    {
+      "id": "pro/directory",
+      "title": "目录结构",
+      "group": "Arco Pro 指南",
+      "order": 84,
+      "route": "/vue/docs/pro/directory",
+      "content": "page/pro/directory.html",
+      "description": "项目文件的组织结构",
+      "demos": []
+    },
+    {
+      "id": "pro/layout",
+      "title": "布局",
+      "group": "Arco Pro 指南",
+      "order": 85,
+      "route": "/vue/docs/pro/layout",
+      "content": "page/pro/layout.html",
+      "description": "页面通用布局",
+      "demos": []
+    },
+    {
+      "id": "pro/routes-and-menu",
+      "title": "路由与菜单",
+      "group": "Arco Pro 指南",
+      "order": 86,
+      "route": "/vue/docs/pro/routes-and-menu",
+      "content": "page/pro/routes-and-menu.html",
+      "description": "路由和菜单的生成",
+      "demos": []
+    },
+    {
+      "id": "pro/permission",
+      "title": "权限控制",
+      "group": "Arco Pro 指南",
+      "order": 87,
+      "route": "/vue/docs/pro/permission",
+      "content": "page/pro/permission.html",
+      "description": "权限控制是中后台场景非常常见的基础功能，在 v2.2.0 将权限控制功能集成至 Arco Design Pro",
+      "demos": []
+    },
+    {
+      "id": "pro/state-management-pinia",
+      "title": "状态管理 - Pinia",
+      "group": "Arco Pro 指南",
+      "order": 88,
+      "route": "/vue/docs/pro/state-management-pinia",
+      "content": "page/pro/state-management-pinia.html",
+      "description": "全站状态管理",
+      "demos": []
+    },
+    {
+      "id": "pro/state-management",
+      "title": "状态管理 - Vuex",
+      "group": "Arco Pro 指南",
+      "order": 89,
+      "route": "/vue/docs/pro/state-management",
+      "content": "page/pro/state-management.html",
+      "description": "全站状态管理",
+      "demos": []
+    },
+    {
+      "id": "pro/i18n",
+      "title": "国际化",
+      "group": "Arco Pro 指南",
+      "order": 90,
+      "route": "/vue/docs/pro/i18n",
+      "content": "page/pro/i18n.html",
+      "description": "多语言实现",
+      "demos": []
+    },
+    {
+      "id": "pro/mock",
+      "title": "接口和数据模拟",
+      "group": "Arco Pro 指南",
+      "order": 91,
+      "route": "/vue/docs/pro/mock",
+      "content": "page/pro/mock.html",
+      "description": "网络请求、拦截器及模拟数据",
+      "demos": []
+    },
+    {
+      "id": "pro/build",
+      "title": "打包构建",
+      "group": "Arco Pro 指南",
+      "order": 92,
+      "route": "/vue/docs/pro/build",
+      "content": "page/pro/build.html",
+      "description": "打包代码",
+      "demos": []
+    },
+    {
+      "id": "pro/faq",
+      "title": "常见问题",
+      "group": "Arco Pro 指南",
+      "order": 93,
+      "route": "/vue/docs/pro/faq",
+      "content": "page/pro/faq.html",
+      "description": "Arco Design Pro Vue 常见问题合集",
+      "demos": []
+    }
+  ],
+  "demos": [
+    {
+      "id": "button/basic",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/icon",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/shape",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/size",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/status",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/disabled",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/loading",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/long",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "button/group",
+      "file": "basic/button.html"
+    },
+    {
+      "id": "link/basic",
+      "file": "basic/link.html"
+    },
+    {
+      "id": "link/status",
+      "file": "basic/link.html"
+    },
+    {
+      "id": "link/hoverable",
+      "file": "basic/link.html"
+    },
+    {
+      "id": "link/icon",
+      "file": "basic/link.html"
+    },
+    {
+      "id": "link/loading",
+      "file": "basic/link.html"
+    },
+    {
+      "id": "typography/basic",
+      "file": "basic/typography.html"
+    },
+    {
+      "id": "typography/title",
+      "file": "basic/typography.html"
+    },
+    {
+      "id": "typography/text",
+      "file": "basic/typography.html"
+    },
+    {
+      "id": "typography/paragraph",
+      "file": "basic/typography.html"
+    },
+    {
+      "id": "typography/operations",
+      "file": "basic/typography.html"
+    },
+    {
+      "id": "typography/ellipsis",
+      "file": "basic/typography.html"
+    },
+    {
+      "id": "divider/basic",
+      "file": "basic/divider.html"
+    },
+    {
+      "id": "divider/with-text",
+      "file": "basic/divider.html"
+    },
+    {
+      "id": "divider/vertical",
+      "file": "basic/divider.html"
+    },
+    {
+      "id": "grid/basic",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/offset",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/gutter",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/flex-justify",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/flex-align",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/order",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/adaptation",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/adaptation-object",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/flex",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/grid",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "grid/grid-responsive",
+      "file": "basic/grid.html"
+    },
+    {
+      "id": "layout/basic",
+      "file": "basic/layout.html"
+    },
+    {
+      "id": "layout/custom-icon",
+      "file": "basic/layout.html"
+    },
+    {
+      "id": "layout/collapsed",
+      "file": "basic/layout.html"
+    },
+    {
+      "id": "layout/breakpoint",
+      "file": "basic/layout.html"
+    },
+    {
+      "id": "layout/resize",
+      "file": "basic/layout.html"
+    },
+    {
+      "id": "space/basic",
+      "file": "basic/space.html"
+    },
+    {
+      "id": "space/vertical",
+      "file": "basic/space.html"
+    },
+    {
+      "id": "space/size",
+      "file": "basic/space.html"
+    },
+    {
+      "id": "space/align",
+      "file": "basic/space.html"
+    },
+    {
+      "id": "space/wrap",
+      "file": "basic/space.html"
+    },
+    {
+      "id": "space/split",
+      "file": "basic/space.html"
+    },
+    {
+      "id": "avatar/basic",
+      "file": "basic/avatar.html"
+    },
+    {
+      "id": "avatar/size",
+      "file": "basic/avatar.html"
+    },
+    {
+      "id": "avatar/group",
+      "file": "basic/avatar.html"
+    },
+    {
+      "id": "avatar/icon",
+      "file": "basic/avatar.html"
+    },
+    {
+      "id": "avatar/fit",
+      "file": "basic/avatar.html"
+    },
+    {
+      "id": "avatar/image-url",
+      "file": "basic/avatar.html"
+    },
+    {
+      "id": "badge/basic",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "badge/alone",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "badge/dot",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "badge/text",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "badge/max",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "badge/status",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "badge/color",
+      "file": "basic/badge.html"
+    },
+    {
+      "id": "calendar/basic",
+      "file": "basic/calendar.html"
+    },
+    {
+      "id": "calendar/select-header",
+      "file": "basic/calendar.html"
+    },
+    {
+      "id": "calendar/panel",
+      "file": "basic/calendar.html"
+    },
+    {
+      "id": "calendar/date-content",
+      "file": "basic/calendar.html"
+    },
+    {
+      "id": "card/basic",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/hoverable",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/bordered",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/content",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/meta",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/row",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/grid",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/inner",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "card/actions",
+      "file": "basic/card.html"
+    },
+    {
+      "id": "carousel/basic",
+      "file": "basic/carousel.html"
+    },
+    {
+      "id": "carousel/auto",
+      "file": "basic/carousel.html"
+    },
+    {
+      "id": "carousel/indicator",
+      "file": "basic/carousel.html"
+    },
+    {
+      "id": "carousel/direction",
+      "file": "basic/carousel.html"
+    },
+    {
+      "id": "carousel/card",
+      "file": "basic/carousel.html"
+    },
+    {
+      "id": "carousel/fade",
+      "file": "basic/carousel.html"
+    },
+    {
+      "id": "collapse/basic",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/accordion",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/nested",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/border-less",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/extra",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/expand-icon",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/custom",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/icon-position",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "collapse/destroy",
+      "file": "basic/collapse.html"
+    },
+    {
+      "id": "comment/basic",
+      "file": "basic/comment.html"
+    },
+    {
+      "id": "comment/align",
+      "file": "basic/comment.html"
+    },
+    {
+      "id": "comment/nest",
+      "file": "basic/comment.html"
+    },
+    {
+      "id": "comment/editor",
+      "file": "basic/comment.html"
+    },
+    {
+      "id": "descriptions/basic",
+      "file": "basic/descriptions.html"
+    },
+    {
+      "id": "descriptions/single",
+      "file": "basic/descriptions.html"
+    },
+    {
+      "id": "descriptions/align",
+      "file": "basic/descriptions.html"
+    },
+    {
+      "id": "descriptions/bordered",
+      "file": "basic/descriptions.html"
+    },
+    {
+      "id": "descriptions/layout",
+      "file": "basic/descriptions.html"
+    },
+    {
+      "id": "descriptions/example",
+      "file": "basic/descriptions.html"
+    },
+    {
+      "id": "empty/basic",
+      "file": "basic/empty.html"
+    },
+    {
+      "id": "empty/custom",
+      "file": "basic/empty.html"
+    },
+    {
+      "id": "image/basic",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/caption",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/extra",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/error",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/loader",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/progressive-loader",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/custom-preview-actions",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/preview-group",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/component-preview",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/component-preview-group",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "image/preview-popup-container",
+      "file": "basic/image.html"
+    },
+    {
+      "id": "list/basic",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/size",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/meta",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/actions",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/actions-layout",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/grid",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/responsive-grid",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/scroll",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "list/virtual-list",
+      "file": "basic/list.html"
+    },
+    {
+      "id": "popover/basic",
+      "file": "basic/popover.html"
+    },
+    {
+      "id": "popover/trigger",
+      "file": "basic/popover.html"
+    },
+    {
+      "id": "popover/position",
+      "file": "basic/popover.html"
+    },
+    {
+      "id": "statistic/basic",
+      "file": "basic/statistic.html"
+    },
+    {
+      "id": "statistic/prefix",
+      "file": "basic/statistic.html"
+    },
+    {
+      "id": "statistic/animation",
+      "file": "basic/statistic.html"
+    },
+    {
+      "id": "statistic/countdown",
+      "file": "basic/statistic.html"
+    },
+    {
+      "id": "table/basic",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/row-selection",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/radio",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/expand",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/ellipsis",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/subtree",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/lazy-load",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/props",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/sort",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/filter",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/scroll",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/fixed",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/span",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/sticky",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/summary",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/resize",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/drag-row",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/drag-handle",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/group",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/fixed-group",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/editable",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/custom",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/custom-dom",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "table/virtual-list",
+      "file": "basic/table.html"
+    },
+    {
+      "id": "tabs/basic",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/icon",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/position",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/type",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/lazy",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/extra",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/editable",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/trigger",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tabs/scroll",
+      "file": "basic/tabs.html"
+    },
+    {
+      "id": "tag/basic",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/closeable",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/dynamically",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/checkable",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/color",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/size",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/loading",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/icon",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "tag/bordered",
+      "file": "basic/tag.html"
+    },
+    {
+      "id": "timeline/basic",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/icon",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/dot",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/type",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/pending",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/mode",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/vertical",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/direction",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/label",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "timeline/custom",
+      "file": "basic/timeline.html"
+    },
+    {
+      "id": "tooltip/basic",
+      "file": "basic/tooltip.html"
+    },
+    {
+      "id": "tooltip/mini",
+      "file": "basic/tooltip.html"
+    },
+    {
+      "id": "tooltip/position",
+      "file": "basic/tooltip.html"
+    },
+    {
+      "id": "tooltip/color",
+      "file": "basic/tooltip.html"
+    },
+    {
+      "id": "tree/basic",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/block-node",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/multiple",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/checkable",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/control",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/load-more",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/draggable",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/checked-strategy",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/show-line",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/size",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/node-icon",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/render-extra",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/icons",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/virtual",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/search",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "tree/field-names",
+      "file": "basic/tree.html"
+    },
+    {
+      "id": "auto-complete/basic",
+      "file": "basic/auto-complete.html"
+    },
+    {
+      "id": "auto-complete/strict",
+      "file": "basic/auto-complete.html"
+    },
+    {
+      "id": "auto-complete/footer",
+      "file": "basic/auto-complete.html"
+    },
+    {
+      "id": "cascader/basic",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/clear",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/disabled",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/format",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/multiple",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/check-strictly",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/loading",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/lazy-load",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/search",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/path",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/fallback",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/field-names",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/expand",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/panel",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "cascader/virtual",
+      "file": "basic/cascader.html"
+    },
+    {
+      "id": "checkbox/basic",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/control",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/disabled",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/group",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/options",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/limit",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/all",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/layout",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "checkbox/custom",
+      "file": "basic/checkbox.html"
+    },
+    {
+      "id": "color-picker/basic",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/size",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/disabled",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/format",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/colors",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/trigger",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/trigger-element",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "color-picker/only-panel",
+      "file": "basic/color-picker.html"
+    },
+    {
+      "id": "date-picker/basic",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/month",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/year",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/quarter",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/week",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/showtime",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/range",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/default-value",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/disabled-date",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/shortcuts",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/shortcuts-position",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/disabled-date-advance",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/hide-not-in-view-dates",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/clear-range-on-reselect",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/utc-offset",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/timezone",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/size",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/extra",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/disabled",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/date-render",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/panel-render",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/control",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/trigger-element",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "date-picker/panel-only",
+      "file": "basic/date-picker.html"
+    },
+    {
+      "id": "form/basic",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/layout",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/extra",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/nest",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/grid",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/auto-width",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/validation",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/validation2",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/status",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/dynamic",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/disabled",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/async",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/custom",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "form/scroll",
+      "file": "basic/form.html"
+    },
+    {
+      "id": "input/basic",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/status",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/size",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/prefix",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/prepend",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/word-limit",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/group",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/search",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/search-button",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/search-loading",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input/password",
+      "file": "basic/input.html"
+    },
+    {
+      "id": "input-number/basic",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/mode",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/size",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/precision",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/prefix",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/step-icon",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/format",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "input-number/model",
+      "file": "basic/input-number.html"
+    },
+    {
+      "id": "verification-code/basic",
+      "file": "basic/verification-code.html"
+    },
+    {
+      "id": "verification-code/status",
+      "file": "basic/verification-code.html"
+    },
+    {
+      "id": "verification-code/masked",
+      "file": "basic/verification-code.html"
+    },
+    {
+      "id": "verification-code/separator",
+      "file": "basic/verification-code.html"
+    },
+    {
+      "id": "verification-code/form",
+      "file": "basic/verification-code.html"
+    },
+    {
+      "id": "verification-code/formatter",
+      "file": "basic/verification-code.html"
+    },
+    {
+      "id": "input-tag/basic",
+      "file": "basic/input-tag.html"
+    },
+    {
+      "id": "input-tag/status",
+      "file": "basic/input-tag.html"
+    },
+    {
+      "id": "input-tag/max",
+      "file": "basic/input-tag.html"
+    },
+    {
+      "id": "input-tag/size",
+      "file": "basic/input-tag.html"
+    },
+    {
+      "id": "mention/basic",
+      "file": "basic/mention.html"
+    },
+    {
+      "id": "mention/prefix",
+      "file": "basic/mention.html"
+    },
+    {
+      "id": "radio/basic",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/control",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/group",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/options",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/direction",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/button",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/size",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/layout",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "radio/custom",
+      "file": "basic/radio.html"
+    },
+    {
+      "id": "rate/basic",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/half",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/color",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/readonly",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/clear",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/character",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/count",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "rate/grading",
+      "file": "basic/rate.html"
+    },
+    {
+      "id": "select/basic",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/clear",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/multiple",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/size",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/loading",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/header",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/footer",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/border",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/create",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/search",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/scroll",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/fallback",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/remote",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/group",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/label",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/linkage",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/field-names",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "select/virtual-list",
+      "file": "basic/select.html"
+    },
+    {
+      "id": "slider/basic",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/disabled",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/step",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/marks",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/range",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/input",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/vertical",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "slider/tooltip",
+      "file": "basic/slider.html"
+    },
+    {
+      "id": "switch/basic",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/type",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/size",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/disabled",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/color",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/value",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/change-intercept",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/loading",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/text",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "switch/icon",
+      "file": "basic/switch.html"
+    },
+    {
+      "id": "textarea/basic",
+      "file": "basic/textarea.html"
+    },
+    {
+      "id": "textarea/status",
+      "file": "basic/textarea.html"
+    },
+    {
+      "id": "textarea/word-limit",
+      "file": "basic/textarea.html"
+    },
+    {
+      "id": "textarea/auto-size",
+      "file": "basic/textarea.html"
+    },
+    {
+      "id": "time-picker/basic",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/rangepicker",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/control",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/default-value",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/size",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/disabled",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/disabled-time",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/disable-confirm",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/format",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/step",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/extra",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "time-picker/use-12-hours",
+      "file": "basic/time-picker.html"
+    },
+    {
+      "id": "transfer/basic",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "transfer/search",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "transfer/one-way",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "transfer/custom",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "transfer/simple",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "transfer/tree",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "transfer/custom-header",
+      "file": "basic/transfer.html"
+    },
+    {
+      "id": "tree-select/basic",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/label-in-value",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/control",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/load-more",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/search",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/search-remote",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/size",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/dropdown-slots",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/trigger-element",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/multiple",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/checkable",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/checked-strategy",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/popup-visible",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/field-names",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/virtual",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "tree-select/fallback",
+      "file": "basic/tree-select.html"
+    },
+    {
+      "id": "upload/basic",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/avatar",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/upload-list",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/picture-card",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/draggable",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/picture-list",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/submit",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/before-upload",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/before-remove",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/limit",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/custom-button",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/custom-icon",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/request",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "upload/directory",
+      "file": "basic/upload.html"
+    },
+    {
+      "id": "alert/basic",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/type",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/title",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/closable",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/close-element",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/icon",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/action",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "alert/banner",
+      "file": "basic/alert.html"
+    },
+    {
+      "id": "drawer/basic",
+      "file": "basic/drawer.html"
+    },
+    {
+      "id": "drawer/position",
+      "file": "basic/drawer.html"
+    },
+    {
+      "id": "drawer/custom",
+      "file": "basic/drawer.html"
+    },
+    {
+      "id": "drawer/nested",
+      "file": "basic/drawer.html"
+    },
+    {
+      "id": "drawer/popup-container",
+      "file": "basic/drawer.html"
+    },
+    {
+      "id": "drawer/function",
+      "file": "basic/drawer.html"
+    },
+    {
+      "id": "message/basic",
+      "file": "basic/message.html"
+    },
+    {
+      "id": "message/type",
+      "file": "basic/message.html"
+    },
+    {
+      "id": "message/icon",
+      "file": "basic/message.html"
+    },
+    {
+      "id": "message/position",
+      "file": "basic/message.html"
+    },
+    {
+      "id": "message/closeable",
+      "file": "basic/message.html"
+    },
+    {
+      "id": "message/update",
+      "file": "basic/message.html"
+    },
+    {
+      "id": "modal/basic",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/async",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/function",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/notice",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/width",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/custom",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/form",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/draggable",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "modal/fullscreen",
+      "file": "basic/modal.html"
+    },
+    {
+      "id": "notification/basic",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/type",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/position",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/update_notification",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/update_duration",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/btn",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/custom-close",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "notification/style",
+      "file": "basic/notification.html"
+    },
+    {
+      "id": "popconfirm/basic",
+      "file": "basic/popconfirm.html"
+    },
+    {
+      "id": "popconfirm/custom",
+      "file": "basic/popconfirm.html"
+    },
+    {
+      "id": "popconfirm/position",
+      "file": "basic/popconfirm.html"
+    },
+    {
+      "id": "popconfirm/type",
+      "file": "basic/popconfirm.html"
+    },
+    {
+      "id": "progress/basic",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/status",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/circle",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/mini",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/size",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/linear",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/steps",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "progress/trackColor",
+      "file": "basic/progress.html"
+    },
+    {
+      "id": "result/basic",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/success",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/warning",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/error",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/403",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/404",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/500",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/custom",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "result/all",
+      "file": "basic/result.html"
+    },
+    {
+      "id": "spin/basic",
+      "file": "basic/spin.html"
+    },
+    {
+      "id": "spin/size",
+      "file": "basic/spin.html"
+    },
+    {
+      "id": "spin/dot",
+      "file": "basic/spin.html"
+    },
+    {
+      "id": "spin/container",
+      "file": "basic/spin.html"
+    },
+    {
+      "id": "spin/tip",
+      "file": "basic/spin.html"
+    },
+    {
+      "id": "spin/icon",
+      "file": "basic/spin.html"
+    },
+    {
+      "id": "skeleton/basic",
+      "file": "basic/skeleton.html"
+    },
+    {
+      "id": "skeleton/type",
+      "file": "basic/skeleton.html"
+    },
+    {
+      "id": "skeleton/animation",
+      "file": "basic/skeleton.html"
+    },
+    {
+      "id": "breadcrumb/basic",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "breadcrumb/separator",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "breadcrumb/size",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "breadcrumb/icon",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "breadcrumb/routes",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "breadcrumb/dropdown",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "breadcrumb/ellipsis",
+      "file": "basic/breadcrumb.html"
+    },
+    {
+      "id": "dropdown/basic",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/position",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/trigger",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/button",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/group",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/submenu",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/context-menu",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "dropdown/icon",
+      "file": "basic/dropdown.html"
+    },
+    {
+      "id": "menu/horizontal",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/dark-horizontal",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/collapse-control",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/breakpoint",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/sub-menu",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/size",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/pop",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "menu/pop-button",
+      "file": "basic/menu.html"
+    },
+    {
+      "id": "page-header/basic",
+      "file": "basic/page-header.html"
+    },
+    {
+      "id": "page-header/breadcrumb",
+      "file": "basic/page-header.html"
+    },
+    {
+      "id": "page-header/transparent",
+      "file": "basic/page-header.html"
+    },
+    {
+      "id": "page-header/content",
+      "file": "basic/page-header.html"
+    },
+    {
+      "id": "pagination/basic",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/ellipsis",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/page-size",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/jumper",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/size",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/simple",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/total",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/all",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "pagination/custom",
+      "file": "basic/pagination.html"
+    },
+    {
+      "id": "steps/basic",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/description",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/label-placement",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/error",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/icon",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/line-less",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/vertical",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/arrow",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/dot",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/navigation",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "steps/changeable",
+      "file": "basic/steps.html"
+    },
+    {
+      "id": "affix/basic",
+      "file": "basic/affix.html"
+    },
+    {
+      "id": "affix/top",
+      "file": "basic/affix.html"
+    },
+    {
+      "id": "affix/bottom",
+      "file": "basic/affix.html"
+    },
+    {
+      "id": "affix/fix-change",
+      "file": "basic/affix.html"
+    },
+    {
+      "id": "affix/container",
+      "file": "basic/affix.html"
+    },
+    {
+      "id": "anchor/basic",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "anchor/static",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "anchor/line-less",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "anchor/horizontal",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "anchor/affix",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "anchor/boundary",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "anchor/hash",
+      "file": "basic/anchor.html"
+    },
+    {
+      "id": "back-top/basic",
+      "file": "basic/back-top.html"
+    },
+    {
+      "id": "back-top/custom",
+      "file": "basic/back-top.html"
+    },
+    {
+      "id": "config-provider/basic",
+      "file": "basic/config-provider.html"
+    },
+    {
+      "id": "config-provider/empty",
+      "file": "basic/config-provider.html"
+    },
+    {
+      "id": "config-provider/rtl",
+      "file": "basic/config-provider.html"
+    },
+    {
+      "id": "resize-box/basic",
+      "file": "basic/resize-box.html"
+    },
+    {
+      "id": "resize-box/controlled",
+      "file": "basic/resize-box.html"
+    },
+    {
+      "id": "resize-box/layout",
+      "file": "basic/resize-box.html"
+    },
+    {
+      "id": "resize-box/custom-triggers",
+      "file": "basic/resize-box.html"
+    },
+    {
+      "id": "trigger/basic",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "trigger/nest",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "trigger/triggers",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "trigger/align-point",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "trigger/scroll",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "trigger/arrow",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "trigger/translate",
+      "file": "basic/trigger.html"
+    },
+    {
+      "id": "split/basic",
+      "file": "basic/split.html"
+    },
+    {
+      "id": "split/nested",
+      "file": "basic/split.html"
+    },
+    {
+      "id": "overflow-list/basic",
+      "file": "basic/overflow.html"
+    },
+    {
+      "id": "overflow-list/from",
+      "file": "basic/overflow.html"
+    },
+    {
+      "id": "scrollbar/basic",
+      "file": "basic/scrollbar.html"
+    },
+    {
+      "id": "scrollbar/type",
+      "file": "basic/scrollbar.html"
+    },
+    {
+      "id": "watermark/basic",
+      "file": "basic/watermark.html"
+    },
+    {
+      "id": "watermark/multiline",
+      "file": "basic/watermark.html"
+    },
+    {
+      "id": "watermark/image",
+      "file": "basic/watermark.html"
+    },
+    {
+      "id": "watermark/custom",
+      "file": "basic/watermark.html"
+    }
+  ]
+}

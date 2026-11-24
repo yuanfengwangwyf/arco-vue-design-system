@@ -1,0 +1,154 @@
+
+<!-- demo:divider/basic -->
+<h3>基本用法</h3>
+<p>对不同章节的文本段落进行分割，默认为水平分割线，可在中间加入文字。</p>
+<template data-demo-source>
+<template>
+  <div class="divider-demo">
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+    <a-divider />
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+    <a-divider dashed />
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+    <a-divider :size="2" style="border-bottom-style: dotted" />
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+  </div>
+  <div class="divider-demo" style="marginTop: 48px">
+    <div class="flex-box">
+      <span class="avatar"><IconImage /></span>
+      <div class="content">
+        <a-typography-title :heading="6">Image</a-typography-title>
+        May 4, 2010
+      </div>
+    </div>
+    <a-divider class="half-divider" />
+    <div class="flex-box">
+      <span class="avatar"><IconUser /></span>
+      <div class="content">
+        <a-typography-title :heading="6">Avatar</a-typography-title>
+        May 4, 2010
+      </div>
+    </div>
+    <a-divider class="half-divider" />
+    <div class="flex-box">
+      <span class="avatar"><IconPen /></span>
+      <div class="content">
+        <a-typography-title :heading="6">Icon</a-typography-title>
+        May 4, 2010
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { IconImage, IconUser, IconPen } from "@arco-design/web-vue/es/icon";
+</script>
+
+<style scoped src="/demo/styles/examples/divider/basic.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:divider/with-text -->
+<h3>带有文字的分割线</h3>
+<p>通过 <code>orientation</code> 为分割线添加描述文字。</p>
+<template data-demo-source>
+<template>
+  <div class="divider-demo">
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+    <a-divider orientation="left">Text</a-divider>
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+    <a-divider orientation="center">Text</a-divider>
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
+    <a-divider orientation="right">Text</a-divider>
+    <a-divider :margin="10"><icon-star /></a-divider>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/divider/with-text.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:divider/vertical -->
+<h3>竖直分割线</h3>
+<p>指定 <code>direction</code> 为 <code>vertical</code> 即可使用竖直分割线。竖直分割线不能带文字。</p>
+<template data-demo-source>
+<template>
+  <div class="divider-demo">
+    <span>Item 1</span>
+    <a-divider direction="vertical" />
+    <span>Item 2</span>
+    <a-divider direction="vertical" />
+    <span>Item 3</span>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/divider/vertical.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="divider-props"><code>&lt;divider&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>分割线的方向，是水平还是竖直</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>orientation</td>
+<td>分割线文字的位置</td>
+<td><code>'left' | 'center' | 'right'</code></td>
+<td style="text-align:center"><code>'center'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>type</td>
+<td>分割线样式类型</td>
+<td><code>'solid' | 'dashed' | 'dotted' | 'double'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.35.0</td>
+</tr>
+<tr>
+<td>size</td>
+<td>分割线宽度/高度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.35.0</td>
+</tr>
+<tr>
+<td>margin</td>
+<td>分割线上下 margin (垂直方向时为左右 margin)</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.35.0</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,826 @@
+
+<!-- demo:image/basic -->
+<h3>基本用法</h3>
+<p>需要查看图片的时候，简单的设置 <code>src</code> 属性，就能获得一个有预览图片功能的组件。</p>
+<template data-demo-source>
+<template>
+  <a-image
+    width="200"
+    src="/images/04c703768372e30e.webp"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/caption -->
+<h3>显示 Caption</h3>
+<p>通过设置 <code>title</code> 和 <code>description</code> 可以将图片的标题和描述显示在图片内部或者底部，显示的位置通过 <code>footerPosition</code> 控制。</p>
+<template data-demo-source>
+<template>
+  <a-image width="200px" :src="src" :title="title" :description="description" />
+  <a-image
+    width="200px"
+    footerPosition="outer"
+    style="margin-left: 67px; vertical-align: top;"
+    :src="src"
+    :title="title"
+    :description="description"
+  />
+</template>
+
+<script setup>
+const src = "/images/04c703768372e30e.webp";
+const title = "A user\u2019s avatar";
+const description = "Present by Arco Design";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/extra -->
+<h3>额外操作</h3>
+<p>组件提供了具名插槽 <code>extra</code> 供用户在页脚定制额外的内容。</p>
+<template data-demo-source>
+<template>
+  <a-image
+    src="/images/04c703768372e30e.webp"
+    title="A user’s avatar"
+    description="Present by Arco Design"
+    width="260"
+    style="margin-right: 67px; vertical-align: top;"
+    :preview-visible="visible1"
+    @preview-visible-change="
+      () => {
+        visible1 = false;
+      }
+    "
+  >
+    <template #extra>
+      <div class="actions">
+        <span
+          class="action"
+          @click="
+            () => {
+              visible1 = true;
+            }
+          "
+          ><icon-eye
+        /></span>
+        <span class="action" @click="handleDownLoad"><icon-download /></span>
+        <a-tooltip content="A user’s avatar">
+          <span class="action"><icon-info-circle /></span>
+        </a-tooltip>
+      </div>
+    </template>
+  </a-image>
+  <a-image
+    src="/images/04c703768372e30e.webp"
+    title="A user’s avatar"
+    description="Present by Arco Design"
+    width="260"
+    footer-position="outer"
+    :preview-visible="visible2"
+    @preview-visible-change="
+      () => {
+        visible2 = false;
+      }
+    "
+  >
+    <template #extra>
+      <div class="actions actions-outer">
+        <span
+          class="action"
+          @click="
+            () => {
+              visible2 = true;
+            }
+          "
+          ><icon-eye
+        /></span>
+        <span class="action" @click="handleDownLoad"><icon-download /></span>
+        <a-tooltip content="A user’s avatar">
+          <span class="action"><icon-info-circle /></span>
+        </a-tooltip>
+      </div>
+    </template>
+  </a-image>
+</template>
+<script setup>
+import { ref } from "vue";
+import {
+  IconEye,
+  IconDownload,
+  IconInfoCircle
+} from "@arco-design/web-vue/es/icon";
+const visible1 = ref(false);
+const visible2 = ref(false);
+</script>
+<style scoped src="/demo/styles/examples/image/extra.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/error -->
+<h3>错误状态</h3>
+<p>当加载图片失败的时候显示的内容。</p>
+<template data-demo-source>
+<template>
+  <a-space :size="20">
+    <a-image width="400" height="300" src="some-error.png" />
+    <a-image
+      width="400"
+      height="300"
+      src="some-error.png"
+      alt="This is a picture of humans eating ice cream. The humans on the screen are very happy just now. The ice cream is green, it seems to be flavored with matcha. The gender of the human is unknown. It has very long hair and the human hair is brown."
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/loader -->
+<h3>加载状态</h3>
+<p>默认情况下，加载效果是不显示的，可通过设置 <code>showLoader</code> 为 <code>true</code> 显示默认加载效果。如果默认加载效果不符合需求, 还可以通过 具名插槽 <code>loader</code> 自行设置加载样式。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-button
+      type="primary"
+      @click="
+        () => {
+          timestamp = Date.now();
+        }
+      "
+      style="margin-bottom: 20px;"
+    >
+      reload
+    </a-button>
+  </div>
+  <a-image
+    width="200"
+    height="200"
+    :src="`/images/04c703768372e30e.webp?timestamp=${timestamp}`"
+    show-loader
+  />
+  <a-image
+    width="200"
+    height="200"
+    :src="`/images/04c703768372e30e.webp?timestamp=${timestamp}`"
+    style="marginLeft: 67px"
+  >
+    <template #loader>
+      <div class="loader-animate" />
+    </template>
+  </a-image>
+</template>
+<script setup>
+import { ref } from "vue";
+const timestamp = ref("");
+</script>
+<style scoped src="/demo/styles/examples/image/loader.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/progressive-loader -->
+<h3>渐进加载</h3>
+<p>大图可通过给 <code>loader</code> 传递一个小一些的图片，让其在原图未被加载成功时显示，以此来模拟渐进加载。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-button
+      type="primary"
+      @click="
+        () => {
+          timestamp = Date.now();
+        }
+      "
+      style="margin-bottom: 20px;"
+    >
+      reload
+    </a-button>
+  </div>
+  <a-image
+    width="200"
+    height="200"
+    :src="`/images/04c703768372e30e.webp?timestamp=${timestamp}`"
+  >
+    <template #loader>
+      <img
+        width="200"
+        src="/images/04c703768372e30e.webp"
+        style="filter: blur(5px);"
+      />
+    </template>
+  </a-image>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const timestamp = ref("");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/custom-preview-actions -->
+<h3>自定义预览操作栏</h3>
+<p>通过设置 <code>actionsLayout</code> 可以调整预览操作栏中功能按钮的顺序，同时可以过滤功能按钮，只有在 <code>actionsLayout</code> 中的按钮才会出现。
+此外从 <code>2.17.0</code> 开始，预览组件 <code>a-image-preview</code> 提供了 <code>actions</code> 插槽，支持自定义额外的操作项，同时还提供了操作项组件 <code>a-image-preview-action</code>。</p>
+<template data-demo-source>
+<template>
+  <a-image
+    width="200"
+    src="/images/04c703768372e30e.webp"
+    :preview-props="{
+      actionsLayout: ['rotateRight', 'zoomIn', 'zoomOut'],
+    }"
+  >
+    <template #preview-actions>
+      <a-image-preview-action name="下载" @click="handleDownload">
+        <icon-download />
+      </a-image-preview-action>
+    </template>
+  </a-image>
+</template>
+
+<script setup>
+import { IconDownload } from "@arco-design/web-vue/es/icon";
+const handleDownload = () => {
+  console.log("\u70B9\u51FB\u4E0B\u8F7D\u56FE\u7247");
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/preview-group -->
+<h3>多图预览</h3>
+<p>用 <code>&lt;a-image-preview-group&gt;</code> 包裹 <code>&lt;a-image&gt;</code> 组件即可进行多图预览。</p>
+<template data-demo-source>
+<template>
+  <a-image-preview-group infinite>
+    <a-space>
+      <a-image
+        src="/images/50c19c7e3caf9fff.webp"
+        width="200"
+      />
+      <a-image
+        src="/images/83bfbb6675770ee7.webp"
+        width="200"
+      />
+      <a-image
+        src="/images/def91c3d4d70d932.webp"
+        width="200"
+      />
+      <a-image
+        src="/images/a12b6c5dc80634e9.webp"
+        width="200"
+      />
+    </a-space>
+  </a-image-preview-group>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/component-preview -->
+<h3>单独使用预览组件</h3>
+<p><code>a-image-preview</code> 可单独使用，需要手动控制 <code>visible</code>。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleClick"
+    >Click me to preview image</a-button
+  >
+  <a-image-preview
+    src="/images/04c703768372e30e.webp"
+    v-model:visible="visible"
+  />
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const handleClick = () => {
+  visible.value = true;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/component-preview-group -->
+<h3>单独使用多图预览组件</h3>
+<p><code>&lt;a-image-preview-group&gt;</code> 可单独使用，需控制 <code>visible</code> 。在图片的展示上分为两种场景，一是通过 <code>defaultCurrent</code> 指定第一张展示的图片；二是控制 <code>current</code> 来决定当前显示的是第几张图片。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleClick"
+    >Click me to preview multiple image</a-button
+  >
+  <a-image-preview-group
+    v-model:visible="visible"
+    v-model:current="current"
+    infinite
+    :srcList="[
+      '/images/50c19c7e3caf9fff.webp',
+      '/images/83bfbb6675770ee7.webp',
+      '/images/def91c3d4d70d932.webp',
+      '/images/a12b6c5dc80634e9.webp',
+    ]"
+  />
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visible = ref(false);
+const current = ref(3);
+const handleClick = () => {
+  visible.value = true;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:image/preview-popup-container -->
+<h3>挂载节点</h3>
+<p>可以通过 <code>popupContainer</code> 指定预览挂载的父级节点。</p>
+<template data-demo-source>
+<template>
+  <div
+    id="image-demo-preview-popup-container"
+    :style="{
+      width: '100%',
+      height: '400px',
+      backgroundColor: 'var(--color-fill-2)',
+      position: 'relative',
+      overflow: 'hidden',
+      lineHeight: '400px',
+      textAlign: 'center',
+    }"
+  >
+    <a-image
+      width="200"
+      src="/images/04c703768372e30e.webp"
+      :preview-props="{
+        popupContainer: '#image-demo-preview-popup-container',
+        closable: false,
+      }"
+    />
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="image-props"><code>&lt;image&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td>图片获取地址</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>width</td>
+<td>图片显示宽度</td>
+<td><code>string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>height</td>
+<td>图片显示高度</td>
+<td><code>string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>description</td>
+<td>描述，将显示在底部，如果 alt 没有值，则会将其设置给 alt</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fit</td>
+<td>确定图片如何适应容器框</td>
+<td><code>'contain' | 'cover' | 'fill' | 'none' | 'scale-down'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>alt</td>
+<td>图片的文字描述</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hide-footer</td>
+<td>是否隐藏 footer（2.36.0 版本支持 'never' 参数，支持在加载错误时显示底部内容）</td>
+<td><code>boolean | 'never'</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer-position</td>
+<td>底部显示的位置</td>
+<td><code>'inner' | 'outer'</code></td>
+<td style="text-align:center"><code>'inner'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-loader</td>
+<td>是否显示加载中效果</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>preview</td>
+<td>是否开启预览</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>preview-visible <strong>(v-model)</strong></td>
+<td>控制预览的打开状态，可与 previewVisibleChange 配合使用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-preview-visible</td>
+<td>预览的默认打开状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>preview-props</td>
+<td>预览的配置项（所有选项都是可选的） <a href="#image-preview%20Props">ImagePreviewProps</a></td>
+<td><code>ImagePreviewProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer-class</td>
+<td>底部显示区域的类名</td>
+<td><code>string|array|object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-events"><code>&lt;image&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preview-visible-change</td>
+<td>预览的打开和关闭事件</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-slots"><code>&lt;image&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>error</td>
+<td style="text-align:center">自定义错误状态内容</td>
+<td>-</td>
+</tr>
+<tr>
+<td>error-icon</td>
+<td style="text-align:center">自定义错误状态的图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>loader</td>
+<td style="text-align:center">自定义加载状态效果</td>
+<td>-</td>
+</tr>
+<tr>
+<td>extra</td>
+<td style="text-align:center">底部额外内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-props"><code>&lt;image-preview&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td>图片获取地址</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>visible <strong>(v-model)</strong></td>
+<td>是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-visible</td>
+<td>默认是否可见，非受控</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>mask-closable</td>
+<td>点击 mask 是否触发关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否显示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>actions-layout</td>
+<td>操作项的布局</td>
+<td><code>string[]</code></td>
+<td style="text-align:center"><code>[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>设置弹出框的挂载点，同 <code>teleport</code> 的 <code>to</code>，缺省值是 document.body</td>
+<td><code>HTMLElement | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>esc-to-close</td>
+<td>是否支持 ESC 键关闭预览</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>wheel-zoom</td>
+<td>是否开启滚轮缩放</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>keyboard</td>
+<td>是否开启键盘控制</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>default-scale</td>
+<td>默认缩放比</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+</tr>
+<tr>
+<td>zoom-rate</td>
+<td>缩放速率，仅对滚动缩放生效</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-events"><code>&lt;image-preview&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>关闭事件</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-slots"><code>&lt;image-preview&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>actions</td>
+<td style="text-align:center">自定义额外的操作项</td>
+<td>-</td>
+<td style="text-align:left">2.17.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-group-props"><code>&lt;image-preview-group&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src-list</td>
+<td>图片列表（设置了本属性之后，将不再收集 a-image 子组件的图片信息）</td>
+<td><code>string[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>current <strong>(v-model)</strong></td>
+<td>当前展示的图片的下标</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-current</td>
+<td>第一张展示的图片的下标</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+</tr>
+<tr>
+<td>infinite</td>
+<td>是否无限循环</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>visible <strong>(v-model)</strong></td>
+<td>是否可见，受控属性</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-visible</td>
+<td>默认是否可见，非受控</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>mask-closable</td>
+<td>点击 mask 是否触发关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否显示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>actions-layout</td>
+<td>控制条的布局</td>
+<td><code>string[]</code></td>
+<td style="text-align:center"><code>[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]</code></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>设置弹出框的挂载点，同 <code>teleport</code> 的 <code>to</code>，缺省值是 document.body</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-group-events"><code>&lt;image-preview-group&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>切换图片</td>
+<td>index: <code>number</code></td>
+</tr>
+<tr>
+<td>visible-change</td>
+<td>预览的打开和关闭</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-group-slots"><code>&lt;image-preview-group&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>actions</td>
+<td style="text-align:center">自定义额外的操作项</td>
+<td>-</td>
+<td style="text-align:left">2.46.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="image-preview-action-props-2.17.0"><code>&lt;image-preview-action&gt;</code> Props (2.17.0)</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>名称</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="faq">FAQ</h2>
+<h3 id="关于-image-preview-的属性说明">关于 <code>image-preview</code> 的属性说明</h3>
+<ol>
+<li>键盘快捷键 <code>keyboard</code> 设置此属性为 <code>true</code> 后，将根据 <code>actions-layout</code> 操作项来启用相应的快捷键操作。</li>
+</ol>
+<ul>
+<li><code>esc</code>: 关闭预览</li>
+<li><code>left</code>: 切换至上一张图片</li>
+<li><code>right</code>: 切换至下一张图片</li>
+<li><code>up</code>: 放大图片</li>
+<li><code>down</code>: 缩小图片</li>
+<li><code>space</code>: 还原至原始大小</li>
+</ul>
+<ol start="2">
+<li>
+<p>默认缩放比例 <code>defaultScale</code> 此属性定义了默认的图片缩放比例。例如，当设置为 1.5 时，图片将默认放大到原始大小的 1.5 倍。</p>
+</li>
+<li>
+<p>滚动缩放速率 <code>zoomSate</code> 属性控制了在滚动操作时图片的缩放速率。以 1.3 为例，每次滚动操作都会使图片放大或缩小 1.3 倍。</p>
+</li>
+</ol>

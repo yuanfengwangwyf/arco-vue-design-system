@@ -1,0 +1,531 @@
+
+<!-- demo:descriptions/basic -->
+<h3>基本用法</h3>
+<p>简单地成组展示多个只读字段，一般用于详情页的信息。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" fill>
+    <a-descriptions :data="data" title="User Info" layout="inline-horizontal" />
+    <a-descriptions title="User Info" :column="{ xs: 1, md: 3, lg: 4 }">
+      <a-descriptions-item
+        v-for="item of data"
+        :label="item.label"
+        :span="item.span ?? 1"
+      >
+        <a-tag>{{ item.value }}</a-tag>
+      </a-descriptions-item>
+    </a-descriptions>
+  </a-space>
+</template>
+
+<script setup>
+const data = [
+  {
+    label: "Name",
+    value: "Socrates",
+    span: 3
+  },
+  {
+    label: "Mobile",
+    value: "123-1234-1234"
+  },
+  {
+    label: "Residence",
+    value: "Beijing"
+  },
+  {
+    label: "Hometown",
+    value: "Beijing"
+  },
+  {
+    label: "Address",
+    value: "Yingdu Building, Zhichun Road, Beijing"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:descriptions/single -->
+<h3>单列样式</h3>
+<p>单列的描述列表样式。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group type="button" v-model="size">
+    <a-radio value="mini">mini</a-radio>
+    <a-radio value="small">small</a-radio>
+    <a-radio value="medium">medium</a-radio>
+    <a-radio value="large">large</a-radio>
+  </a-radio-group>
+  <a-descriptions
+    style="margin-top: 20px"
+    :data="data"
+    :size="size"
+    title="User Info"
+    :column="1"
+  />
+</template>
+
+<script setup>
+import { ref } from "vue";
+const size = ref("medium");
+const data = [
+  {
+    label: "Name",
+    value: "Socrates"
+  },
+  {
+    label: "Mobile",
+    value: "123-1234-1234"
+  },
+  {
+    label: "Residence",
+    value: "Beijing"
+  },
+  {
+    label: "Hometown",
+    value: "Beijing"
+  },
+  {
+    label: "Address",
+    value: "Yingdu Building, Zhichun Road, Beijing"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:descriptions/align -->
+<h3>标签文本对齐</h3>
+<p>标签文本可以设置左对齐右对齐，也可以设置垂直的排列方式。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-descriptions :data="data" title="User Info" align="right" />
+    <a-descriptions
+      :data="data"
+      title="User Info"
+      :align="{ label: 'right' }"
+    />
+    <a-descriptions :data="data" title="User Info" layout="inline-vertical" />
+  </a-space>
+</template>
+
+<script setup>
+const data = [
+  {
+    label: "Name",
+    value: "Socrates"
+  },
+  {
+    label: "Mobile",
+    value: "123-1234-1234"
+  },
+  {
+    label: "Residence",
+    value: "Beijing"
+  },
+  {
+    label: "Hometown",
+    value: "Beijing"
+  },
+  {
+    label: "Address",
+    value: "Yingdu Building, Zhichun Road, Beijing"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:descriptions/bordered -->
+<h3>带边框样式</h3>
+<p>带边框和背景颜色的列表。</p>
+<template data-demo-source>
+<template>
+  <a-descriptions :data="data" title="User Info" bordered />
+</template>
+
+<script setup>
+const data = [
+  {
+    label: "Name",
+    value: "Socrates"
+  },
+  {
+    label: "Mobile",
+    value: "123-1234-1234"
+  },
+  {
+    label: "Residence",
+    value: "Beijing"
+  },
+  {
+    label: "Hometown",
+    value: "Beijing"
+  },
+  {
+    label: "Address",
+    value: "Yingdu Building, Zhichun Road, Beijing"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:descriptions/layout -->
+<h3>布局模式</h3>
+<p>有水平排列、垂直排列、行内水平排列、行内垂直排列四种布局模式。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group type="button" v-model="size">
+    <a-radio value="mini">mini</a-radio>
+    <a-radio value="small">small</a-radio>
+    <a-radio value="medium">medium</a-radio>
+    <a-radio value="large">large</a-radio>
+  </a-radio-group>
+  <div style="margin-top: 20px">
+    <a-descriptions
+      :data="data"
+      :size="size"
+      title="User Info (horizontal)"
+      bordered
+    />
+    <a-descriptions
+      :data="data"
+      :size="size"
+      title="User Info (inline-horizontal)"
+      layout="inline-horizontal"
+      bordered
+    />
+    <a-descriptions
+      :data="data"
+      :size="size"
+      title="User Info (vertical)"
+      layout="vertical"
+      bordered
+    />
+    <a-descriptions
+      :data="data"
+      :size="size"
+      title="User Info (inline-vertical)"
+      layout="inline-vertical"
+      bordered
+    />
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const size = ref("medium");
+const data = [
+  {
+    label: "Name",
+    value: "Socrates"
+  },
+  {
+    label: "Mobile",
+    value: "123-1234-1234"
+  },
+  {
+    label: "Residence",
+    value: "Beijing"
+  },
+  {
+    label: "Hometown",
+    value: "Beijing"
+  },
+  {
+    label: "Address",
+    value: "Yingdu Building, Zhichun Road, Beijing"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:descriptions/example -->
+<h3>布局示例</h3>
+<p><code>span</code> 所占列数大于 <code>column</code> 可放置的数据个数时，<code>span</code> 会被设置为 <code>column</code> 的值，当行剩余列数不够放置下一列时将自动换行，每行末尾列会自动填充剩余量。</p>
+<template data-demo-source>
+<template>
+  <a-form :model="form" auto-label-width>
+    <a-form-item label="size">
+      <a-radio-group v-model="form.size" type="button" :options="sizeOptions" />
+    </a-form-item>
+
+    <a-form-item label="layout">
+      <a-radio-group
+        v-model="form.layout"
+        type="button"
+        :options="layoutOptions"
+      />
+    </a-form-item>
+
+    <a-form-item label="table-layout">
+      <a-radio-group
+        v-model="form.tableLayout"
+        type="button"
+        :options="['auto', 'fixed']"
+      />
+    </a-form-item>
+
+    <a-form-item label="column">
+      <a-radio-group
+        v-model="form.column"
+        type="button"
+        :options="columnOptions"
+      />
+    </a-form-item>
+
+    <a-form-item label="firstSpan">
+      <a-radio-group
+        v-model="form.firstSpan"
+        type="button"
+        :options="firstSpanOptions"
+      />
+    </a-form-item>
+  </a-form>
+  <div style="margin-top: 20px">
+    <a-descriptions
+      title="Layout Example"
+      :size="form.size"
+      :column="form.column"
+      :layout="form.layout"
+      :table-layout="form.tableLayout"
+      bordered
+    >
+      <a-descriptions-item label="Item1" :span="form.firstSpan">
+        <div
+          >Span：{{ form.firstSpan }}
+          <span v-if="form.firstSpan > form.column" style="color: red;">
+            Exceeds Column, set to Column size
+          </span>
+        </div>
+      </a-descriptions-item>
+      <a-descriptions-item label="Item2" :span="2">Span：2</a-descriptions-item>
+      <a-descriptions-item label="Item3" :span="3">Span：3</a-descriptions-item>
+      <a-descriptions-item label="Item4" :span="2">Span：2</a-descriptions-item>
+      <a-descriptions-item label="Item5" :span="1">Span：1</a-descriptions-item>
+      <a-descriptions-item label="Item6" :span="1">Span：1</a-descriptions-item>
+    </a-descriptions>
+  </div>
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const form = reactive({
+  size: "medium",
+  layout: "horizontal",
+  column: 4,
+  tableLayout: "auto",
+  firstSpan: 2
+});
+const layoutOptions = [
+  "horizontal",
+  "inline-horizontal",
+  "vertical",
+  "inline-vertical"
+];
+const columnOptions = [1, 2, 3, 4, 5];
+const firstSpanOptions = [1, 2, 3, 4, 5];
+const sizeOptions = ["mini", "small", "medium", "large"];
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="descriptions-props"><code>&lt;descriptions&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>描述列表的数据</td>
+<td><code>DescData[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>column</td>
+<td>每行放置的数据个数。2.20.0 版本支持响应式配置，配置可参考 Grid</td>
+<td><code>number | ResponsiveValue</code></td>
+<td style="text-align:center"><code>3</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>描述列表的标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>layout</td>
+<td>描述列表的排列方式</td>
+<td><code>'horizontal' | 'vertical' | 'inline-horizontal' | 'inline-vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>align</td>
+<td>文字的对齐位置</td>
+<td><code>TextAlign | { label?: TextAlign; value?: TextAlign }</code></td>
+<td style="text-align:center"><code>'left'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>描述列表的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>bordered</td>
+<td>是否显示边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>label-style</td>
+<td>数据标签的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>value-style</td>
+<td>数据内容的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>table-layout</td>
+<td>描述中表格样式的 <code>layout-fixed</code>，当设置成 <code>fixed</code> 时，宽度会均分。</td>
+<td><code>'auto' | 'fixed'</code></td>
+<td style="text-align:center"><code>'auto'</code></td>
+<td style="text-align:left">2.38.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="descriptions-slots"><code>&lt;descriptions&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td style="text-align:center">数据内容</td>
+<td>value: <code>string</code><br>index: <code>number</code><br>data: <code>DescData</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td style="text-align:center">数据标签</td>
+<td>label: <code>string</code><br>index: <code>number</code><br>data: <code>DescData</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="descriptions-item-props"><code>&lt;descriptions-item&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>span</td>
+<td>所占列数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>label</td>
+<td>标签</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="descriptions-item-slots"><code>&lt;descriptions-item&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td style="text-align:center">标签</td>
+<td>-</td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="descdata">DescData</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>标签</td>
+<td><code>string | RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>value</td>
+<td>数据</td>
+<td><code>string | RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>span</td>
+<td>所占列数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+</tr>
+</tbody>
+</table>

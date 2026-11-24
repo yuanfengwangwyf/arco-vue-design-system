@@ -1,0 +1,483 @@
+
+<!-- demo:radio/basic -->
+<h3>基本用法</h3>
+<p>单选框的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-radio value="radio">Radio</a-radio>
+    <a-radio value="disabled radio" :default-checked="true" disabled
+      >Disabled Radio</a-radio
+    >
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/control -->
+<h3>受控</h3>
+<p>通过 <code>v-model</code> (<code>model-value</code>) 属性控制是否选中</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-radio v-model="checked1">v-model</a-radio>
+    <a-radio :model-value="true">binding "true"</a-radio>
+    <a-radio :model-value="checked2">binding value2</a-radio>
+    <a-radio :default-checked="true">uncontrolled state</a-radio>
+  </a-space>
+  <div :style="{ marginTop: '20px' }">
+    <a-space size="large">
+      <a-button type="primary" @click="handleSetCheck">
+        {{ checked2 ? 'uncheck' : 'check' }} value2
+      </a-button>
+      <a-button @click="handleReset"> reset all </a-button>
+    </a-space>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const checked1 = ref(false);
+const checked2 = ref(false);
+const handleSetCheck = () => {
+  checked2.value = !checked2.value;
+};
+const handleReset = () => {
+  checked1.value = false;
+  checked2.value = false;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/group -->
+<h3>单选框组</h3>
+<p>通过 <code>&lt;a-radio-group&gt;</code> 组件展示单选框组。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group>
+      <a-radio value="A">A</a-radio>
+      <a-radio value="B">B</a-radio>
+      <a-radio value="C">C</a-radio>
+      <a-radio value="D">D</a-radio>
+    </a-radio-group>
+    <a-radio-group>
+      <a-radio value="A">A</a-radio>
+      <a-radio value="B">B</a-radio>
+      <a-radio value="C">C</a-radio>
+      <a-radio value="D" disabled>D</a-radio>
+    </a-radio-group>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/options -->
+<h3>单选框组选项</h3>
+<p><code>a-radio-group</code> 通过 <code>options</code> 属性设置子元素</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group v-model="value1" :options="plainOptions" />
+    <a-radio-group v-model="value2" :options="options" />
+    <a-radio-group v-model="value2" :options="options">
+      <template #label="{ data }">
+        <a-tag>{{ data.label }}</a-tag>
+      </template>
+    </a-radio-group>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value1 = ref("plain 1");
+const plainOptions = ["plain 1", "plain 2", "plain 3"];
+const value2 = ref("1");
+const options = [
+  { label: "option 1", value: "1" },
+  { label: "option 2", value: "2" },
+  { label: "option 3", value: "3", disabled: true }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/direction -->
+<h3>单选框组方向</h3>
+<p>通过设置 <code>direction=&quot;vertical&quot;</code> 可以展示竖直的单选框组。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group direction="vertical">
+    <a-radio value="A">A</a-radio>
+    <a-radio value="B">B</a-radio>
+    <a-radio value="C">C</a-radio>
+    <a-radio value="D">D</a-radio>
+  </a-radio-group>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/button -->
+<h3>按钮类型的单选框组</h3>
+<p>通过指定 <code>type=&quot;button&quot;</code> ，可以显示按钮类型的单选框组。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group type="button">
+    <a-radio value="Beijing">Beijing</a-radio>
+    <a-radio value="Shanghai">Shanghai</a-radio>
+    <a-radio value="Guangzhou">Guangzhou</a-radio>
+    <a-radio value="Shenzhen">Shenzhen</a-radio>
+  </a-radio-group>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/size -->
+<h3>按钮类型单选框组的尺寸</h3>
+<p>按钮类型的单选框组分为 <code>mini</code>、<code>small</code>、<code>medium</code>、<code>large</code> 四种尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group type="button" size="mini">
+      <a-radio value="Beijing">Beijing</a-radio>
+      <a-radio value="Shanghai">Shanghai</a-radio>
+      <a-radio value="Guangzhou">Guangzhou</a-radio>
+      <a-radio value="Shenzhen">Shenzhen</a-radio>
+    </a-radio-group>
+    <a-radio-group type="button" size="small">
+      <a-radio value="Beijing">Beijing</a-radio>
+      <a-radio value="Shanghai">Shanghai</a-radio>
+      <a-radio value="Guangzhou">Guangzhou</a-radio>
+      <a-radio value="Shenzhen">Shenzhen</a-radio>
+    </a-radio-group>
+    <a-radio-group type="button">
+      <a-radio value="Beijing">Beijing</a-radio>
+      <a-radio value="Shanghai">Shanghai</a-radio>
+      <a-radio value="Guangzhou">Guangzhou</a-radio>
+      <a-radio value="Shenzhen">Shenzhen</a-radio>
+    </a-radio-group>
+    <a-radio-group type="button" size="large">
+      <a-radio value="Beijing">Beijing</a-radio>
+      <a-radio value="Shanghai">Shanghai</a-radio>
+      <a-radio value="Guangzhou">Guangzhou</a-radio>
+      <a-radio value="Shenzhen">Shenzhen</a-radio>
+    </a-radio-group>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/layout -->
+<h3>布局</h3>
+<p>使用 <code>&lt;a-radio-group&gt;</code> 传入 <code>&lt;a-radio&gt;</code>，配合 <code>&lt;a-grid&gt;</code> 组件实现灵活的布局。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group v-model="checkedValue">
+    <a-grid :cols="3" :colGap="24" :rowGap="16">
+      <a-grid-item>
+        <a-radio value="1">Option 1</a-radio>
+      </a-grid-item>
+      <a-grid-item>
+        <a-radio value="2" disabled>Option 2</a-radio>
+      </a-grid-item>
+      <a-grid-item>
+        <a-radio value="3">Option 3</a-radio>
+      </a-grid-item>
+      <a-grid-item>
+        <a-radio value="4">Option 4</a-radio>
+      </a-grid-item>
+      <a-grid-item>
+        <a-radio value="5">Option 5</a-radio>
+      </a-grid-item>
+    </a-grid>
+  </a-radio-group>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const checkedValue = ref("1");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:radio/custom -->
+<h3>自定义单选框</h3>
+<p>使用 #radio 插槽自定义复选框的展示</p>
+<template data-demo-source>
+<template>
+  <a-radio-group default-value="1">
+    <a-radio value="1">
+      <template #radio="{ checked }">
+        <a-tag :checked="checked" checkable>This is a tag radio 1</a-tag>
+      </template>
+    </a-radio>
+    <a-radio value="2">
+      <template #radio="{ checked }">
+        <a-tag :checked="checked" checkable>This is a tag radio 2</a-tag>
+      </template>
+    </a-radio>
+    <a-radio value="3">
+      <template #radio="{ checked }">
+        <a-tag :checked="checked" checkable>This is a tag radio 3</a-tag>
+      </template>
+    </a-radio>
+  </a-radio-group>
+
+  <div :style="{ marginTop: '20px' }">
+    <a-radio-group>
+      <template v-for="item in 2" :key="item">
+        <a-radio :value="item">
+          <template #radio="{ checked }">
+            <a-space
+              align="start"
+              class="custom-radio-card"
+              :class="{ 'custom-radio-card-checked': checked }"
+            >
+              <div className="custom-radio-card-mask">
+                <div className="custom-radio-card-mask-dot" />
+              </div>
+              <div>
+                <div className="custom-radio-card-title">
+                  radio Card {{ item }}
+                </div>
+                <a-typography-text type="secondary">
+                  this is a text
+                </a-typography-text>
+              </div>
+            </a-space>
+          </template>
+        </a-radio>
+      </template>
+    </a-radio-group>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/radio/custom.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="radio-props"><code>&lt;radio&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string | number | boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-checked</td>
+<td>默认是否选中（非受控状态）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>value</td>
+<td>选项的 <code>value</code></td>
+<td><code>string | number | boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>单选的类型</td>
+<td><code>'radio' | 'button'</code></td>
+<td style="text-align:center"><code>'radio'</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="radio-events"><code>&lt;radio&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值改变时触发</td>
+<td>value: <code>string | number | boolean</code><br>ev: <code>Event</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="radio-slots"><code>&lt;radio&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>radio</td>
+<td style="text-align:center">自定义单选框</td>
+<td>checked: <code>boolean</code><br>disabled: <code>boolean</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="radio-group-props"><code>&lt;radio-group&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string | number | boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>string | number | boolean</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>type</td>
+<td>单选框组的类型</td>
+<td><code>'radio' | 'button'</code></td>
+<td style="text-align:center"><code>'radio'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>单选框组的尺寸</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>options</td>
+<td>选项</td>
+<td><code>Array&lt;string | number | RadioOption&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>单选框组的方向</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="radio-group-events"><code>&lt;radio-group&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值改变时触发</td>
+<td>value: <code>string | number | boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="radio-group-slots"><code>&lt;radio-group&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>radio</td>
+<td style="text-align:center">自定义单选框</td>
+<td>checked: <code>boolean</code><br>disabled: <code>boolean</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+<tr>
+<td>label</td>
+<td style="text-align:center">radio 文案内容</td>
+<td>data: <code>RadioOption</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="radiooption">RadioOption</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td>文案</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>value</td>
+<td>选项的 <code>value</code></td>
+<td><code>string | number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>

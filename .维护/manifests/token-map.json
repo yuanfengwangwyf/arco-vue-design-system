@@ -1,0 +1,2807 @@
+{
+  "definitions": {
+    "--red-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--red-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orangered-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--orange-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gold-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--yellow-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--lime-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--green-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--cyan-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--blue-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--arcoblue-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--purple-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--pinkpurple-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--magenta-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--gray-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--success-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--success-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--primary-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--danger-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--warning-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--link-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-white": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-black": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-border": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-bg-popup": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      }
+    ],
+    "--color-bg-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-bg-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-bg-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-bg-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-bg-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-bg-white": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-neutral-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-5": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-6": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-7": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-8": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-9": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-neutral-10": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      }
+    ],
+    "--color-text-1": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-text-2": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-text-3": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-text-4": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-border-1": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-border-2": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-border-3": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-border-4": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-fill-1": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-fill-2": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-fill-3": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-fill-4": [
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body, [data-demo-theme]"
+      }
+    ],
+    "--color-primary-light-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-primary-light-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-primary-light-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-primary-light-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-link-light-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-link-light-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-link-light-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-link-light-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-secondary": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-secondary-hover": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-secondary-active": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-secondary-disabled": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-danger-light-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-danger-light-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-danger-light-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-danger-light-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-success-light-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-success-light-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-success-light-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-success-light-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-warning-light-1": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-warning-light-2": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-warning-light-3": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-warning-light-4": [
+      {
+        "file": "src/tokens/primitive.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--border-radius-none": [
+      {
+        "file": "src/tokens/radius.css",
+        "selector": "body"
+      }
+    ],
+    "--border-radius-small": [
+      {
+        "file": "src/tokens/radius.css",
+        "selector": "body"
+      }
+    ],
+    "--border-radius-medium": [
+      {
+        "file": "src/tokens/radius.css",
+        "selector": "body"
+      }
+    ],
+    "--border-radius-large": [
+      {
+        "file": "src/tokens/radius.css",
+        "selector": "body"
+      }
+    ],
+    "--border-radius-circle": [
+      {
+        "file": "src/tokens/radius.css",
+        "selector": "body"
+      }
+    ],
+    "--color-tooltip-bg": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-spin-layer-bg": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-menu-dark-bg": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-menu-light-bg": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-menu-dark-hover": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--color-mask-bg": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": "body"
+      },
+      {
+        "file": "src/tokens/themes.css",
+        "selector": "body[arco-theme='dark']"
+      }
+    ],
+    "--custom-color": [
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": ".arco-switch-type-line.arco-switch-custom-color"
+      },
+      {
+        "file": "src/tokens/semantic.css",
+        "selector": ".arco-switch-type-line.arco-switch-custom-color.arco-switch-checked"
+      }
+    ]
+  },
+  "references": {
+    "global": [
+      "--arcoblue-1",
+      "--arcoblue-10",
+      "--arcoblue-2",
+      "--arcoblue-3",
+      "--arcoblue-4",
+      "--arcoblue-5",
+      "--arcoblue-6",
+      "--arcoblue-7",
+      "--arcoblue-8",
+      "--arcoblue-9",
+      "--border-radius-circle",
+      "--color-bg-5",
+      "--color-fill-2",
+      "--color-neutral-1",
+      "--color-neutral-10",
+      "--color-neutral-2",
+      "--color-neutral-3",
+      "--color-neutral-4",
+      "--color-neutral-6",
+      "--color-neutral-8",
+      "--danger-1",
+      "--danger-2",
+      "--danger-3",
+      "--danger-4",
+      "--danger-6",
+      "--gray-1",
+      "--gray-10",
+      "--gray-2",
+      "--gray-3",
+      "--gray-4",
+      "--gray-5",
+      "--gray-6",
+      "--gray-7",
+      "--gray-8",
+      "--gray-9",
+      "--green-1",
+      "--green-10",
+      "--green-2",
+      "--green-3",
+      "--green-4",
+      "--green-5",
+      "--green-6",
+      "--green-7",
+      "--green-8",
+      "--green-9",
+      "--link-1",
+      "--link-2",
+      "--link-3",
+      "--link-4",
+      "--link-6",
+      "--orange-1",
+      "--orange-10",
+      "--orange-2",
+      "--orange-3",
+      "--orange-4",
+      "--orange-5",
+      "--orange-6",
+      "--orange-7",
+      "--orange-8",
+      "--orange-9",
+      "--primary-1",
+      "--primary-2",
+      "--primary-3",
+      "--primary-4",
+      "--primary-6",
+      "--red-1",
+      "--red-10",
+      "--red-2",
+      "--red-3",
+      "--red-4",
+      "--red-5",
+      "--red-6",
+      "--red-7",
+      "--red-8",
+      "--red-9",
+      "--success-1",
+      "--success-2",
+      "--success-3",
+      "--success-4",
+      "--success-6",
+      "--warning-1",
+      "--warning-2",
+      "--warning-3",
+      "--warning-4",
+      "--warning-6"
+    ],
+    "affix": [],
+    "alert": [
+      "--border-radius-small",
+      "--color-danger-light-1",
+      "--color-neutral-2",
+      "--color-neutral-4",
+      "--color-primary-light-1",
+      "--color-success-light-1",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-warning-light-1",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "anchor": [
+      "--border-radius-small",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--primary-6"
+    ],
+    "auto-complete": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-1",
+      "--color-text-4"
+    ],
+    "avatar": [
+      "--border-radius-circle",
+      "--border-radius-medium",
+      "--color-bg-2",
+      "--color-fill-4",
+      "--color-neutral-2",
+      "--color-neutral-3",
+      "--color-white"
+    ],
+    "back-top": [
+      "--border-radius-circle",
+      "--color-white",
+      "--primary-5",
+      "--primary-6"
+    ],
+    "badge": [
+      "--border-radius-circle",
+      "--color-bg-2",
+      "--color-fill-4",
+      "--color-text-1",
+      "--color-white",
+      "--cyan-6",
+      "--danger-6",
+      "--gold-6",
+      "--gray-4",
+      "--lime-6",
+      "--magenta-6",
+      "--orange-6",
+      "--pinkpurple-6",
+      "--primary-6",
+      "--purple-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "breadcrumb": [
+      "--border-radius-small",
+      "--color-fill-2",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--link-6"
+    ],
+    "button": [
+      "--border-radius-circle",
+      "--border-radius-small",
+      "--color-danger-light-1",
+      "--color-danger-light-2",
+      "--color-danger-light-3",
+      "--color-danger-light-4",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-neutral-3",
+      "--color-neutral-4",
+      "--color-neutral-5",
+      "--color-primary-light-3",
+      "--color-secondary",
+      "--color-secondary-active",
+      "--color-secondary-disabled",
+      "--color-secondary-hover",
+      "--color-success-light-1",
+      "--color-success-light-2",
+      "--color-success-light-3",
+      "--color-success-light-4",
+      "--color-text-2",
+      "--color-text-4",
+      "--color-warning-light-1",
+      "--color-warning-light-2",
+      "--color-warning-light-3",
+      "--color-warning-light-4",
+      "--danger-3",
+      "--danger-5",
+      "--danger-6",
+      "--danger-7",
+      "--primary-3",
+      "--primary-5",
+      "--primary-6",
+      "--primary-7",
+      "--success-3",
+      "--success-5",
+      "--success-6",
+      "--success-7",
+      "--warning-3",
+      "--warning-5",
+      "--warning-6",
+      "--warning-7"
+    ],
+    "calendar": [
+      "--color-bg-5",
+      "--color-fill-1",
+      "--color-fill-3",
+      "--color-neutral-3",
+      "--color-primary-light-1",
+      "--color-primary-light-2",
+      "--color-primary-light-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-4",
+      "--color-white",
+      "--primary-6"
+    ],
+    "card": [
+      "--border-radius-none",
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--gray-1",
+      "--gray-2",
+      "--primary-6"
+    ],
+    "carousel": [
+      "--border-radius-medium",
+      "--color-fill-4",
+      "--color-white",
+      "--gray-4"
+    ],
+    "cascader": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-primary-light-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--primary-6"
+    ],
+    "checkbox": [
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-primary-light-3",
+      "--color-text-1",
+      "--color-text-4",
+      "--color-white",
+      "--primary-6"
+    ],
+    "collapse": [
+      "--border-radius-medium",
+      "--color-bg-2",
+      "--color-border-2",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-neutral-3",
+      "--color-neutral-7",
+      "--color-text-1",
+      "--color-text-4"
+    ],
+    "color-picker": [
+      "--color-bg-1",
+      "--color-bg-white",
+      "--color-border-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-1",
+      "--color-text-3",
+      "--color-text-4"
+    ],
+    "comment": [
+      "--border-radius-circle",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3"
+    ],
+    "date-picker": [
+      "--border-radius-circle",
+      "--border-radius-medium",
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-bg-popup",
+      "--color-danger-light-1",
+      "--color-danger-light-2",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-neutral-3",
+      "--color-primary-light-1",
+      "--color-primary-light-2",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--color-white",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "descriptions": [
+      "--border-radius-medium",
+      "--color-fill-1",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-3"
+    ],
+    "divider": [
+      "--color-bg-2",
+      "--color-neutral-3",
+      "--color-text-1"
+    ],
+    "drawer": [
+      "--color-bg-3",
+      "--color-mask-bg",
+      "--color-neutral-3",
+      "--color-text-1"
+    ],
+    "dropdown": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-1",
+      "--color-text-3",
+      "--color-text-4"
+    ],
+    "empty": [
+      "--gray-5"
+    ],
+    "form": [
+      "--color-bg-2",
+      "--color-danger-light-1",
+      "--color-danger-light-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-primary-light-2",
+      "--color-success-light-2",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--color-warning-light-1",
+      "--color-warning-light-2",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "grid": [],
+    "image": [
+      "--border-radius-medium",
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-bg-5",
+      "--color-mask-bg",
+      "--color-neutral-1",
+      "--color-neutral-2",
+      "--color-neutral-3",
+      "--color-neutral-4",
+      "--color-neutral-6",
+      "--color-neutral-8",
+      "--color-text-1",
+      "--color-text-4",
+      "--color-white",
+      "--primary-6"
+    ],
+    "input": [
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-danger-light-1",
+      "--color-danger-light-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-neutral-3",
+      "--color-primary-light-2",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "input-number": [
+      "--border-radius-small",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-neutral-3",
+      "--color-text-2",
+      "--color-text-4"
+    ],
+    "input-tag": [
+      "--arcoblue-1",
+      "--arcoblue-2",
+      "--arcoblue-6",
+      "--blue-1",
+      "--blue-2",
+      "--blue-6",
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-border-2",
+      "--color-danger-light-1",
+      "--color-danger-light-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-primary-light-2",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--color-white",
+      "--cyan-1",
+      "--cyan-2",
+      "--cyan-6",
+      "--danger-6",
+      "--gold-1",
+      "--gold-2",
+      "--gold-3",
+      "--gold-6",
+      "--gray-2",
+      "--gray-3",
+      "--gray-6",
+      "--green-1",
+      "--green-2",
+      "--green-6",
+      "--lime-1",
+      "--lime-2",
+      "--lime-6",
+      "--magenta-1",
+      "--magenta-2",
+      "--magenta-6",
+      "--orange-1",
+      "--orange-2",
+      "--orange-6",
+      "--orangered-1",
+      "--orangered-2",
+      "--orangered-6",
+      "--pinkpurple-1",
+      "--pinkpurple-2",
+      "--pinkpurple-6",
+      "--primary-6",
+      "--purple-1",
+      "--purple-2",
+      "--purple-6",
+      "--red-1",
+      "--red-2",
+      "--red-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "layout": [
+      "--color-bg-5",
+      "--color-menu-dark-bg",
+      "--color-menu-light-bg",
+      "--color-text-1",
+      "--color-white"
+    ],
+    "link": [
+      "--border-radius-small",
+      "--color-danger-light-3",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-link-light-3",
+      "--color-success-light-3",
+      "--color-warning-light-2",
+      "--danger-6",
+      "--link-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "list": [
+      "--border-radius-medium",
+      "--color-fill-1",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-2"
+    ],
+    "mention": [],
+    "menu": [
+      "--border-radius-medium",
+      "--border-radius-small",
+      "--color-bg-popup",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-menu-dark-bg",
+      "--color-menu-dark-hover",
+      "--color-menu-light-bg",
+      "--color-neutral-3",
+      "--color-primary-light-2",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--color-white",
+      "--primary-6",
+      "--primary-7"
+    ],
+    "message": [
+      "--border-radius-small",
+      "--color-bg-popup",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "modal": [
+      "--border-radius-medium",
+      "--color-bg-3",
+      "--color-mask-bg",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "notification": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "overflow-list": [],
+    "page-header": [
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3"
+    ],
+    "pagination": [
+      "--border-radius-small",
+      "--color-fill-1",
+      "--color-primary-light-1",
+      "--color-primary-light-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--primary-6"
+    ],
+    "popconfirm": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "popover": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-2"
+    ],
+    "progress": [
+      "--color-danger-light-3",
+      "--color-fill-3",
+      "--color-primary-light-3",
+      "--color-success-light-3",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-warning-light-3",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "radio": [
+      "--border-radius-circle",
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-bg-3",
+      "--color-bg-5",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-neutral-3",
+      "--color-primary-light-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-4",
+      "--color-white",
+      "--primary-6"
+    ],
+    "rate": [
+      "--color-fill-3",
+      "--gold-6"
+    ],
+    "resize-box": [
+      "--color-neutral-3",
+      "--color-text-1"
+    ],
+    "result": [
+      "--color-danger-light-1",
+      "--color-primary-light-1",
+      "--color-success-light-1",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-warning-light-1",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "scrollbar": [
+      "--color-neutral-1",
+      "--color-neutral-3",
+      "--color-neutral-4",
+      "--color-neutral-6"
+    ],
+    "select": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-1",
+      "--color-text-3",
+      "--color-text-4"
+    ],
+    "skeleton": [
+      "--border-radius-small",
+      "--color-fill-2",
+      "--color-fill-3"
+    ],
+    "slider": [
+      "--color-bg-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-3",
+      "--gray-6",
+      "--primary-6"
+    ],
+    "space": [],
+    "spin": [
+      "--border-radius-circle",
+      "--color-spin-layer-bg",
+      "--primary-2",
+      "--primary-4",
+      "--primary-5",
+      "--primary-6"
+    ],
+    "split": [
+      "--color-neutral-3",
+      "--color-text-1"
+    ],
+    "statistic": [
+      "--color-text-1",
+      "--color-text-2"
+    ],
+    "steps": [
+      "--border-radius-circle",
+      "--color-bg-2",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-fill-4",
+      "--color-neutral-3",
+      "--color-primary-light-1",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--color-white",
+      "--danger-6",
+      "--primary-6"
+    ],
+    "switch": [
+      "--border-radius-small",
+      "--color-bg-white",
+      "--color-fill-2",
+      "--color-fill-4",
+      "--color-neutral-3",
+      "--color-neutral-6",
+      "--color-primary-light-1",
+      "--color-primary-light-3",
+      "--color-white",
+      "--custom-color",
+      "--primary-6"
+    ],
+    "table": [
+      "--border-radius-medium",
+      "--color-bg-2",
+      "--color-bg-5",
+      "--color-fill-1",
+      "--color-fill-4",
+      "--color-neutral-2",
+      "--color-neutral-3",
+      "--color-neutral-4",
+      "--color-neutral-5",
+      "--color-neutral-6",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-white",
+      "--gray-10",
+      "--gray-4",
+      "--primary-6"
+    ],
+    "tabs": [
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-neutral-3",
+      "--color-primary-light-3",
+      "--color-text-2",
+      "--color-text-4",
+      "--primary-6"
+    ],
+    "tag": [
+      "--arcoblue-1",
+      "--arcoblue-2",
+      "--arcoblue-6",
+      "--blue-1",
+      "--blue-2",
+      "--blue-6",
+      "--border-radius-small",
+      "--color-border-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-white",
+      "--cyan-1",
+      "--cyan-2",
+      "--cyan-6",
+      "--gold-1",
+      "--gold-2",
+      "--gold-3",
+      "--gold-6",
+      "--gray-2",
+      "--gray-3",
+      "--gray-6",
+      "--green-1",
+      "--green-2",
+      "--green-6",
+      "--lime-1",
+      "--lime-2",
+      "--lime-6",
+      "--magenta-1",
+      "--magenta-2",
+      "--magenta-6",
+      "--orange-1",
+      "--orange-2",
+      "--orange-6",
+      "--orangered-1",
+      "--orangered-2",
+      "--orangered-6",
+      "--pinkpurple-1",
+      "--pinkpurple-2",
+      "--pinkpurple-6",
+      "--purple-1",
+      "--purple-2",
+      "--purple-6",
+      "--red-1",
+      "--red-2",
+      "--red-6"
+    ],
+    "textarea": [
+      "--border-radius-small",
+      "--color-bg-2",
+      "--color-danger-light-1",
+      "--color-danger-light-2",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-fill-4",
+      "--color-primary-light-2",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--danger-6",
+      "--primary-6",
+      "--success-6",
+      "--warning-6"
+    ],
+    "time-picker": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-fill-2",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-4"
+    ],
+    "timeline": [
+      "--border-radius-circle",
+      "--color-bg-2",
+      "--color-neutral-3",
+      "--color-text-1",
+      "--color-text-3",
+      "--primary-6"
+    ],
+    "tooltip": [
+      "--border-radius-small",
+      "--color-tooltip-bg"
+    ],
+    "transfer": [
+      "--border-radius-small",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-neutral-3",
+      "--color-primary-light-1",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--primary-6"
+    ],
+    "tree": [
+      "--border-radius-small",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-neutral-3",
+      "--color-primary-light-1",
+      "--color-primary-light-3",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-4",
+      "--primary-6"
+    ],
+    "tree-select": [
+      "--border-radius-medium",
+      "--color-bg-popup",
+      "--color-fill-3"
+    ],
+    "trigger": [
+      "--border-radius-small",
+      "--color-bg-5"
+    ],
+    "typography": [
+      "--color-bg-2",
+      "--color-fill-2",
+      "--color-neutral-2",
+      "--color-neutral-3",
+      "--color-neutral-6",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-4",
+      "--danger-6",
+      "--primary-5",
+      "--primary-6",
+      "--success-6",
+      "--warning-6",
+      "--yellow-4"
+    ],
+    "upload": [
+      "--border-radius-small",
+      "--color-danger-light-1",
+      "--color-fill-1",
+      "--color-fill-2",
+      "--color-fill-3",
+      "--color-neutral-3",
+      "--color-neutral-4",
+      "--color-primary-light-1",
+      "--color-text-1",
+      "--color-text-2",
+      "--color-text-3",
+      "--color-text-4",
+      "--color-white",
+      "--danger-6",
+      "--gray-10",
+      "--link-6",
+      "--primary-6",
+      "--primary-7",
+      "--success-6"
+    ],
+    "verification-code": []
+  }
+}

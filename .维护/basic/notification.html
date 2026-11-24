@@ -1,0 +1,497 @@
+
+<!-- demo:notification/basic -->
+<h3>基本用法</h3>
+<p>通知提醒框的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button
+      type="primary"
+      @click="
+        Notification.info({
+          title: 'Notification',
+          content: 'This is a notification!',
+        })"
+      >
+      Open Notification
+    </a-button>
+    <a-button @click="handleNotification"> Open Notification </a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { Notification } from "@arco-design/web-vue";
+const handleNotification = () => {
+  Notification.info({
+    title: "Notification",
+    content: "This is a notification!"
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/type -->
+<h3>消息类型</h3>
+<p>通知提醒框的消息类型。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary" @click="handleShowInfoNotification">
+      Info
+    </a-button>
+    <a-button
+      type="primary"
+      status="success"
+      @click="handleShowSuccessNotification"
+    >
+      Success
+    </a-button>
+    <a-button
+      type="primary"
+      status="warning"
+      @click="handleShowWarningNotification"
+    >
+      Warning
+    </a-button>
+    <a-button
+      type="primary"
+      status="danger"
+      @click="handleShowErrorNotification"
+    >
+      Error
+    </a-button>
+    <a-button type="secondary" @click="handleShowNormalNotification">
+      Normal
+    </a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { Notification } from "@arco-design/web-vue";
+const handleShowInfoNotification = () => Notification.info("This is an info message!");
+const handleShowSuccessNotification = () => Notification.success("This is a success message!");
+const handleShowWarningNotification = () => Notification.warning("This is a warning message!");
+const handleShowErrorNotification = () => Notification.error("This is an error message!");
+const handleShowNormalNotification = () => Notification.info({
+  content: "This is an error message!",
+  showIcon: false
+});
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/position -->
+<h3>全局提示的位置</h3>
+<p>通知提醒框有 4 种不同的弹出位置，分别为：<code>左上角</code>, <code>右上角 (默认)</code>, <code>左下角</code>, <code>右下角</code>。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary" @click="handleNotification"> Top Right </a-button>
+    <a-button type="primary" @click="handleNotificationTopLeft">
+      Top Left
+    </a-button>
+    <a-button type="primary" @click="handleNotificationBottomRight">
+      Bottom Right
+    </a-button>
+    <a-button type="primary" @click="handleNotificationBottomLeft">
+      Bottom Left
+    </a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { Notification } from "@arco-design/web-vue";
+const handleNotification = () => {
+  Notification.info({
+    title: "Title",
+    content: "This is a Notification!"
+  });
+};
+const handleNotificationTopLeft = () => {
+  Notification.info({
+    title: "Title",
+    content: "This is a Notification!",
+    position: "topLeft"
+  });
+};
+const handleNotificationBottomRight = () => {
+  Notification.info({
+    title: "Title",
+    content: "This is a Notification!",
+    position: "bottomRight"
+  });
+};
+const handleNotificationBottomLeft = () => {
+  Notification.info({
+    title: "Title",
+    content: "This is a Notification!",
+    position: "bottomLeft"
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/update_notification -->
+<h3>更新通知内容</h3>
+<p>通过指定参数 <code>id</code>，可以更新已经存在的通知提醒框。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleNotification">
+    Open Notification
+  </a-button>
+</template>
+
+<script setup>
+import { Notification } from "@arco-design/web-vue";
+const handleNotification = () => {
+  Notification.warning({
+    id: "your_id",
+    title: "Ready to update",
+    content: "Will update after 2 seconds..."
+  });
+  setTimeout(() => {
+    Notification.success({
+      id: "your_id",
+      title: "Success",
+      content: "Update success!"
+    });
+  }, 2e3);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/update_duration -->
+<h3>更新延迟</h3>
+<p>通过指定参数 <code>id</code>，可以更新已经存在的通知提醒框。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleNotification">
+    Open Notification
+  </a-button>
+</template>
+
+<script setup>
+import { Notification } from "@arco-design/web-vue";
+const handleNotification = () => {
+  Notification.warning({
+    id: "your_id",
+    title: "Ready to update",
+    content: "Will update after 2 seconds...",
+    duration: 0
+  });
+  setTimeout(() => {
+    Notification.success({
+      id: "your_id",
+      title: "Success",
+      content: "Update success!",
+      duration: 3e3
+    });
+  }, 2e3);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/btn -->
+<h3>自定义操作按钮</h3>
+<p>通过指定 <code>btn</code> 字段，可以添加操作按钮。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleNotification">
+    Open Notification
+  </a-button>
+</template>
+
+<script setup>
+import { h as renderNode } from "vue";
+import { Notification, Space, Button } from "@arco-design/web-vue";
+const handleNotification = () => {
+  const id = `${Date.now()}`;
+  const closeNotification = Notification.info({
+    id,
+    title: "Notification",
+    content: "This is a notification!",
+    duration: 0,
+    footer: /* @__PURE__ */ renderNode(Space, null, /* @__PURE__ */ renderNode(
+      Button,
+      {
+        type: "secondary",
+        size: "small",
+        onClick: () => Notification.remove(id)
+      },
+      "Cancel"
+    ), /* @__PURE__ */ renderNode(Button, { type: "primary", size: "small", onClick: closeNotification }, "Ok"))
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/custom-close -->
+<h3>自定义关闭按钮</h3>
+<p>需要设置 <code>closable: true</code>，自定义元素使用 <code>closeIconElement</code>，仅图标使用 <code>closeIcon</code> (会有 <code>hover</code> 样式)。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-button type="primary" @click="handleNotification">
+      Open Notification
+    </a-button>
+    <a-button type="primary" status="danger" @click="handleNotification2">
+      Open Notification
+    </a-button>
+  </a-space>
+</template>
+
+<script setup>
+import { h as renderNode } from "vue";
+import { Notification, Button } from "@arco-design/web-vue";
+import { IconCloseCircle } from "@arco-design/web-vue/es/icon";
+const handleNotification = () => {
+  Notification.info({
+    title: "Notification",
+    content: "This is a notification!",
+    closable: true,
+    closeIcon: /* @__PURE__ */ renderNode(IconCloseCircle, null)
+  });
+};
+const handleNotification2 = () => {
+  Notification.error({
+    title: "Notification",
+    content: "This is a notification!",
+    closable: true,
+    closeIconElement: /* @__PURE__ */ renderNode(Button, { size: "mini" }, "Close")
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:notification/style -->
+<h3>自定义样式</h3>
+<p>可以设置 <code>style</code> 和 <code>class</code> 来定制样式。</p>
+<template data-demo-source>
+<template>
+  <a-button type="primary" @click="handleNotification">
+    Open Notification
+  </a-button>
+</template>
+
+<script setup>
+import { Notification } from "@arco-design/web-vue";
+const handleNotification = () => {
+  Notification.info({
+    title: "Notification",
+    content: "This is a notification!",
+    closable: true,
+    style: { width: "500px" }
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="notification-全局方法"><code>Notification</code> 全局方法</h3>
+<p><code>Notification</code> 提供的全局方法，可以通过以下三种方法使用：</p>
+<ol>
+<li>通过 <code>this.$notification</code> 调用</li>
+<li>在 Composition API 中，通过 <code>getCurrentInstance().appContext.config.globalProperties.$notification</code> 调用</li>
+<li>导入 <code>Notification</code>，通过 <code>Notification</code> 本身调用</li>
+</ol>
+<p>当通过 <code>import</code> 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext</p>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import { Notification } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Notification._context = app._context;
+</code></pre>
+<h3 id="notificationmethod">NotificationMethod</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info</td>
+<td>显示信息提醒框</td>
+<td><code>(    config: string | NotificationConfig,    appContext?: AppContext  ) =&gt; NotificationReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>success</td>
+<td>显示成功提醒框</td>
+<td><code>(    config: string | NotificationConfig,    appContext?: AppContext  ) =&gt; NotificationReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>warning</td>
+<td>显示警告提醒框</td>
+<td><code>(    config: string | NotificationConfig,    appContext?: AppContext  ) =&gt; NotificationReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>显示错误提醒框</td>
+<td><code>(    config: string | NotificationConfig,    appContext?: AppContext  ) =&gt; NotificationReturn</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>remove</td>
+<td>清除对应 <code>id</code> 的提醒框</td>
+<td><code>(id: string) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清除全部提醒框</td>
+<td><code>(position?: NotificationPosition) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="notificationconfig">NotificationConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>内容</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td><code>RenderContent</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon</td>
+<td>图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>id</td>
+<td>唯一id</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>style</td>
+<td>样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>class</td>
+<td>样式类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>position</td>
+<td>位置</td>
+<td><code>'topLeft'|'topRight'|'bottomLeft'|'bottomRight'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>showIcon</td>
+<td>是否显示图标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否可关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>显示的持续时间，单位为 <code>ms</code></td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>3000</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>footer</td>
+<td>底部内容</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>closeIcon</td>
+<td>关闭按钮图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closeIconElement</td>
+<td>关闭按钮元素</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>关闭时的回调函数</td>
+<td><code>(id: number | string) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="notificationreturn">NotificationReturn</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>关闭当前通知提醒框</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

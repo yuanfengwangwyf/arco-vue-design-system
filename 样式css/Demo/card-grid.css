@@ -1,0 +1,6 @@
+.card-demo {
+  width: 100%;
+}
+.card-demo :deep(.arco-card-header) {
+  border: none;
+}

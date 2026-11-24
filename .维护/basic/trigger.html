@@ -1,0 +1,526 @@
+
+<!-- demo:trigger/basic -->
+<h3>基本用法</h3>
+<p>这个例子展示了触发器的最基础的使用。触发器默认是没有弹出框的样式的。以下示例均为官网添加的样式。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-trigger position="top" auto-fit-position :unmount-on-close="false">
+      <span>Hover Me</span>
+      <template #content>
+        <div class="demo-basic">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+    <a-trigger trigger="click" :unmount-on-close="false">
+      <a-button>Click Me</a-button>
+      <template #content>
+        <div class="demo-basic">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+    <a-trigger trigger="focus">
+      <a-input placeholder="Focus on me" />
+      <template #content>
+        <div class="demo-basic">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+  </a-space>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/basic.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:trigger/nest -->
+<h3>多层嵌套</h3>
+<p>弹出层可以嵌套在另一个弹出层内。</p>
+<template data-demo-source>
+<template>
+  <a-trigger trigger="click">
+    <a-button>Click Me</a-button>
+    <template #content>
+      <div class="trigger-demo-nest">
+        <a-empty />
+        <a-trigger position="right">
+          <a-button>Hover Me</a-button>
+          <template #content>
+            <div class="trigger-demo-nest">
+              <a-empty />
+              <a-trigger trigger="click" position="right">
+                <a-button>Click Me</a-button>
+                <template #content>
+                  <div class="trigger-demo-nest">
+                    <a-empty />
+                    <a-trigger position="right">
+                      <a-button>Hover Me</a-button>
+                      <template #content>
+                        <a-empty class="trigger-demo-nest" />
+                      </template>
+                    </a-trigger>
+                  </div>
+                </template>
+              </a-trigger>
+            </div>
+          </template>
+        </a-trigger>
+      </div>
+    </template>
+  </a-trigger>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/nest.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:trigger/triggers -->
+<h3>多个触发方式</h3>
+<p>通过<code>trigger</code>传入数组，可以设置多个触发方式。</p>
+<template data-demo-source>
+<template>
+  <a-trigger :trigger="['click', 'hover', 'focus']">
+    <a-input placeholder="Click/Hover/Focus on me" />
+    <template #content>
+      <div class="demo-trigger">
+        <a-empty />
+      </div>
+    </template>
+  </a-trigger>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/triggers.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:trigger/align-point -->
+<h3>跟随鼠标显示弹出框</h3>
+<p>设置<code>align-point</code>属性，可以使弹出层出现在鼠标位置。</p>
+<template data-demo-source>
+<template>
+  <a-trigger trigger="click" align-point>
+    <div class="demo-point-trigger">
+      <div>Click Me</div>
+    </div>
+    <template #content>
+      <div class="demo-point">
+        <a-empty />
+      </div>
+    </template>
+  </a-trigger>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/align-point.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:trigger/scroll -->
+<h3>滚动容器</h3>
+<p>通过设置 <code>update-at-scroll</code> 监听容器的滚动。</p>
+<template data-demo-source>
+<template>
+  <div :style="{ height: '100px', overflowY: 'scroll' }">
+    <div :style="{ height: '200px' }">
+      <a-trigger trigger="click" update-at-scroll>
+        <a-button :style="{ marginTop: '80px' }">Click Me</a-button>
+        <template #content>
+          <div class="demo-basic">
+            <a-empty />
+          </div>
+        </template>
+      </a-trigger>
+    </div>
+  </div>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/scroll.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:trigger/arrow -->
+<h3>显示箭头元素</h3>
+<p>通过<code>show-arrow</code>属性，可以展示默认的箭头元素。也可以通过<code>arrow-class</code>或<code>arrow-style</code>进行定制。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-trigger trigger="click">
+      <a-button>Click Me</a-button>
+      <template #content>
+        <div class="demo-arrow">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+    <a-trigger trigger="click" show-arrow>
+      <a-button>Click Me (Arrow)</a-button>
+      <template #content>
+        <div class="demo-arrow">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+  </a-space>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/arrow.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:trigger/translate -->
+<h3>弹窗偏移量</h3>
+<p>通过<code>popup-translate</code>属性，可以设置弹窗在原本位置的基础上进行额外的位置调整。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-trigger>
+      <a-button>BOTTOM</a-button>
+      <template #content>
+        <div class="trigger-demo-translate">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+    <a-trigger :popup-translate="[100, 20]">
+      <a-button>BOTTOM OFFSET[100, 20]</a-button>
+      <template #content>
+        <div class="trigger-demo-translate">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+    <a-trigger :popup-translate="[-100, 20]">
+      <a-button>BOTTOM OFFSET[-100, 20]</a-button>
+      <template #content>
+        <div class="trigger-demo-translate">
+          <a-empty />
+        </div>
+      </template>
+    </a-trigger>
+  </a-space>
+</template>
+
+<style scoped src="/demo/styles/examples/trigger/translate.css"></style>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="trigger-props"><code>&lt;trigger&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>弹出框是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>弹出框默认是否可见（非受控模式）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发方式</td>
+<td><code>'hover' | 'click' | 'focus' | 'contextMenu'</code></td>
+<td style="text-align:center"><code>'hover'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>position</td>
+<td>弹出位置</td>
+<td><code>'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br' | 'left' | 'lt' | 'lb' | 'right' | 'rt' | 'rb'</code></td>
+<td style="text-align:center"><code>'bottom'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>触发器是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-offset</td>
+<td>弹出框的偏移量（弹出框距离触发器的偏移距离）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-translate</td>
+<td>弹出框的移动距离</td>
+<td><code>TriggerPopupTranslate</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-arrow</td>
+<td>弹出框是否显示箭头</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>align-point</td>
+<td>弹出框是否跟随鼠标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-hover-stay</td>
+<td>是否在移出触发器，并移入弹出框时保持弹出框显示</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>blur-to-close</td>
+<td>是否在触发器失去焦点时关闭弹出框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>click-to-close</td>
+<td>是否在点击触发器时关闭弹出框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>click-outside-to-close</td>
+<td>是否在点击外部区域时关闭弹出框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>unmount-on-close</td>
+<td>是否在关闭时卸载弹出框节点</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>content-class</td>
+<td>弹出框内容的类名</td>
+<td><code>string|array|object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>content-style</td>
+<td>弹出框内容的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>arrow-class</td>
+<td>弹出框箭头的类名</td>
+<td><code>string|array|object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>arrow-style</td>
+<td>弹出框箭头的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-style</td>
+<td>弹出框的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>弹出动画的name</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'fade-in'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>弹出动画的持续时间</td>
+<td><code>number| {    enter: number;    leave: number;  }</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mouse-enter-delay</td>
+<td>mouseenter事件延时触发的时间（毫秒）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>100</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>mouse-leave-delay</td>
+<td>mouseleave事件延时触发的时间（毫秒）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>100</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>focus-delay</td>
+<td>focus事件延时触发的时间（毫秒）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-fit-popup-width</td>
+<td>是否将弹出框宽度设置为触发器宽度</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-fit-popup-min-width</td>
+<td>是否将弹出框的最小宽度设置为触发器宽度</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-fix-position</td>
+<td>当触发器的尺寸发生变化时，是否重新计算弹出框位置</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>update-at-scroll</td>
+<td>是否在容器滚动时更新弹出框的位置</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-fit-position</td>
+<td>是否自动调整弹出框位置，以适应窗口大小</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>render-to-body</td>
+<td>是否挂载在 <code>body</code> 元素下</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>prevent-focus</td>
+<td>是否阻止弹出层中的元素点击时获取焦点</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>scroll-to-close</td>
+<td>是否在滚动时关闭弹出框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.46.0</td>
+</tr>
+<tr>
+<td>scroll-to-close-distance</td>
+<td>滚动阈值，当滚动距离超过该值时触发关闭</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="trigger-events"><code>&lt;trigger&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>popup-visible-change</td>
+<td>弹出框显示状态改变时触发</td>
+<td>visible: <code>boolean</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show</td>
+<td>弹出框显示后（动画结束）触发</td>
+<td>-</td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>弹出框隐藏后（动画结束）触发</td>
+<td>-</td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trigger-slots"><code>&lt;trigger&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td style="text-align:center">弹出框内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="type">Type</h2>
+<pre><code class="language-ts">type TriggerPopupTranslate =
+  | [number, number]
+  | { [key in TriggerPosition]?: [number, number] };
+</code></pre>
+<h2 id="faq">FAQ</h2>
+<h3 id="关于弹出框的挂载位置">关于弹出框的挂载位置</h3>
+<p>弹出框默认是挂载到 <code>body</code> 元素上的，如果想要修改挂载元素，可以使用 <code>popup-container</code> 属性进行指定，同时需要注意保证挂载元素的位置可以被准确定位到，一般可以为挂载元素增加 <code>position: relative</code> 样式。</p>
+<p>在微前端项目中，需要保证子应用的挂载位置准确，可以将子应用的 <code>body</code> 样式添加 <code>position: relative</code></p>
+<h3 id="滚动触发容器">滚动触发容器</h3>
+<p>组件默认仅监听了 <code>window</code> 的滚动事件，对于内部 <code>div</code> 的滚动没有进行监听，类似 <code>scroll-to-close</code> 功能也仅会对 <code>window</code> 滚动生效。可以通过开启 <code>update-at-scroll</code> 属性支持对父级 <code>div</code> 元素的滚动事件监听。</p>

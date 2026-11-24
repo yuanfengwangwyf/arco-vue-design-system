@@ -1,0 +1,526 @@
+
+<!-- demo:tabs/basic -->
+<h3>基本用法</h3>
+<p>标签页的基本使用方法。</p>
+<template data-demo-source>
+<template>
+  <a-tabs default-active-key="2">
+    <a-tab-pane key="1" title="Tab 1"> Content of Tab Panel 1 </a-tab-pane>
+    <a-tab-pane key="2" title="Tab 2"> Content of Tab Panel 2 </a-tab-pane>
+    <a-tab-pane key="3">
+      <template #title>Tab 3</template>
+      Content of Tab Panel 3
+    </a-tab-pane>
+  </a-tabs>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/icon -->
+<h3>带图标的页签</h3>
+<p>带有图标的标签页。</p>
+<template data-demo-source>
+<template>
+  <a-tabs>
+    <a-tab-pane key="1">
+      <template #title> <icon-calendar /> Tab 1 </template>
+      Content of Tab Panel 1
+    </a-tab-pane>
+    <a-tab-pane key="2">
+      <template #title> <icon-clock-circle /> Tab 2 </template>
+      Content of Tab Panel 2
+    </a-tab-pane>
+    <a-tab-pane key="3">
+      <template #title> <icon-user /> Tab 3 </template>
+      Content of Tab Panel 3
+    </a-tab-pane>
+  </a-tabs>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/position -->
+<h3>位置</h3>
+<p>通过 <code>position</code> 属性可以自定义标签栏的位置。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group v-model="position" type="button">
+      <a-radio value="top">Top</a-radio>
+      <a-radio value="right">Right</a-radio>
+      <a-radio value="bottom">Bottom</a-radio>
+      <a-radio value="left">Left</a-radio>
+    </a-radio-group>
+    <a-tabs :position="position">
+      <a-tab-pane key="1" title="Tab 1"> Content of Tab Panel 1 </a-tab-pane>
+      <a-tab-pane key="2" title="Tab 2"> Content of Tab Panel 2 </a-tab-pane>
+      <a-tab-pane key="3" title="Tab 3"> Content of Tab Panel 3 </a-tab-pane>
+    </a-tabs>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const position = ref("top");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/type -->
+<h3>不同类型</h3>
+<p>通过 <code>type</code> 可以设置标签的类型。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group v-model="type" type="button">
+      <a-radio value="line">Line</a-radio>
+      <a-radio value="card">Card</a-radio>
+      <a-radio value="card-gutter">Card Gutter</a-radio>
+      <a-radio value="text">Text</a-radio>
+      <a-radio value="rounded">Rounded</a-radio>
+      <a-radio value="capsule">Capsule</a-radio>
+    </a-radio-group>
+    <a-radio-group v-model="size" type="button">
+      <a-radio value="mini">Mini</a-radio>
+      <a-radio value="small">Small</a-radio>
+      <a-radio value="medium">Medium</a-radio>
+      <a-radio value="large">Large</a-radio>
+    </a-radio-group>
+    <a-tabs :type="type" :size="size">
+      <a-tab-pane key="1" title="Tab 1"> Content of Tab Panel 1 </a-tab-pane>
+      <a-tab-pane key="2" title="Tab 2"> Content of Tab Panel 2 </a-tab-pane>
+      <a-tab-pane key="3" title="Tab 3"> Content of Tab Panel 3 </a-tab-pane>
+    </a-tabs>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const type = ref("line");
+const size = ref("medium");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/lazy -->
+<h3>懒加载</h3>
+<p>通过设置 lazy-load 属性，可以让面板在首次激活时渲染。</p>
+<template data-demo-source>
+<template>
+  <a-tabs default-active-key="2" lazy-load>
+    <a-tab-pane key="1" title="Tab 1"> Content of Tab Panel 1 </a-tab-pane>
+    <a-tab-pane key="2" title="Tab 2"> Content of Tab Panel 2 </a-tab-pane>
+    <a-tab-pane key="3" title="Tab 3"> Content of Tab Panel 3 </a-tab-pane>
+  </a-tabs>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/extra -->
+<h3>附加内容</h3>
+<p>通过 <code>extra</code> 插槽可以自定义额外显示内容。</p>
+<template data-demo-source>
+<template>
+  <a-tabs>
+    <template #extra>
+      <a-button>Action</a-button>
+    </template>
+    <a-tab-pane key="1" title="Tab 1"> Content of Tab Panel 1 </a-tab-pane>
+    <a-tab-pane key="2" title="Tab 2"> Content of Tab Panel 2 </a-tab-pane>
+    <a-tab-pane key="3" title="Tab 3"> Content of Tab Panel 3 </a-tab-pane>
+  </a-tabs>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/editable -->
+<h3>动态增减标签页</h3>
+<p>通过设置 <code>:editable=&quot;true&quot;</code> 可以开启动态增减标签页。仅在 <code>line</code> | <code>card</code> | <code>card-gutter</code> 生效</p>
+<template data-demo-source>
+<template>
+  <a-tabs
+    type="card-gutter"
+    :editable="true"
+    @add="handleAdd"
+    @delete="handleDelete"
+    show-add-button
+    auto-switch
+  >
+    <a-tab-pane
+      v-for="(item, index) of data"
+      :key="item.key"
+      :title="item.title"
+      :closable="index !== 2"
+    >
+      {{ item?.content }}
+    </a-tab-pane>
+  </a-tabs>
+</template>
+
+<script setup>
+import { ref } from "vue";
+let count = 5;
+const data = ref([
+  {
+    key: "1",
+    title: "Tab 1",
+    content: "Content of Tab Panel 1"
+  },
+  {
+    key: "2",
+    title: "Tab 2",
+    content: "Content of Tab Panel 2"
+  },
+  {
+    key: "3",
+    title: "Tab 3",
+    content: "Content of Tab Panel 3"
+  },
+  {
+    key: "4",
+    title: "Tab 4",
+    content: "Content of Tab Panel 4"
+  }
+]);
+const handleAdd = () => {
+  const number = count++;
+  data.value = data.value.concat({
+    key: `${number}`,
+    title: `New Tab ${number}`,
+    content: `Content of New Tab Panel ${number}`
+  });
+};
+const handleDelete = (key) => {
+  data.value = data.value.filter((item) => item.key !== key);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/trigger -->
+<h3>触发方式</h3>
+<p>通过 <code>trigger</code> 指定触发方式。</p>
+<template data-demo-source>
+<template>
+  <a-radio-group v-model="trigger">
+    <a-radio value="click">click</a-radio>
+    <a-radio value="hover">hover</a-radio>
+  </a-radio-group>
+  <a-tabs default-active-key="1" :trigger="trigger">
+    <a-tab-pane key="1" title="Tab 1"> Content of Tab Panel 1 </a-tab-pane>
+    <a-tab-pane key="2" title="Tab 2"> Content of Tab Panel 2 </a-tab-pane>
+    <a-tab-pane key="3">
+      <template #title>Tab 3</template>
+      Content of Tab Panel 3
+    </a-tab-pane>
+  </a-tabs>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const trigger = ref("click");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tabs/scroll -->
+<h3>滚动</h3>
+<p>支持通过滚轮或者触摸板进行滚动操作，且可以通过 <code>scrollPosition</code> 属性设置滚动位置。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group v-model="position" type="button">
+      <a-radio value="left">Left</a-radio>
+      <a-radio value="top">Top</a-radio>
+      <a-radio value="right">Right</a-radio>
+      <a-radio value="bottom">Bottom</a-radio>
+    </a-radio-group>
+    <a-radio-group v-model="scrollPosition" type="button">
+      <a-radio value="auto">auto</a-radio>
+      <a-radio value="start">start</a-radio>
+      <a-radio value="center">center</a-radio>
+      <a-radio value="end">end</a-radio>
+    </a-radio-group>
+    <a-button @click="handleChangeActive"> Change: {{ activeKey }}</a-button>
+  </a-space>
+  <a-tabs
+    v-model:activeKey="activeKey"
+    :position="position"
+    :scrollPosition="scrollPosition"
+    style="width: 100%;height: 300px;margin-top: 20px"
+  >
+    <a-tab-pane v-for="tab in tabs" :key="tab.key" :title="tab.title">
+      {{ tab.content }}
+    </a-tab-pane>
+  </a-tabs>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const position = ref("top");
+const scrollPosition = ref("auto");
+const activeKey = ref("Tab1");
+const tabs = Array.from({ length: 30 }, (v, i) => {
+  return {
+    key: `Tab${i + 1}`,
+    title: `Tab ${i + 1}`,
+    content: `Content of Tab Panel ${i + 1}`
+  };
+});
+const handleChangeActive = () => {
+  activeKey.value = `Tab${Math.floor(Math.random() * 30) + 1}`;
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="tabs-props"><code>&lt;tabs&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active-key <strong>(v-model)</strong></td>
+<td>当前选中的标签的 <code>key</code></td>
+<td><code>string|number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-active-key</td>
+<td>默认选中的标签的<code>key</code>（非受控状态，为空时选中第一个标签页）</td>
+<td><code>string|number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>position</td>
+<td>选项卡的位置</td>
+<td><code>'left' | 'right' | 'top' | 'bottom'</code></td>
+<td style="text-align:center"><code>'top'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>选项卡的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>type</td>
+<td>选项卡的类型</td>
+<td><code>'line' | 'card' | 'card-gutter' | 'text' | 'rounded' | 'capsule'</code></td>
+<td style="text-align:center"><code>'line'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>选项卡的方向</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>editable</td>
+<td>是否开启可编辑模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-add-button</td>
+<td>是否显示增加按钮（仅在可编辑模式可用）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>destroy-on-hide</td>
+<td>是否在不显示标签时销毁内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+<tr>
+<td>lazy-load</td>
+<td>是否在首次展示标签时挂载内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>justify</td>
+<td>高度撑满容器，只在水平模式下生效。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>animation</td>
+<td>是否开启选项内容过渡动画</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>header-padding</td>
+<td>选项卡头部是否存在水平边距。仅对 <code>type</code> 等于 <code>line</code>、<code>text</code> 类型的选项卡生效</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>auto-switch</td>
+<td>创建标签后是否切换到新标签（最后一个）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>hide-content</td>
+<td>是否隐藏内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>触发方式</td>
+<td><code>'hover' | 'click'</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+<td style="text-align:left">2.34.0</td>
+</tr>
+<tr>
+<td>scroll-position</td>
+<td>被选中 tab 的滚动位置，默认 auto 即会将 activeTab 滚动到可见区域，但不会特意做位置调整</td>
+<td><code>'start' | 'end' | 'center' | 'auto' | number</code></td>
+<td style="text-align:center"><code>'auto'</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tabs-events"><code>&lt;tabs&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>当前标签值改变时触发</td>
+<td>key: <code>string | number</code></td>
+</tr>
+<tr>
+<td>tab-click</td>
+<td>用户点击标签时触发</td>
+<td>key: <code>string | number</code></td>
+</tr>
+<tr>
+<td>add</td>
+<td>用户点击增加按钮时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>用户点击删除按钮时触发</td>
+<td>key: <code>string | number</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tabs-slots"><code>&lt;tabs&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extra</td>
+<td style="text-align:center">选项卡额外内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tab-pane-props"><code>&lt;tab-pane&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>选项卡的标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否允许关闭此选项卡（仅在可编辑模式生效）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>destroy-on-hide</td>
+<td>是否在不显示标签时销毁内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tab-pane-slots"><code>&lt;tab-pane&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td style="text-align:center">选项卡标题</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,235 @@
+
+<!-- demo:textarea/basic -->
+<h3>基本使用</h3>
+<p>可以用于多行输入。</p>
+<template data-demo-source>
+<template>
+  <a-textarea placeholder="Please enter something" allow-clear />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:textarea/status -->
+<h3>文本域状态</h3>
+<p>文本域可以设置禁用和错误状态。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-textarea placeholder="Disabled status" disabled />
+    <a-textarea placeholder="Error status" error />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:textarea/word-limit -->
+<h3>字数统计</h3>
+<p>设置 <code>max-length</code> 可以限制最大字数，配合 <code>show-word-limit</code> 可以显示字数统计。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" fill>
+    <a-textarea
+      placeholder="Please enter something"
+      :max-length="10"
+      allow-clear
+      show-word-limit
+    />
+    <a-textarea
+      placeholder="Please enter something"
+      :max-length="{ length: 10, errorOnly: true }"
+      allow-clear
+      show-word-limit
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:textarea/auto-size -->
+<h3>自适应高度</h3>
+<p>通过设置 <code>auto-size</code>，可以让文本框自适应输入内容。</p>
+<template data-demo-source>
+<template>
+  <a-textarea
+    default-value="This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea."
+    auto-size
+  />
+  <a-textarea
+    default-value="This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea."
+    :auto-size="{
+      minRows: 2,
+      maxRows: 5,
+    }"
+    style="margin-top: 20px"
+  />
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="textarea-props"><code>&lt;textarea&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>提示文字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-length</td>
+<td>输入值的最大长度，errorOnly 属性在 2.12.0 版本添加</td>
+<td><code>number | { length: number; errorOnly?: boolean }</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-word-limit</td>
+<td>是否显示字数统计</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空文本域</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-size</td>
+<td>是否让文本框自适应内容高度</td>
+<td><code>boolean | { minRows?: number; maxRows?: number }</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>word-length</td>
+<td>字符长度的计算方法</td>
+<td><code>(value: string) =&gt; number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>word-slice</td>
+<td>字符截取方法，同 wordLength 一起使用</td>
+<td><code>(value: string, maxLength: number) =&gt; string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>textarea-attrs</td>
+<td>透传给 textarea 的属性</td>
+<td><code>Record&lt;string, any&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="textarea-events"><code>&lt;textarea&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>用户输入时触发</td>
+<td>value: <code>string</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>change</td>
+<td>仅在文本框失焦时触发</td>
+<td>value: <code>string</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>文本框获取焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+<tr>
+<td>blur</td>
+<td>文本框失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="textarea-methods"><code>&lt;textarea&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使输入框获取焦点</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使输入框失去焦点</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.24.0</td>
+</tr>
+</tbody>
+</table>

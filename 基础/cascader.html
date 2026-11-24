@@ -1,0 +1,1583 @@
+
+<!-- demo:cascader/basic -->
+<h3>基本使用</h3>
+<p>级联选择器的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-cascader
+      :options="options"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+    />
+    <a-cascader
+      :options="options"
+      default-value="datunli"
+      expand-trigger="hover"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+    />
+  </a-space>
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/clear -->
+<h3>允许清除</h3>
+<p>允许清除。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    v-model="value"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    allow-clear
+  />
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref("datunli");
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/disabled -->
+<h3>禁用选项</h3>
+<p>指定 <code>option</code> 的 <code>disabled</code> 为 <code>true</code>，可以禁用该选项。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+  />
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian",
+        disabled: true
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao",
+            disabled: true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/format -->
+<h3>自定义输入框的展示值</h3>
+<p>利用 <code>formatLabel</code> 对显示的内容进行自定义处理。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    default-value="datunli"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    :format-label="format"
+  />
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+const format = (options2) => {
+  const labels = options2.map((option) => option.label);
+  return labels.join("-");
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/multiple -->
+<h3>多选模式</h3>
+<p>通过设置 <code>multiple</code> 开启多选模式。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    :default-value="['datunli']"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    multiple
+  />
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/check-strictly -->
+<h3>严格选择模式</h3>
+<p>设置属性 <code>check-strictly</code>，开启严格选择模式，点击任何结点都可以选择。多选时将会解除父子节点的关联。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-cascader
+      :options="options"
+      default-value="beijing"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      check-strictly
+    />
+    <a-cascader
+      :options="options"
+      :default-value="['beijing']"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      multiple
+      check-strictly
+    />
+  </a-space>
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian",
+        disabled: true
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/loading -->
+<h3>加载中</h3>
+<p>选择框和下拉菜单显示加载中状态。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="[]"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    loading
+  />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/lazy-load -->
+<h3>子选项懒加载</h3>
+<p>通过 <code>load-more</code> 属性可以开启数据懒加载功能。
+开启数据懒加载功能后，需要在叶子节点标注 <code>isLeaf: true</code>，没有标注且没有 <code>children</code> 属性的节点会认为需要懒加载处理。
+<code>load-more</code> 属性有提供 <code>done</code> 函数进行回调，可以在回调中传入懒加载的子数据。如果 <code>done</code> 函数没有传入数据会认为懒加载失败，此节点可以再次触发懒加载。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-cascader
+      :options="options"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      :load-more="loadMore"
+    />
+  </a-space>
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang"
+      },
+      {
+        value: "haidian",
+        label: "Haidian",
+        isLeaf: true
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng",
+        isLeaf: true
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng"
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu",
+        isLeaf: true
+      }
+    ]
+  }
+];
+const loadMore = (option, done) => {
+  window.setTimeout(() => {
+    const nodes = [
+      {
+        value: `${option.value}-option1`,
+        label: `${option.label}-Option1`,
+        isLeaf: true
+      },
+      {
+        value: `${option.value}-option2`,
+        label: `${option.label}-Option2`,
+        isLeaf: true
+      }
+    ];
+    done(nodes);
+  }, 2e3);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/search -->
+<h3>允许搜索</h3>
+<p>通过设置 <code>allow-search</code> 让输入框支持搜索功能。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    allow-search
+  />
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/path -->
+<h3>路径模式</h3>
+<p><code>modelValue</code> 使用路径作为值。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-cascader
+      :options="options"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      path-mode
+      @change="handleChange"
+    />
+    <a-cascader
+      :options="options"
+      :default-value="[['beijing', 'chaoyang', 'datunli']]"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      path-mode
+      @change="handleChange"
+    />
+  </a-space>
+</template>
+
+<script setup>
+const handleChange = (path) => {
+  console.log(path);
+};
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/fallback -->
+<h3>回退选项</h3>
+<p>组件默认会展示在选项中不存在的值，可通过 <code>fallback</code> 自定义展示或者关闭</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-cascader
+      :options="options"
+      v-model="value"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      multiple
+    />
+    <a-cascader
+      :options="options"
+      v-model="value2"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      path-mode
+      multiple
+      :fallback="fallback"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref(["datunli", "wuhou"]);
+const value2 = ref([
+  ["beijing", "chaoyang", "datunli"],
+  ["sichuan", "chengdu", "wuhou"]
+]);
+const fallback = (value3) => {
+  return value3.map((item) => item.toUpperCase()).join("-");
+};
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/field-names -->
+<h3>自定义字段名</h3>
+<p>可以通过 <code>field-names</code> 属性自定义 <code>options</code> 中数据的格式。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    :field-names="fieldNames"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+  />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const fieldNames = { value: "city", label: "text" };
+const options = reactive([
+  {
+    city: "beijing",
+    text: "Beijing",
+    children: [
+      {
+        city: "chaoyang",
+        text: "ChaoYang",
+        children: [
+          {
+            city: "datunli",
+            text: "Datunli"
+          }
+        ]
+      },
+      {
+        city: "haidian",
+        text: "Haidian"
+      },
+      {
+        city: "dongcheng",
+        text: "Dongcheng"
+      },
+      {
+        city: "xicheng",
+        text: "Xicheng",
+        children: [
+          {
+            city: "jinrongjie",
+            text: "Jinrongjie"
+          },
+          {
+            city: "tianqiao",
+            text: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    city: "shanghai",
+    text: "Shanghai",
+    children: [
+      {
+        city: "huangpu",
+        text: "Huangpu"
+      }
+    ]
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/expand -->
+<h3>展开子菜单</h3>
+<p>通过设置 <code>expand-child</code> 可以在选择时展开第一个子菜单</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    expand-child
+  />
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/panel -->
+<h3>级联菜单</h3>
+<p>级联菜单可以单独使用，此时为 <code>数据展示</code> 组件</p>
+<template data-demo-source>
+<template>
+  <a-cascader-panel :options="options" v-model="value" expand-child />
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref("");
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: [
+      {
+        value: "huangpu",
+        label: "Huangpu"
+      }
+    ]
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:cascader/virtual -->
+<h3>虚拟列表</h3>
+<p>虚拟列表的使用方法。</p>
+<template data-demo-source>
+<template>
+  <a-cascader
+    :options="options"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    :virtual-list-props="{ height: 200 }"
+  />
+</template>
+
+<script setup>
+const options = [
+  {
+    value: "beijing",
+    label: "Beijing",
+    children: [
+      {
+        value: "chaoyang",
+        label: "ChaoYang",
+        children: [
+          {
+            value: "datunli",
+            label: "Datunli"
+          }
+        ]
+      },
+      {
+        value: "haidian",
+        label: "Haidian"
+      },
+      {
+        value: "dongcheng",
+        label: "Dongcheng"
+      },
+      {
+        value: "xicheng",
+        label: "Xicheng",
+        children: [
+          {
+            value: "jinrongjie",
+            label: "Jinrongjie"
+          },
+          {
+            value: "tianqiao",
+            label: "Tianqiao"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: "shanghai",
+    label: "Shanghai",
+    children: Array(1e3).fill(null).map((_, index) => ({
+      value: `Option ${index}`,
+      label: `Option ${index}`
+    }))
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="cascader-props"><code>&lt;cascader&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path-mode</td>
+<td>绑定值是否为路径</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>是否为多选状态（多选模式默认开启搜索）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string| number| Record&lt;string, any&gt;| (    | string    | number    | Record&lt;string, any&gt;    | (string | number | Record&lt;string, any&gt;)[]  )[]| undefined</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>string| number| Record&lt;string, any&gt;| (    | string    | number    | Record&lt;string, any&gt;    | (string | number | Record&lt;string, any&gt;)[]  )[]| undefined</code></td>
+<td style="text-align:center"><code>'' | undefined | []</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>options</td>
+<td>级联选择器的选项</td>
+<td><code>CascaderOption[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>选择框的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-search</td>
+<td>是否允许搜索</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false (single) | true (multiple)</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清除</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>input-value <strong>(v-model)</strong></td>
+<td>输入框的值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-input-value</td>
+<td>输入框的默认值（非受控状态）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-visible <strong>(v-model)</strong></td>
+<td>是否显示下拉框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expand-trigger</td>
+<td>展开下一级的触发方式</td>
+<td><code>'click' | 'hover'</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-popup-visible</td>
+<td>是否默认显示下拉框（非受控状态）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>占位符</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filter-option</td>
+<td>自定义选项过滤方法</td>
+<td><code>(inputValue: string, option: CascaderOption) =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>popup-container</td>
+<td>弹出框的挂载容器</td>
+<td><code>string | HTMLElement</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-tag-count</td>
+<td>多选模式下，最多显示的标签数量。0 表示不限制</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>format-label</td>
+<td>格式化展示内容</td>
+<td><code>(options: CascaderOption[]) =&gt; string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger-props</td>
+<td>下拉菜单的触发器属性</td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>check-strictly</td>
+<td>是否开启严格选择模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>load-more</td>
+<td>数据懒加载函数，传入时开启懒加载功能</td>
+<td><code>(  option: CascaderOption,  done: (children?: CascaderOption[]) =&gt; void) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.15.0</td>
+</tr>
+<tr>
+<td>search-option-only-label</td>
+<td>搜索下拉菜单中的选项是否仅展示标签</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>search-delay</td>
+<td>触发搜索事件的延迟时间</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>500</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>field-names</td>
+<td>自定义 <code>CascaderOption</code> 中的字段</td>
+<td><code>CascaderFieldNames</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>value-key</td>
+<td>用于确定选项键值的属性名</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'value'</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>fallback</td>
+<td>自定义不存在选项的值的展示</td>
+<td><code>boolean| ((    value:      | string      | number      | Record&lt;string, unknown&gt;      | (string | number | Record&lt;string, unknown&gt;)[]  ) =&gt; string)</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>expand-child</td>
+<td>是否展开子菜单</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>virtual-list-props</td>
+<td>传递虚拟列表属性，传入此参数以开启虚拟滚动 <a href="#VirtualListProps">VirtualListProps</a></td>
+<td><code>VirtualListProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.49.0</td>
+</tr>
+<tr>
+<td>tag-nowrap</td>
+<td>标签内容不换行</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.56.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cascader-events"><code>&lt;cascader&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>选中值改变时触发</td>
+<td>value: <code>string | number | (string | number | (string | number)[])[] | undefined</code></td>
+</tr>
+<tr>
+<td>input-value-change</td>
+<td>输入值改变时触发</td>
+<td>value: <code>string</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>点击清除按钮时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>search</td>
+<td>用户搜索时触发</td>
+<td>value: <code>string</code></td>
+</tr>
+<tr>
+<td>popup-visible-change</td>
+<td>下拉框的显示状态改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>获得焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+<tr>
+<td>blur</td>
+<td>失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cascader-slots"><code>&lt;cascader&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>label</td>
+<td style="text-align:center">选择框的显示内容</td>
+<td>data: <code>CascaderOption</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">前缀元素</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>arrow-icon</td>
+<td style="text-align:center">选择框的箭头图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>loading-icon</td>
+<td style="text-align:center">选择框的加载中图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>search-icon</td>
+<td style="text-align:center">选择框的搜索图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>empty</td>
+<td style="text-align:center">选项为空时的显示内容</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>option</td>
+<td style="text-align:center">选项内容</td>
+<td>data: <code>CascaderOption</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cascader-panel-props"><code>&lt;cascader-panel&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path-mode</td>
+<td>绑定值是否为路径</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>是否为多选状态（多选模式默认开启搜索）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string| number| Record&lt;string, any&gt;| (    | string    | number    | Record&lt;string, any&gt;    | (string | number | Record&lt;string, any&gt;)[]  )[]| undefined</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>string| number| Record&lt;string, any&gt;| (    | string    | number    | Record&lt;string, any&gt;    | (string | number | Record&lt;string, any&gt;)[]  )[]| undefined</code></td>
+<td style="text-align:center"><code>'' | undefined | []</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>options</td>
+<td>级联选择器的选项</td>
+<td><code>CascaderOption[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expand-trigger</td>
+<td>展开下一级的触发方式</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'click'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>check-strictly</td>
+<td>是否开启严格选择模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>load-more</td>
+<td>数据懒加载函数，传入时开启懒加载功能</td>
+<td><code>(  option: CascaderOption,  done: (children?: CascaderOption[]) =&gt; void) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+<tr>
+<td>field-names</td>
+<td>自定义 <code>CascaderOption</code> 中的字段</td>
+<td><code>CascaderFieldNames</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>value-key</td>
+<td>用于确定选项键值的属性名</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'value'</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>expand-child</td>
+<td>是否展开子菜单</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cascader-panel-events"><code>&lt;cascader-panel&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>选中值改变时触发</td>
+<td>value: <code>string | number | (string | number | (string | number)[])[] | undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cascader-panel-slots"><code>&lt;cascader-panel&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>empty</td>
+<td style="text-align:center">选项为空时的显示内容</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cascaderoption">CascaderOption</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>选项值，2.29.0 版本支持对象</td>
+<td><code>string | number | Record&lt;string, any&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>label</td>
+<td>选项文本</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>render</td>
+<td>自定义渲染</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>tagProps</td>
+<td>展示的标签属性</td>
+<td><code>TagProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.8.0</td>
+</tr>
+<tr>
+<td>children</td>
+<td>下一级选项</td>
+<td><code>CascaderOption[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>isLeaf</td>
+<td>是否是叶子节点</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>

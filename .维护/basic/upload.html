@@ -1,0 +1,1084 @@
+
+<!-- demo:upload/basic -->
+<h3>基本使用</h3>
+<p>上传组件的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" :style="{ width: '100%' }">
+    <a-upload action="/" />
+    <a-upload action="/" disabled style="margin-top: 40px;" />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/avatar -->
+<h3>用户头像上传</h3>
+<p>点击上传用户头像，可使用 beforeUpload 限制用户上传的图片格式和大小。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" :style="{ width: '100%' }">
+    <a-upload
+      action="/"
+      :fileList="file ? [file] : []"
+      :show-file-list="false"
+      @change="handleChange"
+      @progress="handleProgress"
+    >
+      <template #upload-button>
+        <div
+          :class="`arco-upload-list-item${
+            file && file.status === 'error'
+              ? ' arco-upload-list-item-error'
+              : ''
+          }`"
+        >
+          <div
+            class="arco-upload-list-picture custom-upload-avatar"
+            v-if="file && file.url"
+          >
+            <img :src="file.url" />
+            <div class="arco-upload-list-picture-mask">
+              <IconEdit />
+            </div>
+            <a-progress
+              v-if="file.status === 'uploading' && file.percent < 100"
+              :percent="file.percent"
+              type="circle"
+              size="mini"
+              :style="{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translateX(-50%) translateY(-50%)',
+              }"
+            />
+          </div>
+          <div class="arco-upload-picture-card" v-else>
+            <div class="arco-upload-picture-card-text">
+              <IconPlus />
+              <div style="margin-top: 10px; font-weight: 600">Upload</div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </a-upload>
+  </a-space>
+</template>
+
+<script setup>
+import { IconEdit, IconPlus } from "@arco-design/web-vue/es/icon";
+import { ref } from "vue";
+const file = ref();
+const handleChange = (_, currentFile) => {
+  file.value = {
+    ...currentFile
+    // url: URL.createObjectURL(currentFile.file),
+  };
+};
+const handleProgress = (currentFile) => {
+  file.value = currentFile;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/upload-list -->
+<h3>已上传的文件列表</h3>
+<p>可以指定默认的已上传文件列表。</p>
+<template data-demo-source>
+<template>
+  <a-upload action="/" :default-file-list="fileList" />
+</template>
+
+<script setup>
+const fileList = [
+  {
+    uid: "-1",
+    name: "ice.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
+  },
+  {
+    status: "error",
+    uid: "-2",
+    percent: 0,
+    response: "\u4E0A\u4F20\u9519\u8BEF\u63D0\u793A",
+    name: "cat.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp"
+  },
+  {
+    uid: "-3",
+    name: "light.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/picture-card -->
+<h3>照片墙</h3>
+<p>通过设置 <code>list-type=&quot;picture-card&quot;</code> 开启照片墙模式。</p>
+<template data-demo-source>
+<template>
+  <a-upload
+    list-type="picture-card"
+    action="/"
+    :default-file-list="fileList"
+    image-preview
+  />
+</template>
+
+<script setup>
+const fileList = [
+  {
+    uid: "-2",
+    name: "20200717-103937.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
+  },
+  {
+    uid: "-1",
+    name: "hahhahahahaha.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/draggable -->
+<h3>拖拽上传</h3>
+<p>通过设置 <code>draggable</code> 开启对拖拽的支持。</p>
+<template data-demo-source>
+<template>
+  <a-upload draggable action="/" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/picture-list -->
+<h3>图标列表样式</h3>
+<p>通过设置 <code>list-type=&quot;picture&quot;</code> 开启图片列表样式</p>
+<template data-demo-source>
+<template>
+  <a-upload list-type="picture" action="/" :default-file-list="fileList" />
+</template>
+
+<script setup>
+const fileList = [
+  {
+    uid: "-2",
+    name: "20200717-103937.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
+  },
+  {
+    uid: "-1",
+    name: "hahhahahahaha.png",
+    url: "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/submit -->
+<h3>手动上传</h3>
+<p>设置 <code>auto-upload</code> 为 <code>false</code> 时候，可以通过调用 <code>submit</code> 方法进行手动上传。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-upload
+      action="/"
+      :auto-upload="false"
+      ref="uploadRef"
+      @change="handleChange"
+      multiple
+    >
+      <template #upload-button>
+        <a-space>
+          <a-button> select file</a-button>
+          <a-button type="primary" @click="handleSubmit">
+            start upload</a-button
+          >
+          <a-button type="primary" @click="handleSubmitOne">
+            only upload one
+          </a-button>
+        </a-space>
+      </template>
+    </a-upload>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const uploadRef = ref();
+const files = ref([]);
+const handleSubmitOne = (e) => {
+  e.stopPropagation();
+  console.log(files.value);
+  uploadRef.value.handleSubmit(files.value.find((x) => x.status === "init"));
+};
+const handleSubmit = (e) => {
+  e.stopPropagation();
+  uploadRef.value.handleSubmit();
+};
+const handleChange = (fileList) => {
+  files.value = fileList;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/before-upload -->
+<h3>上传前校验</h3>
+<p><code>beforeUpload</code> 会在每一个文件上传之前执行。如果返回 <code>false</code> 或者<code> Promise.reject</code>， 那么将会取消当前文件的上传。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" :style="{ width: '100%' }">
+    <a-upload action="/" @before-upload="handleBeforeUpload" />
+  </a-space>
+</template>
+
+<script setup>
+import { Modal } from "@arco-design/web-vue";
+const handleBeforeUpload = (file) => {
+  return new Promise((resolve, reject) => {
+    Modal.confirm({
+      title: "handleBeforeUpload",
+      content: `\u786E\u8BA4\u4E0A\u4F20 ${file.name}`,
+      onOk: () => resolve(true),
+      onCancel: () => reject("cancel")
+    });
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/before-remove -->
+<h3>移除前校验</h3>
+<p><code>on-before-remove</code> 会在每一个文件移除之前执行。如果返回 <code>false</code> 或者<code> Promise.reject</code>， 那么将会取消当前文件的操作。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" :style="{ width: '100%' }">
+    <a-upload
+      action="/"
+      :default-file-list="[
+        {
+          uid: '-2',
+          name: 'light.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
+        },
+        {
+          uid: '-1',
+          name: 'ice.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp',
+        },
+      ]"
+      @before-remove="handleBeforeRemove"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { Modal } from "@arco-design/web-vue";
+const handleBeforeRemove = (file) => {
+  return new Promise((resolve, reject) => {
+    Modal.confirm({
+      title: "on-before-remove",
+      content: `\u786E\u8BA4\u5220\u9664 ${file.name}`,
+      onOk: () => resolve(true),
+      onCancel: () => reject("cancel")
+    });
+  });
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/limit -->
+<h3>限制上传数量</h3>
+<p>通过 <code>limit</code> 限制上传的最大数量。超出后上传按钮会隐藏.</p>
+<template data-demo-source>
+<template>
+  <a-upload multiple action="/" :limit="3" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/custom-button -->
+<h3>自定义上传节点</h3>
+<p>可以通过插槽 <code>upload-button</code> 传入自定义内容作为文件上传的触发节点。</p>
+<template data-demo-source>
+<template>
+  <a-upload action="/">
+    <template #upload-button>
+      <div
+        style="
+        background-color: var(--color-fill-2);
+        color: var(--color-text-1);
+        border: 1px dashed var(--color-fill-4);
+        height: 158px;
+        width: 380px;
+        border-radius: 2;
+        line-height: 158px;
+        text-align: center;"
+      >
+        <div>
+          Drag the file here or
+          <span style="color: var(--color-tone-blue-a100)"> Click to upload</span>
+        </div>
+      </div>
+    </template>
+  </a-upload>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/custom-icon -->
+<h3>自定义图标</h3>
+<p>自定义图标</p>
+<template data-demo-source>
+<template>
+  <div>
+    <div style="margin-bottom: 20px;">
+      <a-space>
+        <span>Type: </span>
+        <a-radio-group v-model="type">
+          <a-radio value="text">text</a-radio>
+          <a-radio value="picture">picture</a-radio>
+          <a-radio value="picture-card">picture-card</a-radio>
+        </a-radio-group>
+      </a-space>
+    </div>
+    <a-upload
+      action="/"
+      :list-type="type"
+      :default-file-list="[
+        {
+          uid: '-1',
+          name: 'ice.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp',
+        },
+        {
+          uid: '-3',
+          name: 'light.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
+        },
+      ]"
+      :custom-icon="getCustomIcon()"
+    />
+  </div>
+</template>
+
+<script setup>
+import { h, ref } from "vue";
+import { IconUpload, IconFileAudio, IconClose, IconFaceFrownFill } from "@arco-design/web-vue/es/icon";
+const type = ref("text");
+const getCustomIcon = () => {
+  return {
+    retryIcon: () => h(IconUpload),
+    cancelIcon: () => h(IconClose),
+    fileIcon: () => h(IconFileAudio),
+    removeIcon: () => h(IconClose),
+    errorIcon: () => h(IconFaceFrownFill),
+    fileName: (file) => {
+      return `\u6587\u4EF6\u540D\uFF1A ${file.name}`;
+    }
+  };
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/request -->
+<h3>自定义上传请求</h3>
+<p>可以通过 <code>custom-request</code> 实现自定义上传请求。</p>
+<template data-demo-source>
+<template>
+  <a-upload :custom-request="customRequest" />
+</template>
+
+<script setup>
+const customRequest = (option) => {
+  const { onProgress, onError, onSuccess, fileItem, name } = option;
+  const xhr = new XMLHttpRequest();
+  if (xhr.upload) {
+    xhr.upload.onprogress = function(event) {
+      let percent;
+      if (event.total > 0) {
+        percent = event.loaded / event.total;
+      }
+      onProgress(percent, event);
+    };
+  }
+  xhr.onerror = function error(e) {
+    onError(e);
+  };
+  xhr.onload = function onload() {
+    if (xhr.status < 200 || xhr.status >= 300) {
+      return onError(xhr.responseText);
+    }
+    onSuccess(xhr.response);
+  };
+  const formData = new FormData();
+  formData.append(name || "file", fileItem.file);
+  xhr.open("post", "//upload-z2.qbox.me/", true);
+  xhr.send(formData);
+  return {
+    abort() {
+      xhr.abort();
+    }
+  };
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:upload/directory -->
+<h3>文件夹上传</h3>
+<p>可以通过 <code>directory</code> 开启文件夹上传</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" :style="{ width: '100%' }">
+    <a-upload action="/" directory />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="upload-props"><code>&lt;upload&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file-list <strong>(v-model)</strong></td>
+<td>文件列表</td>
+<td><code>FileItem[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-file-list</td>
+<td>默认的文件列表（非受控状态）</td>
+<td><code>FileItem[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>accept</td>
+<td>接收的上传文件类型，具体参考 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#htmlattrdefaccept" title="_blank">HTML标准</a></td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>action</td>
+<td>上传的URL</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>是否支持多文件上传</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>directory</td>
+<td>是否支持文件夹上传（需要浏览器支持）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>是否支持拖拽上传</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>tip</td>
+<td>提示文字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>headers</td>
+<td>上传请求附加的头信息</td>
+<td><code>Record&lt;string, string&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>data</td>
+<td>上传请求附加的数据</td>
+<td><code>Record&lt;string, string | Blob&gt;| ((fileItem: FileItem) =&gt; Record&lt;string, string | Blob&gt;)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>name</td>
+<td>上传的文件名</td>
+<td><code>string | ((fileItem: FileItem) =&gt; string)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>with-credentials</td>
+<td>上传请求是否携带 cookie</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>custom-request</td>
+<td>自定义上传行为</td>
+<td><code>(option: RequestOption) =&gt; UploadRequest</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>限制上传文件的数量。<code>0</code>表示不限制</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-upload</td>
+<td>是否自动上传文件</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-file-list</td>
+<td>是否显示文件列表</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-remove-button</td>
+<td>是否显示删除按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>show-retry-button</td>
+<td>是否显示重试按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>show-cancel-button</td>
+<td>是否显示取消按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>show-upload-button</td>
+<td>是否显示上传按钮。2.14.0 版本新增 <code>showOnExceedLimit</code> 支持</td>
+<td><code>boolean | { showOnExceedLimit: boolean }</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>show-preview-button</td>
+<td>照片墙是否显示预览按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.42.0</td>
+</tr>
+<tr>
+<td>download</td>
+<td>是否在 <code>&lt;a&gt;</code> 链接上添加 download 属性</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>show-link</td>
+<td>在列表模式下，如果上传的文件存在 URL 则展示链接。如果关闭仅展示文字并且点击可以触发 <code>preview</code> 事件。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+<tr>
+<td>image-loading</td>
+<td><code>&lt;img&gt;</code> 的原生 HTML 属性，需要浏览器支持</td>
+<td><code>'eager' | 'lazy'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>list-type</td>
+<td>图片列表类型</td>
+<td><code>'text' | 'picture' | 'picture-card'</code></td>
+<td style="text-align:center"><code>'text'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>response-url-key</td>
+<td>Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片</td>
+<td><code>string | ((fileItem: FileItem) =&gt; string)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>custom-icon</td>
+<td>自定义图标</td>
+<td><code>CustomIcon</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>image-preview</td>
+<td>是否使用 ImagePreview 组件进行预览</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.14.0</td>
+</tr>
+<tr>
+<td>on-before-upload</td>
+<td>上传文件前触发</td>
+<td><code>(file: File) =&gt; boolean | Promise&lt;boolean | File&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>on-before-remove</td>
+<td>移除文件前触发</td>
+<td><code>(fileItem: FileItem) =&gt; Promise&lt;boolean&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>on-button-click</td>
+<td>点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）</td>
+<td><code>(event: Event) =&gt; Promise&lt;FileList&gt; | void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="upload-events"><code>&lt;upload&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exceed-limit</td>
+<td>上传的文件超出限制后触发</td>
+<td>fileList: <code>FileItem[]</code><br>files: <code>File[]</code></td>
+</tr>
+<tr>
+<td>change</td>
+<td>上传的文件状态发生改变时触发</td>
+<td>fileList: <code>FileItem[]</code><br>fileItem: <code>fileItem</code></td>
+</tr>
+<tr>
+<td>progress</td>
+<td>上传中的文件进度改变时触发</td>
+<td>fileItem: <code>fileItem</code><br>ev: <code>ProgressEvent</code></td>
+</tr>
+<tr>
+<td>preview</td>
+<td>点击图片预览时的触发</td>
+<td>fileItem: <code>FileItem</code></td>
+</tr>
+<tr>
+<td>success</td>
+<td>上传成功时触发</td>
+<td>fileItem: <code>FileItem</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>上传失败时触发</td>
+<td>fileItem: <code>FileItem</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="upload-methods"><code>&lt;upload&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>submit</td>
+<td>上传文件（已经初始化完成的文件）</td>
+<td>fileItem: <code>FileItem</code></td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>abort</td>
+<td>中止上传</td>
+<td>fileItem: <code>FileItem</code></td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>updateFile</td>
+<td>更新文件</td>
+<td>id: <code>string</code><br>file: <code>File</code></td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>upload</td>
+<td>上传文件</td>
+<td>files: <code>File[]</code></td>
+<td>-</td>
+<td style="text-align:left">2.41.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="upload-slots"><code>&lt;upload&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extra-button</td>
+<td style="text-align:center">上传列表额外按钮</td>
+<td>fileItem: <code>FileItem</code></td>
+<td style="text-align:left">2.43.0</td>
+</tr>
+<tr>
+<td>image</td>
+<td style="text-align:center">自定义图片</td>
+<td>fileItem: <code>FileItem</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>file-name</td>
+<td style="text-align:center">文件名称</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>file-icon</td>
+<td style="text-align:center">文件图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>remove-icon</td>
+<td style="text-align:center">删除图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>preview-icon</td>
+<td style="text-align:center">预览图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>cancel-icon</td>
+<td style="text-align:center">取消图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>start-icon</td>
+<td style="text-align:center">开始图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>error-icon</td>
+<td style="text-align:center">失败图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>success-icon</td>
+<td style="text-align:center">成功图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>retry-icon</td>
+<td style="text-align:center">重试图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>upload-button</td>
+<td style="text-align:center">上传按钮</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>upload-item</td>
+<td style="text-align:center">上传列表的项目</td>
+<td>fileItem: <code>FileItem</code><br>index: <code>number</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="fileitem">FileItem</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uid</td>
+<td>当前上传文件的唯一标示</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>当前上传文件的状态</td>
+<td><code>FileStatus</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>file</td>
+<td>文件对象</td>
+<td><code>File</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>percent</td>
+<td>上传进度百分比</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>response</td>
+<td>当前文件上传请求返回的响应</td>
+<td><code>any</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>url</td>
+<td>文件地址</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>文件名</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="customicon">CustomIcon</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startIcon</td>
+<td>开始图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>cancelIcon</td>
+<td>取消图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>retryIcon</td>
+<td>重试图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>successIcon</td>
+<td>成功图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>errorIcon</td>
+<td>失败图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>removeIcon</td>
+<td>移除图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>previewIcon</td>
+<td>预览图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>fileIcon</td>
+<td>文件图标</td>
+<td><code>(fileItem: FileItem) =&gt; VNode</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>文件名</td>
+<td><code>(fileItem: FileItem) =&gt; string | VNode</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="requestoption">RequestOption</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>action</td>
+<td>上传的URL</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>headers</td>
+<td>请求报文的头信息</td>
+<td><code>Record&lt;string, string&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>上传文件的文件名</td>
+<td><code>string | ((fileItem: FileItem) =&gt; string)</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>fileItem</td>
+<td>上传文件</td>
+<td><code>FileItem</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>附加的请求信息</td>
+<td><code>Record&lt;string, string | Blob&gt;    | ((fileItem: FileItem) =&gt; Record&lt;string, string | Blob&gt;)</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>withCredentials</td>
+<td>是否携带cookie信息</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>onProgress</td>
+<td>更新当前文件的上传进度。percent: 当前上传进度百分比</td>
+<td><code>(percent: number, event?: ProgressEvent) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>onSuccess</td>
+<td>上传成功后，调用onSuccess方法，传入的response参数将会附加到当前上传文件的response字段上</td>
+<td><code>(response?: any) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>onError</td>
+<td>上传失败后，调用onError方法，传入的response参数将会附加到当前上传文件的response字段上</td>
+<td><code>(response?: any) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="uploadrequest">UploadRequest</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abort</td>
+<td>终止上传</td>
+<td><code>() =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

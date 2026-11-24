@@ -1,0 +1,311 @@
+
+<!-- demo:alert/basic -->
+<h3>基本用法</h3>
+<p>展现需要关注的信息，适用于简短的警告提示。</p>
+<template data-demo-source>
+<template>
+  <a-alert>This is an info alert.</a-alert>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/type -->
+<h3>提示类型</h3>
+<p>警告提示有 <code>info</code>、<code>success</code>、<code>warning</code>、<code>error</code> 四种类型。2.41.0 版本新增 <code>normal</code> 类型，此类型下默认不展示图标。</p>
+<template data-demo-source>
+<template>
+  <a-row :gutter="[40, 20]">
+    <a-col :span="12">
+      <a-alert>This is an info alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="success">This is an success alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="warning">This is an warning alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="error">This is an error alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="normal">
+        <template #icon>
+          <icon-exclamation-circle-fill />
+        </template>
+        This is an normal alert.
+      </a-alert>
+    </a-col>
+  </a-row>
+</template>
+
+<script setup>
+import { IconExclamationCircleFill } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/title -->
+<h3>提示标题</h3>
+<p>通过设置 <code>title</code> 可以给警告提示添加标题。</p>
+<template data-demo-source>
+<template>
+  <a-row :gutter="[40, 20]">
+    <a-col :span="12">
+      <a-alert title="Info">This is an info alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert title="Success" type="success"
+        >This is an success alert.</a-alert
+      >
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="warning">
+        <template #title> Warning </template>
+        This is an warning alert.
+      </a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="error">
+        <template #title> Error </template>
+        This is an error alert.
+      </a-alert>
+    </a-col>
+  </a-row>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/closable -->
+<h3>可关闭</h3>
+<p>通过设置 <code>closable</code>，可开启关闭按钮。</p>
+<template data-demo-source>
+<template>
+  <a-row :gutter="[40, 20]">
+    <a-col :span="12">
+      <a-alert closable>This is an info alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="success" closable>This is an success alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="warning" closable>
+        <template #title> Warning </template>
+        This is an warning alert.
+      </a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="error" closable>
+        <template #title> Error </template>
+        This is an error alert.
+      </a-alert>
+    </a-col>
+  </a-row>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/close-element -->
+<h3>自定义关闭元素</h3>
+<p>指定 <code>close-element</code> slot，自定义关闭元素。</p>
+<template data-demo-source>
+<template>
+  <a-row :gutter="[40, 20]">
+    <a-col :span="12">
+      <a-alert closable>
+        <template #close-element>
+          <icon-close-circle />
+        </template>
+        This is an info alert.
+      </a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert closable>
+        <template #close-element> Close </template>
+        This is an info alert.
+      </a-alert>
+    </a-col>
+  </a-row>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/icon -->
+<h3>隐藏图标</h3>
+<p>通过设置 <code>:show-icon=&quot;false&quot;</code> 来隐藏图标。</p>
+<template data-demo-source>
+<template>
+  <a-row :gutter="[40, 20]">
+    <a-col :span="12">
+      <a-alert :show-icon="false">This is an info alert.</a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="success" :show-icon="false"
+        >This is an success alert.</a-alert
+      >
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="warning" :show-icon="false">
+        <template #title> Warning </template>
+        This is an warning alert.
+      </a-alert>
+    </a-col>
+    <a-col :span="12">
+      <a-alert type="error" :show-icon="false">
+        <template #title> Error </template>
+        This is an error alert.
+      </a-alert>
+    </a-col>
+  </a-row>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/action -->
+<h3>操作项</h3>
+<p>通过 <code>#action</code> 插槽自定义操作按钮</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" style="width: 100%;">
+    <a-alert closable>
+      This is an info alert.
+      <template #action>
+        <a-button size="small" type="primary">Detail</a-button>
+      </template>
+    </a-alert>
+    <a-alert title="Example" closable>
+      This is an info alert.
+      <template #action>
+        <a-button size="small" type="primary">Detail</a-button>
+      </template>
+    </a-alert>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:alert/banner -->
+<h3>顶部公告</h3>
+<p>通过设置 <code>banner</code>，可将警告提示作为顶部公告使用（去除边框和圆角）。</p>
+<template data-demo-source>
+<template>
+  <a-alert banner center>This is an info alert.</a-alert>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="alert-props"><code>&lt;alert&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>警告提示的类型。2.41.0 新增 <code>normal</code> 类型</td>
+<td><code>info | success | warning | error | normal</code></td>
+<td style="text-align:center"><code>'info'</code></td>
+</tr>
+<tr>
+<td>show-icon</td>
+<td>是否展示图标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>是否展示关闭按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>警告提示的标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>banner</td>
+<td>是否作为顶部公告使用（去除边框和圆角）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>center</td>
+<td>内容是否居中显示</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="alert-events"><code>&lt;alert&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>点击关闭按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>after-close</td>
+<td>关闭动画结束后触发</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alert-slots"><code>&lt;alert&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>action</td>
+<td style="text-align:center">操作项</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>close-element</td>
+<td style="text-align:center">关闭元素</td>
+<td>-</td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+</tbody>
+</table>

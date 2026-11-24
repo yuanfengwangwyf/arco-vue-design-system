@@ -1,0 +1,99 @@
+<h2 id="vue-版本">Vue 版本</h2>
+<p>vue &gt;= 3.2.0</p>
+<p><strong>注意</strong>：由于 <code>Vue3</code> 不再支持 IE 浏览器环境，ArcoVue 也不再支持 IE 浏览器环境。</p>
+<h2 id="安装">安装</h2>
+<pre><code class="language-shell"># npm
+npm install --save-dev @arco-design/web-vue
+# yarn
+yarn add --dev @arco-design/web-vue
+</code></pre>
+<h2 id="完整引入">完整引入</h2>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import ArcoVue from '@arco-design/web-vue';
+import App from './App.vue';
+import '@arco-design/web-vue/dist/arco.css';
+
+const app = createApp(App);
+app.use(ArcoVue);
+app.mount('#app');
+</code></pre>
+<h2 id="按需加载-模板">按需加载（模板）</h2>
+<p>如果使用模板方式进行开发，可以使用 <a href="https://github.com/antfu/unplugin-vue-components">unplugin-vue-components</a> 和 <a href="https://github.com/antfu/unplugin-auto-import">unplugin-auto-import</a> 这两款插件来开启按需加载及自动导入的支持。
+插件会自动解析模板中的使用到的组件，并导入组件和对应的样式文件。
+需要组件库 <code>version &gt;= 2.11.0</code>。</p>
+<pre><code class="language-ts">import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite';
+import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [ArcoResolver()],
+    }),
+    Components({
+      resolvers: [
+        ArcoResolver({
+          sideEffect: true
+        })
+      ]
+    })
+  ]
+});
+</code></pre>
+<p>注意：这种方法并不会处理用户在 script 中手动导入的组件，比如 Message 组件，用户仍需要手动导入组件对应的样式文件，例如 <code>@arco-design/web-vue/es/message/style/css.js</code>。</p>
+<h2 id="按需加载与组件库主题-arco-插件">按需加载与组件库主题（Arco 插件）</h2>
+<p>另外也可以使用 Arco 提供的 Vite 插件进行按需加载和组件库样式配置，<a href="https://github.com/arco-design/arco-plugins/tree/main/packages/plugin-vite-vue">@arco-plugins/vite-vue</a> 插件会自动加载组件样式。</p>
+<pre><code class="language-ts">import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { vitePluginForArco } from '@arco-plugins/vite-vue'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    vitePluginForArco({
+      style: 'css'
+    })
+  ]
+})
+</code></pre>
+<h2 id="全局配置">全局配置</h2>
+<p>在引入 ArcoVue 时，可以传入一个全局配置对象。</p>
+<pre><code class="language-ts">import { createApp } from 'vue'
+import ArcoVue from '@arco-design/web-vue';
+import App from './App.vue';
+import '@arco-design/web-vue/dist/arco.css';
+
+const app = createApp(App);
+app.use(ArcoVue, {
+  // 用于改变使用组件时的前缀名称
+  componentPrefix: 'arco'
+});
+app.mount('#app');
+</code></pre>
+<h2 id="导入组件">导入组件</h2>
+<p>组件库在 <code>2.44.3</code> 版本为了兼容 nuxt3 环境，增加 <code>exports</code> 配置。这个配置会对组件库的导入产生一定影响，使用中建议从 <code>@arco-design/web-vue</code> 和 <code>@arco-design/web-vue/es/icon</code> 导入组件库和图标。</p>
+<h2 id="浏览器兼容性">浏览器兼容性</h2>
+<table>
+<thead>
+<tr>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="/images/44e2a1f5e57b241c.png" alt="Edge" width="24px" height="24px" /></a><br/>Edge</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="/images/2bdcb5ce61442482.png" alt="Firefox" width="24px" height="24px" /></a><br/>Firefox</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="/images/6bb616f727c7a7c4.png" alt="Chrome" width="24px" height="24px" /></a><br/>Chrome</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="/images/43e1370cb6b806bb.png" alt="Safari" width="24px" height="24px" /></a><br/>Safari</th>
+<th><a href="http://godban.github.io/browsers-support-badges/"><img src="/images/c52b24aad983a6b3.png" alt="Opera" width="24px" height="24px" /></a><br/>Opera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥ 79</td>
+<td>≥ 78</td>
+<td>≥ 64</td>
+<td>≥ 12</td>
+<td>≥ 53</td>
+</tr>
+</tbody>
+</table>

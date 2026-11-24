@@ -1,0 +1,10 @@
+body, [data-demo-theme] {
+  --docs-bg: var(--color-bg-1);
+  --docs-surface: var(--color-bg-2);
+  --docs-text: var(--neutral-level-90);
+  --docs-muted: var(--neutral-level-70);
+  --docs-line: var(--neutral-level-15);
+  --docs-accent: var(--arcoblue-solid);
+  --docs-highlight: var(--color-tone-arcoblue-a8);
+  --docs-code: var(--neutral-level-4);
+}

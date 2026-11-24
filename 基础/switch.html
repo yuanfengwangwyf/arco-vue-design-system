@@ -1,0 +1,364 @@
+
+<!-- demo:switch/basic -->
+<h3>基本用法</h3>
+<p>开关的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-switch />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/type -->
+<h3>开关类型</h3>
+<p>开关分为 <code>circle</code> - <strong>圆形（默认）</strong>、<code>round</code> - <strong>圆角</strong>、<code>line</code> - <strong>线性</strong>三种类型。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch />
+    <a-switch type="round" />
+    <a-switch type="line" />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/size -->
+<h3>开关尺寸</h3>
+<p>开关分为 <code>small</code>、<code>medium</code> 两种尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch />
+    <a-switch size="small" />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/disabled -->
+<h3>禁用状态</h3>
+<p>禁用开关。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch disabled />
+    <a-switch :default-checked="true" disabled />
+    <a-switch type="round" disabled />
+    <a-switch :default-checked="true" type="round" disabled />
+    <a-switch type="line" disabled />
+    <a-switch :default-checked="true" type="line" disabled />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/color -->
+<h3>自定义开关的颜色</h3>
+<p>通过 <code>checked-color</code> 和 <code>unchecked-color</code> 可以自定义开关的颜色。</p>
+<template data-demo-source>
+<template>
+  <a-switch checked-color="var(--color-tone-red-a100)" unchecked-color="var(--color-tone-cyan-a100)" />
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/value -->
+<h3>自定义开关的值</h3>
+<p>通过 <code>checked-value</code> 和 <code>unchecked-value</code> 可以自定义开关的值。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-switch v-model="value" checked-value="yes" unchecked-value="no" />
+    <div>Current Value: {{ value }}</div>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const value = ref("");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/change-intercept -->
+<h3>切换拦截</h3>
+<p>设置 <code>beforeChange</code> 函数，函数的返回值将用于判断是否阻止切换。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch :beforeChange="handleChangeIntercept" />
+    <a-switch type="round" :beforeChange="handleChangeIntercept2" />
+    <a-switch type="line" :beforeChange="handleChangeIntercept3" />
+  </a-space>
+</template>
+
+<script setup>
+import { Message } from "@arco-design/web-vue";
+const handleChangeIntercept = async (newValue) => {
+  await new Promise((resolve) => setTimeout(resolve, 1e3));
+  return true;
+};
+const handleChangeIntercept2 = async (newValue) => {
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  if (!newValue) {
+    Message.error("OH, You can't change");
+    return false;
+  }
+  return true;
+};
+const handleChangeIntercept3 = async (newValue) => {
+  await new Promise(
+    (_, reject) => setTimeout(() => {
+      Message.error("OH, Something went wrong");
+      reject();
+    }, 1e3)
+  );
+  return true;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/loading -->
+<h3>加载中状态</h3>
+<p>通过设置 <code>loading</code> 使开关处于加载中状态，此时开关不可点击。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch loading />
+    <a-switch type="round" loading />
+    <a-switch type="line" loading />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/text -->
+<h3>自定义文案</h3>
+<p>自定义开关的打开/关闭状态的文字。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch>
+      <template #checked> ON </template>
+      <template #unchecked> OFF </template>
+    </a-switch>
+    <a-switch type="round">
+      <template #checked> ON </template>
+      <template #unchecked> OFF </template>
+    </a-switch>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:switch/icon -->
+<h3>自定义图标</h3>
+<p>自定义开关按钮上显示的图标。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-switch>
+      <template #checked-icon>
+        <icon-check />
+      </template>
+      <template #unchecked-icon>
+        <icon-close />
+      </template>
+    </a-switch>
+    <a-switch type="round">
+      <template #checked-icon>
+        <icon-check />
+      </template>
+      <template #unchecked-icon>
+        <icon-close />
+      </template>
+    </a-switch>
+    <a-switch type="line">
+      <template #checked-icon>
+        <icon-check />
+      </template>
+      <template #unchecked-icon>
+        <icon-close />
+      </template>
+    </a-switch>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="switch-props"><code>&lt;switch&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string|number|boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-checked</td>
+<td>默认选中状态（非受控状态）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>type</td>
+<td>开关的类型</td>
+<td><code>'circle' | 'round' | 'line'</code></td>
+<td style="text-align:center"><code>'circle'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>开关的大小</td>
+<td><code>'small' | 'medium'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>checked-value</td>
+<td>选中时的值</td>
+<td><code>string|number|boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>unchecked-value</td>
+<td>未选中时的值</td>
+<td><code>string|number|boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>checked-color</td>
+<td>选中时的开关颜色</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>unchecked-color</td>
+<td>未选中时的开关颜色</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>before-change</td>
+<td>switch 状态改变前的钩子， 返回 false 或者返回 Promise 且被 reject 则停止切换。</td>
+<td><code>(  newValue: string | number | boolean) =&gt; Promise&lt;boolean | void&gt; | boolean | void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.37.0</td>
+</tr>
+<tr>
+<td>checked-text</td>
+<td>打开状态时的文案（<code>type='line'</code>和<code>size='small'</code>时不生效）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.45.0</td>
+</tr>
+<tr>
+<td>unchecked-text</td>
+<td>关闭状态时的文案（<code>type='line'</code>和<code>size='small'</code>时不生效）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.45.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="switch-events"><code>&lt;switch&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>值改变时触发</td>
+<td>value: <code>boolean | string | number</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>组件获得焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+<tr>
+<td>blur</td>
+<td>组件失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="switch-slots"><code>&lt;switch&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checked-icon</td>
+<td style="text-align:center">打开状态时，按钮上的图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>unchecked-icon</td>
+<td style="text-align:center">关闭状态时，按钮上的图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>checked</td>
+<td style="text-align:center">打开状态时的文案（<code>type='line'</code>和<code>size='small'</code>时不生效）</td>
+<td>-</td>
+</tr>
+<tr>
+<td>unchecked</td>
+<td style="text-align:center">关闭状态时的文案（<code>type='line'</code>和<code>size='small'</code>时不生效）</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

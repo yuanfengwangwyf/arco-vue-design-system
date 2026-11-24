@@ -1,0 +1,3868 @@
+
+<!-- demo:table/basic -->
+<h3>基本用法</h3>
+<p>表格的基本用法，需要传递 <code>columns</code> 和 <code>data</code>。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/row-selection -->
+<h3>行选择器</h3>
+<p>通过设置 <code>row-selection</code> 开启行选择器。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" fill>
+    <div>
+      <span>OnlyCurrent: </span>
+      <a-switch v-model="rowSelection.onlyCurrent" />
+    </div>
+    <a-table
+      row-key="name"
+      :columns="columns"
+      :data="data"
+      :row-selection="rowSelection"
+      v-model:selectedKeys="selectedKeys"
+      :pagination="pagination"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const selectedKeys = ref(["Jane Doe", "Alisa Ross"]);
+const rowSelection = reactive({
+  type: "checkbox",
+  showCheckedAll: true,
+  onlyCurrent: false
+});
+const pagination = { pageSize: 5 };
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com",
+    disabled: true
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  },
+  {
+    key: "6",
+    name: "Jane Doe 2",
+    salary: 15e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "7",
+    name: "Alisa Ross 2",
+    salary: 28e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "8",
+    name: "Kevin Sandra 2",
+    salary: 26e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "9",
+    name: "Ed Hellen 2",
+    salary: 18e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "10",
+    name: "William Smith 2",
+    salary: 12e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/radio -->
+<h3>行选择器（单选框）</h3>
+<p>通过设置 <code>rowSelection.type='radio'</code> 开启单选模式。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" :row-selection="rowSelection" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const rowSelection = {
+  type: "radio"
+};
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/expand -->
+<h3>展开行</h3>
+<p>通过设置 <code>expandable</code> 开启展开行功能。可以在 <code>data</code> 中添加 <code>expand</code> 属性，设置展开行显示内容。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" :expandable="expandable" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const expandable = reactive({
+  title: "Expand",
+  width: 80,
+  expandedRowRender: (record) => {
+    if (record.key === "3") {
+      return `My Name is ${record.name}`;
+    }
+  }
+});
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com",
+    expand: "Expand Data"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/ellipsis -->
+<h3>文本省略和提示</h3>
+<p>开启 <code>ellipsis</code> 属性可以显示省略号，如果同时开启 <code>tooltip</code> 会在显示省略号时使用文本提示。注意：开启 <code>tooltip</code> 后会修改 <code>table-cell</code> 中的 DOM 结构。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    ellipsis: true,
+    tooltip: true,
+    width: 100
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    ellipsis: true,
+    width: 150
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    ellipsis: true,
+    tooltip: { position: "left" },
+    width: 200
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/subtree -->
+<h3>树形数据展示</h3>
+<p>树形数据展示的例子，<code>data</code> 里有 <code>children</code> 字段时会展示为树形表格。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <span>checkStrictly:</span>
+    <a-switch v-model="rowSelection.checkStrictly" />
+  </a-space>
+  <a-table
+    :columns="columns"
+    :data="data"
+    v-model:expandedKeys="expandedKeys"
+    :row-selection="rowSelection"
+    show-empty-tree
+    style="margin-top: 20px"
+  />
+</template>
+
+<script setup>
+import { ref, reactive } from "vue";
+const expandedKeys = ref([]);
+const rowSelection = reactive({
+  type: "checkbox",
+  showCheckedAll: true,
+  checkStrictly: true
+});
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = [
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com",
+    children: [
+      {
+        key: "2",
+        name: "Alisa Ross",
+        salary: 25e3,
+        address: "35 Park Road, London",
+        email: "alisa.ross@example.com",
+        children: [
+          {
+            key: "3",
+            name: "Ed Hellen",
+            salary: 17e3,
+            address: "42 Park Road, London",
+            email: "ed.hellen@example.com"
+          },
+          {
+            key: "4",
+            name: "William Smith",
+            salary: 27e3,
+            address: "62 Park Road, London",
+            email: "william.smith@example.com"
+          }
+        ]
+      },
+      {
+        key: "5",
+        name: "Alisa Ross",
+        salary: 25e3,
+        address: "35 Park Road, London",
+        email: "alisa.ross@example.com"
+      }
+    ]
+  },
+  {
+    key: "6",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "7",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "8",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "9",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com",
+    children: []
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/lazy-load -->
+<h3>子树懒加载</h3>
+<p>通过 <code>load-more</code> 属性可以开启子树懒加载功能。
+开启子树懒加载功能后，需要在无子树节点标注 <code>isLeaf: true</code>，没有标注且没有 <code>children</code> 属性的节点会认为需要子树懒加载处理。
+<code>load-more</code> 属性有提供 <code>done</code> 函数进行回调，可以在回调中传入懒加载的子树。如果 <code>done</code> 函数没有传入数据会认为懒加载失败，此节点可以再次触发懒加载。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" :load-more="loadMore" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com",
+    children: [
+      {
+        key: "2",
+        name: "Alisa Ross",
+        salary: 25e3,
+        address: "35 Park Road, London",
+        email: "alisa.ross@example.com"
+      },
+      {
+        key: "5",
+        name: "Alisa Ross",
+        salary: 25e3,
+        address: "35 Park Road, London",
+        email: "alisa.ross@example.com",
+        isLeaf: true
+      }
+    ]
+  },
+  {
+    key: "6",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "7",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com",
+    isLeaf: true
+  },
+  {
+    key: "8",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com",
+    isLeaf: true
+  },
+  {
+    key: "9",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com",
+    isLeaf: true
+  }
+]);
+const loadMore = (record, done) => {
+  window.setTimeout(() => {
+    done([
+      {
+        key: `${record.key}-1`,
+        name: "Ed Hellen",
+        salary: 17e3,
+        address: "42 Park Road, London",
+        email: "ed.hellen@example.com",
+        isLeaf: true
+      },
+      {
+        key: `${record.key}-2`,
+        name: "William Smith",
+        salary: 27e3,
+        address: "62 Park Road, London",
+        email: "william.smith@example.com",
+        isLeaf: true
+      }
+    ]);
+  }, 2e3);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/props -->
+<h3>表格属性</h3>
+<p>这里罗列了一些表格的属性，你可以方便的打开或关闭一些属性，查看它的效果。</p>
+<template data-demo-source>
+<template>
+  <a-form layout="inline" :model="form">
+    <a-form-item label="Border" field="border">
+      <a-switch v-model="form.border" />
+    </a-form-item>
+    <a-form-item label="Hover" field="hover">
+      <a-switch v-model="form.hover" />
+    </a-form-item>
+    <a-form-item label="stripe" field="stripe">
+      <a-switch v-model="form.stripe" />
+    </a-form-item>
+    <a-form-item label="checkbox" field="checkbox">
+      <a-switch v-model="form.checkbox" />
+    </a-form-item>
+    <a-form-item label="checkAll" field="checkAll">
+      <a-switch v-model="rowSelection.showCheckedAll" />
+    </a-form-item>
+    <a-form-item label="loading" field="loading">
+      <a-switch v-model="form.loading" />
+    </a-form-item>
+    <a-form-item label="tableHeader" field="tableHeader">
+      <a-switch v-model="form.tableHeader" />
+    </a-form-item>
+    <a-form-item label="noData" field="noData">
+      <a-switch v-model="form.noData" />
+    </a-form-item>
+  </a-form>
+  <a-table
+    :columns="columns"
+    :data="form.noData ? [] : data"
+    :bordered="form.border"
+    :hoverable="form.hover"
+    :stripe="form.stripe"
+    :loading="form.loading"
+    :show-header="form.tableHeader"
+    :row-selection="form.checkbox ? rowSelection : undefined"
+  />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const form = reactive({
+  border: true,
+  borderCell: false,
+  hover: true,
+  stripe: false,
+  checkbox: true,
+  loading: false,
+  tableHeader: true,
+  noData: false
+});
+const rowSelection = reactive({
+  type: "checkbox",
+  showCheckedAll: true
+});
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = [
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/sort -->
+<h3>排序和筛选</h3>
+<p>通过设置 <code>columns</code> 中的 <code>sortable</code> 和 <code>filterable</code> 属性，可以配置排序和筛选功能。 通过 <code>filter-icon-align-left</code> 属性可以让筛选按钮左对齐。
+可以通过设置 <code>sortable.sorter=true</code> 来关闭内部排序，并通过 <code>change</code> 或者 <code>sorterChange</code> 事件来实现服务器端排序。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" fill>
+    <a-space>
+      <a-switch v-model="alignLeft" />
+      <span>Filter icon align left: {{ alignLeft }}</span>
+    </a-space>
+    <a-table
+      :columns="columns"
+      :data="data"
+      :filter-icon-align-left="alignLeft"
+      @change="handleChange"
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const alignLeft = ref(false);
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    sortable: {
+      sortDirections: ["ascend", "descend"]
+    }
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary",
+    sortable: {
+      sortDirections: ["ascend"]
+    },
+    filterable: {
+      filters: [
+        {
+          text: "> 20000",
+          value: "20000"
+        },
+        {
+          text: "> 30000",
+          value: "30000"
+        }
+      ],
+      filter: (value, record) => record.salary > value,
+      multiple: true
+    }
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    filterable: {
+      filters: [
+        {
+          text: "London",
+          value: "London"
+        },
+        {
+          text: "Paris",
+          value: "Paris"
+        }
+      ],
+      filter: (value, row) => row.address.includes(value)
+    }
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+const handleChange = (data2, extra, currentDataSource) => {
+  console.log("change", data2, extra, currentDataSource);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/filter -->
+<h3>自定义筛选菜单</h3>
+<p>通过插槽可以自定义筛选菜单内容。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" @change="handleChange">
+    <template
+      #name-filter="{
+        filterValue,
+        setFilterValue,
+        handleFilterConfirm,
+        handleFilterReset,
+      }"
+    >
+      <div class="custom-filter">
+        <a-space direction="vertical">
+          <a-input
+            :model-value="filterValue[0]"
+            @input="(value) => setFilterValue([value])"
+          />
+          <div class="custom-filter-footer">
+            <a-button @click="handleFilterConfirm">Confirm</a-button>
+            <a-button @click="handleFilterReset">Reset</a-button>
+          </div>
+        </a-space>
+      </div>
+    </template>
+  </a-table>
+</template>
+
+<script setup>
+import { reactive, h } from "vue";
+import { IconSearch } from "@arco-design/web-vue/es/icon";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    filterable: {
+      filter: (value, record) => record.name.includes(value),
+      slotName: "name-filter",
+      icon: () => h(IconSearch)
+    }
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary",
+    sortable: {
+      sortDirections: ["ascend"]
+    }
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+const handleChange = (data2, extra, currentDataSource) => {
+  console.log("change", data2, extra, currentDataSource);
+};
+</script>
+
+<style src="/demo/styles/examples/table/filter.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/scroll -->
+<h3>表格滚动</h3>
+<p>设置 scroll 属性可以开启表格滚动。x 指表格的实际宽度，一般设置的值会大于表格容器宽度；y 指表格的显示高度，表格实际高度超出后会显示滚动条。
+2.18.0 版本后 x, y 均可设置百分比。y 设置为 100% 可以让表格容器高度跟随外层容器，超出后自动显示滚动条。</p>
+<template data-demo-source>
+<template>
+  <div style="margin-bottom: 20px">
+    <a-switch v-model="scrollbar" />
+    Virtual Scrollbar
+  </div>
+  <a-table
+    :columns="columns"
+    :data="data"
+    :scroll="scroll"
+    :scrollbar="scrollbar"
+  />
+  <a-split
+    direction="vertical"
+    :default-size="0.9"
+    :style="{ height: '500px', marginTop: '30px' }"
+  >
+    <template #first>
+      <a-table
+        :columns="columns"
+        :data="data"
+        :scroll="scrollPercent"
+        :scrollbar="scrollbar"
+      />
+    </template>
+  </a-split>
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const scrollbar = ref(true);
+const scroll = {
+  x: 2e3,
+  y: 200
+};
+const scrollPercent = {
+  x: "120%",
+  y: "100%"
+};
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/fixed -->
+<h3>固定列</h3>
+<p>在 <code>columns</code> 中指定 <code>fixed: 'left'</code> 或 <code>fixed: 'right'</code>，可将列固定到左侧或右侧。设置了 <code>fixed</code> 的列必须设置 <code>width</code> 指定列的宽度。
+<strong>注意</strong>：要配合 <code>:scroll=&quot;{ x: number }&quot;</code> 使用。此外 <code>columns</code> 中至少需要有一列不设置宽度，自适应，不然会有样式问题。</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    :scroll="scroll"
+    :expandable="expandable"
+  />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    fixed: "left",
+    width: 140
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    fixed: "right",
+    width: 200
+  }
+];
+const expandable = {
+  title: "Expand",
+  width: 80
+};
+const scroll = {
+  x: 2e3,
+  y: 200
+};
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com",
+    expand: "Expand Content"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/span -->
+<h3>单元格合并</h3>
+<p>通过 <code>span-method</code> 属性进行单元格合并。可以设置 <code>span-all</code> 让列索引包含操作列，注意：目前如果合并多项选择器会导致全选状态判断错误。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-table :columns="columns" :data="data" :span-method="spanMethod" />
+    <a-table
+      :columns="columns"
+      :data="data"
+      :span-method="dataSpanMethod"
+      :bordered="{ wrapper: true, cell: true }"
+    />
+    <a-table
+      :columns="columns"
+      :data="data"
+      :row-selection="{ type: 'checkbox' }"
+      :span-method="spanMethodAll"
+      span-all
+      :bordered="{ wrapper: true, cell: true }"
+    />
+  </a-space>
+</template>
+
+<script setup>
+const spanMethod = ({ rowIndex, columnIndex }) => {
+  if (rowIndex === 1 && columnIndex === 1) {
+    return {
+      rowspan: 2,
+      colspan: 3
+    };
+  }
+};
+const dataSpanMethod = ({ record, column }) => {
+  if (record.name === "Alisa Ross" && column.dataIndex === "salary") {
+    return {
+      rowspan: 2
+    };
+  }
+};
+const spanMethodAll = ({ rowIndex, columnIndex }) => {
+  if (rowIndex === 1 && columnIndex === 0) {
+    return { rowspan: 2 };
+  }
+  if (rowIndex === 1 && columnIndex === 2) {
+    return {
+      rowspan: 2,
+      colspan: 3
+    };
+  }
+};
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = [
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/sticky -->
+<h3>表头吸顶</h3>
+<p>通过 <code>sticky-header</code> 设置表头吸顶。表头吸顶的计算容器为最近滚动容器，设置数字时可指定距离滚动容器顶部的高度。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" :sticky-header="60" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/summary -->
+<h3>总结行</h3>
+<p>设置 <code>summary</code> 可以开启表尾总结行，并可以通过 <code>summary-text</code> 指定首列文字。
+如果想要自定义总结行展示，可以传入函数。函数的返回值为需要展示的数据，结构同 <code>data</code> 一样即可，支持多行数据。
+注意：控制列暂不可以自定义内容</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    :summary="true"
+    :summary-span-method="spanMethod"
+  />
+  <a-table
+    :columns="columns"
+    :data="data"
+    :scroll="scroll"
+    :expandable="expandable"
+    :summary="summary"
+  >
+    <template #summary-cell="{ column, record, rowIndex }">
+      <div :style="getColorStyle(column, record)">{{record[column.dataIndex]}}</div>
+    </template>
+  </a-table>
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const expandable = {
+  title: "Expand",
+  width: 80
+};
+const scroll = {
+  x: 2e3,
+  y: 200
+};
+const columns = reactive([
+  {
+    title: "Name",
+    dataIndex: "name",
+    fixed: "left",
+    width: 140
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary",
+    summaryCellStyle: (record) => {
+      if (record.salary > 1e5) {
+        return {
+          backgroundColor: "var(--color-tone-arcoblue-a100)",
+          color: "var(--color-tone-neutral-white-100)"
+        };
+      }
+      return void 0;
+    }
+  },
+  {
+    title: "Data1",
+    dataIndex: "data1"
+  },
+  {
+    title: "Data2",
+    dataIndex: "data2"
+  }
+]);
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    data1: 10,
+    data2: 8,
+    expand: "Expand Content"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    data1: 9,
+    data2: -12
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    data1: 15,
+    data2: -2
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    data1: 2,
+    data2: 3
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    data1: 11,
+    data2: 0
+  }
+]);
+const summary = ({ columns: columns2, data: data2 }) => {
+  const countData = {
+    salary: 0,
+    data1: 0,
+    data2: 0
+  };
+  data2.forEach((record) => {
+    countData.salary += record.salary;
+    countData.data1 += record.data1;
+    countData.data2 += record.data2;
+  });
+  return [
+    {
+      name: "Avg",
+      salary: countData.salary / data2.length,
+      data1: countData.data1 / data2.length,
+      data2: countData.data2 / data2.length
+    },
+    {
+      name: "Sum",
+      salary: countData.salary,
+      data1: countData.data1,
+      data2: countData.data2
+    }
+  ];
+};
+const getColorStyle = (column, record) => {
+  if (["data1", "data2"].includes(column.dataIndex)) {
+    return { color: record[column.dataIndex] > 0 ? "red" : "green" };
+  }
+  return void 0;
+};
+const spanMethod = ({ rowIndex, columnIndex }) => {
+  if (rowIndex === 0 && columnIndex === 1) {
+    return {
+      colspan: 2
+    };
+  }
+  return void 0;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/resize -->
+<h3>调整列宽</h3>
+<p>使用 <code>column-resizable</code> 属性开启列宽调整。建议初始设置除最后一列外其他列的默认列宽。</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    column-resizable
+    :bordered="{ cell: true }"
+  ></a-table>
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = reactive([
+  {
+    title: "Name",
+    dataIndex: "name",
+    width: 150,
+    minWidth: 100
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary",
+    width: 120,
+    minWidth: 80
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    width: 300
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+]);
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/drag-row -->
+<h3>可拖拽表格</h3>
+<p>（实验性）
+开启表格行可拖拽功能</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    @change="handleChange"
+    :draggable="{}"
+  ></a-table>
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const columns = reactive([
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+]);
+const data = ref([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+const handleChange = (_data) => {
+  console.log(_data);
+  data.value = _data;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/drag-handle -->
+<h3>拖拽锚点</h3>
+<p>（实验性）
+开启锚点拖拽功能</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    @change="handleChange"
+    :draggable="{ type: 'handle', width: 40 }"
+  />
+</template>
+
+<script setup>
+import { reactive, ref } from "vue";
+const columns = reactive([
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+]);
+const data = ref([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+const handleChange = (_data) => {
+  console.log(_data);
+  data.value = _data;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/group -->
+<h3>分组表头</h3>
+<p><code>columns</code> 内可以设置 <code>children</code>，用于表头分组。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" :bordered="{ headerCell: true }" />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    fixed: "left",
+    width: 140
+  },
+  {
+    title: "User Info",
+    children: [
+      {
+        title: "Birthday",
+        dataIndex: "birthday"
+      },
+      {
+        title: "Address",
+        children: [
+          {
+            title: "City",
+            dataIndex: "city"
+          },
+          {
+            title: "Road",
+            dataIndex: "road"
+          },
+          {
+            title: "No.",
+            dataIndex: "no"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Information",
+    children: [
+      {
+        title: "Email",
+        dataIndex: "email"
+      },
+      {
+        title: "Phone",
+        dataIndex: "phone"
+      }
+    ]
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary",
+    fixed: "right",
+    width: 120
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    birthday: "1994-04-21",
+    city: "London",
+    road: "Park",
+    no: "34",
+    phone: "12345678",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    birthday: "1994-05-21",
+    city: "London",
+    road: "Park",
+    no: "37",
+    phone: "12345678",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    birthday: "1992-02-11",
+    city: "Paris",
+    road: "Arco",
+    no: "67",
+    phone: "12345678",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    birthday: "1991-06-21",
+    city: "London",
+    road: "Park",
+    no: "317",
+    phone: "12345678",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    birthday: "1996-08-21",
+    city: "Paris",
+    road: "Park",
+    no: "114",
+    phone: "12345678",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/fixed-group -->
+<h3>分组表头与固定列</h3>
+<p>分组表头使用固定列时，需要优先指定数据列为固定列。
+如果一个分组下的所有数据列都是固定列，此时可以设置分组列为固定列，宽度为子列宽度之和。</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    :bordered="{ cell: true }"
+    :scroll="{ x: 2000 }"
+  />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    fixed: "left",
+    width: 140
+  },
+  {
+    title: "User Info",
+    children: [
+      {
+        title: "Birthday",
+        dataIndex: "birthday",
+        fixed: "left",
+        width: 200
+      },
+      {
+        title: "Address",
+        children: [
+          {
+            title: "City",
+            dataIndex: "city",
+            fixed: "left",
+            width: 100
+          },
+          {
+            title: "Road",
+            dataIndex: "road"
+          },
+          {
+            title: "No.",
+            dataIndex: "no"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Information",
+    children: [
+      {
+        title: "Email",
+        dataIndex: "email"
+      },
+      {
+        title: "Phone",
+        dataIndex: "phone"
+      }
+    ]
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary",
+    fixed: "right",
+    width: 120
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    birthday: "1994-04-21",
+    city: "London",
+    road: "Park",
+    no: "34",
+    phone: "12345678",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    birthday: "1994-05-21",
+    city: "London",
+    road: "Park",
+    no: "37",
+    phone: "12345678",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    birthday: "1992-02-11",
+    city: "Paris",
+    road: "Arco",
+    no: "67",
+    phone: "12345678",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    birthday: "1991-06-21",
+    city: "London",
+    road: "Park",
+    no: "317",
+    phone: "12345678",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    birthday: "1996-08-21",
+    city: "Paris",
+    road: "Park",
+    no: "114",
+    phone: "12345678",
+    email: "william.smith@example.com"
+  }
+]);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/editable -->
+<h3>可编辑表格</h3>
+<p>可以在使用插槽获得的数据，修改 <code>data</code> 中的数据，达到可编辑表格的功能。
+<code>2.25.0</code> 版本后可以直接修改插槽传出的 <code>record</code> 变量。这个 <code>record</code> 变量是传入的 <code>data</code> 中对应数据的引用，请保证 <code>data</code> 为 Reactive 类型。</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data">
+    <template #name="{ rowIndex }">
+      <a-input v-model="data[rowIndex].name" />
+    </template>
+    <template #province="{ rowIndex }">
+      <a-select
+        v-model="data[rowIndex].province"
+        @change="() => handleChange(rowIndex)"
+      >
+        <a-option v-for="value of Object.keys(options)">{{ value }}</a-option>
+      </a-select>
+    </template>
+    <template #city="{ rowIndex }">
+      <a-select
+        :options="options[data[rowIndex].province] || []"
+        v-model="data[rowIndex].city"
+      />
+    </template>
+  </a-table>
+  <!-- support from v2.25.0  -->
+  <a-table :columns="columns" :data="data" style="margin-top: 20px">
+    <template #name="{ record, rowIndex }">
+      <a-input v-model="record.name" />
+    </template>
+    <template #province="{ record, rowIndex }">
+      <a-select
+        v-model="record.province"
+        @change="
+          () => {
+            record.city = '';
+          }
+        "
+      >
+        <a-option v-for="value of Object.keys(options)">{{ value }}</a-option>
+      </a-select>
+    </template>
+    <template #city="{ record, rowIndex }">
+      <a-select
+        :options="options[record.province] || []"
+        v-model="record.city"
+      />
+    </template>
+  </a-table>
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const options = {
+  Beijing: ["Haidian", "Chaoyang", "Changping"],
+  Sichuan: ["Chengdu", "Mianyang", "Aba"],
+  Guangdong: ["Guangzhou", "Shenzhen", "Shantou"]
+};
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    slotName: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Province",
+    dataIndex: "province",
+    slotName: "province"
+  },
+  {
+    title: "City",
+    dataIndex: "city",
+    slotName: "city"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    province: "Beijing",
+    city: "Haidian",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    province: "Sichuan",
+    city: "Mianyang",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+const handleChange = (rowIndex) => {
+  data[rowIndex].city = "";
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/custom -->
+<h3>自定义渲染</h3>
+<p>通过 <code>#columns</code> 插槽和 <code>&lt;a-table-column&gt;</code> 组件可以使用模板的方法自定义列渲染。
+<strong>注意</strong>：在使用 <code>#columns</code> 插槽后，将会屏蔽 <code>columns</code> 属性</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data">
+    <template #optional="{ record }">
+      <a-button @click="$modal.info({ title: 'Name', content: record.name })"
+        >view</a-button
+      >
+    </template>
+  </a-table>
+  <a-table :data="data" style="margin-top: 30px">
+    <template #columns>
+      <a-table-column title="Name">
+        <a-table-column title="First Name" data-index="first"></a-table-column>
+        <a-table-column title="Last Name" data-index="last"></a-table-column>
+      </a-table-column>
+      <a-table-column title="Salary" data-index="salary"></a-table-column>
+      <a-table-column title="Address" data-index="address"></a-table-column>
+      <a-table-column title="Email" data-index="email"></a-table-column>
+      <a-table-column title="Optional">
+        <template #cell="{ record }">
+          <a-button
+            @click="$modal.info({ title: 'Name', content: record.name })"
+            >view</a-button
+          >
+        </template>
+      </a-table-column>
+    </template>
+  </a-table>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const show = ref(true);
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  },
+  {
+    title: "Optional",
+    slotName: "optional"
+  }
+];
+const data = [
+  {
+    key: "1",
+    name: "Jane Doe",
+    first: "Jane",
+    last: "Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    first: "Alisa",
+    last: "Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    first: "Kevin",
+    last: "Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    first: "Ed",
+    last: "Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    first: "William",
+    last: "Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/custom-dom -->
+<h3>自定义表格元素</h3>
+<p>可以通过特定插槽自定义表格元素的渲染。仅需要传入表格元素，内部属性会自动附加上去</p>
+<template data-demo-source>
+<template>
+  <a-table :columns="columns" :data="data" row-class="common-row">
+    <template #tr>
+      <tr class="my-tr" @contextmenu="handleContextMenu" />
+    </template>
+    <template #td>
+      <td class="my-td" />
+    </template>
+  </a-table>
+</template>
+
+<script setup>
+const handleContextMenu = () => {
+  console.log("right click");
+};
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name"
+  },
+  {
+    title: "Salary",
+    dataIndex: "salary"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = [
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23e3,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25e3,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22e3,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17e3,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27e3,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:table/virtual-list -->
+<h3>虚拟列表</h3>
+<p>设置 <code>virtual-list-props</code> 开启虚拟列表功能。
+目前虚拟滚动表格受限比较多，开启虚拟滚动后不能使用展开行、树形数据、固定列等功能</p>
+<template data-demo-source>
+<template>
+  <a-table
+    :columns="columns"
+    :data="data"
+    :row-selection="rowSelection"
+    :virtual-list-props="{ height: 400 }"
+    :pagination="false"
+    :scroll="{ x: 1000 }"
+  />
+</template>
+
+<script setup>
+import { reactive } from "vue";
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    fixed: "left",
+    width: 140
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  },
+  {
+    title: "Email",
+    dataIndex: "email"
+  }
+];
+const data = reactive(Array(1e3).fill(null).map((_, index) => ({
+  key: String(index),
+  name: `User ${index + 1}`,
+  address: "32 Park Road, London",
+  email: `user.${index + 1}@example.com`
+})));
+const rowSelection = {
+  type: "checkbox",
+  showCheckedAll: true
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="table-props"><code>&lt;table&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>columns</td>
+<td>表格的列描述信息</td>
+<td><code>TableColumnData[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>data</td>
+<td>表格的数据</td>
+<td><code>TableData[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>bordered</td>
+<td>是否显示边框</td>
+<td><code>boolean | TableBorder</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>hoverable</td>
+<td>是否显示选中效果</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>stripe</td>
+<td>是否开启斑马纹效果</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>表格的大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'large'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>table-layout-fixed</td>
+<td>表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否为加载中状态</td>
+<td><code>boolean|object</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>row-selection</td>
+<td>表格的行选择器配置</td>
+<td><code>TableRowSelection</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expandable</td>
+<td>表格的展开行配置</td>
+<td><code>TableExpandable</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>表格的滚动属性配置。<code>2.13.0</code> 版本增加字符型值的支持。<code>2.20.0</code> 版本增加 <code>minWidth</code>,<code>maxHeight</code> 的支持。</td>
+<td><code>{  x?: number | string;  y?: number | string;  minWidth?: number | string;  maxHeight?: number | string;}</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>pagination</td>
+<td>分页的属性配置</td>
+<td><code>boolean | PaginationProps</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-position</td>
+<td>分页选择器的位置</td>
+<td><code>'tl' | 'top' | tr' | 'bl' | 'bottom' | 'br'</code></td>
+<td style="text-align:center"><code>'br'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>indent-size</td>
+<td>树形表格的缩进距离</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>16</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>row-key</td>
+<td>表格行 <code>key</code> 的取值字段</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'key'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-header</td>
+<td>是否显示表头</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>virtual-list-props</td>
+<td>传递虚拟列表属性，传入此参数以开启虚拟滚动 <a href="#VirtualListProps">VirtualListProps</a></td>
+<td><code>VirtualListProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>span-method</td>
+<td>单元格合并方法（索引从数据项开始计数）</td>
+<td><code>(data: {  record: TableData;  column: TableColumnData | TableOperationColumn;  rowIndex: number;  columnIndex: number;}) =&gt; { rowspan?: number; colspan?: number } | void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.10.0</td>
+</tr>
+<tr>
+<td>span-all</td>
+<td>是否让合并方法的索引包含所有</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>load-more</td>
+<td>数据懒加载函数，传入时开启懒加载功能</td>
+<td><code>(record: TableData, done: (children?: TableData[]) =&gt; void) =&gt; void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+<tr>
+<td>filter-icon-align-left</td>
+<td>筛选图标是否左对齐</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+<tr>
+<td>hide-expand-button-on-empty</td>
+<td>是否在子树为空时隐藏展开按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.14.0</td>
+</tr>
+<tr>
+<td>row-class</td>
+<td>表格行元素的类名。<code>2.34.0</code> 版本增加函数值支持</td>
+<td><code>string| any[]| Record&lt;string, any&gt;| ((record: TableData, rowIndex: number) =&gt; any)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>表格拖拽排序的配置</td>
+<td><code>TableDraggable</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>column-resizable</td>
+<td>是否允许调整列宽</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>显示表尾总结行</td>
+<td><code>boolean| ((params: {    columns: TableColumnData[];    data: TableData[];  }) =&gt; TableData[])</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.21.0</td>
+</tr>
+<tr>
+<td>summary-text</td>
+<td>总结行的首列文字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>'Summary'</code></td>
+<td style="text-align:left">2.21.0</td>
+</tr>
+<tr>
+<td>summary-span-method</td>
+<td>总结行的单元格合并方法</td>
+<td><code>(data: {  record: TableData;  column: TableColumnData | TableOperationColumn;  rowIndex: number;  columnIndex: number;}) =&gt; { rowspan?: number; colspan?: number } | void</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.21.0</td>
+</tr>
+<tr>
+<td>selected-keys</td>
+<td>已选择的行（受控模式）优先于 <code>rowSelection</code></td>
+<td><code>(string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>default-selected-keys</td>
+<td>默认已选择的行（非受控模式）优先于 <code>rowSelection</code></td>
+<td><code>(string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>expanded-keys</td>
+<td>显示的展开行、子树（受控模式）优先于 <code>expandable</code></td>
+<td><code>(string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>default-expanded-keys</td>
+<td>默认显示的展开行、子树（非受控模式）优先于 <code>expandable</code></td>
+<td><code>(string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>default-expand-all-rows</td>
+<td>是否默认展开所有的行</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.25.0</td>
+</tr>
+<tr>
+<td>sticky-header</td>
+<td>是否开启表头吸顶</td>
+<td><code>boolean|number</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.30.0</td>
+</tr>
+<tr>
+<td>scrollbar</td>
+<td>是否开启虚拟滚动条</td>
+<td><code>boolean | ScrollbarProps</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.38.0</td>
+</tr>
+<tr>
+<td>show-empty-tree</td>
+<td>是否展示空子树</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.51.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-events"><code>&lt;table&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expand</td>
+<td>点击展开行时触发</td>
+<td>rowKey: <code>string | number</code><br>record: <code>TableData</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expanded-change</td>
+<td>已展开的数据行发生改变时触发</td>
+<td>rowKeys: <code>(string | number)[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>select</td>
+<td>点击行选择器时触发</td>
+<td>rowKeys: <code>string | number[]</code><br>rowKey: <code>string | number</code><br>record: <code>TableData</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>select-all</td>
+<td>点击全选选择器时触发</td>
+<td>checked: <code>boolean</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>selection-change</td>
+<td>已选择的数据行发生改变时触发</td>
+<td>rowKeys: <code>(string | number)[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>sorter-change</td>
+<td>排序规则发生改变时触发</td>
+<td>dataIndex: <code>string</code><br>direction: <code>string</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filter-change</td>
+<td>过滤选项发生改变时触发</td>
+<td>dataIndex: <code>string</code><br>filteredValues: <code>string[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-change</td>
+<td>表格分页发生改变时触发</td>
+<td>page: <code>number</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>page-size-change</td>
+<td>表格每页数据数量发生改变时触发</td>
+<td>pageSize: <code>number</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>change</td>
+<td>表格数据发生变化时触发</td>
+<td>data: <code>TableData[]</code><br>extra: <code>TableChangeExtra</code><br>currentData: <code>TableData[]</code></td>
+<td style="text-align:left">2.40.0 增加 currentData</td>
+</tr>
+<tr>
+<td>cell-mouse-enter</td>
+<td>单元格 hover 进入时触发</td>
+<td>record: <code>TableData</code><br>column: <code>TableColumnData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell-mouse-leave</td>
+<td>单元格 hover 退出时触发</td>
+<td>record: <code>TableData</code><br>column: <code>TableColumnData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell-click</td>
+<td>点击单元格时触发</td>
+<td>record: <code>TableData</code><br>column: <code>TableColumnData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>row-click</td>
+<td>点击行数据时触发</td>
+<td>record: <code>TableData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>header-click</td>
+<td>点击表头数据时触发</td>
+<td>column: <code>TableColumnData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>column-resize</td>
+<td>调整列宽时触发</td>
+<td>dataIndex: <code>string</code><br>width: <code>number</code></td>
+<td style="text-align:left">2.28.0</td>
+</tr>
+<tr>
+<td>row-dblclick</td>
+<td>双击行数据时触发</td>
+<td>record: <code>TableData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell-dblclick</td>
+<td>双击单元格时触发</td>
+<td>record: <code>TableData</code><br>column: <code>TableColumnData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>row-contextmenu</td>
+<td>右击行数据时触发</td>
+<td>record: <code>TableData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell-contextmenu</td>
+<td>右击单元格时触发</td>
+<td>record: <code>TableData</code><br>column: <code>TableColumnData</code><br>ev: <code>Event</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-methods"><code>&lt;table&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selectAll</td>
+<td>设置全选状态</td>
+<td>checked: <code>boolean</code></td>
+<td>-</td>
+<td style="text-align:left">2.22.0</td>
+</tr>
+<tr>
+<td>select</td>
+<td>设置行选择器状态</td>
+<td>rowKey: <code>string | number | (string | number)[]</code><br>checked: <code>boolean</code></td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>expandAll</td>
+<td>设置全部展开状态</td>
+<td>checked: <code>boolean</code></td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>设置展开状态</td>
+<td>rowKey: <code>string | number | (string | number)[]</code><br>checked: <code>boolean</code></td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>resetFilters</td>
+<td>重置列的筛选器</td>
+<td>dataIndex: <code>string | string[]</code></td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>clearFilters</td>
+<td>清空列的筛选器</td>
+<td>dataIndex: <code>string | string[]</code></td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>resetSorters</td>
+<td>重置列的排序</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+<tr>
+<td>clearSorters</td>
+<td>清空列的排序</td>
+<td>-</td>
+<td>-</td>
+<td style="text-align:left">2.31.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-slots"><code>&lt;table&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>th</td>
+<td style="text-align:center">自定义 th 元素</td>
+<td>column: <code>TableColumnData</code></td>
+<td style="text-align:left">2.26.0</td>
+</tr>
+<tr>
+<td>thead</td>
+<td style="text-align:center">自定义 thead 元素</td>
+<td>-</td>
+<td style="text-align:left">2.26.0</td>
+</tr>
+<tr>
+<td>empty</td>
+<td style="text-align:center">空白展示</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>summary-cell</td>
+<td style="text-align:center">总结行</td>
+<td>column: <code>TableColumnData</code><br>record: <code>TableData</code><br>rowIndex: <code>number</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>pagination-right</td>
+<td style="text-align:center">分页器右侧内容</td>
+<td>-</td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>pagination-left</td>
+<td style="text-align:center">分页器左侧内容</td>
+<td>-</td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>td</td>
+<td style="text-align:center">自定义 td 元素</td>
+<td>column: <code>TableColumnData</code><br>record: <code>TableData</code><br>rowIndex: <code>number</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>tr</td>
+<td style="text-align:center">自定义 tr 元素</td>
+<td>record: <code>TableData</code><br>rowIndex: <code>number</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>tbody</td>
+<td style="text-align:center">自定义 tbody 元素</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>drag-handle-icon</td>
+<td style="text-align:center">拖拽锚点图标</td>
+<td>-</td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>footer</td>
+<td style="text-align:center">表格底部</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expand-row</td>
+<td style="text-align:center">展开行内容</td>
+<td>record: <code>TableData</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expand-icon</td>
+<td style="text-align:center">展开行图标</td>
+<td>expanded: <code>boolean</code><br>record: <code>TableData</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>columns</td>
+<td style="text-align:center">表格列定义。启用时会屏蔽 columns 属性</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-column-props"><code>&lt;table-column&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data-index</td>
+<td>列信息的标识，对应TableData中的数据</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>列标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>width</td>
+<td>列宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>最小列宽</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>align</td>
+<td>对齐方向</td>
+<td><code>TableColumnData['align']</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>固定位置</td>
+<td><code>TableColumnData['fixed']</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ellipsis</td>
+<td>是否显示为省略</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>sortable</td>
+<td>排序相关选项</td>
+<td><code>TableSortable</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filterable</td>
+<td>过滤相关选项</td>
+<td><code>TableFilterable</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell-class</td>
+<td>自定义单元格类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>header-cell-class</td>
+<td>自定义表头单元格类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>body-cell-class</td>
+<td>自定义内容单元格类名</td>
+<td><code>ClassName | ((record: TableData) =&gt; ClassName)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>summary-cell-class</td>
+<td>自定义总结栏单元格类名</td>
+<td><code>ClassName | ((record: TableData) =&gt; ClassName)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>cell-style</td>
+<td>自定义单元格样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>header-cell-style</td>
+<td>自定义表头单元格样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>body-cell-style</td>
+<td>自定义内容单元格样式</td>
+<td><code>CSSProperties | ((record: TableData) =&gt; CSSProperties)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>summary-cell-style</td>
+<td>自定义总结栏单元格样式</td>
+<td><code>CSSProperties | ((record: TableData) =&gt; CSSProperties)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.30.0</td>
+</tr>
+<tr>
+<td>index</td>
+<td>用于手动指定选项的 index。2.26.0 版本后不再需要手动指定</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.20.2</td>
+</tr>
+<tr>
+<td>tooltip</td>
+<td>在省略时是否显示文字提示</td>
+<td><code>boolean|object</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.26.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-column-slots"><code>&lt;table-column&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filter-icon</td>
+<td style="text-align:center">筛选按钮图标</td>
+<td>-</td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>filter-content</td>
+<td style="text-align:center">自定义筛选弹出框内容</td>
+<td>filterValue: <code>string[]</code><br>setFilterValue: <code>(filterValue: string[]) =&gt; void</code><br>handleFilterConfirm: <code>(event: Event) =&gt; void</code><br>handleFilterReset: <code>(event: Event) =&gt; void</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+<tr>
+<td>title</td>
+<td style="text-align:center">标题</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cell</td>
+<td style="text-align:center">单元格</td>
+<td>record: <code>TableData</code><br>column: <code>TableColumnData</code><br>rowIndex: <code>number</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="type">Type</h2>
+<pre><code class="language-ts">type Filters = Record&lt;string, string[]&gt;;
+
+type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record&lt;string, never&gt;;
+</code></pre>
+<h3 id="tabledata">TableData</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>数据行的key</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expand</td>
+<td>扩展行内容</td>
+<td><code>string | RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>children</td>
+<td>子数据</td>
+<td><code>TableData[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用行选择器</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>isLeaf</td>
+<td>是否是叶子节点</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tablesortable">TableSortable</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sortDirections</td>
+<td>支持的排序方向</td>
+<td><code>('ascend' | 'descend')[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>sorter</td>
+<td>排序函数。设置为 <code>true</code> 可关闭内部排序。2.19.0 版本修改传出数据。</td>
+<td><code>((        a: TableData,        b: TableData,        extra: { dataIndex: string; direction: 'ascend' | 'descend' }      ) =&gt; number)    | boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>sortOrder</td>
+<td>排序方向</td>
+<td><code>'ascend' | 'descend' | ''</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>defaultSortOrder</td>
+<td>默认排序方向（非受控模式）</td>
+<td><code>'ascend' | 'descend' | ''</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tablefilterdata">TableFilterData</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>筛选数据选项的内容</td>
+<td><code>string | RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>value</td>
+<td>筛选数据选项的值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tablefilterable">TableFilterable</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filters</td>
+<td>筛选数据</td>
+<td><code>TableFilterData[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filter</td>
+<td>筛选函数</td>
+<td><code>(filteredValue: string[], record: TableData) =&gt; boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>是否支持多选</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filteredValue</td>
+<td>筛选项</td>
+<td><code>string[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>defaultFilteredValue</td>
+<td>默认筛选项</td>
+<td><code>string[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>renderContent</td>
+<td>筛选框的内容</td>
+<td><code>(data: {    filterValue: string[];    setFilterValue: (filterValue: string[]) =&gt; void;    handleFilterConfirm: (event: Event) =&gt; void;    handleFilterReset: (event: Event) =&gt; void;  }) =&gt; VNodeChild</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>icon</td>
+<td>筛选按钮的图标</td>
+<td><code>RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>triggerProps</td>
+<td>筛选框的弹出框配置</td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>alignLeft</td>
+<td>筛选图标是否左对齐</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.13.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tablecolumndata">TableColumnData</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataIndex</td>
+<td>列信息的标识，对应 <code>TableData</code> 中的数据</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>列标题</td>
+<td><code>string | RenderFunction</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>width</td>
+<td>列宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>minWidth</td>
+<td>最小列宽</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>align</td>
+<td>对齐方向</td>
+<td><code>'left' | 'center' | 'right'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>固定位置</td>
+<td><code>'left' | 'right'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>ellipsis</td>
+<td>是否显示省略号</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>tooltip</td>
+<td>是否在显示省略号时显示文本提示。可填入 tooltip 组件属性</td>
+<td><code>boolean | Record&lt;string, any&gt;</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.26.0</td>
+</tr>
+<tr>
+<td>sortable</td>
+<td>排序相关选项</td>
+<td><code>TableSortable</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>filterable</td>
+<td>过滤相关选项</td>
+<td><code>TableFilterable</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>children</td>
+<td>表头子数据，用于表头分组</td>
+<td><code>TableColumnData[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>cellClass</td>
+<td>自定义单元格类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>headerCellClass</td>
+<td>自定义表头单元格类名</td>
+<td><code>ClassName</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>bodyCellClass</td>
+<td>自定义内容单元格类名</td>
+<td><code>ClassName | ((record: TableData) =&gt; ClassName)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>summaryCellClass</td>
+<td>自定义总结栏单元格类名</td>
+<td><code>ClassName | ((record: TableData) =&gt; ClassName)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.36.0</td>
+</tr>
+<tr>
+<td>cellStyle</td>
+<td>自定义单元格样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.11.0</td>
+</tr>
+<tr>
+<td>headerCellStyle</td>
+<td>自定义表头单元格样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>bodyCellStyle</td>
+<td>自定义内容单元格样式</td>
+<td><code>CSSProperties | ((record: TableData) =&gt; CSSProperties)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>summaryCellStyle</td>
+<td>自定义总结栏单元格样式</td>
+<td><code>CSSProperties | ((record: TableData) =&gt; CSSProperties)</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.30.0</td>
+</tr>
+<tr>
+<td>render</td>
+<td>自定义列单元格的渲染</td>
+<td><code>(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) =&gt; VNodeChild</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>slotName</td>
+<td>设置当前列的渲染插槽的名字。插槽参数同 #cell</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.18.0</td>
+</tr>
+<tr>
+<td>titleSlotName</td>
+<td>设置当前列的标题的渲染插槽的名字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.23.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tableborder">TableBorder</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrapper</td>
+<td>是否展示外边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>cell</td>
+<td>是否展示单元格边框（表头+主体）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>headerCell</td>
+<td>是否展示表头单元格边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>bodyCell</td>
+<td>是否展示主体单元格边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tablerowselection">TableRowSelection</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>行选择器的类型</td>
+<td><code>'checkbox' | 'radio'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>selectedRowKeys</td>
+<td>已选择的行（受控模式）</td>
+<td><code>BaseType[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>defaultSelectedRowKeys</td>
+<td>默认已选择的行（非受控模式）</td>
+<td><code>BaseType[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>showCheckedAll</td>
+<td>是否显示全选选择器</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>列标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>width</td>
+<td>列宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>是否固定</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>checkStrictly</td>
+<td>是否开启严格选择模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">2.29.0</td>
+</tr>
+<tr>
+<td>onlyCurrent</td>
+<td>是否仅展示当前页的 keys（切换分页时清空 keys）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.32.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tableexpandable">TableExpandable</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expandedRowKeys</td>
+<td>显示的展开行（受控模式）</td>
+<td><code>BaseType[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>defaultExpandedRowKeys</td>
+<td>默认显示的展开行（非受控模式）</td>
+<td><code>BaseType[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>defaultExpandAllRows</td>
+<td>是否默认展开所有的行</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>expandedRowRender</td>
+<td>自定义展开行内容</td>
+<td><code>(record: TableData) =&gt; VNodeChild</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>icon</td>
+<td>展开图标</td>
+<td><code>(expanded: boolean, record: TableData) =&gt; VNodeChild</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>列标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td>列宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>是否固定</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tabledraggable">TableDraggable</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>拖拽类型</td>
+<td><code>'row' | 'handle'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>title</td>
+<td>列标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td>列宽度</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>是否固定</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tablechangeextra">TableChangeExtra</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>触发类型</td>
+<td><code>'pagination' | 'sorter' | 'filter' | 'drag'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>page</td>
+<td>页码</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>每页数据数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>sorter</td>
+<td>排序信息</td>
+<td><code>Sorter</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>filters</td>
+<td>筛选信息</td>
+<td><code>Filters</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>dragTarget</td>
+<td>拖拽信息</td>
+<td><code>TableData</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="virtuallistprops">VirtualListProps</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td>可视区域高度</td>
+<td><code>number | string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>isStaticItemHeight</td>
+<td>（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 <code>fixedSize</code></td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>fixedSize</td>
+<td>元素高度是否是固定的。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+<tr>
+<td>estimatedSize</td>
+<td>元素高度不固定时的预估高度。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>视口边界外提前挂载的元素数量。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>10</code></td>
+<td style="text-align:left">2.34.1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="faq">FAQ</h2>
+<h3 id="1.-关于元素插槽的使用">1. 关于元素插槽的使用</h3>
+<p>table 组件提供了内部元素的自定义插槽，这些插槽不同于普通插槽，对用户传入的内容有一定限制。
+因为 vue 的插槽没有提供传出 children 并在 slot 中渲染的方式，我们针对 table 中的元素插槽，做了一些特殊处理，会在用户传入的内容中，附加上原有的 children，保证子元素的正常渲染。
+此时需要用户注意，在元素插槽中自定义渲染时，需要传入单一空元素使用，不能在传入的元素中添加内容（参考例 1）。
+如果用户需要传入复合元素，可以自定义组件，并指定 default 插槽，然后传入 table 的元素插槽中（参考例 2）。</p>
+<p>例 1：</p>
+<pre><code class="language-vue">&lt;!-- Only one element --&gt;
+&lt;template&gt;
+  &lt;a-table&gt;
+    &lt;template #td&gt;
+      &lt;td @click=&quot;onClick&quot;&gt;&lt;/td&gt;
+    &lt;/template&gt;
+  &lt;/a-table&gt;
+&lt;/template&gt;
+</code></pre>
+<p>例 2：</p>
+<pre><code class="language-vue">&lt;!-- Only one component --&gt;
+&lt;template&gt;
+  &lt;a-table&gt;
+    &lt;template #td&gt;
+      &lt;MyTd&gt;&lt;/MyTd&gt;
+    &lt;/template&gt;
+  &lt;/a-table&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-vue">&lt;!-- MyTd.vue --&gt;
+&lt;template&gt;
+  &lt;td&gt;
+    &lt;div&gt;my td content&lt;/div&gt;
+    &lt;div&gt;
+      &lt;slot/&gt;
+    &lt;/div&gt;
+  &lt;/td&gt;
+&lt;/template&gt;
+</code></pre>
+<h3 id="2.-关于数据中的-row-key-设置">2. 关于数据中的 <code>row-key</code> 设置</h3>
+<p>表格默认会通过数据中设置的 <code>key</code> 字段来唯一定位行数据，在提供数据时请确保行数据中都设置了 <code>key</code> 字段。这个字段在开启选择器等功能时为必要字段，如果想要更换默认的字段名，可以修改 <code>row-key</code> 进行设置。</p>

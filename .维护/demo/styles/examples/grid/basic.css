@@ -1,0 +1,63 @@
+.grid-demo-background {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-fill-2) 4.16666667%,
+    var(--color-tone-neutral-black-0) 4.16666667%,
+    var(--color-tone-neutral-black-0) 8.33333333%,
+    var(--color-fill-2) 8.33333333%,
+    var(--color-fill-2) 12.5%,
+    var(--color-tone-neutral-black-0) 12.5%,
+    var(--color-tone-neutral-black-0) 16.66666667%,
+    var(--color-fill-2) 16.66666667%,
+    var(--color-fill-2) 20.83333333%,
+    var(--color-tone-neutral-black-0) 20.83333333%,
+    var(--color-tone-neutral-black-0) 25%,
+    var(--color-fill-2) 25%,
+    var(--color-fill-2) 29.16666667%,
+    var(--color-tone-neutral-black-0) 29.16666667%,
+    var(--color-tone-neutral-black-0) 33.33333333%,
+    var(--color-fill-2) 33.33333333%,
+    var(--color-fill-2) 37.5%,
+    var(--color-tone-neutral-black-0) 37.5%,
+    var(--color-tone-neutral-black-0) 41.66666667%,
+    var(--color-fill-2) 41.66666667%,
+    var(--color-fill-2) 45.83333333%,
+    var(--color-tone-neutral-black-0) 45.83333333%,
+    var(--color-tone-neutral-black-0) 50%,
+    var(--color-fill-2) 50%,
+    var(--color-fill-2) 54.16666667%,
+    var(--color-tone-neutral-black-0) 54.16666667%,
+    var(--color-tone-neutral-black-0) 58.33333333%,
+    var(--color-fill-2) 58.33333333%,
+    var(--color-fill-2) 62.5%,
+    var(--color-tone-neutral-black-0) 62.5%,
+    var(--color-tone-neutral-black-0) 66.66666667%,
+    var(--color-fill-2) 66.66666667%,
+    var(--color-fill-2) 70.83333333%,
+    var(--color-tone-neutral-black-0) 70.83333333%,
+    var(--color-tone-neutral-black-0) 75%,
+    var(--color-fill-2) 75%,
+    var(--color-fill-2) 79.16666667%,
+    var(--color-tone-neutral-black-0) 79.16666667%,
+    var(--color-tone-neutral-black-0) 83.33333333%,
+    var(--color-fill-2) 83.33333333%,
+    var(--color-fill-2) 87.5%,
+    var(--color-tone-neutral-black-0) 87.5%,
+    var(--color-tone-neutral-black-0) 91.66666667%,
+    var(--color-fill-2) 91.66666667%,
+    var(--color-fill-2) 95.83333333%,
+    var(--color-tone-neutral-black-0) 95.83333333%
+  );
+}
+.grid-demo .arco-col {
+  height: 48px;
+  line-height: 48px;
+  color: var(--color-white);
+  text-align: center;
+}
+.grid-demo .arco-col:nth-child(2n) {
+  background-color: var(--color-tone-arcoblue-a90);
+}
+.grid-demo .arco-col:nth-child(2n + 1) {
+  background-color: var(--color-primary-light-4);
+}

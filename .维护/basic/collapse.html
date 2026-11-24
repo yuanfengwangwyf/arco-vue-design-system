@@ -1,0 +1,477 @@
+
+<!-- demo:collapse/basic -->
+<h3>基本用法</h3>
+<p>用于将复杂的内容区域分组和隐藏，可折叠或展开。默认可以展开多个面板。</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="['1', 2]">
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item
+      header="Beijing Toutiao Technology Co., Ltd."
+      :key="2"
+      disabled
+    >
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/accordion -->
+<h3>手风琴模式</h3>
+<p>通过 <code>accordion</code> 开启手风琴模式，同时只能打开一个面板。</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="[1]" accordion>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="2">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/nested -->
+<h3>嵌套面板</h3>
+<p>面板多层嵌套。</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="['1', 2]" destroy-on-hide>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <a-collapse :default-active-key="['1.1']" destroy-on-hide>
+        <a-collapse-item
+          header="Beijing Toutiao Technology Co., Ltd."
+          key="1.1"
+        >
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </a-collapse-item>
+        <a-collapse-item
+          header="Beijing Toutiao Technology Co., Ltd."
+          key="1.2"
+        >
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </a-collapse-item>
+      </a-collapse>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/border-less -->
+<h3>无边框模式</h3>
+<p>通过设置 <code>bordered=&quot;false&quot;</code> 隐藏边框。</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="['1']" :bordered="false">
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item
+      header="Beijing Toutiao Technology Co., Ltd."
+      key="2"
+      disabled
+    >
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/extra -->
+<h3>额外节点</h3>
+<p>通过 <code>extra</code> 可以设置额外节点。<code>extra</code> 单击可以以设置 <code>stop</code> 修饰符，以阻止当前项目展开。</p>
+<template data-demo-source>
+<template>
+  <a-collapse>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <template #extra>
+        <icon-copy />
+      </template>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2">
+      <template #extra>
+        <a-button type="primary" size="mini" @click.stop="handleClick"
+          >hello</a-button
+        >
+      </template>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+      <template #extra>
+        <a-tag size="small">city</a-tag>
+      </template>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+
+<script setup>
+import { Message } from "@arco-design/web-vue";
+const handleClick = () => {
+  Message.info("hello");
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/expand-icon -->
+<h3>展开图标</h3>
+<p>为展开项自定义展开图标</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="['1', 2]">
+    <template #expand-icon="{ active }">
+      <icon-face-smile-fill v-if="active" />
+      <icon-face-frown-fill v-else />
+    </template>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <template #expand-icon="{ active }">
+        <icon-double-down v-if="active" />
+        <icon-double-right v-else />
+      </template>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/custom -->
+<h3>自定义样式</h3>
+<p>自定义面板样式。</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="['1', 2]" :bordered="false">
+    <a-collapse-item
+      header="Beijing Toutiao Technology Co., Ltd."
+      :style="customStyle"
+      key="1"
+    >
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item
+      header="Beijing Toutiao Technology Co., Ltd."
+      :style="customStyle"
+      :key="2"
+    >
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item
+      header="Beijing Toutiao Technology Co., Ltd."
+      :style="customStyle"
+      key="3"
+    >
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+
+<script setup>
+const customStyle = {
+  borderRadius: "6px",
+  marginBottom: "18px",
+  border: "none",
+  overflow: "hidden"
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/icon-position -->
+<h3>展开图标位置</h3>
+<p>通过 <code>expand-icon-position</code> 属性设置展开图标的位置。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" :style="{ width: '100%' }">
+    <a-space>
+      <a-radio-group type="button" v-model="position">
+        <a-radio value="left">Left</a-radio>
+        <a-radio value="right">Right</a-radio>
+      </a-radio-group>
+      <a-checkbox v-model="hideIcon">Hide Expand Icon</a-checkbox>
+    </a-space>
+    <a-collapse
+      :default-active-key="['1']"
+      :expand-icon-position="position"
+      :show-expand-icon="!hideIcon"
+    >
+      <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+        <template #expand-icon>
+          <icon-plus />
+        </template>
+        <template #extra>
+          <a-tag size="small">city</a-tag>
+        </template>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+      </a-collapse-item>
+      <a-collapse-item
+        header="Beijing Toutiao Technology Co., Ltd."
+        key="2"
+        disabled
+      >
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+      </a-collapse-item>
+      <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+        <div>Beijing Toutiao Technology Co., Ltd.</div>
+      </a-collapse-item>
+    </a-collapse>
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const position = ref("left");
+const hideIcon = ref(false);
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:collapse/destroy -->
+<h3>隐藏时销毁</h3>
+<p>通过设置 <code>destroy-on-hide</code> 可以让面板内容在隐藏时销毁。</p>
+<template data-demo-source>
+<template>
+  <a-collapse :default-active-key="['1', 2]" destroy-on-hide>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2">
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+    <a-collapse-item
+      header="Beijing Toutiao Technology Co., Ltd."
+      key="3"
+      :show-expand-icon="false"
+    >
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+      <div>Beijing Toutiao Technology Co., Ltd.</div>
+    </a-collapse-item>
+  </a-collapse>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="collapse-props"><code>&lt;collapse&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>active-key <strong>(v-model)</strong></td>
+<td>当前展开的面板的 <code>key</code></td>
+<td><code>(string | number)[]</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-active-key</td>
+<td>默认展开的面板的 <code>key</code> （非受控模式）</td>
+<td><code>(string | number)[]</code></td>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>accordion</td>
+<td>是否开启手风琴模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-expand-icon</td>
+<td>是否显示展开图标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.33.0</td>
+</tr>
+<tr>
+<td>expand-icon-position</td>
+<td>展开图标显示的位置</td>
+<td><code>'left' | 'right'</code></td>
+<td style="text-align:center"><code>'left'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>bordered</td>
+<td>是否显示边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>destroy-on-hide</td>
+<td>是否在隐藏时销毁内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collapse-events"><code>&lt;collapse&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>展开的面板发生改变时触发</td>
+<td>activeKey: <code>(string | number)[]</code><br>ev: <code>Event</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="collapse-item-props"><code>&lt;collapse-item&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td>面板的标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-expand-icon</td>
+<td>是否显示展开图标</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>destroy-on-hide</td>
+<td>是否在隐藏时销毁内容</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collapse-item-slots"><code>&lt;collapse-item&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extra</td>
+<td style="text-align:center">额外内容</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>expand-icon</td>
+<td style="text-align:center">展开图标</td>
+<td>active: <code>boolean</code><br>disabled: <code>boolean</code><br>position: <code>'left' | 'right'</code></td>
+<td style="text-align:left">2.33.0</td>
+</tr>
+<tr>
+<td>header</td>
+<td style="text-align:center">面板的标题</td>
+<td>-</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="faq">FAQ</h2>
+<h3 id="collapseitem-组件的-key-属性为必填"><code>&lt;CollapseItem&gt;</code> 组件的 <code>key</code> 属性为必填</h3>
+<p>在 <code>&lt;Collapse&gt;</code> 组件中每个 <code>&lt;CollapseItem&gt;</code> 都需要指定唯一的 <code>key</code> 属性，<code>key</code> 对应 <code>activeKey</code> 中的值。</p>

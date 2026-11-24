@@ -1,0 +1,514 @@
+/******** borderSize *******/
+/******** borderStyle *******/
+/******** radius *******/
+/******** shadow distance *******/
+/******** size *******/
+/******** spacing *******/
+/******** shadow *******/
+/******** opacity *******/
+/******** fontSize *******/
+/******** fontWeight ********/
+/******** Primary *******/
+/******** success *******/
+/******** warning *******/
+/******** danger *******/
+/******** link *******/
+/******** radius *******/
+/********* icon hover *********/
+.arco-tag {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 24px;
+  padding: 0 8px;
+  color: var(--color-text-1);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+  vertical-align: middle;
+  border: 1px solid var(--color-tone-neutral-black-0);
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.arco-tag .arco-icon-hover.arco-tag-icon-hover::before {
+  width: 16px;
+  height: 16px;
+}
+.arco-tag .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-fill-3);
+}
+.arco-tag-checkable {
+  cursor: pointer;
+  transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+}
+.arco-tag-checkable:hover {
+  background-color: var(--color-fill-2);
+}
+.arco-tag-checked {
+  background-color: var(--color-fill-2);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checkable.arco-tag-checked:hover {
+  background-color: var(--color-fill-3);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-bordered,
+.arco-tag-checkable.arco-tag-checked.arco-tag-bordered:hover {
+  border-color: var(--color-border-2);
+}
+.arco-tag-size-small {
+  height: 20px;
+  font-size: 12px;
+  line-height: 18px;
+}
+.arco-tag-size-medium {
+  height: 24px;
+  font-size: 12px;
+  line-height: 22px;
+}
+.arco-tag-size-large {
+  height: 32px;
+  font-size: 14px;
+  line-height: 30px;
+}
+.arco-tag-hide {
+  display: none;
+}
+.arco-tag-loading {
+  cursor: default;
+  opacity: 0.8;
+}
+.arco-tag-icon {
+  margin-right: 4px;
+  color: var(--color-text-2);
+}
+.arco-tag-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.arco-tag.arco-tag-checked.arco-tag-red {
+  color: var(--color-tone-red-a100);
+  background-color: var(--color-tone-red-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-red .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-red-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-red.arco-tag:hover {
+  background-color: var(--color-tone-red-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-red.arco-tag-bordered,
+.arco-tag-checked.arco-tag-red.arco-tag-bordered:hover {
+  border-color: var(--color-tone-red-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-red .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-red .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-red .arco-tag-loading-icon {
+  color: var(--color-tone-red-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-orangered {
+  color: var(--color-tone-orangered-a100);
+  background-color: var(--color-tone-orangered-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-orangered .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-orangered-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-orangered.arco-tag:hover {
+  background-color: var(--color-tone-orangered-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-orangered.arco-tag-bordered,
+.arco-tag-checked.arco-tag-orangered.arco-tag-bordered:hover {
+  border-color: var(--color-tone-orangered-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-orangered .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-orangered .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-orangered .arco-tag-loading-icon {
+  color: var(--color-tone-orangered-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-orange {
+  color: var(--color-tone-orange-a100);
+  background-color: var(--color-tone-orange-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-orange .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-orange-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-orange.arco-tag:hover {
+  background-color: var(--color-tone-orange-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-orange.arco-tag-bordered,
+.arco-tag-checked.arco-tag-orange.arco-tag-bordered:hover {
+  border-color: var(--color-tone-orange-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-orange .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-orange .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-orange .arco-tag-loading-icon {
+  color: var(--color-tone-orange-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-gold {
+  color: var(--color-tone-gold-a100);
+  background-color: var(--color-tone-gold-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-gold .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-gold-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-gold.arco-tag:hover {
+  background-color: var(--color-tone-gold-a16);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-gold.arco-tag-bordered,
+.arco-tag-checked.arco-tag-gold.arco-tag-bordered:hover {
+  border-color: var(--color-tone-gold-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-gold .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-gold .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-gold .arco-tag-loading-icon {
+  color: var(--color-tone-gold-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-lime {
+  color: var(--color-tone-lime-a100);
+  background-color: var(--color-tone-lime-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-lime .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-lime-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-lime.arco-tag:hover {
+  background-color: var(--color-tone-lime-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-lime.arco-tag-bordered,
+.arco-tag-checked.arco-tag-lime.arco-tag-bordered:hover {
+  border-color: var(--color-tone-lime-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-lime .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-lime .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-lime .arco-tag-loading-icon {
+  color: var(--color-tone-lime-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-green {
+  color: var(--color-tone-green-a100);
+  background-color: var(--color-tone-green-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-green .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-green-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-green.arco-tag:hover {
+  background-color: var(--color-tone-green-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-green.arco-tag-bordered,
+.arco-tag-checked.arco-tag-green.arco-tag-bordered:hover {
+  border-color: var(--color-tone-green-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-green .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-green .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-green .arco-tag-loading-icon {
+  color: var(--color-tone-green-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-cyan {
+  color: var(--color-tone-cyan-a100);
+  background-color: var(--color-tone-cyan-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-cyan .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-cyan-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-cyan.arco-tag:hover {
+  background-color: var(--color-tone-cyan-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-cyan.arco-tag-bordered,
+.arco-tag-checked.arco-tag-cyan.arco-tag-bordered:hover {
+  border-color: var(--color-tone-cyan-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-cyan .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-cyan .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-cyan .arco-tag-loading-icon {
+  color: var(--color-tone-cyan-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-blue {
+  color: var(--color-tone-blue-a100);
+  background-color: var(--color-tone-blue-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-blue .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-blue-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-blue.arco-tag:hover {
+  background-color: var(--color-tone-blue-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-blue.arco-tag-bordered,
+.arco-tag-checked.arco-tag-blue.arco-tag-bordered:hover {
+  border-color: var(--color-tone-blue-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-blue .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-blue .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-blue .arco-tag-loading-icon {
+  color: var(--color-tone-blue-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-arcoblue {
+  color: var(--color-tone-arcoblue-a100);
+  background-color: var(--color-tone-arcoblue-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-arcoblue .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-arcoblue-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-arcoblue.arco-tag:hover {
+  background-color: var(--color-tone-arcoblue-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-arcoblue.arco-tag-bordered,
+.arco-tag-checked.arco-tag-arcoblue.arco-tag-bordered:hover {
+  border-color: var(--color-tone-arcoblue-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-arcoblue .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-arcoblue .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-arcoblue .arco-tag-loading-icon {
+  color: var(--color-tone-arcoblue-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-purple {
+  color: var(--color-tone-purple-a100);
+  background-color: var(--color-tone-purple-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-purple .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-purple-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-purple.arco-tag:hover {
+  background-color: var(--color-tone-purple-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-purple.arco-tag-bordered,
+.arco-tag-checked.arco-tag-purple.arco-tag-bordered:hover {
+  border-color: var(--color-tone-purple-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-purple .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-purple .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-purple .arco-tag-loading-icon {
+  color: var(--color-tone-purple-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-pinkpurple {
+  color: var(--color-tone-pinkpurple-a100);
+  background-color: var(--color-tone-pinkpurple-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-pinkpurple .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-pinkpurple-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-pinkpurple.arco-tag:hover {
+  background-color: var(--color-tone-pinkpurple-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-pinkpurple.arco-tag-bordered,
+.arco-tag-checked.arco-tag-pinkpurple.arco-tag-bordered:hover {
+  border-color: var(--color-tone-pinkpurple-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-pinkpurple .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-pinkpurple .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-pinkpurple .arco-tag-loading-icon {
+  color: var(--color-tone-pinkpurple-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-magenta {
+  color: var(--color-tone-magenta-a100);
+  background-color: var(--color-tone-magenta-a4);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-magenta .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-magenta-a8);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-magenta.arco-tag:hover {
+  background-color: var(--color-tone-magenta-a8);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-magenta.arco-tag-bordered,
+.arco-tag-checked.arco-tag-magenta.arco-tag-bordered:hover {
+  border-color: var(--color-tone-magenta-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-magenta .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-magenta .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-magenta .arco-tag-loading-icon {
+  color: var(--color-tone-magenta-a100);
+}
+.arco-tag.arco-tag-checked.arco-tag-gray {
+  color: var(--neutral-level-60);
+  background-color: var(--neutral-level-8);
+  border: 1px solid var(--color-tone-neutral-black-0);
+}
+.arco-tag.arco-tag-checked.arco-tag-gray .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--neutral-level-15);
+}
+.arco-tag.arco-tag-checkable.arco-tag-checked.arco-tag-gray.arco-tag:hover {
+  background-color: var(--neutral-level-15);
+  border-color: var(--color-tone-neutral-black-0);
+}
+.arco-tag-checked.arco-tag-gray.arco-tag-bordered,
+.arco-tag-checked.arco-tag-gray.arco-tag-bordered:hover {
+  border-color: var(--neutral-level-60);
+}
+.arco-tag.arco-tag-checked.arco-tag-gray .arco-tag-icon,
+.arco-tag.arco-tag-checked.arco-tag-gray .arco-tag-close-btn,
+.arco-tag.arco-tag-checked.arco-tag-gray .arco-tag-loading-icon {
+  color: var(--neutral-level-60);
+}
+.arco-tag.arco-tag-custom-color {
+  color: var(--color-white);
+}
+.arco-tag.arco-tag-custom-color .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-neutral-white-20);
+}
+.arco-tag .arco-tag-close-btn {
+  margin-left: 4px;
+  font-size: 12px;
+}
+.arco-tag .arco-tag-close-btn > svg {
+  position: relative;
+}
+.arco-tag .arco-tag-loading-icon {
+  margin-left: 4px;
+  font-size: 12px;
+}
+body[arco-theme='dark'] .arco-tag-checked {
+  color: var(--color-tone-neutral-white-90);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-red {
+  background-color: var(--color-tone-red-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-red .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-red-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-red:hover {
+  background-color: var(--color-tone-red-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-orangered {
+  background-color: var(--color-tone-orangered-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-orangered .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-orangered-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-orangered:hover {
+  background-color: var(--color-tone-orangered-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-orange {
+  background-color: var(--color-tone-orange-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-orange .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-orange-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-orange:hover {
+  background-color: var(--color-tone-orange-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-gold {
+  background-color: var(--color-tone-gold-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-gold .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-gold-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-gold:hover {
+  background-color: var(--color-tone-gold-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-lime {
+  background-color: var(--color-tone-lime-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-lime .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-lime-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-lime:hover {
+  background-color: var(--color-tone-lime-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-green {
+  background-color: var(--color-tone-green-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-green .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-green-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-green:hover {
+  background-color: var(--color-tone-green-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-cyan {
+  background-color: var(--color-tone-cyan-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-cyan .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-cyan-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-cyan:hover {
+  background-color: var(--color-tone-cyan-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-blue {
+  background-color: var(--color-tone-blue-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-blue .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-blue-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-blue:hover {
+  background-color: var(--color-tone-blue-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-arcoblue {
+  background-color: var(--color-tone-arcoblue-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-arcoblue .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-arcoblue-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-arcoblue:hover {
+  background-color: var(--color-tone-arcoblue-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-purple {
+  background-color: var(--color-tone-purple-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-purple .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-purple-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-purple:hover {
+  background-color: var(--color-tone-purple-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-pinkpurple {
+  background-color: var(--color-tone-pinkpurple-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-pinkpurple .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-pinkpurple-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-pinkpurple:hover {
+  background-color: var(--color-tone-pinkpurple-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-magenta {
+  background-color: var(--color-tone-magenta-a16);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-magenta .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--color-tone-magenta-a40);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-magenta:hover {
+  background-color: var(--color-tone-magenta-a40);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-gray {
+  background-color: var(--neutral-level-10);
+}
+body[arco-theme='dark'] .arco-tag-checked.arco-tag-gray .arco-icon-hover.arco-tag-icon-hover:hover::before {
+  background-color: var(--neutral-level-20);
+}
+body[arco-theme='dark'] .arco-tag-checkable.arco-tag-checked.arco-tag-gray:hover {
+  background-color: var(--neutral-level-20);
+}
+.arco-tag-rtl {
+  direction: rtl;
+}
+.arco-tag-rtl .arco-tag-icon {
+  margin-right: 0;
+  margin-left: 4px;
+}
+.arco-tag-rtl .arco-tag-close-btn,
+.arco-tag-rtl .arco-tag-loading-icon {
+  margin-right: 4px;
+  margin-left: 0;
+}
+

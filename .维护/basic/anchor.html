@@ -1,0 +1,290 @@
+
+<!-- demo:anchor/basic -->
+<h3>基本用法</h3>
+<p>锚点的基础用法。</p>
+<template data-demo-source>
+<template>
+  <a-anchor :offset-top="60" :style="{ backgroundColor: 'var(--color-bg-2)' }">
+    <a-anchor-link href="#basic">Basic</a-anchor-link>
+    <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+    <a-anchor-link href="#affix">
+      Affix
+      <template #sublist>
+        <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+        <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+      </template>
+    </a-anchor-link>
+  </a-anchor>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:anchor/static -->
+<h3>静态位置</h3>
+<p>设置 <code>affix=false</code> 后，锚点不会随页面滚动固定。</p>
+<template data-demo-source>
+<template>
+  <a-anchor :affix="false">
+    <a-anchor-link href="#basic">Basic</a-anchor-link>
+    <a-anchor-link href="#static">Static</a-anchor-link>
+    <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+    <a-anchor-link href="#affix">Affix</a-anchor-link>
+    <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+    <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+  </a-anchor>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:anchor/line-less -->
+<h3>无轴线模式</h3>
+<p>设置 <code>line-less</code> 时，可以使用不展示左侧轴线的锚点样式。</p>
+<template data-demo-source>
+<template>
+  <a-anchor line-less>
+    <a-anchor-link href="#basic">Basic</a-anchor-link>
+    <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+    <a-anchor-link href="#affix">
+      Affix
+      <template #sublist>
+        <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+        <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+      </template>
+    </a-anchor-link>
+  </a-anchor>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:anchor/horizontal -->
+<h3>横向 Anchor</h3>
+<p>横向 Anchor，不支持嵌套。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-typography-paragraph>Default</a-typography-paragraph>
+    <a-anchor :affix="false" direction="horizontal">
+      <a-anchor-link href="#basic">Basic</a-anchor-link>
+      <a-anchor-link href="#static">Static</a-anchor-link>
+      <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+      <a-anchor-link href="#affix">Affix</a-anchor-link>
+      <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+      <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+    </a-anchor>
+
+    <a-typography-paragraph :style="{ marginTop: '32px' }">
+      LineLess mode
+    </a-typography-paragraph>
+    <a-anchor :affix="false" direction="horizontal" line-less>
+      <a-anchor-link href="#basic">Basic</a-anchor-link>
+      <a-anchor-link href="#static">Static</a-anchor-link>
+      <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+      <a-anchor-link href="#affix">Affix</a-anchor-link>
+      <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+      <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+    </a-anchor>
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:anchor/affix -->
+<h3>固钉样式</h3>
+<p>示例中的锚点会显示在页面右侧。
+设置 <code>affix=true</code> 时，锚点会以内置固钉模式展示。通过 <code>affix-style</code> 可以自定义固钉容器样式。</p>
+<template data-demo-source>
+<template>
+  <a-anchor :offset-bottom="40" :affix-style="affixStyle">
+    <a-anchor-link href="#basic">Basic</a-anchor-link>
+    <a-anchor-link href="#static">Static</a-anchor-link>
+    <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+    <a-anchor-link href="#affix">Affix</a-anchor-link>
+    <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+    <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+  </a-anchor>
+</template>
+
+<script setup>
+const affixStyle = {
+  position: "absolute",
+  right: "-170px",
+  top: "50%",
+  zIndex: 1
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:anchor/boundary -->
+<h3>滚动偏移量</h3>
+<p>可以设置 <code>boundary</code> 来自定义锚点滚动偏移量。</p>
+<template data-demo-source>
+<template>
+  <a-anchor boundary="center">
+    <a-anchor-link href="#basic">Basic</a-anchor-link>
+    <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+    <a-anchor-link href="#affix">
+      Affix
+      <template #sublist>
+        <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+        <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+      </template>
+    </a-anchor-link>
+  </a-anchor>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:anchor/hash -->
+<h3>是否改变 hash</h3>
+<p>可以设置点击锚点时不改变浏览器地址中的 hash。</p>
+<template data-demo-source>
+<template>
+  <a-anchor :change-hash="false">
+    <a-anchor-link href="#basic">Basic</a-anchor-link>
+    <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
+    <a-anchor-link href="#affix">
+      Affix
+      <template #sublist>
+        <a-anchor-link href="#boundary">Scroll Boundary</a-anchor-link>
+        <a-anchor-link href="#hash">Hash mode</a-anchor-link>
+      </template>
+    </a-anchor-link>
+  </a-anchor>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="anchor-props"><code>&lt;anchor&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boundary</td>
+<td>滚动边界值，设置该值为数字后，将会在距离滚动容器 <code>boundary</code> 距离时停止滚动。</td>
+<td><code>'start' | 'end' | 'center' | 'nearest' | number</code></td>
+<td style="text-align:center"><code>'start'</code></td>
+</tr>
+<tr>
+<td>line-less</td>
+<td>是否显示左侧轴线</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>affix</td>
+<td>是否固定</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>affix-style</td>
+<td>设置 Affix 组件的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>offset-top</td>
+<td>距离窗口顶部的偏移量</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+</tr>
+<tr>
+<td>offset-bottom</td>
+<td>距离窗口底部的偏移量</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>锚点方向</td>
+<td><code>'vertical' | 'horizontal'</code></td>
+<td style="text-align:center"><code>'vertical'</code></td>
+</tr>
+<tr>
+<td>target-offset</td>
+<td>锚点区域边界相对于滚动容器顶部的偏移量。未设置时，默认值为滚动容器高度的一半</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>scroll-container</td>
+<td>滚动容器</td>
+<td><code>string | HTMLElement | Window</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>change-hash</td>
+<td>是否改变hash。设置为 <code>false</code> 时点击锚点不会改变页面的 hash</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>smooth</td>
+<td>是否使用平滑滚动</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="anchor-events"><code>&lt;anchor&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>select</td>
+<td>用户点击链接时触发</td>
+<td>hash: <code>string | undefined</code><br>preHash: <code>string</code></td>
+</tr>
+<tr>
+<td>change</td>
+<td>链接发生改变时触发</td>
+<td>hash: <code>string</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="anchor-link-props"><code>&lt;anchor-link&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>锚点链接的文本内容</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>href</td>
+<td>锚点链接的地址</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>

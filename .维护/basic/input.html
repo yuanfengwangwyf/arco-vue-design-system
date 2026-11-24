@@ -1,0 +1,634 @@
+
+<!-- demo:input/basic -->
+<h3>基本用法</h3>
+<p>输入框的基本用法。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    />
+    <a-input
+      :style="{ width: '320px' }"
+      default-value="content"
+      placeholder="Please enter something"
+      allow-clear
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/status -->
+<h3>输入框状态</h3>
+<p>输入框可以设置禁用和错误状态。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Disabled status"
+      disabled
+    />
+    <a-input
+      :style="{ width: '320px' }"
+      default-value="Disabled"
+      placeholder="Disabled status"
+      disabled
+    />
+    <a-input :style="{ width: '320px' }" placeholder="Error status" error />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/size -->
+<h3>输入框尺寸</h3>
+<p>输入框定义了四种默认尺寸 <code>mini, small, medium, large</code> ，分别为 <code>24px, 28px, 32px, 36px</code> 。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-radio-group type="button" v-model="size">
+      <a-radio value="mini">mini</a-radio>
+      <a-radio value="small">small</a-radio>
+      <a-radio value="medium">medium</a-radio>
+      <a-radio value="large">large</a-radio>
+    </a-radio-group>
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      :size="size"
+      allow-clear
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const size = ref("medium");
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/prefix -->
+<h3>前缀与后缀</h3>
+<p>通过指定 <code>prefix</code> 和 <code>suffix</code> 插槽来在输入框内添加前缀和后缀。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
+      <template #prefix>
+        <icon-user />
+      </template>
+    </a-input>
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
+      <template #suffix>
+        <icon-info-circle />
+      </template>
+    </a-input>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/prepend -->
+<h3>前置、后置标签</h3>
+<p>通过指定 <code>prepend</code> 和 <code>append</code> 插槽在输入框前后添加元素。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
+      <template #prepend> +86 </template>
+    </a-input>
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
+      <template #append> RMB </template>
+    </a-input>
+
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+      prepend="+86"
+    >
+    </a-input>
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+      append="RMB"
+    >
+    </a-input>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/word-limit -->
+<h3>字数统计</h3>
+<p>设置 <code>max-length</code> 可以限制最大字数，配合 <code>show-word-limit</code> 可以显示字数统计。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large" fill>
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      :max-length="10"
+      allow-clear
+      show-word-limit
+    />
+    <a-input
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      :max-length="{ length: 10, errorOnly: true }"
+      allow-clear
+      show-word-limit
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/group -->
+<h3>输入框组合</h3>
+<p>通过 <code>input-group</code> 可以组合使用输入框。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-group>
+      <a-input :style="{ width: '160px' }" placeholder="first" />
+      <a-input :style="{ width: '160px' }" placeholder="second" />
+    </a-input-group>
+    <a-input-group>
+      <a-select
+        :options="['Option1', 'Option2', 'Option3']"
+        :style="{ width: '160px' }"
+        placeholder="first"
+      />
+      <a-input :style="{ width: '160px' }" placeholder="second" />
+    </a-input-group>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/search -->
+<h3>搜索框</h3>
+<p>带有搜索按钮的输入框，用于内容检索。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+    />
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      search-button
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/search-button -->
+<h3>自定义搜索按钮</h3>
+<p>自定义搜索按钮的内容</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      button-text="Search"
+      search-button
+    />
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      search-button
+    >
+      <template #button-icon>
+        <icon-search />
+      </template>
+      <template #button-default> Search </template>
+    </a-input-search>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/search-loading -->
+<h3>搜索框（加载中）</h3>
+<p>通过 <code>loading</code> 属性可以让搜索框展示加载中状态。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      loading
+    />
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      search-button
+      loading
+    />
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:input/password -->
+<h3>密码输入框</h3>
+<p>用于输入密码。</p>
+<template data-demo-source>
+<template>
+  <a-space direction="vertical" size="large">
+    <a-switch v-model="visibility" />
+    <a-input-password
+      v-model:visibility="visibility"
+      placeholder="Please enter something"
+      :style="{ width: '320px' }"
+      :defaultVisibility="false"
+      allow-clear
+    />
+  </a-space>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const visibility = ref(true);
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="input-props"><code>&lt;input&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model-value <strong>(v-model)</strong></td>
+<td>绑定值</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-value</td>
+<td>默认值（非受控状态）</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>''</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>输入框大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>allow-clear</td>
+<td>是否允许清空输入框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>是否为只读状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否为错误状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>提示文字</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-length</td>
+<td>输入值的最大长度，errorOnly 属性在 2.12.0 版本添加</td>
+<td><code>number | { length: number; errorOnly?: boolean }</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>show-word-limit</td>
+<td>是否显示字数统计</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>word-length</td>
+<td>字符长度的计算方法</td>
+<td><code>(value: string) =&gt; number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>word-slice</td>
+<td>字符截取方法，同 wordLength 一起使用</td>
+<td><code>(value: string, maxLength: number) =&gt; string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.12.0</td>
+</tr>
+<tr>
+<td>input-attrs</td>
+<td>内部 input 元素的属性</td>
+<td><code>object</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.27.0</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td>前置标签</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.57.0</td>
+</tr>
+<tr>
+<td>append</td>
+<td>后置标签</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.57.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-events"><code>&lt;input&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>用户输入时触发</td>
+<td>value: <code>string</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>change</td>
+<td>仅在输入框失焦或按下回车时触发</td>
+<td>value: <code>string</code><br>ev: <code>Event</code></td>
+</tr>
+<tr>
+<td>press-enter</td>
+<td>用户按下回车时触发</td>
+<td>ev: <code>KeyboardEvent</code></td>
+</tr>
+<tr>
+<td>clear</td>
+<td>用户点击清除按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>输入框获取焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+<tr>
+<td>blur</td>
+<td>输入框失去焦点时触发</td>
+<td>ev: <code>FocusEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-methods"><code>&lt;input&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>focus</td>
+<td>使输入框获取焦点</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>使输入框失去焦点</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-slots"><code>&lt;input&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>append</td>
+<td style="text-align:center">后置标签</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td style="text-align:center">前置标签</td>
+<td>-</td>
+</tr>
+<tr>
+<td>suffix</td>
+<td style="text-align:center">后缀元素</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td style="text-align:center">前缀元素</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-password-props"><code>&lt;input-password&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visibility <strong>(v-model)</strong></td>
+<td>是否可见，受控属性</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-visibility</td>
+<td>默认是否可见，非受控</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+<tr>
+<td>invisible-button</td>
+<td>是否显示可见按钮</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-password-events"><code>&lt;input-password&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visibility-change</td>
+<td>visibility 改变时触发</td>
+<td>visible: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-search-props"><code>&lt;input-search&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>search-button</td>
+<td>是否为后置按钮模式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>输入框大小</td>
+<td><code>'mini' | 'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>button-text</td>
+<td>搜索按钮的文字，使用后会替换原本的图标</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.16.0</td>
+</tr>
+<tr>
+<td>button-props</td>
+<td>搜索按钮的属性</td>
+<td><code>ButtonProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-search-events"><code>&lt;input-search&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>search</td>
+<td>单击搜索按钮时触发</td>
+<td>value: <code>string</code><br>ev: <code>MouseEvent</code></td>
+</tr>
+</tbody>
+</table>

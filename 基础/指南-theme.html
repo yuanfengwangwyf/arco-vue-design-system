@@ -1,0 +1,54 @@
+<p>ArcoDesign定义了一套默认粒子变量，可以通过对粒子变量的修改覆盖来定制主题。</p>
+<h2 id="less-变量替换">Less 变量替换</h2>
+<p>ArcoDesign 使用了 <a href="http://lesscss.org/" title="_blank">Less</a> 作为预编译语言，通过 Less 的 <strong>modifyVars</strong> 功能，可以很方便的对样式粒子变量进行定制。</p>
+<p>全局变量可在 <code>global.less (@arco-design/web-vue/es/style/theme/global.less)</code> 中可以找到。</p>
+<p>在组件库内部我们对组件样式变量做了非常细致的抽离提取，可以满足对组件细粒度的定制。例如 <code>Button</code> 组件对应的样式变量 <code>token.less (@arco-design/web-vue/es/button/style/token.less)</code> 列表。</p>
+<h3 id="引入组件库样式文件">引入组件库样式文件</h3>
+<p>如果想要进行主题定制，需要引入 less 样式文件。组件库 less 样式文件可以在 <code>@arco-design/web-vue/dist/arco.less</code> 或者 <code>@arco-design/web-vue/es/index.less</code> 中找到。
+如果使用了按需加载的方式引入组件，请确保在按需加载插件中开启了 less 样式文件的导入。</p>
+<h3 id="vite配置">Vite配置</h3>
+<p>Vite 本身支持 <a href="https://vitejs.dev/guide/features.html#css-pre-processors" title="_blank">Less语法</a> ，用户只需在配置文件中传入Less的配置即可：</p>
+<pre><code class="language-diff">// vite.config.js
+export default {
+  css: {
++   preprocessorOptions: {
++     less: {
++       modifyVars: {
++         'arcoblue-6': '#f85959',
++       },
++       javascriptEnabled: true,
++     }
++   }
+  },
+  ...
+}
+</code></pre>
+<h3 id="webpack配置">Webpack配置</h3>
+<p>在 Webpack 打包的时候，通过 <a href="https://github.com/webpack-contrib/less-loader">less-loader</a> 的 modifyVars，可以对所有的变量进行替换：</p>
+<pre><code class="language-diff">// webpack.config.js
+module.exports = {
+  rules: [{
+    test: /\.less$/,
+    use: [{
+      loader: 'style-loader',
+    }, {
+      loader: 'css-loader',
+    }, {
+      loader: 'less-loader',
++     options: {
++       lessOptions: {
++         modifyVars: {
++           'arcoblue-6': '#f85959',
++         },
++         javascriptEnabled: true,
++       },
++     },
+    }],
+    ...
+  }],
+  ...
+}
+</code></pre>
+<h2 id="风格配置平台主题包使用">风格配置平台主题包使用</h2>
+<p>风格配置平台 Vue 的主题包已经可以使用。</p>
+<p>具体使用方法可以参考<a href="https://arco.design/docs/designlab/guideline">风格配置平台文档</a></p>

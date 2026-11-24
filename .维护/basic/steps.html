@@ -1,0 +1,404 @@
+
+<!-- demo:steps/basic -->
+<h3>基本用法</h3>
+<p>步骤条的基本用法。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-steps :current="2">
+      <a-step>Succeeded</a-step>
+      <a-step>Processing</a-step>
+      <a-step>Pending</a-step>
+    </a-steps>
+    <a-divider />
+    <div style="line-height: 140px; text-align: center; color: var(--neutral-level-20); ">
+      Step 2 Content
+    </div>
+  </div>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/description -->
+<h3>描述信息</h3>
+<p>通过设置 <code>description</code> 可以添加描述信息。</p>
+<template data-demo-source>
+<template>
+  <a-steps>
+    <a-step description="This is a description">Succeeded</a-step>
+    <a-step description="This is a description">Processing</a-step>
+    <a-step description="This is a description">Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/label-placement -->
+<h3>标签放置位置</h3>
+<p>通过设置 <code>label-placement</code> 可以改变标签描述文字放置的位置。放置位置分为 <code>horizontal</code> - <strong>放置在图标右侧（默认）</strong>、<code>vertical</code> - <strong>放置在图标下方</strong>两种。</p>
+<template data-demo-source>
+<template>
+  <a-steps label-placement="vertical">
+    <a-step description="This is a description">Succeeded</a-step>
+    <a-step description="This is a description">Processing</a-step>
+    <a-step description="This is a description">Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/error -->
+<h3>步骤错误</h3>
+<p>通过设置 <code>status=&quot;error&quot;</code> 来展示错误状态。</p>
+<template data-demo-source>
+<template>
+  <a-steps :current="2" status="error">
+    <a-step description="This is a description">Succeeded</a-step>
+    <a-step description="This is a description">Error</a-step>
+    <a-step description="This is a description">Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/icon -->
+<h3>自定义图标</h3>
+<p>通过 <code>#icon</code> 插槽可以自定义节点图标。</p>
+<template data-demo-source>
+<template>
+  <a-steps>
+    <a-step description="This is a description">
+      Succeeded
+      <template #icon>
+        <icon-home />
+      </template>
+    </a-step>
+    <a-step description="This is a description">
+      Processing
+      <template #icon>
+        <icon-loading />
+      </template>
+    </a-step>
+    <a-step description="This is a description">
+      Pending
+      <template #icon>
+        <icon-thumb-up />
+      </template>
+    </a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/line-less -->
+<h3>隐藏连接线</h3>
+<p>通过设置 <code>line-less</code> 可以使用无连接线模式。</p>
+<template data-demo-source>
+<template>
+  <a-steps :current="2" line-less>
+    <a-step description="This is a description">Succeeded</a-step>
+    <a-step description="This is a description">Processing</a-step>
+    <a-step description="This is a description">Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/vertical -->
+<h3>竖直步骤条</h3>
+<p>竖直方向的步骤条。</p>
+<template data-demo-source>
+<template>
+  <div class="frame-bg">
+    <div class="frame-body">
+      <div class="frame-aside">
+        <a-steps :current="current" direction="vertical">
+          <a-step>Succeeded</a-step>
+          <a-step>Processing</a-step>
+          <a-step>Pending</a-step>
+        </a-steps>
+      </div>
+      <div class="frame-main">
+        <div class="main-content">The content of this step.</div>
+        <div class="main-bottom">
+          <a-button :disabled="current === 1" @click="handlePrev">
+            <icon-left />
+            Back
+          </a-button>
+          <a-button :disabled="current === 3" @click="handleNext">
+            Next
+            <icon-right />
+          </a-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const current = ref(1);
+const handlePrev = () => {
+  current.value = Math.max(1, current.value - 1);
+};
+const handleNext = () => {
+  current.value = Math.min(3, current.value + 1);
+};
+</script>
+
+<style scoped src="/demo/styles/examples/steps/vertical.css"></style>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/arrow -->
+<h3>箭头步骤条</h3>
+<p>通过设置 <code>type=&quot;arrow&quot;</code>，可以使用箭头类型的步骤条。<strong>注意</strong>：仅支持水平步骤条。</p>
+<template data-demo-source>
+<template>
+  <a-steps type="arrow" :current="2">
+    <a-step description="This is a description">Succeeded</a-step>
+    <a-step description="This is a description">Processing</a-step>
+    <a-step description="This is a description">Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/dot -->
+<h3>点状步骤条</h3>
+<p>通过设置 <code>type=&quot;dot&quot;</code> ， 可以使用点状的步骤条。此模式没有 small 尺寸。</p>
+<template data-demo-source>
+<template>
+  <a-steps type="dot">
+    <a-step>Succeeded</a-step>
+    <a-step>Processing</a-step>
+    <a-step>Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/navigation -->
+<h3>导航步骤条</h3>
+<p>通过设置 <code>type=&quot;navigation&quot;</code> 展示导航类型的步骤条。</p>
+<template data-demo-source>
+<template>
+  <a-steps type="navigation">
+    <a-step>Succeeded</a-step>
+    <a-step>Processing</a-step>
+    <a-step>Pending</a-step>
+  </a-steps>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:steps/changeable -->
+<h3>可切换步骤条</h3>
+<p>设置 <code>changeable</code> 开启点击切换步骤。</p>
+<template data-demo-source>
+<template>
+  <div>
+    <a-steps changeable :current="current" @change="handleSetCurrent">
+      <a-step description="This is a description">Succeeded</a-step>
+      <a-step description="This is a description">Processing</a-step>
+      <a-step description="This is a description">Pending</a-step>
+    </a-steps>
+    <div
+      :style="{
+        width: '100%',
+        height: '200px',
+        textAlign: 'center',
+        background: 'var(--color-bg-2)',
+        color: 'var(--neutral-level-20)',
+      }"
+    >
+      <div style="line-height: 160px;">Step{{ current }} Content</div>
+      <a-space size="large">
+        <a-button type="secondary" :disabled="current <= 1" @click="handlePrev">
+          <IconLeft /> Back
+        </a-button>
+        <a-button type="primary" :disabled="current >= 3" @click="handleNext">
+          Next <IconRight />
+        </a-button>
+      </a-space>
+    </div>
+  </div>
+</template>
+<script setup>
+import { reactive, toRefs } from "vue";
+const state = reactive({
+  current: 1
+});
+const { current } = toRefs(state);
+const handlePrev = () => {
+  current.value = Math.max(1, current.value - 1);
+};
+const handleNext = () => {
+  current.value = Math.min(3, current.value + 1);
+};
+const handleSetCurrent = (current2) => {
+  current2.value = current2;
+};
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="steps-props"><code>&lt;steps&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>步骤条的类型</td>
+<td><code>'default' | 'arrow' | 'dot' | 'navigation'</code></td>
+<td style="text-align:center"><code>'default'</code></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>步骤条的显示方向</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+</tr>
+<tr>
+<td>label-placement</td>
+<td>标签描述文字放置的位置</td>
+<td><code>'horizontal' | 'vertical'</code></td>
+<td style="text-align:center"><code>'horizontal'</code></td>
+</tr>
+<tr>
+<td>current <strong>(v-model)</strong></td>
+<td>当前步骤数</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>default-current</td>
+<td>默认的步骤数（非受控状态）</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>1</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>当前步骤的状态</td>
+<td><code>'wait' | 'process' | 'finish' | 'error'</code></td>
+<td style="text-align:center"><code>'process'</code></td>
+</tr>
+<tr>
+<td>line-less</td>
+<td>是否使用无连接线样式</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>small</td>
+<td>是否使用小型步骤条</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td>changeable</td>
+<td>是否可以点击切换</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="steps-events"><code>&lt;steps&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>步骤数发生改变时触发</td>
+<td>step: <code>number</code><br>ev: <code>Event</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-props"><code>&lt;step&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>步骤的标题</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>步骤的描述信息</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>步骤的状态</td>
+<td><code>'wait' | 'process' | 'finish' | 'error'</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-slots"><code>&lt;step&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td style="text-align:center">节点</td>
+<td>step: <code>number</code><br>status: <code>string</code></td>
+</tr>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>step: <code>number</code><br>status: <code>string</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td style="text-align:center">描述内容</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

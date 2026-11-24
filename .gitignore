@@ -1,0 +1,13 @@
+/.维护/node_modules/
+/.维护/.upstream/
+/.维护/generated/
+/.维护/dist/
+/.维护/offline/
+/.维护/test-results/
+/.维护/playwright-report/
+/.维护/public/images/
+/.维护/public/fonts/
+*.log
+.env
+.env.*
+!.env.example

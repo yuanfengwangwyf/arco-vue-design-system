@@ -1,0 +1,156 @@
+
+<!-- demo:affix/basic -->
+<h3>基本用法</h3>
+<p>基本用法，不设置固定位置时，当页面滚动元素不可见时，元素固定在页面最顶部。</p>
+<template data-demo-source>
+<template>
+  <a-affix>
+    <a-button type="primary">Affix Top</a-button>
+  </a-affix>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:affix/top -->
+<h3>顶部固定</h3>
+<p>当页面滚动或浏览器窗口改变时，元素向上滚动到距顶部一定距离时固定。</p>
+<template data-demo-source>
+<template>
+  <a-affix :offsetTop="80">
+    <a-button type="primary">80px to affix top</a-button>
+  </a-affix>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:affix/bottom -->
+<h3>底部固定</h3>
+<p>当页面滚动或浏览器窗口改变时，元素向下滚动到距底部一定距离时固定。</p>
+<template data-demo-source>
+<template>
+  <a-affix :offsetBottom="120">
+    <a-button type="primary">120px to affix bottom</a-button>
+  </a-affix>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:affix/fix-change -->
+<h3>固定状态改变回调</h3>
+<p>当固定状态发生改变时，会触发事件。</p>
+<template data-demo-source>
+<template>
+  <a-affix :offsetBottom="80" @change="handleChange">
+    <a-button type="primary">80px to affix bottom</a-button>
+  </a-affix>
+</template>
+<script setup>
+import { defineComponent } from "vue";
+const handleChange = (fixed) => {
+  console.log(`${fixed}`);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:affix/container -->
+<h3>滚动容器</h3>
+<p>用 <code>target</code> 设置需要监听其滚动事件的元素，默认为 window。</p>
+<p><code>target</code> 指定为非 window 容器时，可能会出现 <code>target</code>外层元素滚动，固钉元素跑出滚动容器的问题。这个时候可以通过传入<code>targetContainer</code>传入<code>target</code>外层的滚动元素。<code>Affix</code>
+会监听该元素的滚动事件来实时更新滚钉元素的位置。 当然您也可以在业务代码中自己监听 target 外层滚动元素的 <code>scroll</code> 事件，并调用 <code>updatePosition</code> 去更新固钉的位置。</p>
+<template data-demo-source>
+<template>
+  <div style="height: 200px; overflow: auto" ref="containerRef">
+    <div style="height: 400px; background: var(--neutral-level-20); overflow: hidden">
+      <a-affix :offsetTop="20" :target="containerRef" style="margin: 40px">
+        <a-button type="primary">Affix in scrolling container</a-button>
+      </a-affix>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+const containerRef = ref();
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="affix-props"><code>&lt;affix&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offset-top</td>
+<td>距离窗口顶部达到指定偏移量后触发</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+</tr>
+<tr>
+<td>offset-bottom</td>
+<td>距离窗口底部达到指定偏移量后触发</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>target</td>
+<td>滚动容器，默认是 <code>window</code></td>
+<td><code>string | HTMLElement | Window</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+<tr>
+<td>target-container</td>
+<td><code>target</code>的外层滚动元素，默认是 <code>window</code>。<code>Affix </code>将会监听该元素的滚动事件，并实时更新固钉的位置。主要是为了解决 <code>target</code> 属性指定为非 <code>window</code> 元素时，如果外层元素滚动，可能会导致固钉跑出容器问题</td>
+<td><code>string | HTMLElement | Window</code></td>
+<td style="text-align:center"><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="affix-events"><code>&lt;affix&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change</td>
+<td>固定状态发生改变时触发</td>
+<td>fixed: <code>boolean</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="affix-methods"><code>&lt;affix&gt;</code> Methods</h3>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>参数</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>updatePosition</td>
+<td>更新位置</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

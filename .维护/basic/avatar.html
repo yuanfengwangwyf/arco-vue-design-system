@@ -1,0 +1,371 @@
+
+<!-- demo:avatar/basic -->
+<h3>基本用法</h3>
+<p>头像的基础使用。如果头像是文字的话，会自动调节字体大小，来适应头像框。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-avatar>A</a-avatar>
+    <a-avatar :style="{ backgroundColor: 'var(--color-tone-blue-a100)' }">
+      <IconUser />
+    </a-avatar>
+    <a-avatar :style="{ backgroundColor: 'var(--color-tone-blue-a100)' }">Arco</a-avatar>
+    <a-avatar :style="{ backgroundColor: 'var(--color-tone-cyan-a100)' }">Design</a-avatar>
+    <a-avatar>
+      <img
+        alt="avatar"
+        src="/images/86a75427e4ec35f8.webp"
+      />
+    </a-avatar>
+  </a-space>
+</template>
+
+<script setup>
+import { IconUser } from "@arco-design/web-vue/es/icon";
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:avatar/size -->
+<h3>大小和形状</h3>
+<p>通过设置 <code>size</code> 字段，可以调节头像的大小，默认大小为 <code>40px</code>。设置 <code>shape</code> 字段，可以设置头像是圆形 (circle) 还是正方形 (square)。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large" direction="vertical">
+    <a-space size="large">
+      <a-avatar :size="64">Arco</a-avatar>
+      <a-avatar :size="40">Arco</a-avatar>
+      <a-avatar :size="32">Arco</a-avatar>
+      <a-avatar :size="24">Arco</a-avatar>
+    </a-space>
+    <a-space size="large">
+      <a-avatar :size="64" shape="square">Arco</a-avatar>
+      <a-avatar :size="40" shape="square">Arco</a-avatar>
+      <a-avatar :size="32" shape="square">Arco</a-avatar>
+      <a-avatar :size="24" shape="square">Arco</a-avatar>
+    </a-space>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:avatar/group -->
+<h3>头像组</h3>
+<p>使用 <code>Avatar.Group</code> 可以使用头像组功能，可通过 <code>size</code> 指定头像的大小。</p>
+<template data-demo-source>
+<template>
+  <a-space :size="32">
+    <a-avatar-group>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-lime-a100)' }">A</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-cyan-a100)' }">B</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-blue-a100)' }">C</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-orange-a100)' }">Arco</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-gold-a100)' }">Design</a-avatar>
+    </a-avatar-group>
+
+    <a-avatar-group :size="24">
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-lime-a100)' }">A</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-cyan-a100)' }">B</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-blue-a100)' }">C</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-orange-a100)' }">Arco</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-gold-a100)' }">Design</a-avatar>
+    </a-avatar-group>
+
+    <a-avatar-group :size="24" :max-count="3">
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-lime-a100)' }">A</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-cyan-a100)' }">B</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-blue-a100)' }">C</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-orange-a100)' }">Arco</a-avatar>
+      <a-avatar :style="{ backgroundColor: 'var(--color-tone-gold-a100)' }">Design</a-avatar>
+    </a-avatar-group>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:avatar/icon -->
+<h3>交互按钮</h3>
+<p>可以通过 <code>trigger-icon</code> <code>trigger-type</code> 来定制交互按钮，类型有 <code>mask (遮罩)</code> 和 <code>button (按钮)</code> 两种。</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-avatar
+      :trigger-icon-style="{ color: 'var(--color-tone-blue-a100)' }"
+      :auto-fix-font-size="false"
+      @click="handleToast"
+      :style="{ backgroundColor: 'var(--color-tone-blue-a100)' }"
+    >
+      A
+      <template #trigger-icon>
+        <IconCamera />
+      </template>
+    </a-avatar>
+    <a-avatar @click="handleToast" :style="{ backgroundColor: 'var(--color-tone-cyan-a100)' }">
+      <IconUser />
+      <template #trigger-icon>
+        <IconEdit />
+      </template>
+    </a-avatar>
+    <a-avatar
+      @click="handleToast"
+      shape="square"
+      :style="{ backgroundColor: 'var(--color-tone-gold-a100)' }"
+    >
+      <IconUser />
+      <template #trigger-icon>
+        <IconEdit />
+      </template>
+    </a-avatar>
+    <a-avatar trigger-type="mask">
+      <img
+        alt="avatar"
+        src="/images/86a75427e4ec35f8.webp"
+      />
+      <template #trigger-icon>
+        <IconEdit />
+      </template>
+    </a-avatar>
+  </a-space>
+</template>
+
+<script setup>
+import { Message } from "@arco-design/web-vue";
+import { IconCamera, IconEdit, IconUser } from "@arco-design/web-vue/es/icon";
+const handleToast = () => {
+  Message.info("Uploading...");
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:avatar/fit -->
+<h3>自动调整字体大小</h3>
+<p>如果头像是文字的话，会自动调节字体大小，来适应头像框。</p>
+<template data-demo-source>
+<template>
+  <a-avatar
+    :style="{
+      marginRight: '24px',
+      verticalAlign: 'middle',
+      backgroundColor: 'var(--color-tone-blue-a100)',
+    }"
+  >
+    {{ text }}
+  </a-avatar>
+  <a-button
+    type="secondary"
+    @click="handleClick"
+    :style="{ verticalAlign: 'middle' }"
+  >
+    Change
+  </a-button>
+</template>
+
+<script setup>
+import { computed, ref } from "vue";
+const list = ["B", "Arco", "Design", "Tom", "AD"];
+const index = ref(0);
+const text = computed(() => list[index.value]);
+const handleClick = () => {
+  index.value = index.value >= list.length - 1 ? 0 : index.value + 1;
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:avatar/image-url -->
+<h3>自定义头像路径</h3>
+<p>自定义头像图片路径</p>
+<template data-demo-source>
+<template>
+  <a-space size="large">
+    <a-avatar
+      imageUrl="/images/86a75427e4ec35f8.webp"
+    >
+    </a-avatar>
+    加载失败:
+    <a-avatar
+      imageUrl="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9123.png~tplv-uwbnlip3yd-webp.webp"
+    >
+    </a-avatar>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="avatar-props"><code>&lt;avatar&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shape</td>
+<td>头像的形状，有圆形(circle)和正方形(square)两种</td>
+<td><code>'circle' | 'square'</code></td>
+<td style="text-align:center"><code>'circle'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>image-url</td>
+<td>自定义头像图片地址，如果传入该属性，会默认渲染img标签</td>
+<td><code>string</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.40.0</td>
+</tr>
+<tr>
+<td>size</td>
+<td>头像的尺寸大小，单位是 <code>px</code>。未填写时使用样式中的大小 <code>40px</code></td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-fix-font-size</td>
+<td>是否自动根据头像尺寸调整字体大小</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger-type</td>
+<td>可点击的头像交互类型</td>
+<td><code>'mask' | 'button'</code></td>
+<td style="text-align:center"><code>'button'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>trigger-icon-style</td>
+<td>交互图标的样式</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>object-fit</td>
+<td>图片在容器内的的适应类型</td>
+<td><code>ObjectFit</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.52.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="avatar-events"><code>&lt;avatar&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>点击回调</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>图片加载错误</td>
+<td>-</td>
+</tr>
+<tr>
+<td>load</td>
+<td>图片加载成功</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="avatar-slots"><code>&lt;avatar&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trigger-icon</td>
+<td style="text-align:center">可点击的头像交互图标</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="avatar-group-props"><code>&lt;avatar-group&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shape</td>
+<td>头像的形状，有圆形(circle)和正方形(square)两种</td>
+<td><code>'circle' | 'square'</code></td>
+<td style="text-align:center"><code>'circle'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>头像的尺寸大小，单位是 <code>px</code></td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>auto-fix-font-size</td>
+<td>是否自动根据头像尺寸调整字体大小</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-count</td>
+<td>头像组最多显示的头像数量，多余头像将以 <code>+x</code> 的形式展示。</td>
+<td><code>number</code></td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>z-index-ascend</td>
+<td>头像组内的头像 <code>z-index</code> 递增，默认是递减。</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>max-style</td>
+<td>多余头像样式。</td>
+<td><code>CSSProperties</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+<tr>
+<td>max-popover-trigger-props</td>
+<td>多余头像气泡的 <code>TriggerProps</code></td>
+<td><code>TriggerProps</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left">2.7.0</td>
+</tr>
+</tbody>
+</table>

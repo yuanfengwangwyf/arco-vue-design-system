@@ -1,0 +1,423 @@
+
+<!-- demo:tag/basic -->
+<h3>基本用法</h3>
+<p>标签的基本用法</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tag>Default</a-tag>
+    <a-tag>Tag 1</a-tag>
+    <a-tag>Tag 2</a-tag>
+    <a-tag>
+      <template #icon>
+        <icon-check-circle-fill />
+      </template>
+      Complete
+    </a-tag>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/closeable -->
+<h3>可关闭标签</h3>
+<p>通过 <code>closable</code> 属性控制标签是否可关闭。可关闭标签可通过 <code>close</code> 事件执行一些关闭后操作，也可通过 <code>visible</code> 属性控制标签的显示或隐藏。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tag closable>Tag</a-tag>
+    <a-tag closable>
+      <template #icon>
+        <icon-star />
+      </template>
+      Tag
+    </a-tag>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/dynamically -->
+<h3>动态编辑标签</h3>
+<p>可动态添加和删除标签。</p>
+<template data-demo-source>
+<template>
+  <a-space wrap>
+    <a-tag
+      v-for="(tag, index) of tags"
+      :key="tag"
+      :closable="index !== 0"
+      @close="handleRemove(tag)"
+    >
+      {{ tag }}
+    </a-tag>
+
+    <a-input
+      v-if="showInput"
+      ref="inputRef"
+      :style="{ width: '90px' }"
+      size="mini"
+      v-model.trim="inputVal"
+      @keyup.enter="handleAdd"
+      @blur="handleAdd"
+    />
+    <a-tag
+      v-else
+      :style="{
+        width: '90px',
+        backgroundColor: 'var(--color-fill-2)',
+        border: '1px dashed var(--color-fill-3)',
+        cursor: 'pointer',
+      }"
+      @click="handleEdit"
+    >
+      <template #icon>
+        <icon-plus />
+      </template>
+      Add Tag
+    </a-tag>
+  </a-space>
+</template>
+
+<script setup>
+import { ref, nextTick } from "vue";
+const tags = ref(["Tag 1", "Tag 2", "Tag 3"]);
+const inputRef = ref(null);
+const showInput = ref(false);
+const inputVal = ref("");
+const handleEdit = () => {
+  showInput.value = true;
+  nextTick(() => {
+    if (inputRef.value) {
+      inputRef.value.focus();
+    }
+  });
+};
+const handleAdd = () => {
+  if (inputVal.value) {
+    tags.value.push(inputVal.value);
+    inputVal.value = "";
+  }
+  showInput.value = false;
+};
+const handleRemove = (key) => {
+  tags.value = tags.value.filter((tag) => tag !== key);
+};
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/checkable -->
+<h3>可选中</h3>
+<p>通过设置 <code>checkable</code> ，可以实现点击选中的效果。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tag checkable>Awesome</a-tag>
+    <a-tag checkable color="red" :default-checked="true">Toutiao</a-tag>
+    <a-tag checkable color="arcoblue" :default-checked="true">Lark</a-tag>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/color -->
+<h3>标签的颜色</h3>
+<p>我们提供多种预设色彩的标签样式，通过 <code>color</code> 设置不同颜色。如果预设值不能满足你的需求，<code>color</code> 字段也可以设置自定义色值。</p>
+<template data-demo-source>
+<template>
+  <a-space wrap>
+    <a-tag
+      v-for="(color, index) of colors"
+      :key="index"
+      :color="color"
+      closable
+      >{{ color }}</a-tag
+    >
+  </a-space>
+  <h3>Custom Color:</h3>
+  <a-space wrap>
+    <a-tag
+      v-for="(color, index) of custom"
+      :key="index"
+      :color="color"
+      closable
+      >{{ color }}</a-tag
+    >
+  </a-space>
+</template>
+
+<script setup>
+const colors = [
+  "red",
+  "orangered",
+  "orange",
+  "gold",
+  "lime",
+  "green",
+  "cyan",
+  "blue",
+  "arcoblue",
+  "purple",
+  "pinkpurple",
+  "magenta",
+  "gray"
+];
+const custom = [
+  "var(--color-tone-red-a100)",
+  "var(--color-tone-purple-a100)",
+  "var(--color-tone-green-a100)",
+  "var(--color-tone-arcoblue-a100)",
+  "var(--color-tone-orange-a100)",
+  "var(--color-tone-magenta-a100)",
+  "var(--color-tone-lime-a100)",
+  "var(--neutral-level-50)",
+  "var(--color-tone-pinkpurple-a100)",
+  "var(--color-tone-cyan-a100)",
+  "var(--color-tone-gold-a100)",
+  "var(--color-tone-blue-a100)",
+  "var(--color-tone-orangered-a100)"
+];
+</script>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/size -->
+<h3>标签的尺寸</h3>
+<p>标签的大小分为：<code>small</code>、<code>medium</code>、<code>large</code> 三种，可以在不同场景下选择合适按钮尺寸。推荐及默认尺寸为 <code>medium</code>。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tag size="large">Large</a-tag>
+    <a-tag>Medium</a-tag>
+    <a-tag size="small">Small</a-tag>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/loading -->
+<h3>加载中状态</h3>
+<p>标签的加载中状态。</p>
+<template data-demo-source>
+<template>
+  <a-tag loading>Loading</a-tag>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/icon -->
+<h3>带图标的标签</h3>
+<p>可通过 <code>icon</code> 插槽在标签中加入图标。</p>
+<template data-demo-source>
+<template>
+  <a-space>
+    <a-tag color="gray">
+      <template #icon>
+        <icon-github />
+      </template>
+      Github
+    </a-tag>
+    <a-tag color="orangered">
+      <template #icon>
+        <icon-gitlab />
+      </template>
+      Gitlab
+    </a-tag>
+    <a-tag color="blue">
+      <template #icon>
+        <icon-twitter />
+      </template>
+      Twitter
+    </a-tag>
+    <a-tag color="arcoblue">
+      <template #icon>
+        <icon-facebook />
+      </template>
+      Facebook
+    </a-tag>
+  </a-space>
+</template>
+</template>
+<!-- /demo -->
+
+
+<!-- demo:tag/bordered -->
+<h3>带边框的标签</h3>
+<p>通过参数 <code>bordered</code>，可以显示带边框的标签。</p>
+<template data-demo-source>
+<template>
+  <a-space wrap>
+    <a-tag bordered>default</a-tag>
+    <a-tag
+      v-for="(color, index) of colors"
+      :key="index"
+      :color="color"
+      bordered
+      >{{ color }}</a-tag
+    >
+  </a-space>
+</template>
+
+<script setup>
+const colors = [
+  "orangered",
+  "orange",
+  "gold",
+  "lime",
+  "green",
+  "cyan",
+  "blue",
+  "arcoblue",
+  "purple",
+  "pinkpurple",
+  "magenta",
+  "gray"
+];
+</script>
+</template>
+<!-- /demo -->
+
+<h2 id="api">API</h2>
+<h3 id="tag-props"><code>&lt;tag&gt;</code> Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+<th>类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>标签的颜色</td>
+<td><code>'red' | 'orangered' | 'orange' | 'gold' | 'lime' | 'green' | 'cyan' | 'blue' | 'arcoblue' | 'purple' | 'pinkpurple' | 'magenta' | 'gray'</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>size</td>
+<td>标签的大小</td>
+<td><code>'small' | 'medium' | 'large'</code></td>
+<td style="text-align:center"><code>'medium'</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>bordered</td>
+<td>是否显示边框</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.33.0</td>
+</tr>
+<tr>
+<td>visible <strong>(v-model)</strong></td>
+<td>标签是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-visible</td>
+<td>标签默认是否可见</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>标签是否为加载中状态</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>closable</td>
+<td>标签是否可关闭</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>checkable</td>
+<td>标签是否可选中</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>checked <strong>(v-model)</strong></td>
+<td>标签是否选中（标签可选中时可用）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>default-checked</td>
+<td>标签默认选中状态（标签可选中时可用）</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>nowrap</td>
+<td>标签内容不换行</td>
+<td><code>boolean</code></td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">2.56.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tag-events"><code>&lt;tag&gt;</code> Events</h3>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>点击关闭按钮时触发</td>
+<td>ev: <code>MouseEvent</code></td>
+</tr>
+<tr>
+<td>check</td>
+<td>用户选中时触发（仅在可选中模式下触发）</td>
+<td>checked: <code>boolean</code><br>ev: <code>MouseEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tag-slots"><code>&lt;tag&gt;</code> Slots</h3>
+<table>
+<thead>
+<tr>
+<th>插槽名</th>
+<th style="text-align:center">描述</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td style="text-align:center">图标</td>
+<td>-</td>
+</tr>
+<tr>
+<td>close-icon</td>
+<td style="text-align:center">关闭按钮的图标</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>

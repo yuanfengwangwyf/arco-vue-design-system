@@ -1,0 +1,18 @@
+<section class="example" :id="'demo-' + id.split('/').at(-1)">
+    <h2>{{ title }}</h2>
+    <div class="markdown" v-html="description"></div>
+    <div class="example-panel">
+      <div class="example-preview demo-theme-pair">
+        <div class="demo-theme-panel" data-demo-theme="light">
+          <div class="demo-theme-label">亮色</div>
+          <component :is="example" />
+        </div>
+        <div class="demo-theme-panel" data-demo-theme="dark">
+          <div class="demo-theme-label">暗色</div>
+          <component :is="example" />
+        </div>
+      </div>
+      <div class="example-toolbar"><button type="button" :aria-expanded="expanded" @click="toggle">{{ expanded ? '收起代码' : '查看代码' }}</button></div>
+      <pre v-if="expanded"><code>{{ source }}</code></pre>
+    </div>
+  </section>
